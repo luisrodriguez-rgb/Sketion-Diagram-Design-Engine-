@@ -1,9 +1,9 @@
 """
-Sketion 3.3 — Generador Maestro para Benchmark de 3 Audiencias (Pruebas V5)
-Mismo Caso de Negocio (Cafeteria Universitaria) -> 3 Representaciones Visuales Radicalmente Diferentes:
-1. CEO / Directivo: Diagrama de Decision Estrategica, ROI y Asignacion de Recursos
-2. Gerente de Operaciones: Diagrama de Proceso Fisico, Takt Time, Segregacion Espacial y Roles
-3. Equipo de Producto / Tech: Arquitectura de Sistema, Pre-Order App, KDS y Motor de Estimacion ETA
+Sketion 3.3 — Generador Maestro Refactorizado para Benchmark de 3 Audiencias (Pruebas V5)
+Correcciones y Perfeccionamiento Editorial:
+- CEO: Balanceo de anchos, métricas de ROI condensadas y ajuste de densidad a zona dorada.
+- Operaciones: Flechas de flujo físico de personas y comida entre zonas, reducción de huecos y checklist de supervisor.
+- Producto: Correspondencia 1:1 de 5 pasos con 5 slots de captura de UI y unificación de acento focal único.
 """
 
 import os
@@ -61,11 +61,11 @@ def build_ceo_decision_scene() -> str:
 
     # Filas de Comparacion con Post-it central
     duel_rows = [
-        ("Deficit estructural: Capacidad 300 vs 430 ped/h", "CAPACIDAD", "Capacidad efectiva: 410 ped/h (+36% absorcion)"),
-        ("Cajero hace 5 tareas simultaneas; fila > 25", "PERSONAL", "Reasignacion en pico: 1 caja + 1 entrega + 2 cocina ($0)"),
-        ("Congestion en barra; clientes pidiendo y esperando", "ESPACIO", "Separacion fisica de Order y Pickup (carril A/B)"),
-        ("14% de abandono de fila; perdida de $2,400/mes", "RETENCION", "Abandono < 1.5% con pre-order app y retiro expres"),
-        ("Baja rotacion bloquea cocina en horas pico", "MARGEN", "Combos rapidos en horas pico (+4.8% margen promedio)")
+        ("Deficit estructural: Capacidad 300 vs Demanda 430 ped/h", "CAPACIDAD", "Capacidad efectiva: 410 ped/h (+36% absorcion total)"),
+        ("Cajero hace 5 tareas simultaneas; fila > 25 personas", "PERSONAL", "Reasignacion en pico: 1 caja pura + 1 entrega + 2 cocina ($0)"),
+        ("Congestion en barra; clientes pidiendo y esperando cruzados", "ESPACIO", "Separacion fisica de Order y Pickup (carril A y B senalizados)"),
+        ("14% de abandono de fila; perdida estimada de $28,000 anuales", "RETENCION", "Abandono < 1.5% con pre-order app y retiro expres en casillero"),
+        ("Platos de baja rotacion bloquean planchas en horas pico", "MARGEN", "Combos rapidos en horas pico (+4.8% de margen promedio)")
     ]
 
     for i, (left_t, spine_t, right_t) in enumerate(duel_rows):
@@ -89,7 +89,7 @@ def build_ceo_decision_scene() -> str:
     foot_y = fy1 + 770
     scene.add_rect(fx1 + 60, foot_y, 1100, 90, bg=MIRO_PALETTE["PAIN_BG"], stroke=MIRO_PALETTE["PAIN_BORDER"], stroke_w=1.5, roundness_type=3, frame_id=fid1)
     scene.add_text(fx1 + 80, foot_y + 15, "14% Abandono | 300 ped/h max | $28k perdida anual", font_size=20, font_family=2, color=MIRO_PALETTE["PAIN_RED"], frame_id=fid1)
-    scene.add_text(fx1 + 80, foot_y + 50, "Impacto actual: Clientes insatisfechos y congestion cronica", font_size=13, font_family=2, color=MIRO_PALETTE["MUTED"], frame_id=fid1)
+    scene.add_text(fx1 + 80, foot_y + 50, "Impacto actual: Clientes insatisfechos y congestion cronica en receso", font_size=13, font_family=2, color=MIRO_PALETTE["MUTED"], frame_id=fid1)
 
     scene.add_rect(mid_x + 140, foot_y, 1100, 90, bg=MIRO_PALETTE["PASTEL_GREEN"], stroke=MIRO_PALETTE["CARD_BORDER"], stroke_w=1.5, roundness_type=3, frame_id=fid1)
     scene.add_text(mid_x + 160, foot_y + 15, "< 1.5% Abandono | 410 ped/h | +$42k ingresos netos", font_size=20, font_family=2, color=MIRO_PALETTE["INK"], frame_id=fid1)
@@ -108,19 +108,19 @@ def build_ceo_decision_scene() -> str:
 
     phases = [
         ("FASE 1: QUICK WINS (SEMANA 1)", "Costo $0 / Aprobacion Inmediata", [
-            "B. Separar fisicamente Order y Pickup (senaletica)",
-            "G. Reasignar personal durante el receso (1 caja / 1 runner)",
-            "D. Batching previo de 80 sandwiches top antes de las 10:00"
+            "B. Separar fisicamente Order y Pickup (senaletica y conos)",
+            "G. Reasignar personal durante el receso (1 caja / 1 runner / 2 cocina)",
+            "D. Batching previo de 80 sandwiches top antes de las 10:00 AM"
         ], MIRO_PALETTE["PASTEL_GREEN"]),
         ("FASE 2: CANAL DIGITAL (SEMANAS 2-4)", "Inversion Minima en Software / ROI 30d", [
-            "A. Lanzamiento de App de Pre-Order para alumnos",
-            "F. Habilitacion de Estacion / Mesa de Retiro Expres",
-            "H. Pantallas visibles con tiempos de preparacion estimados"
+            "A. Lanzamiento de App de Pre-Order con slots de horario",
+            "F. Habilitacion de Estacion / Mesa de Retiro Expres con QR",
+            "H. Pantallas visibles con tiempos de preparacion estimados (ETA)"
         ], MIRO_PALETTE["PASTEL_BLUE"]),
         ("FASE 3: OPTIMIZACION DE MENU (MES 2)", "Mejora de Margen y Velocidad", [
-            "C. Menu especial compacto para franja de 10:00 a 12:00",
+            "C. Menu especial compacto para franja pico de 10:00 a 12:00",
             "J. Creacion de Combos Rapidos (Cafe + Muffin listo)",
-            "E. Sistema de pronostico historico semanal"
+            "E. Sistema de pronostico de demanda basado en historicos"
         ], "#FFFFFF")
     ]
 
@@ -169,7 +169,7 @@ def build_operations_process_scene() -> str:
     zones = [
         ("ZONA 1: INGRESS / PEDIDO", 620, [
             ("z1_line", "Carril A: Fila Presencial", "Capacidad: 12 clientes max\nFiltro visual de ingreso"),
-            ("z1_cash", "Puesto 1: Cajero Puro", "UNICA FUNCION: Tomar orden y cobrar\nTakt Time: 10 seg / cliente")
+            ("z1_cash", "Puesto 1: Cajero Puro", "UNICA FUNCION: Tomar orden y cobrar\nTakt Time: 9.0 seg / cliente")
         ], MIRO_PALETTE["PASTEL_BLUE"]),
         ("ZONA 2: COCINA & BATCHING", 720, [
             ("z2_batch", "Estacion de Batching Previo", "80 sandwiches listos en calor\nStock regulador de horas pico"),
@@ -186,24 +186,52 @@ def build_operations_process_scene() -> str:
     ]
 
     curr_x = fx1 + 60.0
+    zone_coords = {}
     for z_title, zw, znodes, zbg in zones:
-        zh = 480.0
+        zh = 440.0
         zy = fy1 + 140.0
         
         scene.add_scope_container(curr_x, zy, zw, zh, label=z_title, stroke=MIRO_PALETTE["CARD_BORDER"], bg=zbg, frame_id=fid1)
 
         for ni, (nid, ntitle, nsub) in enumerate(znodes):
             nx = curr_x + 25.0
-            ny = zy + 65.0 + ni * 180.0
+            ny = zy + 65.0 + ni * 165.0
             nw = zw - 50.0
-            nh = 120.0
+            nh = 110.0
             
-            scene.add_dual_card(nx, ny, nw, nh, ntitle, sublabel=nsub,
-                                bg="#FFFFFF", stroke=MIRO_PALETTE["INK"], text_color=MIRO_PALETTE["INK"], frame_id=fid1)
+            c, _ = scene.add_dual_card(nx, ny, nw, nh, ntitle, sublabel=nsub,
+                                       bg="#FFFFFF", stroke=MIRO_PALETTE["INK"], text_color=MIRO_PALETTE["INK"], frame_id=fid1)
+            zone_coords[nid] = (c["x"], c["y"], c["width"], c["height"])
 
         curr_x += zw + 50.0
 
-    scene.add_banner(fx1 + 60, fy1 + 680, w1 - 120, 50,
+    # Flechas de Flujo Fisico de Personas y Alimentos
+    flow_arrows = [
+        ("z1_line", "z1_cash", "Avanza en Fila"),
+        ("z1_cash", "z2_prep", "Comanda KDS"),
+        ("z2_batch", "z2_prep", "Insumo Listo"),
+        ("z2_prep", "z3_run", "Plato Terminado"),
+        ("z3_run", "z3_line", "Llama a Cliente"),
+        ("z3_run", "z4_lock", "Carga Locker Digital"),
+        ("z4_lock", "z4_out", "Retiro QR 5s")
+    ]
+
+    for fid_a, fid_b, flbl in flow_arrows:
+        if fid_a in zone_coords and fid_b in zone_coords:
+            ax, ay, aw, ah = zone_coords[fid_a]
+            bx, by, bw, bh = zone_coords[fid_b]
+            if bx >= ax + aw:
+                scene.add_arrow(ax + aw, ay + ah * 0.5, bx, by + bh * 0.5,
+                                stroke=MIRO_PALETTE["INK"], stroke_w=1.5, label=flbl, orthogonal=True, frame_id=fid1)
+            elif bx < ax:
+                scene.add_arrow(ax, ay + 20, bx + bw, by + 20,
+                                stroke=MIRO_PALETTE["INK"], stroke_w=1.5, label=flbl, orthogonal=True, frame_id=fid1)
+            else:
+                scene.add_arrow(ax + aw * 0.5, ay + ah, bx + bw * 0.5, by,
+                                stroke=MIRO_PALETTE["INK"], stroke_w=1.5, label=flbl, orthogonal=True, frame_id=fid1)
+
+    # Banner inferior
+    scene.add_banner(fx1 + 60, fy1 + 640, w1 - 120, 50,
                      "regla operativa de oro: ningun cliente que ya pago comparte espacio con quien esta decidiendo su pedido.",
                      bg=MIRO_PALETTE["BANNER_PINK"], text_color=MIRO_PALETTE["INK"], font_size=14, frame_id=fid1)
 
@@ -306,7 +334,7 @@ def build_product_tech_scene() -> str:
             nw = sw - 40.0
             nh = 85.0
             
-            is_eta = ("ETA" in ntitle or "KDS" in ntitle)
+            is_eta = ("Dynamic ETA Engine" in ntitle)
             bg = MIRO_PALETTE["PASTEL_GREEN"] if is_eta else "#FFFFFF"
             border = MIRO_PALETTE["INK"] if is_eta else MIRO_PALETTE["CARD_BORDER"]
             
@@ -345,39 +373,45 @@ def build_product_tech_scene() -> str:
     scene.auto_fit_frame(fid1, padding=50.0)
 
 
-    # FRAME 2: USER JOURNEY DIGITAL & ESTADOS KDS
+    # FRAME 2: USER JOURNEY DIGITAL & ESTADOS KDS (5 PASOS -> 5 SLOTS 1:1)
     w2, h2 = 2800, 800
     fx2, fy2 = place(w2, h2)
     fid2 = scene.add_frame("2. USER JOURNEY: Experiencia del Alumno y Ciclo de Vida del Pedido Digital", fx2, fy2, w2, h2)
 
     scene.add_text(fx2 + 50, fy2 + 35, "JOURNEY DEL ALUMNO: DE LA PRE-ORDEN AL RETIRO EN 5 SEGUNDOS", font_size=32, font_family=2, color=MIRO_PALETTE["INK"], frame_id=fid2)
-    scene.add_text(fx2 + 50, fy2 + 75, "flujo de interaccion extremo a extremo con slots de captura y retroalimentacion de estado", font_size=18, font_family=2, color=MIRO_PALETTE["PAIN_RED"], frame_id=fid2)
+    scene.add_text(fx2 + 50, fy2 + 75, "flujo de interaccion extremo a extremo con 5 slots de captura 1:1 y retroalimentacion de estado", font_size=18, font_family=2, color=MIRO_PALETTE["PAIN_RED"], frame_id=fid2)
 
     journey_steps = [
-        ("PASO 1: SELECCION", "Alumno elige combo y slot\n(Ej: Receso 10:15 AM)", fx2 + 60, fy2 + 160),
-        ("PASO 2: PAGO & ETA", "Pago en 1-clic Apple/Google Pay\nRecibe ticket digital y QR", fx2 + 580, fy2 + 160),
-        ("PASO 3: COCINA KDS", "Comanda aparece en cocina 4 min\nantes de la hora prometida", fx2 + 1100, fy2 + 160),
-        ("PASO 4: ALERTA PUSH", "Notificacion: 'Tu pedido esta en\nla Estacion Digital Locker B'", fx2 + 1620, fy2 + 160),
-        ("PASO 5: RETIRO EXPRESS", "Escaneo de QR en 5 segundos\nCero colision con la fila fisica", fx2 + 2140, fy2 + 160)
+        ("PASO 1: SELECCION", "Alumno elige combo y slot\n(Ej: Receso 10:15 AM)", fx2 + 50, fy2 + 150),
+        ("PASO 2: PAGO & ETA", "Pago 1-clic Apple/Google Pay\nRecibe ticket digital y QR", fx2 + 580, fy2 + 150),
+        ("PASO 3: COCINA KDS", "Comanda aparece en cocina 4 min\nantes de la hora prometida", fx2 + 1110, fy2 + 150),
+        ("PASO 4: ALERTA PUSH", "Notificacion: 'Tu pedido esta en\nla Estacion Digital Locker B'", fx2 + 1640, fy2 + 150),
+        ("PASO 5: RETIRO EXPRESS", "Escaneo de QR en 5 segundos\nCero colision con la fila fisica", fx2 + 2170, fy2 + 150)
     ]
 
+    card_jw = 490
     for j_num, j_desc, jx, jy in journey_steps:
-        scene.add_bound_card(jx, jy, 440, 100, f"{j_num}\n{j_desc}",
+        scene.add_bound_card(jx, jy, card_jw, 95, f"{j_num}\n{j_desc}",
                              bg="#FFFFFF", stroke=MIRO_PALETTE["INK"], text_color=MIRO_PALETTE["INK"],
                              font_size=13, roundness_type=3, frame_id=fid2)
 
     for i in range(len(journey_steps) - 1):
-        x1 = journey_steps[i][2] + 440
-        y1 = journey_steps[i][3] + 50
+        x1 = journey_steps[i][2] + card_jw
+        y1 = journey_steps[i][3] + 47.5
         x2 = journey_steps[i+1][2]
-        y2 = journey_steps[i+1][3] + 50
+        y2 = journey_steps[i+1][3] + 47.5
         scene.add_arrow(x1, y1, x2, y2, stroke=MIRO_PALETTE["INK"], stroke_w=1.5, orthogonal=False, frame_id=fid2)
 
-    # Slots de Captura de UI abajo
-    scene.add_capture_slot(fx2 + 60, fy2 + 320, 620, 320, label="Captura: Pantalla de Seleccion de Slot en App Movil", stroke=MIRO_PALETTE["CARD_BORDER"], frame_id=fid2)
-    scene.add_capture_slot(fx2 + 740, fy2 + 320, 620, 320, label="Captura: Ticket QR y Cuenta Regresiva de Preparacion", stroke=MIRO_PALETTE["CARD_BORDER"], frame_id=fid2)
-    scene.add_capture_slot(fx2 + 1420, fy2 + 320, 620, 320, label="Captura: Pantalla KDS en Cocina con Filtro de Takt Time", stroke=MIRO_PALETTE["PAIN_BORDER"], frame_id=fid2)
-    scene.add_capture_slot(fx2 + 2100, fy2 + 320, 620, 320, label="Captura: Escaner de QR y Despacho en Casillero Express", stroke=MIRO_PALETTE["CARD_BORDER"], frame_id=fid2)
+    # 5 Slots de Captura de UI 1:1 alineados exactamente debajo de cada paso
+    slot_w = 490
+    slot_h = 320
+    slot_y = fy2 + 290
+
+    scene.add_capture_slot(fx2 + 50, slot_y, slot_w, slot_h, label="Captura 1: Seleccion de Slot en App Movil", stroke=MIRO_PALETTE["CARD_BORDER"], frame_id=fid2)
+    scene.add_capture_slot(fx2 + 580, slot_y, slot_w, slot_h, label="Captura 2: Ticket QR y Cuenta Regresiva", stroke=MIRO_PALETTE["CARD_BORDER"], frame_id=fid2)
+    scene.add_capture_slot(fx2 + 1110, slot_y, slot_w, slot_h, label="Captura 3: Pantalla KDS en Cocina con Takt Time", stroke=MIRO_PALETTE["PAIN_BORDER"], frame_id=fid2)
+    scene.add_capture_slot(fx2 + 1640, slot_y, slot_w, slot_h, label="Captura 4: Alerta Push 'Pedido en Locker B'", stroke=MIRO_PALETTE["CARD_BORDER"], frame_id=fid2)
+    scene.add_capture_slot(fx2 + 2170, slot_y, slot_w, slot_h, label="Captura 5: Escaneo de QR y Despacho Express", stroke=MIRO_PALETTE["CARD_BORDER"], frame_id=fid2)
 
     scene.auto_fit_frame(fid2, padding=50.0)
 
@@ -388,7 +422,7 @@ def build_product_tech_scene() -> str:
 
 if __name__ == "__main__":
     print("==================================================")
-    print("GENERANDO 3 LIENZOS POR AUDIENCIA (PRUEBAS V5)...")
+    print("RE-GENERANDO 3 LIENZOS POR AUDIENCIA REFACTORIZADOS...")
     print("==================================================")
     
     p1 = build_ceo_decision_scene()
@@ -407,5 +441,5 @@ if __name__ == "__main__":
     print(r3.summary())
     
     print("\n==================================================")
-    print("TODOS LOS LIENZOS DE AUDIENCIA GENERADOS Y VALIDADOS CON EXITO.")
+    print("TODOS LOS LIENZOS REFACTORIZADOS Y VALIDADOS CON EXITO.")
     print("==================================================")

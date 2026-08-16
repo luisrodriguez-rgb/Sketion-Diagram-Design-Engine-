@@ -146,22 +146,22 @@ python3 sketion_cli.py validate payments.excalidraw
 
 ## 🎨 Características Clave de Diseño
 
+* **27 Tipos Visuales Canónicos Nativos:** Implementación geométrica auténtica de los 27 tipos de Diagram Design (Venn con círculos intersectados, ER Data Model con tablas PK/FK, Gantt con hitos, State Machines con bucles, Swimlanes multi-rol, Quadrants 2x2, Matriz de Seguridad RBAC, Radar Multieje, etc.).
 * **100% Libre de Emojis:** 155+ íconos vectoriales editoriales nativos para sistemas, roles, seguridad y datos.
 * **Brand & Tech Registry:** Reconocimiento de 46+ plataformas (AWS, Kafka, PostgreSQL, Stripe, Redis, MinIO, Snowflake, ClickHouse, Visa, etc.) con paletas oficiales.
 * **Morfología Polimórfica:** Bases de datos como cilindros elípticos, colas como tuberías de streaming particionadas, firewalls como barreras perimetrales y actores como pastillas.
-* **4 Arquetipos Espaciales:** Estratificado (`LAYERED`), Flujo Lineal (`PIPELINE`), Topología en Estrella (`RADIAL_HUB / THE BRAIN`) y Duelo de Migración (`SPLIT_DUEL / VS`).
 * **Invariancia Semántica:** Preservación del 100% del significado al adaptar a pantallas widescreen (`16:9`), pitch decks (`4:3`), tarjetas (`1:1`) o documentos (`3:4`).
 * **Explainability de Diseño (`result.explain()`):** Justificación auditable de la selección de arquetipo, componente Hero, audiencia y dialecto visual.
 * **Exportación Multiformato:** Genera `.excalidraw` editable y `.svg` vectorial web estándar con tipografía `Inter`.
 
 ---
 
-## 🖼️ Galería Visual de Demostración (20 Arquetipos + 12 Formas en SVG)
+## 🖼️ Galería Visual de Demostración (27 Tipos Visuales + 12 Formas en SVG)
 
 Accede al catálogo completo con vistas previas vectoriales listas para usar:  
-👉 [**Ver Galería Completa de Demostración (`docs/gallery/README.md`)**](docs/gallery/README.md)
+👉 [**Ver Galería Canónica de los 27 Tipos Visuales (`docs/gallery/README.md`)**](docs/gallery/README.md)
 
-* **20 Arquetipos Narrativos de Negocio:** Hub Radial (El Cerebro), Duelo (Legacy vs Target), Pipeline con Bucle, Lakehouse Medallion, Cadena de Valor, Flywheel PLG, Escalera de Madurez, Swimlanes, Embudo de Conversión, Matriz SLA, etc. en formato `.svg` y `.excalidraw`.
+* **27 Tipos Visuales Canónicos:** Architecture, Flowchart, Sequence, State Machine, ER Data Model, Timeline, Swimlane, Quadrant, Nested, Tree, Org Chart, Venn, Layer Stack, Pyramid / Funnel, Consultant 2x2, Radar / Spider, Loop (Flywheel), IT Current-State, High-Level, Gantt, Scatter Plot, Process, Medallion, Data Flow, DP Integration, DP Security Matrix y Value Chain.
 * **12+ Formas Semánticas Especializadas:** Cilindros de Base de Datos, Tuberías Kafka, Barreras WAF Zero-Trust, Pastillas de Actores, Rombos de Decisión, Tarjetas Hero y KPIs.
 
 ---

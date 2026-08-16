@@ -26,6 +26,7 @@ Este documento certifica el estado técnico inmutable del Core, la auditoría cu
 | **Grand Blind Holdout (160 Prompts)** | v9.5 | 🟢 **CERTIFIED** | **100% Pass Rate (160/160), VCS 93.4, RDS 0.00** en 8 dominios (`tests/holdout/`). |
 | **Blind A/B Preference Benchmark** | v9.6 | 🟢 **CERTIFIED** | **100% Human Preference Rate (HPR)** en 50 casos evaluados vs Baseline. |
 | **E2E Regression & CI Suite** | v9.8 | 🟢 **CERTIFIED** | 27 / 27 pruebas aprobadas (100.0% PASS) en 0.014s (`tests/`). |
+| **27 Canonical Visual Types** | v10.0 | 🟢 **CERTIFIED** | 27 geometrías canónicas de Diagram Design integradas nativamente (`visual_types_27.py`). |
 | **Production SDK & CLI** | v10.0 | 🔵 **PRODUCTION READY** | SDK Python (`import sketion`), CLI 2.0 y certificación formal ([`SKETION_10_GA_CERTIFICATION.md`](SKETION_10_GA_CERTIFICATION.md)). |
 
 ---

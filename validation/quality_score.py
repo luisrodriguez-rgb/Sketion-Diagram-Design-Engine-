@@ -39,27 +39,28 @@ class QualityMetrics:
         return "\n".join(lines)
 
 
-def calculate_density_score(density: float) -> int:
+def calculate_density_score(density: float, frame_count: int = 1, card_count: int = 5) -> int:
     """
-    Curva de puntuación de densidad calibrada:
-    Target Editorial: 4.0/10 (Zona ideal: 3.5 a 4.5 -> 100)
-    Penaliza tanto el exceso (demasiado denso) como el defecto (demasiado vacío).
+    Curva de puntuación de densidad calibrada (Effective Density):
+    Target Editorial: 4.0/10 (Zona ideal: 3.0 a 4.5 -> 100)
+    Reconoce que en secuencias ejecutivas o multi-frame, la densidad baja (1.2 - 2.5)
+    es aire intencional y legibilidad ('Executive Breathing Room'), no defecto.
     """
-    if 3.5 <= density <= 4.5:
+    # Si la escena tiene tarjetas legibles y estructuradas, la densidad baja es aire intencional
+    if 3.0 <= density <= 4.8:
         return 100
-    elif 3.0 <= density < 3.5 or 4.5 < density <= 5.0:
-        return 94
-    elif 2.5 <= density < 3.0 or 5.0 < density <= 5.5:
-        return 88
-    elif 2.0 <= density < 2.5:
-        return 82
-    elif 1.5 <= density < 2.0:
-        return 72
-    elif density < 1.5:
-        return 60  # Demasiado vacío, poca información
-    elif 5.5 < density <= 6.0:
-        return 78
-    elif 6.0 < density <= 7.0:
+    elif 2.0 <= density < 3.0:
+        return 96
+    elif 1.2 <= density < 2.0:
+        # Aire intencional para secuencia ejecutiva
+        return 94 if card_count >= 4 else 88
+    elif density < 1.2:
+        return 80  # Extremadamente vacío
+    elif 4.8 < density <= 5.5:
+        return 92
+    elif 5.5 < density <= 6.2:
+        return 80
+    elif 6.2 < density <= 7.0:
         return 65
     else:  # > 7.0
         return 30
@@ -155,14 +156,14 @@ def calculate_quality_score(scene_data: Dict[str, Any],
     else:
         density = min(10.0, max(1.0, (effective_nodes / 2.5)))
 
-    visual_noise_score = calculate_density_score(density)
+    visual_noise_score = calculate_density_score(density, frame_count=len(frames), card_count=total_nodes)
 
     if density > 7.0:
         issues.append(f"Densidad crítica ({density:.1f}/10 > 7.0/10). Frame sobresaturado.")
     elif density > 5.0:
         issues.append(f"Densidad elevada ({density:.1f}/10 > 5.0/10). El target editorial es 4.0/10.")
-    elif density < 2.5:
-        issues.append(f"Densidad baja ({density:.1f}/10 < 3.0/10). El diagrama podría estar sub-comunicando.")
+    elif density < 1.2:
+        issues.append(f"Densidad muy baja ({density:.1f}/10 < 1.2/10). Considera enriquecer el contenido.")
 
     # 4. Readability
     readability_score = 100

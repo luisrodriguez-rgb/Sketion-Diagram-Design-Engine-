@@ -134,11 +134,11 @@ def calculate_quality_score(scene_data: Dict[str, Any],
     else:
         effective_nodes = total_nodes
 
-    # Normalizar por el ancho/área del frame si existe
+    # Normalizar por el ancho/área total de todos los frames si existen
     if frames:
-        fw = frames[0].get("width", 1200)
-        # En lienzos anchos (deep dive > 1500px), la capacidad de nodos es mayor sin saturación
-        area_factor = max(1.0, fw / 1200.0)
+        total_fw = sum(f.get("width", 1200.0) for f in frames)
+        # En lienzos anchos o multi-frame, la capacidad de nodos es proporcional al espacio total
+        area_factor = max(1.0, total_fw / 1200.0)
         density = min(10.0, max(1.0, (effective_nodes / (2.5 * area_factor))))
     else:
         density = min(10.0, max(1.0, (effective_nodes / 2.5)))

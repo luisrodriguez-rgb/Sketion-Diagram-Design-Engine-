@@ -57,14 +57,22 @@ class ValidationReport:
 
         return "\n".join(lines)
 
+    def get_summary(self) -> str:
+        return self.summary()
 
-def validate_scene(scene_data: Dict[str, Any],
+
+def validate_scene(scene_data: Any,
                    diagram: Optional[SemanticDiagram] = None,
                    auto_repair: bool = True,
-                   max_repair_iterations: int = 3) -> Tuple[Dict[str, Any], ValidationReport]:
+                   max_repair_iterations: int = 3) -> ValidationReport:
     """
     Ejecuta el ciclo integral de validación, fidelidad semántica y reparación acotada (Repair Budget).
     """
+    import json
+    if isinstance(scene_data, str):
+        with open(scene_data, "r", encoding="utf-8") as f:
+            scene_data = json.load(f)
+
     all_repairs = []
     iterations = 0
 

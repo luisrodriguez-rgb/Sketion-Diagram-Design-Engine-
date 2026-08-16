@@ -1,41 +1,293 @@
+<div align="center">
+
+<img src="../assets/logo.png" alt="Sketion Official Logo" width="130"/>
+
 # 🎨 Sketion Visual Showcase Gallery (v10.0 GA)
 
 **Catálogo Canónico de los 27 Tipos Visuales de Diagram Design & Arquitectura Editorial.**  
-Todos los diagramas son generados por el motor de forma 100% autónoma y exportados en formato vectorial web estándar (`.svg`) y editable nativo (`.excalidraw`).
+*Todos los diagramas son generados por el motor de forma 100% autónoma y exportados en formato vectorial web estándar (`.svg`) y editable nativo (`.excalidraw`).*
+
+</div>
 
 ---
 
-## 🏛️ Galería de los 27 Tipos Visuales Canónicos
+## 🏛️ 1. Arquitectura & Sistemas de Información
 
-| N° | Tipo Visual | Estructura & Propósito | Vista Vectorial (.svg) | Archivo Editable |
-| :---: | :--- | :--- | :---: | :---: |
-| **01** | **Architecture** | Componentes + Conexiones en Nube VPC | [01_architecture.svg](27_types/01_architecture.svg) | [`.excalidraw`](27_types/01_architecture.excalidraw) |
-| **02** | **Flowchart** | Lógica de decisión con bifurcaciones Sí/No | [02_flowchart.svg](27_types/02_flowchart.svg) | [`.excalidraw`](27_types/02_flowchart.excalidraw) |
-| **03** | **Sequence** | Mensajes e interacción temporal entre líneas de vida | [03_sequence.svg](27_types/03_sequence.svg) | [`.excalidraw`](27_types/03_sequence.excalidraw) |
-| **04** | **State machine** | Estados finitos, transiciones y bucles de retorno | [04_state_machine.svg](27_types/04_state_machine.svg) | [`.excalidraw`](27_types/04_state_machine.excalidraw) |
-| **05** | **ER / data model** | Esquema de tablas relacionales (PK/FK) y campos | [05_er_data_model.svg](27_types/05_er_data_model.svg) | [`.excalidraw`](27_types/05_er_data_model.excalidraw) |
-| **06** | **Timeline** | Hitos y eventos sobre un eje temporal continuo | [06_timeline.svg](27_types/06_timeline.svg) | [`.excalidraw`](27_types/06_timeline.excalidraw) |
-| **07** | **Swimlane** | Flujo de proceso multi-rol a través de carriles | [07_swimlane.svg](27_types/07_swimlane.svg) | [`.excalidraw`](27_types/07_swimlane.excalidraw) |
-| **08** | **Quadrant** | Posicionamiento cartesiano 2x2 (Impacto vs Esfuerzo) | [08_quadrant.svg](27_types/08_quadrant.svg) | [`.excalidraw`](27_types/08_quadrant.excalidraw) |
-| **09** | **Nested** | Jerarquía por contención (Cajas anidadas tipo CLAUDE.md) | [09_nested.svg](27_types/09_nested.svg) | [`.excalidraw`](27_types/09_nested.excalidraw) |
-| **10** | **Tree** | Jerarquía ramificada Padre $\rightarrow$ Hijos | [10_tree.svg](27_types/10_tree.svg) | [`.excalidraw`](27_types/10_tree.excalidraw) |
-| **11** | **Org chart** | Estructura de mando, equipos y propiedad | [11_org_chart.svg](27_types/11_org_chart.svg) | [`.excalidraw`](27_types/11_org_chart.excalidraw) |
-| **12** | **Venn** | Solapamiento de 3 conjuntos con núcleo central Hero | [12_venn.svg](27_types/12_venn.svg) | [`.excalidraw`](27_types/12_venn.excalidraw) |
-| **13** | **Layer stack** | Pila de capas de abstracción con franja Hero | [13_layer_stack.svg](27_types/13_layer_stack.svg) | [`.excalidraw`](27_types/13_layer_stack.excalidraw) |
-| **14** | **Pyramid / funnel** | Jerarquía piramidal y drop-off de volumen | [14_pyramid_funnel.svg](27_types/14_pyramid_funnel.svg) | [`.excalidraw`](27_types/14_pyramid_funnel.excalidraw) |
-| **15** | **Consultant 2×2** | Matriz de 4 escenarios con celdas nombradas | [15_consultant_2x2.svg](27_types/15_consultant_2x2.svg) | [`.excalidraw`](27_types/15_consultant_2x2.excalidraw) |
-| **16** | **Radar / Spider** | Polígono polar de evaluación multidimensional | [16_radar_spider.svg](27_types/16_radar_spider.svg) | [`.excalidraw`](27_types/16_radar_spider.excalidraw) |
-| **17** | **Loop (Flywheel)** | Estaciones en órbita continua alrededor de un hub | [17_loop_flywheel.svg](27_types/17_loop_flywheel.svg) | [`.excalidraw`](27_types/17_loop_flywheel.excalidraw) |
-| **18** | **IT current-state** | Panorama Legacy vs Modernización Target Cloud | [18_it_current_state.svg](27_types/18_it_current_state.svg) | [`.excalidraw`](27_types/18_it_current_state.excalidraw) |
-| **19** | **High-Level** | Arquitectura macro de plataforma en clúster | [19_high_level.svg](27_types/19_high_level.svg) | [`.excalidraw`](27_types/19_high_level.excalidraw) |
-| **20** | **Gantt** | Tareas, semanas y fases en calendario con Gate | [20_gantt.svg](27_types/20_gantt.svg) | [`.excalidraw`](27_types/20_gantt.excalidraw) |
-| **21** | **Scatter plot** | Distribución de puntos con línea de tendencia | [21_scatter_plot.svg](27_types/21_scatter_plot.svg) | [`.excalidraw`](27_types/21_scatter_plot.excalidraw) |
-| **22** | **Process** | Flujo secuencial de pasos de extremo a extremo | [22_process.svg](27_types/22_process.svg) | [`.excalidraw`](27_types/22_process.excalidraw) |
-| **23** | **Medallion** | Ingesta multi-capa (Bronze $\rightarrow$ Silver $\rightarrow$ Gold $\rightarrow$ Archive) | [23_medallion.svg](27_types/23_medallion.svg) | [`.excalidraw`](27_types/23_medallion.excalidraw) |
-| **24** | **Data flow** | Pasos de pipeline delimitados por rol de ingeniería | [24_data_flow.svg](27_types/24_data_flow.svg) | [`.excalidraw`](27_types/24_data_flow.excalidraw) |
-| **25** | **DP integration** | Fuentes $\rightarrow$ Núcleo de Plataforma $\rightarrow$ Consumidores | [25_dp_integration.svg](27_types/25_dp_integration.svg) | [`.excalidraw`](27_types/25_dp_integration.excalidraw) |
-| **26** | **DP security matrix** | Matriz de permisos por rol (Admin, Write, Read, None) | [26_dp_security_matrix.svg](27_types/26_dp_security_matrix.svg) | [`.excalidraw`](27_types/26_dp_security_matrix.excalidraw) |
-| **27** | **Value Chain** | Cadena de valor empresarial con margen de ganancia | [27_value_chain.svg](27_types/27_value_chain.svg) | [`.excalidraw`](27_types/27_value_chain.excalidraw) |
+### 01. Architecture (Components + Connections)
+> **Propósito:** Diagrama de bloques estructurado en VPC con zonas de red Ingress, Core Hero, Microservicios y Base de Datos ACID.  
+> [Descargar `.excalidraw`](27_types/01_architecture.excalidraw) · [Ver Vectorial `.svg`](27_types/01_architecture.svg)
+
+<p align="center">
+  <img src="27_types/01_architecture.svg" alt="01 Architecture" width="100%"/>
+</p>
+
+---
+
+### 19. High-Level (End-to-End Stack on a Cluster)
+> **Propósito:** Visión macro end-to-end de una plataforma completa orquestada sobre un clúster Kubernetes Multi-AZ.  
+> [Descargar `.excalidraw`](27_types/19_high_level.excalidraw) · [Ver Vectorial `.svg`](27_types/19_high_level.svg)
+
+<p align="center">
+  <img src="27_types/19_high_level.svg" alt="19 High Level" width="100%"/>
+</p>
+
+---
+
+### 13. Layer Stack (Stacked Abstractions)
+> **Propósito:** Pila de capas de abstracción funcionales con franja Hero para el motor transaccional.  
+> [Descargar `.excalidraw`](27_types/13_layer_stack.excalidraw) · [Ver Vectorial `.svg`](27_types/13_layer_stack.svg)
+
+<p align="center">
+  <img src="27_types/13_layer_stack.svg" alt="13 Layer Stack" width="100%"/>
+</p>
+
+---
+
+### 09. Nested (Hierarchy by Containment)
+> **Propósito:** Jerarquía estricta por contención de cajas anidadas con sangría visual perimetral.  
+> [Descargar `.excalidraw`](27_types/09_nested.excalidraw) · [Ver Vectorial `.svg`](27_types/09_nested.svg)
+
+<p align="center">
+  <img src="27_types/09_nested.svg" alt="09 Nested" width="100%"/>
+</p>
+
+---
+
+### 18. IT Current-State (Legacy vs Modernization Target)
+> **Propósito:** Análisis de transformación digital contrastando el panorama Legacy on-premise frente al Target Cloud.  
+> [Descargar `.excalidraw`](27_types/18_it_current_state.excalidraw) · [Ver Vectorial `.svg`](27_types/18_it_current_state.svg)
+
+<p align="center">
+  <img src="27_types/18_it_current_state.svg" alt="18 IT Current State" width="100%"/>
+</p>
+
+---
+
+## 🔄 2. Flujo, Procesos & Lógica de Ejecución
+
+### 02. Flowchart (Decision Logic & Branching)
+> **Propósito:** Lógica condicional de negocio con bifurcaciones Sí/No mediante rombos de decisión.  
+> [Descargar `.excalidraw`](27_types/02_flowchart.excalidraw) · [Ver Vectorial `.svg`](27_types/02_flowchart.svg)
+
+<p align="center">
+  <img src="27_types/02_flowchart.svg" alt="02 Flowchart" width="100%"/>
+</p>
+
+---
+
+### 03. Sequence (Messages Over Time)
+> **Propósito:** Mensajería temporal asíncrona y llamadas sincrónicas entre líneas de vida verticales.  
+> [Descargar `.excalidraw`](27_types/03_sequence.excalidraw) · [Ver Vectorial `.svg`](27_types/03_sequence.svg)
+
+<p align="center">
+  <img src="27_types/03_sequence.svg" alt="03 Sequence" width="100%"/>
+</p>
+
+---
+
+### 04. State Machine (States + Transitions)
+> **Propósito:** Estados finitos de un ciclo de vida con transiciones ordenadas, bucles de reintento y fallback.  
+> [Descargar `.excalidraw`](27_types/04_state_machine.excalidraw) · [Ver Vectorial `.svg`](27_types/04_state_machine.svg)
+
+<p align="center">
+  <img src="27_types/04_state_machine.svg" alt="04 State Machine" width="100%"/>
+</p>
+
+---
+
+### 07. Swimlane (Cross-Functional Flow)
+> **Propósito:** Flujo de proceso multi-rol distribuido horizontalmente a través de carriles de responsabilidad.  
+> [Descargar `.excalidraw`](27_types/07_swimlane.excalidraw) · [Ver Vectorial `.svg`](27_types/07_swimlane.svg)
+
+<p align="center">
+  <img src="27_types/07_swimlane.svg" alt="07 Swimlane" width="100%"/>
+</p>
+
+---
+
+### 22. Process (Multi-Actor Sequential Workflow)
+> **Propósito:** Cadena secuencial de pasos de extremo a extremo con hitos de validación intermedios.  
+> [Descargar `.excalidraw`](27_types/22_process.excalidraw) · [Ver Vectorial `.svg`](27_types/22_process.svg)
+
+<p align="center">
+  <img src="27_types/22_process.svg" alt="22 Process" width="100%"/>
+</p>
+
+---
+
+## 🗄️ 3. Datos, Almacenamiento & Integración
+
+### 05. ER / Data Model (Entities + Fields)
+> **Propósito:** Esquema de entidades de base de datos relacional con columnas tipadas, llaves PK/FK y relaciones.  
+> [Descargar `.excalidraw`](27_types/05_er_data_model.excalidraw) · [Ver Vectorial `.svg`](27_types/05_er_data_model.svg)
+
+<p align="center">
+  <img src="27_types/05_er_data_model.svg" alt="05 ER Data Model" width="100%"/>
+</p>
+
+---
+
+### 23. Medallion (Bronze $\rightarrow$ Silver $\rightarrow$ Gold Lakehouse)
+> **Propósito:** Arquitectura Lakehouse de ingestión multi-capa con conectores en arco superior.  
+> [Descargar `.excalidraw`](27_types/23_medallion.excalidraw) · [Ver Vectorial `.svg`](27_types/23_medallion.svg)
+
+<p align="center">
+  <img src="27_types/23_medallion.svg" alt="23 Medallion" width="100%"/>
+</p>
+
+---
+
+### 24. Data Flow (Role-Scoped Pipeline Steps)
+> **Propósito:** Pasos de transformación de datos acotados por carril de rol de ingeniería.  
+> [Descargar `.excalidraw`](27_types/24_data_flow.excalidraw) · [Ver Vectorial `.svg`](27_types/24_data_flow.svg)
+
+<p align="center">
+  <img src="27_types/24_data_flow.svg" alt="24 Data Flow" width="100%"/>
+</p>
+
+---
+
+### 25. DP Integration (Sources $\rightarrow$ Core $\rightarrow$ Consumers)
+> **Propósito:** Topología de integración de fuentes de datos hacia el núcleo de procesamiento y consumidores finales.  
+> [Descargar `.excalidraw`](27_types/25_dp_integration.excalidraw) · [Ver Vectorial `.svg`](27_types/25_dp_integration.svg)
+
+<p align="center">
+  <img src="27_types/25_dp_integration.svg" alt="25 DP Integration" width="100%"/>
+</p>
+
+---
+
+### 26. DP Security Matrix (Role-Based Access Matrix)
+> **Propósito:** Matriz tabular de permisos de acceso con chips de color por rol (Admin, Write, Read, None).  
+> [Descargar `.excalidraw`](27_types/26_dp_security_matrix.excalidraw) · [Ver Vectorial `.svg`](27_types/26_dp_security_matrix.svg)
+
+<p align="center">
+  <img src="27_types/26_dp_security_matrix.svg" alt="26 DP Security Matrix" width="100%"/>
+</p>
+
+---
+
+## ⭕ 4. Estrategia, Negocio & Jerarquía
+
+### 12. Venn (3-Set Overlap & Intersection Core)
+> **Propósito:** Solapamiento de 3 conjuntos circulares con núcleo central Hero de producto enviable.  
+> [Descargar `.excalidraw`](27_types/12_venn.excalidraw) · [Ver Vectorial `.svg`](27_types/12_venn.svg)
+
+<p align="center">
+  <img src="27_types/12_venn.svg" alt="12 Venn" width="100%"/>
+</p>
+
+---
+
+### 14. Pyramid / Funnel (Ranked Hierarchy & Drop-Off)
+> **Propósito:** Jerarquía piramidal escalonada con porcentajes de conversión y cúspide Hero.  
+> [Descargar `.excalidraw`](27_types/14_pyramid_funnel.excalidraw) · [Ver Vectorial `.svg`](27_types/14_pyramid_funnel.svg)
+
+<p align="center">
+  <img src="27_types/14_pyramid_funnel.svg" alt="14 Pyramid Funnel" width="100%"/>
+</p>
+
+---
+
+### 15. Consultant 2×2 (Scenario Matrix with Named Cells)
+> **Propósito:** Matriz de 4 cuadrantes con celdas nombradas para toma de decisiones y evaluación de riesgo.  
+> [Descargar `.excalidraw`](27_types/15_consultant_2x2.excalidraw) · [Ver Vectorial `.svg`](27_types/15_consultant_2x2.svg)
+
+<p align="center">
+  <img src="27_types/15_consultant_2x2.svg" alt="15 Consultant 2x2" width="100%"/>
+</p>
+
+---
+
+### 08. Quadrant (Two-Axis Positioning)
+> **Propósito:** Posicionamiento en ejes continuos $X \times Y$ (Impacto vs Esfuerzo) con grupos de puntos.  
+> [Descargar `.excalidraw`](27_types/08_quadrant.excalidraw) · [Ver Vectorial `.svg`](27_types/08_quadrant.svg)
+
+<p align="center">
+  <img src="27_types/08_quadrant.svg" alt="08 Quadrant" width="100%"/>
+</p>
+
+---
+
+### 17. Loop (Flywheel Growth Stations)
+> **Propósito:** Estaciones orbitales continuas alrededor de un centro de crecimiento (Product-Led Growth).  
+> [Descargar `.excalidraw`](27_types/17_loop_flywheel.excalidraw) · [Ver Vectorial `.svg`](27_types/17_loop_flywheel.svg)
+
+<p align="center">
+  <img src="27_types/17_loop_flywheel.svg" alt="17 Loop Flywheel" width="100%"/>
+</p>
+
+---
+
+### 10. Tree (Parent $\rightarrow$ Children Hierarchy)
+> **Propósito:** Desglose taxonómico ortogonal ramificado desde el nodo raíz hacia las hojas.  
+> [Descargar `.excalidraw`](27_types/10_tree.excalidraw) · [Ver Vectorial `.svg`](27_types/10_tree.svg)
+
+<p align="center">
+  <img src="27_types/10_tree.svg" alt="10 Tree" width="100%"/>
+</p>
+
+---
+
+### 11. Org Chart (Ownership & Reporting Routing)
+> **Propósito:** Estructura organizativa de liderazgo ejecutivo, directores y líderes de equipo.  
+> [Descargar `.excalidraw`](27_types/11_org_chart.excalidraw) · [Ver Vectorial `.svg`](27_types/11_org_chart.svg)
+
+<p align="center">
+  <img src="27_types/11_org_chart.svg" alt="11 Org Chart" width="100%"/>
+</p>
+
+---
+
+### 27. Value Chain (Porter Enterprise Value Flow)
+> **Propósito:** Cadena de valor empresarial con actividades primarias y bloque terminal de margen de beneficio.  
+> [Descargar `.excalidraw`](27_types/27_value_chain.excalidraw) · [Ver Vectorial `.svg`](27_types/27_value_chain.svg)
+
+<p align="center">
+  <img src="27_types/27_value_chain.svg" alt="27 Value Chain" width="100%"/>
+</p>
+
+---
+
+## 📈 5. Analítica, Métricas & Planificación
+
+### 06. Timeline (Events on an Axis)
+> **Propósito:** Hitos, entregables y fases sobre una línea de tiempo horizontal continua.  
+> [Descargar `.excalidraw`](27_types/06_timeline.excalidraw) · [Ver Vectorial `.svg`](27_types/06_timeline.svg)
+
+<p align="center">
+  <img src="27_types/06_timeline.svg" alt="06 Timeline" width="100%"/>
+</p>
+
+---
+
+### 20. Gantt (Tasks & Calendar Phases with Milestone Gate)
+> **Propósito:** Cronograma de proyectos con barras de semanas, dependencias y rombo de pase a producción.  
+> [Descargar `.excalidraw`](27_types/20_gantt.excalidraw) · [Ver Vectorial `.svg`](27_types/20_gantt.svg)
+
+<p align="center">
+  <img src="27_types/20_gantt.svg" alt="20 Gantt" width="100%"/>
+</p>
+
+---
+
+### 16. Radar / Spider (Multi-Axis Polar Comparison)
+> **Propósito:** Polígono polar de evaluación de competencias y capacidades multidimensionales en 5 ejes.  
+> [Descargar `.excalidraw`](27_types/16_radar_spider.excalidraw) · [Ver Vectorial `.svg`](27_types/16_radar_spider.svg)
+
+<p align="center">
+  <img src="27_types/16_radar_spider.svg" alt="16 Radar Spider" width="100%"/>
+</p>
+
+---
+
+### 21. Scatter Plot (Distribution & Trendline)
+> **Propósito:** Gráfico de dispersión de datos con puntos discretos y línea de regresión punteada.  
+> [Descargar `.excalidraw`](27_types/21_scatter_plot.excalidraw) · [Ver Vectorial `.svg`](27_types/21_scatter_plot.svg)
+
+<p align="center">
+  <img src="27_types/21_scatter_plot.svg" alt="21 Scatter Plot" width="100%"/>
+</p>
 
 ---
 

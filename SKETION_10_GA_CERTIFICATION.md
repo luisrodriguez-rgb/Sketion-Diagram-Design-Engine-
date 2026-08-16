@@ -1,9 +1,13 @@
+<div align="center">
+
+<img src="assets/logo.png" alt="Sketion Official Logo" width="140"/>
+
 # 📋 Sketion 10.0 GA — Formal Certification Report
 
 **Documento Oficial de Certificación de Calidad, Autonomía y Generalización**  
-**Versión:** 10.0.0 (General Availability)  
-**Fecha de Certificación:** 16 de Agosto, 2026  
-**Estado:** 🔵 **PRODUCTION READY**
+**Versión:** 10.0.0 (General Availability) · **Fecha de Certificación:** 16 de Agosto, 2026 · **Estado:** 🔵 **PRODUCTION READY**
+
+</div>
 
 ---
 

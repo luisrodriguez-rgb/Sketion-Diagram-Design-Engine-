@@ -1,6 +1,6 @@
 # Sketion Style Guide & Design Tokens
 
-Esta guía define el sistema visual editorial para la generación de archivos `.excalidraw`. Todas las decisiones visuales se basan en tokens semánticos rigurosos, evitando colores genéricos o decoraciones innecesarias ("AI slop").
+Esta guía define el sistema visual editorial para la generación de archivos `.excalidraw`. Todas las decisiones visuales se basan en tokens semánticos rigurosos y una jerarquía tipográfica proporcional que garantiza **legibilidad inmediata sin forzar zoom**.
 
 ---
 
@@ -8,80 +8,68 @@ Esta guía define el sistema visual editorial para la generación de archivos `.
 
 1. **La regla de oro:** *El movimiento de mayor calidad es la eliminación*. Cada nodo, línea y etiqueta debe ganarse su lugar.
 2. **Densidad objetivo: 4/10:** Espacio en blanco amplio y respirable. `gap` generoso entre bloques. No saturar tarjetas de texto largo.
-3. **Regla del acento único (1 Accent Rule):** El color de acento (`ACCENT`) se reserva exclusivamente para **1 o 2 nodos focales** o el camino crítico. Usarlo en 5 nodos destruye la jerarquía visual.
-4. **Sin sombras ni degradados:** Excalidraw no requiere sombras. Las separaciones se hacen con bordes limpios (`hairlines`), fondos contrastados o franjas sutiles.
-5. **Conectores ortogonales:** Conectores con codos en ángulo recto (90º) en lugar de líneas diagonales cruzando cajas.
-6. **Esquinas controladas:** `roundness: {"type": 3}` para tarjetas estándar, `roundness: None` para tablas y contenedores técnicos.
+3. **Regla del acento único (1 Accent Rule):** El color de acento (`ACCENT` / `HERO`) se reserva exclusivamente para **1 o 2 nodos focales** por frame.
+4. **Tipografía Proporcional Anti-Espacio Vacío:** El tamaño del texto debe llenar armónicamente el contenedor (60-70% del área vertical útil). Prohibido usar texto diminuto (11-14px) en tarjetas amplias de 300px+.
+5. **Sin sombras ni degradados:** Excalidraw no requiere sombras. Las separaciones se hacen con bordes limpios (`hairlines`), fondos contrastados o franjas sutiles.
+6. **Conectores ortogonales:** Conectores con codos en ángulo recto (90º) en lugar de líneas diagonales cruzando cajas.
+7. **Esquinas controladas:** `roundness: {"type": 3}` para tarjetas estándar, `roundness: None` para tablas y contenedores técnicos.
 
 ---
 
-## 2. Tokens Semánticos Fundamentales
+## 2. Jerarquía Tipográfica Proporcional Universal
+
+| Elemento Visual | Rango de Dimensión | Tamaño de Fuente (`fontSize`) | Peso / Familia |
+| :--- | :--- | :---: | :--- |
+| **Título de Frame / Tablero** | Ancho total ($w \ge 2000\text{px}$) | **28px – 34px** | Bold (`fontFamily: 2`) |
+| **Subtítulo / Breadcrumb** | Cabecera superior | **13px – 15px** | Mono (`fontFamily: 2`, `color: MUTED`) |
+| **Tarjeta Amplia / Hero** | $w \ge 380\text{px}$ o $h \ge 115\text{px}$ | **20px** | Bold (`fontFamily: 2`) |
+| **Tarjeta Estándar** | $w \in [250\text{px}, 380\text{px}]$ | **18px** | Semi-bold (`fontFamily: 2`) |
+| **Tarjeta Compacta / Nodo** | $w < 250\text{px}$ | **16px** | Medium (`fontFamily: 2`) |
+| **Subtítulo / Metadata Técnica**| Dentro de tarjeta | **13px – 14px** | Regular / Mono (`color: MUTED`) |
+| **Cabecera de Tabla / Matriz** | Columnas de matriz | **14px – 15px** | Bold Uppercase (`fontFamily: 2`) |
+| **Celdas de Datos en Tablas** | Celdas de matriz | **13px – 14px** | Regular / Medium |
+| **Badges de Rol (Top-Left)** | Pastillas $h=22\text{px}$ | **11px – 12px** | Mono Uppercase (`fontFamily: 2`) |
+| **Pills de Datos (Bottom)** | Pastillas $h=16\text{px}$ | **10px – 11px** | Mono |
+| **Icono Vectorial** | Tarjetas estándar / amplias | **28px – 32px** | Vectorial monocromático |
+
+---
+
+## 3. Tokens Semánticos Fundamentales
 
 | Token | Propósito en el Canvas | Hex por Defecto (Jet Editorial) |
 | :--- | :--- | :--- |
-| `PAPER` | Fondo general del lienzo / App State | `#F9FAFB` |
+| `PAPER` | Fondo general del lienzo / App State | `#F8FAFC` |
 | `PAPER_CARD` | Fondo de tarjetas estándar | `#FFFFFF` |
-| `PAPER_CONTAINER` | Fondo de grupos o subsecciones | `#F3F4F6` |
-| `INK` | Tinta principal (títulos, bordes, texto primario) | `#111827` |
-| `MUTED` | Texto secundario, subtítulos, flechas neutras | `#6B7280` |
-| `RULE` | Líneas divisorias, separadores de carril, ejes | `#E5E7EB` |
-| `ACCENT` | Color focal de marca (1-2 nodos por diagrama) | `#2563EB` |
-| `ACCENT_BG` | Tinte suave de fondo para el nodo focal | `#EFF6FF` |
-| `PAIN` | Alertas, riesgos, cuellos de botella, deuda | `#DC2626` |
+| `PAPER_CONTAINER` | Fondo de grupos o subsecciones | `#F1F5F9` |
+| `INK` | Tinta principal (títulos, bordes, texto primario) | `#0F172A` |
+| `MUTED` | Texto secundario, subtítulos, flechas neutras | `#64748B` |
+| `RULE` | Líneas divisorias, separadores de carril, ejes | `#CBD5E1` |
+| `ACCENT` | Color focal de marca (1-2 nodos por diagrama) | `#D93829` (Coral) / `#059669` (Verde) |
+| `ACCENT_BG` | Tinte suave de fondo para el nodo focal | `#FFF5F2` / `#F0FDF4` |
+| `PAIN` | Alertas, riesgos, cuellos de botella, deuda | `#E03A2F` |
 | `PAIN_BG` | Tinte suave de fondo para alertas | `#FEF2F2` |
-| `SUCCESS` | Estados completados, confirmaciones | `#16A34A` |
+| `SUCCESS` | Estados completados, confirmaciones | `#059669` |
 | `SUCCESS_BG` | Fondo para estados de éxito | `#F0FDF4` |
-| `STICKY` | Fondo de etiquetas post-it / headers flotantes | `#FEF08A` |
+| `STICKY` | Fondo de etiquetas post-it / headers flotantes | `#FFE95C` |
 
 ---
 
-## 3. Manejo Crítico de Modo Claro / Modo Oscuro en Excalidraw
+## 4. Catálogo de Paletas Predefinidas
 
-> [!WARNING]
-> **El filtro de inversión de Excalidraw:** Si el usuario abre el archivo en Excalidraw con modo oscuro activo, la aplicación invierte automáticamente los colores del canvas (blanco $\rightarrow$ casi negro, pasteles claros $\rightarrow$ tonos opacos/marrones).
-
-### Reglas de Supervivencia Dark Mode:
-- **No depender de grandes fondos de color sólido pastel:** Diseñar con fondo blanco o transparente y usar bordes finos (`strokeWidth: 1.5` o `2`).
-- **Acentos en franjas o bordes:** Para destacar una tarjeta, utiliza un borde con `strokeColor: ACCENT` o una pequeña franja superior de acento, manteniendo el `backgroundColor: "transparent"` o `"#FFFFFF"`.
-- **Contraste de Tinta:** El token `INK` (`#111827`) se invierte limpiamente a blanco en modo oscuro.
-
----
-
-## 4. Tipografía en Excalidraw
-
-Excalidraw soporta 3 familias tipográficas nativas:
-
-| `fontFamily` ID | Nombre | Uso Obligatorio en Sketion |
-| :---: | :--- | :--- |
-| **2** | **Normal (Helvetica / Sans)** | **El 95% del contenido:** Tarjetas, nodos, títulos de sección, descripciones, tablas. Limpio y técnico. |
-| **3** | **Cascadia (Code / Mono)** | **Contenido técnico:** Endpoints, puertos (`:8080`), variables, tipos SQL, parámetros JSON, IDs. |
-| **1** | **Virgil (Hand-drawn / Boceto)** | **Opcional:** Solo para títulos gigantes de tablero si se pide explícitamente look artesanal o `roughness: 1`. |
-
-### Tamaños Tipográficos Estándar:
-- **Título de Tablero / Frame:** 24px - 32px (Bold)
-- **Encabezado de Tarjeta / Nodo:** 16px - 18px (Semi-bold / Bold)
-- **Cuerpo / Descripción:** 13px - 14px (Regular)
-- **Etiqueta Técnica / Sublabel:** 11px - 12px (Mono)
-- **Número Gigante (Dashboard KPI):** 48px - 64px (Bold)
-
----
-
-## 5. Catálogo de Paletas Predefinidas
-
-### A. Jet Editorial (Por defecto para Sistemas y Arquitectura)
+### A. Jet Editorial & Diagram Design (Arquitectura Cloud & Datos)
 ```python
 JET_EDITORIAL = {
-    "PAPER": "#FFFFFF",
+    "PAPER": "#F8FAFC",
     "PAPER_CARD": "#FFFFFF",
-    "PAPER_CONTAINER": "#F8FAFC",
+    "PAPER_CONTAINER": "#FFFFFF",
     "INK": "#0F172A",
     "MUTED": "#64748B",
     "RULE": "#CBD5E1",
-    "ACCENT": "#2563EB",       # Azul cobalto focal
-    "ACCENT_BG": "#EFF6FF",
-    "PAIN": "#EF4444",
+    "ACCENT": "#D93829",       # Coral editorial Diagram Design
+    "ACCENT_BG": "#FFF5F2",
+    "PAIN": "#E03A2F",
     "PAIN_BG": "#FEF2F2",
-    "STICKY": "#FEF08A"
+    "STICKY": "#FFE95C"
 }
 ```
 
@@ -102,31 +90,19 @@ MIRO_NICO = {
 }
 ```
 
-### C. El Sabio (Comparativas de Marca, Estrategia, Negocio)
+### C. El Sabio / Hospitality OS (Plataformas de Restaurantes & Operaciones)
 ```python
 EL_SABIO = {
-    "PAPER": "#FAF9F6",
+    "PAPER": "#F8FAFC",
     "PAPER_CARD": "#FFFFFF",
-    "PAPER_CONTAINER": "#F2EFE9",
-    "INK": "#1C1B1A",
-    "MUTED": "#8C887B",
-    "RULE": "#DCD7CC",
-    "ACCENT": "#B58E3F",       # Dorado cálido
-    "ACCENT_BG": "#FBF6EB",
-    "PAIN": "#A8433C",         # Rojo terracota
-    "PAIN_BG": "#F9ECEB",
-    "STICKY": "#EADBB6"
+    "PAPER_CONTAINER": "#F1F5F9",
+    "INK": "#0F172A",
+    "MUTED": "#64748B",
+    "RULE": "#CBD5E1",
+    "ACCENT": "#059669",       # Verde esmeralda de control
+    "ACCENT_BG": "#F0FDF4",
+    "PAIN": "#D93829",         # Coral de fricción
+    "PAIN_BG": "#FEF2F2",
+    "STICKY": "#FFE95C"
 }
 ```
-
----
-
-## 6. Onboarding de Marca (Extracción desde URL)
-
-Cuando el usuario proporcione una URL de su marca (ej. `https://empresa.com`), se extraen y mapean los valores a estos tokens:
-
-1. Fondo de la home $\rightarrow$ `PAPER`
-2. Color principal de texto $\rightarrow$ `INK`
-3. Color de botones/CTA dominante $\rightarrow$ `ACCENT`
-4. Color de bordes/separadores $\rightarrow$ `RULE`
-5. Validación WCAG AA: Ratio de contraste de `INK` sobre `PAPER` $\ge 4.5:1$.

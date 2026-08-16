@@ -88,6 +88,24 @@ Sketion implementa un catálogo exhaustivo de 20 arquetipos de diseño para reso
 
 ---
 
+## 📏 Jerarquia Tipografica Proporcional Universal (Regla Anti-Espacio Vacio)
+
+Para garantizar legibilidad instantánea sin forzar zoom ni dejar tarjetas desiertas:
+
+| Elemento Visual | Rango de Dimensión | Tamaño de Fuente (`fontSize`) |
+| :--- | :--- | :---: |
+| **Título de Frame / Tablero** | Ancho total ($w \ge 2000\text{px}$) | **28px – 34px Bold** |
+| **Subtítulo / Breadcrumb** | Cabecera superior | **13px – 15px Mono** |
+| **Tarjeta Amplia / Hero** | $w \ge 380\text{px}$ o $h \ge 115\text{px}$ | **20px Bold** |
+| **Tarjeta Estándar** | $w \in [250\text{px}, 380\text{px}]$ | **18px Semi-bold** |
+| **Tarjeta Compacta / Nodo** | $w < 250\text{px}$ | **16px Medium** |
+| **Subtítulo / Metadata Técnica**| Dentro de tarjeta | **13px – 14px Regular** |
+| **Cabecera de Tabla / Matriz** | Columnas de matriz | **14px – 15px Bold** |
+| **Celdas de Datos en Tablas** | Celdas de matriz | **13px – 14px Regular** |
+| **Badges de Rol (Top-Left)** | Pastillas $h=22\text{px}$ | **11px – 12px Mono** |
+
+---
+
 ## 📊 Suite de los 27 Tipos Visuales Específicos
 
 | # | Clave (`--type`) | Nombre Visual | Familia Semantica | Descripcion |

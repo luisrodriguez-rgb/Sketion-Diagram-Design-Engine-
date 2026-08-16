@@ -1,6 +1,6 @@
 ---
 name: sketion-diagram-design
-description: Generador editorial de diagramas y tableros nativos para Excalidraw (.excalidraw). Arquitectura desacoplada en 4 capas (Semantica -> Layout -> Render -> Calidad Visual) con motor de inferencia por audiencia (Audience-Aware Engine), Catalogo Completo de 20 Arquetipos de Negocio (A - T), Suite de 27 Tipos Visuales Específicos, Gramatica Editorial de Diagram Design (Tarjetas Quad-Corner, Cintas Chevron, Rieles Verticales, Ejes de Pasos, Leyendas Estructuradas), simetria 1:1 en journeys, enrutamiento inter-zonas y evaluador de Semantic Hard Constraints & Archetype Fitness sin colisiones.
+description: Generador editorial de diagramas y tableros nativos para Excalidraw (.excalidraw). Arquitectura desacoplada en 4 capas (Semantica -> Layout -> Render -> Calidad Visual) con motor de inferencia por audiencia (Audience-Aware Engine), Catalogo Completo de 20 Arquetipos de Negocio (A - T), Suite de 27 Tipos Visuales Específicos, Gramatica Editorial de Diagram Design (Tarjetas Quad-Corner, Cintas Chevron, Rieles Verticales, Ejes de Pasos, Leyendas Estructuradas), Escalado Tipografico Proporcional Anti-Espacio Vacio (18-20px en tarjetas, 14px en tablas), simetria 1:1 en journeys, enrutamiento inter-zonas y evaluador de Semantic Hard Constraints & Archetype Fitness sin colisiones.
 license: MIT
 metadata:
   version: "4.0"
@@ -8,9 +8,9 @@ metadata:
 
 # Sketion Diagram Design Skill (Motor Editorial para Excalidraw v4.0)
 
-Crea tableros y diagramas profesionales con calidad editorial, diseno limpio, cero amontonamientos y editabilidad nativa total en formato `.excalidraw`.
+Crea tableros y diagramas profesionales con calidad editorial, diseno limpio, cero amontonamientos, tipografía proporcional legible a primera vista y editabilidad nativa total en formato `.excalidraw`.
 
-Combina los principios de **Diagram Design** (densidad 4/10, regla del acento unico, eliminacion de ruido visual) con el **Motor de Inferencia de Audiencia**, los **20 Arquetipos Visuales de Negocio (A - T)**, los **27 Tipos Visuales de Diagramacion**, la **Gramática Editorial de 5 Primitivas (Quad-Cards, Chevrons, Rails, Step Axes, Legends)** y la métrica de **Archetype Fitness**.
+Combina los principios de **Diagram Design** (densidad 4/10, regla del acento unico, eliminacion de ruido visual) con el **Motor de Inferencia de Audiencia**, los **20 Arquetipos Visuales de Negocio (A - T)**, los **27 Tipos Visuales de Diagramacion**, la **Gramática Editorial de 5 Primitivas (Quad-Cards, Chevrons, Rails, Step Axes, Legends)**, la **Jerarquía Tipográfica Proporcional (Anti-Espacio Vacío)** y la métrica de **Archetype Fitness**.
 
 ---
 
@@ -58,13 +58,13 @@ Sketion adapta autonomamente la seleccion de arquetipos y tipos visuales, la den
 ## 2. Los 5 Patrones Editoriales de Diagram Design (render/excalidraw_builder.py)
 
 1. **Tarjetas de 4 Esquinas (`add_quad_card`):**
-   - **Top-Left:** Mini-badge de rol (`EXT`, `STORE`, `ORCH`, `FLOW`, `QUERY`, `BI`, `CUS`, `WHS`).
-   - **Top-Right:** Icono vectorial monocromático nítido (`postgres`, `minio`, `airflow`, `redis`, `server`).
-   - **Centro:** Título en Sans Bold 14-16px + Subtítulo con metadata técnica (`CDC · SQL · API`).
-   - **Bottom:** Mini-pills de tipo de dato o estado (`DB`, `LS`, `FL`, `TB`).
-   - **Dimensiones Compactas Anti-Stretch:** Ancho máximo $w \le 340\text{px}$, altura proporcional $h \in [110, 135]\text{px}$.
+   - **Top-Left:** Mini-badge de rol (`EXT`, `STORE`, `ORCH`, `FLOW`, `QUERY`, `BI`, `CUS`, `WHS`) en fuente mono `11-12px`.
+   - **Top-Right:** Icono vectorial monocromático nítido (`postgres`, `minio`, `airflow`, `redis`, `server`) escalado a `28-32px`.
+   - **Centro:** Título grande en **18-20px Bold** + Subtítulo con metadata técnica en **13-14px Regular** (`CDC · SQL · API`).
+   - **Bottom:** Mini-pills de tipo de dato o estado (`DB`, `LS`, `FL`, `TB`) en fuente mono `10-11px`.
+   - **Proporción y Legibilidad:** Llena armónicamente el 60-70% del área vertical, eliminando la sensación de letra diminuta o tarjeta vacía.
 2. **Cinta Chevron Superior (`add_chevron_ribbon`):**
-   - Cinta de etapas concatenadas (`DATA SOURCES` $\rightarrow$ `INGESTION` $\rightarrow$ `STORAGE` $\rightarrow$ `TRANSFORM` $\rightarrow$ `VISUALIZATION`).
+   - Cinta de etapas concatenadas (`DATA SOURCES` $\rightarrow$ `INGESTION` $\rightarrow$ `STORAGE` $\rightarrow$ `TRANSFORM` $\rightarrow$ `VISUALIZATION`) con texto `11-12px` bold.
 3. **Rieles Verticales Laterales (`add_vertical_rails`):**
    - Columnas para aspectos transversales (`ORCHESTRATION`, `SECURITY`, `OBSERVABILITY`).
 4. **Eje de Pasos Circulares (`add_step_badge_axis`):**
@@ -74,7 +74,23 @@ Sketion adapta autonomamente la seleccion de arquetipos y tipos visuales, la den
 
 ---
 
-## 3. Catalogo Maestro de los 27 Tipos Visuales de Sketion 4.0
+## 3. Jerarquía Tipográfica Proporcional Universal
+
+| Elemento Visual | Rango de Dimensión | Tamaño de Fuente (`fontSize`) |
+| :--- | :--- | :---: |
+| **Título de Frame / Tablero** | Ancho total ($w \ge 2000\text{px}$) | **28px – 34px Bold** |
+| **Subtítulo / Breadcrumb** | Cabecera superior | **13px – 15px Mono** |
+| **Tarjeta Amplia / Hero** | $w \ge 380\text{px}$ o $h \ge 115\text{px}$ | **20px Bold** |
+| **Tarjeta Estándar** | $w \in [250\text{px}, 380\text{px}]$ | **18px Semi-bold** |
+| **Tarjeta Compacta / Nodo** | $w < 250\text{px}$ | **16px Medium** |
+| **Subtítulo / Metadata Técnica**| Dentro de tarjeta | **13px – 14px Regular** |
+| **Cabecera de Tabla / Matriz** | Columnas de matriz | **14px – 15px Bold** |
+| **Celdas de Datos en Tablas** | Celdas de matriz | **13px – 14px Regular** |
+| **Badges de Rol (Top-Left)** | Pastillas $h=22\text{px}$ | **11px – 12px Mono** |
+
+---
+
+## 4. Catalogo Maestro de los 27 Tipos Visuales de Sketion 4.0
 
 ### 1. Data Platforms & Lakehouse
 * **`medallion`:** Almacenamiento Lakehouse multi-tier (`Raw` $\rightarrow$ `Bronze` $\rightarrow$ `Silver` $\rightarrow$ `Gold` $\rightarrow$ `Archive`).
@@ -116,12 +132,13 @@ Sketion adapta autonomamente la seleccion de arquetipos y tipos visuales, la den
 
 ---
 
-## 4. Checklist de Calidad Editorial antes de Entregar
+## 5. Checklist de Calidad Editorial antes de Entregar
 
 - [ ] El archivo tiene extension `.excalidraw` y es JSON valido minificado.
-- [ ] Las tarjetas utilizan el patrón Quad-Corner con ancho compacto ($w \le 340\text{px}$).
+- [ ] La tipografía de las tarjetas utiliza **18-20px Bold** para el título y **13-14px** para el subtítulo, llenando armónicamente el espacio interior.
+- [ ] Las tablas y matrices usan **14-15px** en cabeceras y **13-14px** en celdas para lectura inmediata.
 - [ ] La estructura del diagrama responde a la audiencia objetivo (CEO, Ops, Tech, Devs, Data).
-- [ ] Los scopes anchos usan cuadrículas internas en lugar de tarjetas estiradas.
+- [ ] Los scopes anchos usan cuadrículas internas en lugar de tarjetas estiradas vacías.
 - [ ] Se utilizo la paleta editorial con exactamente 1 acento focal principal (Coral / Pastel Green).
 - [ ] Si es un pipeline de datos, incluye la cinta Chevron superior y rieles laterales de seguridad.
 - [ ] Si es un proceso/swimlane, incluye el eje superior de pasos circulares numerados.

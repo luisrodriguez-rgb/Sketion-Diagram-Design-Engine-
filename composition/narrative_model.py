@@ -65,8 +65,8 @@ class NarrativeModelEngine:
             "relationship": "temporal_sequence",
             "visual_priority": "swimlane_actors",
             "archetypes": ["E", "C", "T"],
-            "triggers": ["cocina", "caja", "mesas", "salón", "cliente", "backend", "transferencia", "sistemas intervienen", "interacción", "roles", "hospital", "urgencias", "triaje", "quirófano", "auditoría soc2", "oficinas físicas"],
-            "weight": 1.3
+            "triggers": ["cocina", "caja", "mesas", "salón", "cliente", "backend", "transferencia", "transacciones", "flujo de transacciones", "procesamiento de pagos", "sistemas intervienen", "interacción", "roles", "hospital", "urgencias", "triaje", "quirófano", "auditoría soc2", "oficinas físicas"],
+            "weight": 1.4
         },
         {
             "intent": "DECISION_TRIAGE",

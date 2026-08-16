@@ -79,6 +79,7 @@ class ExcalidrawScene:
         self.bg_color = bg_color
         self.grid_size = grid_size
         self.elements: List[Dict[str, Any]] = []
+        self.files: Dict[str, Any] = {}
 
     def _base_element(self, elem_type: str, x: float, y: float, w: float, h: float,
                       stroke_color: str = "#0C0C0C", bg_color: str = "transparent",
@@ -467,14 +468,43 @@ class ExcalidrawScene:
         self.add_text(x + 10, y + 9, full_txt, font_size=12, font_family=2, color=text_color, frame_id=frame_id)
         return pill
 
-    def add_chip(self, x: float, y: float, w: float, h: float,
-                 number: str, label: str, bg: str = "#0F172A",
-                 text_color: str = "#FFFFFF", frame_id: Optional[str] = None):
-        """Crea un chip de KPI/Dashboard con número gigante arriba y etiqueta chica abajo."""
-        card = self.add_rect(x, y, w, h, bg=bg, stroke=bg, roundness_type=3, frame_id=frame_id)
-        self.add_text(x + 20, y + 15, number, font_size=38, font_family=2, color=text_color, frame_id=frame_id)
-        self.add_text(x + 22, y + h - 35, label, font_size=13, font_family=2, color=text_color, frame_id=frame_id)
-        return card
+    def add_icon(self, icon_name: str, x: float, y: float, size: float = 24.0,
+                 color: str = "#0C0C0C", frame_id: Optional[str] = None) -> Dict[str, Any]:
+        """Incrusta un icono vectorial monocromático de la biblioteca Tabler/SimpleIcons."""
+        from .icons import get_icon_data_url
+        file_id, data_url = get_icon_data_url(icon_name, color=color)
+        
+        # Registrar archivo en el diccionario global files de la escena
+        if file_id not in self.files:
+            self.files[file_id] = {
+                "mimeType": "image/svg+xml",
+                "id": file_id,
+                "dataURL": data_url,
+                "created": 1723766400000
+            }
+            
+        elem = self._base_element("image", x, y, size, size, stroke_color="transparent",
+                                  bg_color="transparent", frame_id=frame_id)
+        elem.update({
+            "fileId": file_id,
+            "status": "saved",
+            "scale": [1.0, 1.0]
+        })
+        self.elements.append(elem)
+        return elem
+
+    def add_card_with_icon(self, x: float, y: float, w: float, h: float,
+                           title: str, sublabel: Optional[str] = None,
+                           icon: str = "server", bg: str = "#FFFFFF",
+                           stroke: str = "#0C0C0C", text_color: str = "#0C0C0C",
+                           frame_id: Optional[str] = None) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+        """Crea una tarjeta con icono en la esquina superior izquierda o junto al título."""
+        container, text_elem = self.add_dual_card(x, y, w, h, title, sublabel=sublabel,
+                                                  bg=bg, stroke=stroke, text_color=text_color,
+                                                  frame_id=frame_id)
+        # Añadir icono en x + 16, y + 16
+        self.add_icon(icon, x + 16.0, y + 16.0, size=24.0, color=stroke, frame_id=frame_id)
+        return container, text_elem
 
     def to_dict(self) -> Dict[str, Any]:
         """Genera el diccionario del archivo .excalidraw completo."""
@@ -487,7 +517,7 @@ class ExcalidrawScene:
                 "gridSize": self.grid_size,
                 "viewBackgroundColor": self.bg_color
             },
-            "files": {}
+            "files": self.files
         }
 
     def save(self, filepath: str):

@@ -13,9 +13,40 @@ Cada uno de los 27 tipos posee su propia geometría real:
 9. Nested             18. IT current-state   27. High-Level
 """
 
+from enum import Enum
 import math
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Union
 from render.excalidraw_builder import ExcalidrawScene
+
+
+class VisualType27(Enum):
+    ARCHITECTURE = "architecture"
+    FLOWCHART = "flowchart"
+    SEQUENCE = "sequence"
+    STATE_MACHINE = "state_machine"
+    ER_DATA_MODEL = "er_data_model"
+    TIMELINE = "timeline"
+    SWIMLANE = "swimlane"
+    QUADRANT = "quadrant"
+    NESTED = "nested"
+    TREE = "tree"
+    ORG_CHART = "org_chart"
+    VENN = "venn"
+    LAYER_STACK = "layer_stack"
+    PYRAMID_FUNNEL = "pyramid_funnel"
+    CONSULTANT_2X2 = "consultant_2x2"
+    RADAR_SPIDER = "radar_spider"
+    LOOP_FLYWHEEL = "loop_flywheel"
+    IT_CURRENT_STATE = "it_current_state"
+    HIGH_LEVEL = "high_level"
+    GANTT = "gantt"
+    SCATTER_PLOT = "scatter_plot"
+    PROCESS = "process"
+    MEDALLION = "medallion"
+    DATA_FLOW = "data_flow"
+    DP_INTEGRATION = "dp_integration"
+    DP_SECURITY_MATRIX = "dp_security_matrix"
+    VALUE_CHAIN = "value_chain"
 
 
 class VisualTypes27Engine:
@@ -790,3 +821,104 @@ class VisualTypes27Engine:
         scene.add_arrow(x + 270, y + 175, x + 360, y + 160, stroke="#94A3B8", frame_id=frame_id)
         scene.add_arrow(x + 640, y + 160, x + 680, y + 160, stroke="#D93829", stroke_w=1.8, frame_id=frame_id)
         scene.add_arrow(x + 960, y + 160, x + 1070, y + 160, stroke="#94A3B8", frame_id=frame_id)
+
+    # -----------------------------------------------------------------------------------------------
+    # DISPATCHER & CLASSIFIER UNIFICADO DE LOS 27 TIPOS
+    # -----------------------------------------------------------------------------------------------
+    @classmethod
+    def classify_intent(cls, text: str) -> VisualType27:
+        """Clasifica el texto / prompt de entrada en uno de los 27 tipos canónicos."""
+        t = text.lower()
+        if any(w in t for w in ["sequence", "messages", "lifeline", "interacción"]):
+            return VisualType27.SEQUENCE
+        elif any(w in t for w in ["state machine", "transición", "states", "finitos", "transiciones"]):
+            return VisualType27.STATE_MACHINE
+        elif any(w in t for w in ["er", "entity", "relational", "schema", "tablas", "data model"]):
+            return VisualType27.ER_DATA_MODEL
+        elif any(w in t for w in ["timeline", "hitos", "events on axis", "cronología"]):
+            return VisualType27.TIMELINE
+        elif any(w in t for w in ["swimlane", "carriles", "cross-functional", "handoff"]):
+            return VisualType27.SWIMLANE
+        elif any(w in t for w in ["quadrant", "2x2", "cuadrantes", "impact vs effort"]):
+            return VisualType27.QUADRANT
+        elif any(w in t for w in ["nested", "containment", "claude.md", "anidado"]):
+            return VisualType27.NESTED
+        elif any(w in t for w in ["tree", "taxonomy", "árbol", "parent", "children"]):
+            return VisualType27.TREE
+        elif any(w in t for w in ["org chart", "organigrama", "ownership", "routing tree"]):
+            return VisualType27.ORG_CHART
+        elif any(w in t for w in ["venn", "intersección", "overlap", "conjuntos"]):
+            return VisualType27.VENN
+        elif any(w in t for w in ["layer stack", "pila", "abstraction layers", "stack"]):
+            return VisualType27.LAYER_STACK
+        elif any(w in t for w in ["pyramid", "funnel", "pirámide", "embudo", "drop-off"]):
+            return VisualType27.PYRAMID_FUNNEL
+        elif any(w in t for w in ["consultant", "scenario matrix", "named cells"]):
+            return VisualType27.CONSULTANT_2X2
+        elif any(w in t for w in ["radar", "spider", "polar", "multiaxial"]):
+            return VisualType27.RADAR_SPIDER
+        elif any(w in t for w in ["loop", "flywheel", "growth loop", "estaciones"]):
+            return VisualType27.LOOP_FLYWHEEL
+        elif any(w in t for w in ["it current", "legacy", "modernization", "as-is", "to-be"]):
+            return VisualType27.IT_CURRENT_STATE
+        elif any(w in t for w in ["gantt", "schedule", "cronograma", "semanas", "tareas"]):
+            return VisualType27.GANTT
+        elif any(w in t for w in ["scatter", "dispersión", "correlation", "distribución"]):
+            return VisualType27.SCATTER_PLOT
+        elif any(w in t for w in ["medallion", "lakehouse", "bronze", "silver", "gold"]):
+            return VisualType27.MEDALLION
+        elif any(w in t for w in ["data flow", "role-scoped", "pipeline steps"]):
+            return VisualType27.DATA_FLOW
+        elif any(w in t for w in ["dp integration", "sources", "consumers"]):
+            return VisualType27.DP_INTEGRATION
+        elif any(w in t for w in ["security matrix", "permissions", "rbac", "access matrix"]):
+            return VisualType27.DP_SECURITY_MATRIX
+        elif any(w in t for w in ["value chain", "porter", "cadena de valor", "margin"]):
+            return VisualType27.VALUE_CHAIN
+        elif any(w in t for w in ["flowchart", "decision", "bifurcación", "if else"]):
+            return VisualType27.FLOWCHART
+        elif any(w in t for w in ["process", "workflow", "proceso"]):
+            return VisualType27.PROCESS
+        elif any(w in t for w in ["high-level", "high level", "cluster", "platform"]):
+            return VisualType27.HIGH_LEVEL
+        else:
+            return VisualType27.ARCHITECTURE
+
+    @classmethod
+    def render_by_type(cls, scene: ExcalidrawScene, visual_type: Union[str, VisualType27],
+                       x: float, y: float, w: float, h: float, frame_id: Optional[str] = None):
+        """Despacha la ejecución al renderizador geométrico correspondiente de los 27 tipos."""
+        vt = visual_type if isinstance(visual_type, VisualType27) else VisualType27(visual_type.lower())
+        
+        dispatch_map = {
+            VisualType27.ARCHITECTURE: cls.render_architecture,
+            VisualType27.FLOWCHART: cls.render_flowchart,
+            VisualType27.SEQUENCE: cls.render_sequence,
+            VisualType27.STATE_MACHINE: cls.render_state_machine,
+            VisualType27.ER_DATA_MODEL: cls.render_er_model,
+            VisualType27.TIMELINE: cls.render_timeline,
+            VisualType27.SWIMLANE: cls.render_swimlane,
+            VisualType27.QUADRANT: cls.render_quadrant,
+            VisualType27.NESTED: cls.render_nested,
+            VisualType27.TREE: cls.render_tree,
+            VisualType27.ORG_CHART: cls.render_org_chart,
+            VisualType27.VENN: cls.render_venn,
+            VisualType27.LAYER_STACK: cls.render_layer_stack,
+            VisualType27.PYRAMID_FUNNEL: cls.render_pyramid_funnel,
+            VisualType27.CONSULTANT_2X2: cls.render_consultant_2x2,
+            VisualType27.RADAR_SPIDER: cls.render_radar_spider,
+            VisualType27.LOOP_FLYWHEEL: cls.render_loop_flywheel,
+            VisualType27.IT_CURRENT_STATE: cls.render_it_current_state,
+            VisualType27.HIGH_LEVEL: cls.render_high_level,
+            VisualType27.GANTT: cls.render_gantt,
+            VisualType27.SCATTER_PLOT: cls.render_scatter_plot,
+            VisualType27.PROCESS: cls.render_process,
+            VisualType27.MEDALLION: cls.render_medallion,
+            VisualType27.DATA_FLOW: cls.render_data_flow,
+            VisualType27.DP_INTEGRATION: cls.render_dp_integration,
+            VisualType27.DP_SECURITY_MATRIX: cls.render_dp_security_matrix,
+            VisualType27.VALUE_CHAIN: cls.render_value_chain
+        }
+        fn = dispatch_map.get(vt, cls.render_architecture)
+        fn(scene, x, y, w, h, frame_id=frame_id)
+

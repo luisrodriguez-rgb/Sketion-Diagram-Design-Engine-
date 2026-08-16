@@ -32,6 +32,7 @@ from typing import Dict, Any, Optional, List, Union
 import os
 
 from visual_intelligence.visual_matrix import VisualMatrixEngine, SpatialArchetype
+from visual_intelligence.visual_types_27 import VisualTypes27Engine, VisualType27
 from visual_intelligence.visual_composition import VisualCompositionEngine, VisualEntitySpec
 from visual_intelligence.brand_registry import BrandRegistry
 from visual_intelligence.iconography import SemanticIconRegistry
@@ -51,12 +52,14 @@ __all__ = [
     "SketionResult",
     "ExcalidrawScene",
     "SpatialArchetype",
+    "VisualType27",
     "AspectRatioType",
     "VisualLanguageDialect",
     "BrandRegistry",
     "SemanticIconRegistry",
     "VisualCompositionEngine",
     "VisualMatrixEngine",
+    "VisualTypes27Engine",
     "DesignDecisionTrace"
 ]
 
@@ -113,27 +116,37 @@ def render(payload: Dict[str, Any],
     theme = VisualLanguageEngine.resolve_theme(audience=audience, domain_hint=diagram_title)
     final_bg = bg_color or theme.canvas_bg
 
-    # 2. Selección Autónoma de Arquetipo
-    if isinstance(archetype, str) and archetype.lower() == "auto":
-        txt = f"{diagram_title} {payload}".lower()
-        if any(w in txt for w in ["pipeline", "flow", "transcoder", "sequence", "checkout"]):
-            arch_enum = SpatialArchetype.PIPELINE
-            arch_rat = "Alta densidad de relaciones secuenciales direccionales en serie."
-        elif any(w in txt for w in ["hub", "mesh", "star", "brain", "satellite", "cluster"]):
-            arch_enum = SpatialArchetype.RADIAL_HUB
-            arch_rat = "Topología en estrella desacoplada con orquestador central (El Cerebro)."
-        elif any(w in txt for w in ["migration", "before", "after", "legacy", "vs", "transformation"]):
-            arch_enum = SpatialArchetype.SPLIT_DUEL
-            arch_rat = "Análisis comparativo de modernización (Legacy vs Target Hero)."
-        else:
-            arch_enum = SpatialArchetype.LAYERED
-            arch_rat = "Estratificación de responsabilidades por capas funcionales y persistencia."
-    elif isinstance(archetype, str):
-        arch_enum = SpatialArchetype[archetype.upper()]
-        arch_rat = f"Arquetipo {arch_enum.value} seleccionado explícitamente."
-    else:
+    # 2. Selección Autónoma o Explícita del Tipo Visual
+    is_27_type = False
+    v27_enum = None
+
+    if isinstance(archetype, VisualType27):
+        is_27_type = True
+        v27_enum = archetype
+        arch_rat = f"Tipo Canónico {v27_enum.value} seleccionado explícitamente."
+    elif isinstance(archetype, str) and archetype.lower() != "auto":
+        arch_clean = archetype.lower().replace("-", "_")
+        try:
+            v27_enum = VisualType27(arch_clean)
+            is_27_type = True
+            arch_rat = f"Tipo Canónico {v27_enum.value} seleccionado explícitamente."
+        except ValueError:
+            try:
+                arch_enum = SpatialArchetype[archetype.upper()]
+                arch_rat = f"Arquetipo Espacial {arch_enum.value} seleccionado explícitamente."
+            except KeyError:
+                v27_enum = VisualTypes27Engine.classify_intent(archetype)
+                is_27_type = True
+                arch_rat = f"Arquetipo clasificado en tipo canónico {v27_enum.value}."
+    elif isinstance(archetype, SpatialArchetype):
         arch_enum = archetype
-        arch_rat = f"Arquetipo {arch_enum.value} seleccionado explícitamente."
+        arch_rat = f"Arquetipo Espacial {arch_enum.value} seleccionado explícitamente."
+    else:
+        # Modo 'auto': Clasificar inteligentemente
+        txt = f"{diagram_title} {payload}".lower()
+        v27_enum = VisualTypes27Engine.classify_intent(txt)
+        is_27_type = True
+        arch_rat = f"Clasificación autónoma de alta fidelidad: Tipo Canónico '{v27_enum.value}'."
 
     # 3. Resolver Proporción
     if isinstance(aspect_ratio, str):
@@ -158,16 +171,22 @@ def render(payload: Dict[str, Any],
     place_reset(max_row_w=3800, gap=140)
 
     fx, fy = place(ratio_spec.base_w, ratio_spec.base_h)
-    VisualMatrixEngine.render_archetype(
-        scene,
-        archetype=arch_enum,
-        title=diagram_title,
-        payload=payload,
-        fx=fx,
-        fy=fy,
-        target_w=ratio_spec.base_w,
-        target_h=ratio_spec.base_h
-    )
+    
+    if is_27_type and v27_enum:
+        fid = scene.add_frame(diagram_title.upper(), fx, fy, ratio_spec.base_w, ratio_spec.base_h)
+        VisualTypes27Engine.render_by_type(scene, v27_enum, fx, fy, ratio_spec.base_w, ratio_spec.base_h, frame_id=fid)
+        scene.auto_fit_frame(fid, padding=35.0)
+    else:
+        VisualMatrixEngine.render_archetype(
+            scene,
+            archetype=arch_enum,
+            title=diagram_title,
+            payload=payload,
+            fx=fx,
+            fy=fy,
+            target_w=ratio_spec.base_w,
+            target_h=ratio_spec.base_h
+        )
 
     # 5. Exportar si se especificó ruta
     if output:
@@ -200,11 +219,13 @@ def render(payload: Dict[str, Any],
         if b and b.display_name not in matched_brands:
             matched_brands.append(b.display_name)
 
+    selected_arch_str = v27_enum.value if (is_27_type and v27_enum) else (arch_enum.value if 'arch_enum' in locals() else "layered")
+
     trace = DesignDecisionTrace(
         title=diagram_title,
         target_audience=audience.upper(),
-        primary_objective=f"Representar arquitectura {arch_enum.value} con alta fidelidad y consistencia.",
-        selected_archetype=arch_enum.value,
+        primary_objective=f"Representar arquitectura {selected_arch_str} con alta fidelidad y consistencia.",
+        selected_archetype=selected_arch_str,
         archetype_rationale=arch_rat,
         hero_component=hero_label,
         hero_rationale="Componente central de orquestación transaccional con mayor relevancia de negocio.",

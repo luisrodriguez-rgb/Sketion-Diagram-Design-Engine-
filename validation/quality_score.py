@@ -100,8 +100,14 @@ def calculate_quality_score(scene_data: Dict[str, Any],
                     issues.append(f"Contenedor {cid} no tiene vinculado el texto {t['id']}.")
 
     # 2. Hierarchy & Accents
+    # Excluir contenedores de scope grandes del conteo de acentos de tarjetas
     accent_count = 0
     for e in cards:
+        w_c = e.get("width", 0)
+        h_c = e.get("height", 0)
+        if w_c >= 240 and h_c >= 320:
+            continue  # Es un contenedor de scope
+            
         bg = str(e.get("backgroundColor", "")).upper()
         stroke = str(e.get("strokeColor", "")).upper()
         for acc in accent_hex_list:
@@ -109,14 +115,15 @@ def calculate_quality_score(scene_data: Dict[str, Any],
                 accent_count += 1
                 break
 
+    max_accents = max(3, len(frames) * 3) if frames else 3
     hierarchy_score = 100
     if accent_count == 0:
         hierarchy_score -= 10
         issues.append("No hay ningún nodo con acento focal (falta énfasis visual).")
-    elif accent_count > 6:
-        penalty = min(50, (accent_count - 6) * 10)
-        hierarchy_score = max(50, hierarchy_score - penalty)
-        issues.append(f"Sobrecarga de acentos ({accent_count} nodos con acento, el objetivo es 1-3 max).")
+    elif accent_count > max_accents:
+        penalty = min(40, (accent_count - max_accents) * 8)
+        hierarchy_score = max(60, hierarchy_score - penalty)
+        issues.append(f"Sobrecarga de acentos ({accent_count} nodos con acento, el objetivo es 1-3 por frame).")
 
     # 3. Density & Visual Noise Calibrado
     # Filtrar:

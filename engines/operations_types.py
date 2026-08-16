@@ -1,12 +1,9 @@
 """
 Sketion 4.0 — Motores de Procesos, Operaciones y Organización (engines/operations_types.py)
-Implementa:
-19. Swimlane (Cross-Functional Flow Across Actors/Departments)
-20. Process (Multi-Actor Sequential Workflow)
-21. Gantt (Tasks and Phases on a Horizontal Timeline with Milestones)
-22. Timeline (Events on an Axis with Alternating Milestone Callouts)
-23. Org Chart (Ownership, Routing and Leadership Hierarchy)
-24. Tree (Balanced Hierarchical Taxonomy)
+Incorpora la gramática editorial de Diagram Design:
+- Eje superior de pasos con insignias circulares numeradas (add_step_badge_axis)
+- Tarjetas de 4 esquinas (add_quad_card) con badges de rol y datos
+- Dimensiones compactas anti-stretch
 """
 
 from typing import Dict, Any, List, Optional, Tuple
@@ -30,41 +27,61 @@ PALETTE = {
 
 
 # =============================================================================
-# 19. SWIMLANE (CROSS-FUNCTIONAL WORKFLOW)
+# 19. SWIMLANE (CROSS-FUNCTIONAL WORKFLOW WITH STEP AXIS)
 # =============================================================================
 def render_swimlane(scene: ExcalidrawScene, title: str,
                     lanes: List[Dict[str, Any]], x: float, y: float,
-                    w: float = 2800.0, h: float = 850.0,
+                    w: float = 2400.0, h: float = 850.0,
                     frame_id: Optional[str] = None) -> str:
     fid = frame_id or scene.add_frame(f"SWIMLANE: {title}", x, y, w, h)
-    scene.add_text(x + 50, y + 35, title.upper(), font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid)
-    scene.add_text(x + 50, y + 75, "flujo de trabajo interdepartamental segregado por carriles funcionales", font_size=16, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
+    scene.add_text(x + 50, y + 35, title.upper(), font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid)
+    scene.add_text(x + 50, y + 72, "flujo de trabajo interdepartamental segregado por carriles funcionales", font_size=14, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
+
+    # 1. Eje Superior de Pasos Circulares Numerados
+    steps_header = ["Order", "Verify", "Allocate", "Pick", "Pack", "Receive"]
+    scene.add_step_badge_axis(x + 280.0, y + 115.0, w - 340.0, steps_header, hero_idx=2, frame_id=fid)
 
     lane_count = len(lanes)
     lane_h = 160.0
-    start_y = y + 130.0
+    start_y = y + 175.0
+
+    badge_map = {"Customer": "CUS", "Support": "SUP", "Warehouse": "WHS", "Finance": "FIN", "Kitchen": "KTN", "Runner": "RUN"}
 
     for li, lane in enumerate(lanes):
         ly = start_y + li * (lane_h + 15.0)
         lname = lane.get("name", f"Lane {li+1}")
         lsteps = lane.get("steps", [])
+        badge_txt = badge_map.get(lname, "ROLE")
         
-        # Header de carril
-        scene.add_bound_card(x + 60.0, ly, 240.0, lane_h, lname.upper(),
-                             bg=PALETTE["INK"], stroke=PALETTE["INK"], text_color="#FFFFFF",
+        # Header de carril lateral
+        scene.add_bound_card(x + 50.0, ly, 200.0, lane_h, lname.upper(),
+                             bg="#FFFFFF", stroke=PALETTE["INK"], text_color=PALETTE["INK"],
                              font_size=13, roundness_type=3, frame_id=fid)
         
         # Carril contenedor
-        scene.add_rect(x + 315.0, ly, w - 375.0, lane_h, bg="#FFFFFF",
+        scene.add_rect(x + 265.0, ly, w - 315.0, lane_h, bg="#FFFFFF",
                        stroke=PALETTE["CARD_BORDER"], stroke_w=1.0, roundness_type=3, frame_id=fid)
 
         # Pasos dentro del carril
-        step_w = (w - 420.0) / max(1, len(lsteps))
+        step_w = min(300.0, (w - 360.0) / max(1, len(lsteps)))
         for si, stxt in enumerate(lsteps):
-            sx = x + 335.0 + si * step_w
-            scene.add_bound_card(sx, ly + 25.0, step_w - 30.0, 110.0, stxt,
-                                 bg="#FFFFFF", stroke=PALETTE["CARD_BORDER"], text_color=PALETTE["INK"],
-                                 font_size=12, roundness_type=3, frame_id=fid)
+            sx = x + 285.0 + si * (step_w + 30.0)
+            is_hero_step = (li == 1 and si == 1) or (li == 0 and si == 2)
+            scene.add_quad_card(sx, ly + 20.0, step_w, 120.0, stxt,
+                                sublabel=f"Handoff {si+1}", badge=badge_txt,
+                                icon="user" if li == 0 else "container",
+                                pills=["DB", "LS"] if is_hero_step else None,
+                                is_hero=is_hero_step, frame_id=fid)
+
+    # Leyenda Inferior
+    scene.add_legend_footer(x + 50.0, start_y + lane_count * (lane_h + 15.0) + 15.0, w - 100.0,
+                            swatches=[
+                                {"label": "Critical Handoff", "is_arrow": True, "stroke": "#E03A2F"},
+                                {"label": "Sequential Handoff", "is_arrow": True, "stroke": "#0C0C0C"},
+                                {"label": "DB · records", "bg": "#E2E8F0", "stroke": "#94A3B8"}
+                            ],
+                            note="left in · right out · swimlanes enforce responsibility boundaries",
+                            frame_id=fid)
 
     scene.auto_fit_frame(fid, padding=50.0)
     return fid
@@ -75,27 +92,28 @@ def render_swimlane(scene: ExcalidrawScene, title: str,
 # =============================================================================
 def render_process(scene: ExcalidrawScene, title: str,
                    steps: List[Dict[str, Any]], x: float, y: float,
-                   w: float = 2800.0, h: float = 850.0,
+                   w: float = 2400.0, h: float = 850.0,
                    frame_id: Optional[str] = None) -> str:
     fid = frame_id or scene.add_frame(f"PROCESS: {title}", x, y, w, h)
-    scene.add_text(x + 50, y + 35, title.upper(), font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid)
-    scene.add_text(x + 50, y + 75, "flujo secuencial de proceso de negocio con handoffs entre actores", font_size=16, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
+    scene.add_text(x + 50, y + 35, title.upper(), font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid)
+    scene.add_text(x + 50, y + 72, "flujo secuencial de proceso de negocio con handoffs entre actores", font_size=14, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
 
     s_count = len(steps)
-    step_w = (w - 120.0 - (s_count - 1) * 60.0) / s_count
+    step_w = min(320.0, (w - 100.0 - (s_count - 1) * 40.0) / s_count)
     coords = []
 
     for si, step in enumerate(steps):
-        sx = x + 60.0 + si * (step_w + 60.0)
-        sy = y + 340.0
+        sx = x + 50.0 + si * (step_w + 40.0)
+        sy = y + 320.0
         snum = step.get("num", f"0{si+1}")
         stitle = step.get("title", f"Paso {si+1}")
-        sactor = step.get("actor", "")
+        sactor = step.get("actor", "Actor")
         is_hero = step.get("is_hero", False)
         
-        bg = PALETTE["PASTEL_GREEN"] if is_hero else "#FFFFFF"
-        c, _ = scene.add_dual_card(sx, sy, step_w, 130.0, f"[{snum}] {stitle.upper()}", sublabel=f"Actor: {sactor}",
-                                   bg=bg, stroke=PALETTE["INK"], text_color=PALETTE["INK"], frame_id=fid)
+        c, _ = scene.add_quad_card(sx, sy, step_w, 130.0, f"[{snum}] {stitle.upper()}",
+                                   sublabel=f"Responsable: {sactor}",
+                                   badge=f"ACT-{si+1}", icon="user" if not is_hero else "server",
+                                   is_hero=is_hero, frame_id=fid)
         coords.append((c["x"], c["y"], c["width"], c["height"]))
 
     for i in range(s_count - 1):
@@ -114,40 +132,36 @@ def render_process(scene: ExcalidrawScene, title: str,
 # =============================================================================
 def render_gantt(scene: ExcalidrawScene, title: str,
                  months: List[str], tasks: List[Dict[str, Any]],
-                 x: float, y: float, w: float = 2800.0, h: float = 850.0,
+                 x: float, y: float, w: float = 2400.0, h: float = 850.0,
                  frame_id: Optional[str] = None) -> str:
     fid = frame_id or scene.add_frame(f"GANTT: {title}", x, y, w, h)
-    scene.add_text(x + 50, y + 35, title.upper(), font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid)
-    scene.add_text(x + 50, y + 75, "cronograma gantt de fases, dependencias y puertas de aprobacion (gates)", font_size=16, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
+    scene.add_text(x + 50, y + 35, title.upper(), font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid)
+    scene.add_text(x + 50, y + 72, "cronograma gantt de fases, dependencias y puertas de aprobacion (gates)", font_size=14, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
 
-    # Cabecera de Meses
-    month_w = (w - 380.0) / len(months)
-    for mi, mname in enumerate(months):
-        mx = x + 320.0 + mi * month_w
-        scene.add_bound_card(mx, y + 130.0, month_w - 10.0, 45.0, mname.upper(),
-                             bg=PALETTE["INK"], stroke=PALETTE["INK"], text_color="#FFFFFF",
-                             font_size=12, roundness_type=None, frame_id=fid)
+    # Cabecera de Meses (Chevron Ribbon)
+    scene.add_chevron_ribbon(x + 280.0, y + 115.0, w - 330.0, h=36.0, stages=months, bg=PALETTE["INK"], text_color="#FFFFFF", frame_id=fid)
 
-    # Filas de Tareas
+    month_w = (w - 330.0) / len(months)
     for ti, task in enumerate(tasks):
-        ty = y + 190.0 + ti * 75.0
+        ty = y + 175.0 + ti * 75.0
         tname = task.get("name", f"Tarea {ti+1}")
-        start_m = task.get("start_month", 0.0) # 0 a len(months)
+        start_m = task.get("start_month", 0.0)
         duration_m = task.get("duration", 1.0)
         is_gate = task.get("is_gate", False)
         
         # Etiqueta izquierda
-        scene.add_bound_card(x + 60.0, ty, 240.0, 60.0, tname,
+        scene.add_bound_card(x + 50.0, ty, 210.0, 60.0, tname,
                              bg="#FFFFFF", stroke=PALETTE["CARD_BORDER"], text_color=PALETTE["INK"],
                              font_size=12, roundness_type=3, frame_id=fid)
         
         # Barra Gantt
-        bx = x + 320.0 + start_m * month_w
+        bx = x + 280.0 + start_m * month_w
         bw = duration_m * month_w - 10.0
-        bg = PALETTE["PAIN_BG"] if is_gate else PALETTE["PASTEL_BLUE"]
+        bg = PALETTE["PAIN_BG"] if is_gate else "#F1F5F9"
         stroke = PALETTE["PAIN_BORDER"] if is_gate else PALETTE["INK"]
-        scene.add_bound_card(bx, ty + 10.0, bw, 40.0, "GATE" if is_gate else "",
-                             bg=bg, stroke=stroke, text_color=PALETTE["INK"],
+        text_col = PALETTE["PAIN_RED"] if is_gate else PALETTE["INK"]
+        scene.add_bound_card(bx, ty + 10.0, bw, 40.0, "APPROVAL GATE" if is_gate else "In Progress",
+                             bg=bg, stroke=stroke, text_color=text_col,
                              font_size=11, roundness_type=3, frame_id=fid)
 
     scene.auto_fit_frame(fid, padding=50.0)
@@ -159,32 +173,29 @@ def render_gantt(scene: ExcalidrawScene, title: str,
 # =============================================================================
 def render_timeline(scene: ExcalidrawScene, title: str,
                     milestones: List[Dict[str, str]], x: float, y: float,
-                    w: float = 2800.0, h: float = 850.0,
+                    w: float = 2400.0, h: float = 850.0,
                     frame_id: Optional[str] = None) -> str:
     fid = frame_id or scene.add_frame(f"TIMELINE: {title}", x, y, w, h)
-    scene.add_text(x + 50, y + 35, title.upper(), font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid)
-    scene.add_text(x + 50, y + 75, "eje cronologico de hitos estrategicos con llamadas alternadas", font_size=16, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
+    scene.add_text(x + 50, y + 35, title.upper(), font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid)
+    scene.add_text(x + 50, y + 72, "eje cronologico de hitos estrategicos con llamadas alternadas", font_size=14, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
 
     axis_y = y + 420.0
-    scene.add_line(x + 100.0, axis_y, x + w - 100.0, axis_y, stroke=PALETTE["INK"], stroke_w=2.5, frame_id=fid)
+    scene.add_line(x + 80.0, axis_y, x + w - 80.0, axis_y, stroke=PALETTE["INK"], stroke_w=2.5, frame_id=fid)
 
-    t_layout = compute_timeline_layout(len(milestones), start_x=x + 150.0, axis_y=axis_y, total_width=w - 300.0, step_w=320.0, step_h=95.0, offset_y=160.0)
+    t_layout = compute_timeline_layout(len(milestones), start_x=x + 120.0, axis_y=axis_y, total_width=w - 240.0, step_w=300.0, step_h=100.0, offset_y=160.0)
 
     for i, pt in enumerate(t_layout):
         ms = milestones[i]
         m_date = ms.get("date", f"Q{i+1}")
         m_title = ms.get("title", f"Hito {i+1}")
+        is_hero = (i == len(milestones) - 1)
         
-        # Marcador en el eje
         scene.add_ellipse(pt["marker_x"] - 8.0, axis_y - 8.0, 16.0, 16.0, bg=PALETTE["INK"], stroke=PALETTE["INK"], frame_id=fid)
+        scene.add_line(pt["marker_x"], axis_y, pt["marker_x"], pt["card_y"] + 50.0, stroke=PALETTE["CARD_BORDER"], stroke_w=1.5, dashed=True, frame_id=fid)
         
-        # Conector vertical al hito
-        scene.add_line(pt["marker_x"], axis_y, pt["marker_x"], pt["card_y"] + 45.0, stroke=PALETTE["CARD_BORDER"], stroke_w=1.5, dashed=True, frame_id=fid)
-        
-        # Tarjeta de Hito
-        scene.add_bound_card(pt["card_x"], pt["card_y"], pt["w"], pt["h"], f"{m_date}\n{m_title}",
-                             bg="#FFFFFF", stroke=PALETTE["INK"], text_color=PALETTE["INK"],
-                             font_size=13, roundness_type=3, frame_id=fid)
+        scene.add_quad_card(pt["card_x"], pt["card_y"], pt["w"], pt["h"], m_title,
+                            sublabel=m_date, badge=m_date, icon="monitoring" if is_hero else "terminal",
+                            is_hero=is_hero, frame_id=fid)
 
     scene.auto_fit_frame(fid, padding=50.0)
     return fid
@@ -195,38 +206,37 @@ def render_timeline(scene: ExcalidrawScene, title: str,
 # =============================================================================
 def render_org_chart(scene: ExcalidrawScene, title: str,
                      leader: Dict[str, str], departments: List[Dict[str, Any]],
-                     x: float, y: float, w: float = 2800.0, h: float = 850.0,
+                     x: float, y: float, w: float = 2400.0, h: float = 850.0,
                      frame_id: Optional[str] = None) -> str:
     fid = frame_id or scene.add_frame(f"ORG CHART: {title}", x, y, w, h)
-    scene.add_text(x + 50, y + 35, title.upper(), font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid)
-    scene.add_text(x + 50, y + 75, "organigrama jerarquico de propiedad y enrutamiento de equipos", font_size=16, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
+    scene.add_text(x + 50, y + 35, title.upper(), font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid)
+    scene.add_text(x + 50, y + 72, "organigrama jerarquico de propiedad y enrutamiento de equipos", font_size=14, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
 
     # Leader Top Center
-    leader_w = 400.0
+    leader_w = 360.0
     lx = x + (w - leader_w) * 0.5
-    ly = y + 140.0
-    scene.add_dual_card(lx, ly, leader_w, 100.0, leader.get("name", "Director").upper(), sublabel=leader.get("role", "CEO / Leadership"),
-                        bg=PALETTE["INK"], stroke=PALETTE["INK"], text_color="#FFFFFF", frame_id=fid)
+    ly = y + 130.0
+    scene.add_quad_card(lx, ly, leader_w, 110.0, leader.get("name", "Director").upper(),
+                        sublabel=leader.get("role", "CEO / Leadership"), badge="EXEC",
+                        icon="user", is_hero=True, frame_id=fid)
 
     # Departamentos
     dep_count = len(departments)
-    dep_w = (w - 120.0 - (dep_count - 1) * 50.0) / dep_count
+    dep_w = (w - 100.0 - (dep_count - 1) * 40.0) / dep_count
 
     for di, dep in enumerate(departments):
-        dx = x + 60.0 + di * (dep_w + 50.0)
-        dy = y + 340.0
+        dx = x + 50.0 + di * (dep_w + 40.0)
+        dy = y + 320.0
         dname = dep.get("name", f"Depto {di+1}")
         dmembers = dep.get("members", [])
         
-        # Caja de Departamento
-        scene.add_scope_container(dx, dy, dep_w, 340.0, label=dname.upper(), stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid)
-        
-        # Conexión desde líder
-        scene.add_line(x + w * 0.5, ly + 100.0, dx + dep_w * 0.5, dy, stroke=PALETTE["CARD_BORDER"], stroke_w=1.5, frame_id=fid)
+        scene.add_scope_container(dx, dy, dep_w, 360.0, label=dname.upper(), stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid)
+        scene.add_line(x + w * 0.5, ly + 110.0, dx + dep_w * 0.5, dy, stroke=PALETTE["CARD_BORDER"], stroke_w=1.5, frame_id=fid)
 
+        cw = min(280.0, dep_w - 30.0)
         for mi, memb in enumerate(dmembers):
-            scene.add_bound_card(dx + 20.0, dy + 55.0 + mi * 80.0, dep_w - 40.0, 65.0, memb,
-                                 bg="#FFFFFF", stroke=PALETTE["INK"], text_color=PALETTE["INK"], font_size=12, frame_id=fid)
+            scene.add_quad_card(dx + (dep_w - cw)*0.5, dy + 55.0 + mi * 95.0, cw, 80.0, memb,
+                                sublabel="Team Member", badge="STAFF", icon="user", frame_id=fid)
 
     scene.auto_fit_frame(fid, padding=50.0)
     return fid
@@ -237,40 +247,35 @@ def render_org_chart(scene: ExcalidrawScene, title: str,
 # =============================================================================
 def render_tree(scene: ExcalidrawScene, title: str,
                 root_name: str, branches: List[Dict[str, Any]],
-                x: float, y: float, w: float = 2800.0, h: float = 850.0,
+                x: float, y: float, w: float = 2400.0, h: float = 850.0,
                 frame_id: Optional[str] = None) -> str:
     fid = frame_id or scene.add_frame(f"TREE: {title}", x, y, w, h)
-    scene.add_text(x + 50, y + 35, title.upper(), font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid)
-    scene.add_text(x + 50, y + 75, "arbol balanceado de taxonomias y clasificacion jerarquica", font_size=16, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
+    scene.add_text(x + 50, y + 35, title.upper(), font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid)
+    scene.add_text(x + 50, y + 72, "arbol balanceado de taxonomias y clasificacion jerarquica", font_size=14, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
 
     # Root
-    rx = x + 100.0
-    ry = y + 380.0
-    scene.add_bound_card(rx, ry, 300.0, 110.0, root_name.upper(),
-                         bg=PALETTE["INK"], stroke=PALETTE["INK"], text_color="#FFFFFF",
-                         font_size=14, roundness_type=3, frame_id=fid)
+    rx = x + 80.0
+    ry = y + 360.0
+    scene.add_quad_card(rx, ry, 280.0, 110.0, root_name.upper(),
+                        sublabel="Taxonomy Root", badge="ROOT", icon="server", is_hero=True, frame_id=fid)
 
-    # Branches
     b_count = len(branches)
     b_spacing = 550.0 / max(1, b_count)
     
     for bi, branch in enumerate(branches):
-        bx = x + 600.0
+        bx = x + 480.0
         by = y + 160.0 + bi * b_spacing
         bname = branch.get("name", f"Rama {bi+1}")
         subitems = branch.get("subitems", [])
         
-        scene.add_bound_card(bx, by, 320.0, 75.0, bname,
-                             bg=PALETTE["PASTEL_BLUE"], stroke=PALETTE["INK"], text_color=PALETTE["INK"],
-                             font_size=13, roundness_type=3, frame_id=fid)
-        scene.add_line(rx + 300.0, ry + 55.0, bx, by + 37.5, stroke=PALETTE["CARD_BORDER"], stroke_w=1.5, frame_id=fid)
+        scene.add_quad_card(bx, by, 300.0, 85.0, bname, sublabel="Branch Group", badge="BRANCH", icon="container", frame_id=fid)
+        scene.add_line(rx + 280.0, ry + 55.0, bx, by + 42.5, stroke=PALETTE["CARD_BORDER"], stroke_w=1.5, frame_id=fid)
 
         for si, sitem in enumerate(subitems):
-            sx = bx + 420.0
-            sy = by - 20.0 + si * 65.0
-            scene.add_bound_card(sx, sy, 320.0, 55.0, sitem,
-                                 bg="#FFFFFF", stroke=PALETTE["INK"], text_color=PALETTE["INK"], font_size=12, frame_id=fid)
-            scene.add_line(bx + 320.0, by + 37.5, sx, sy + 27.5, stroke=PALETTE["CARD_BORDER"], stroke_w=1.0, frame_id=fid)
+            sx = bx + 380.0
+            sy = by - 20.0 + si * 75.0
+            scene.add_quad_card(sx, sy, 280.0, 65.0, sitem, badge="LEAF", icon="file", frame_id=fid)
+            scene.add_line(bx + 300.0, by + 42.5, sx, sy + 32.5, stroke=PALETTE["CARD_BORDER"], stroke_w=1.0, frame_id=fid)
 
     scene.auto_fit_frame(fid, padding=50.0)
     return fid

@@ -1,6 +1,6 @@
 ---
 name: sketion-diagram-design
-description: Generador editorial de diagramas y tableros nativos para Excalidraw (.excalidraw). Arquitectura desacoplada en 4 capas (Semantica -> Layout -> Render -> Calidad Visual) con motor de inferencia por audiencia (Audience-Aware Engine), Catalogo Completo de 27 Tipos Visuales (Lakehouse, Estrategia 2x2, Software, Operaciones, DataViz), simetria 1:1 en journeys, enrutamiento inter-zonas y evaluador de Semantic Hard Constraints sin colisiones.
+description: Generador editorial de diagramas y tableros nativos para Excalidraw (.excalidraw). Arquitectura desacoplada en 4 capas (Semantica -> Layout -> Render -> Calidad Visual) con motor de inferencia por audiencia (Audience-Aware Engine), Catalogo Completo de 27 Tipos Visuales (Lakehouse, Estrategia 2x2, Software, Operaciones, DataViz), Gramatica Editorial de Diagram Design (Tarjetas Quad-Corner, Cintas Chevron, Rieles Verticales, Ejes de Pasos, Leyendas Estructuradas), simetria 1:1 en journeys, enrutamiento inter-zonas y evaluador de Semantic Hard Constraints & Archetype Fitness sin colisiones.
 license: MIT
 metadata:
   version: "4.0"
@@ -10,7 +10,7 @@ metadata:
 
 Crea tableros y diagramas profesionales con calidad editorial, diseno limpio, cero amontonamientos y editabilidad nativa total en formato `.excalidraw`.
 
-Combina los principios de **Diagram Design** (densidad 4/10, regla del acento unico, eliminacion de ruido visual) con el **Motor de Inferencia de Audiencia**, los **27 Tipos Visuales de Diagramacion**, y los **9 Motores de Layout Geometrico Base**.
+Combina los principios de **Diagram Design** (densidad 4/10, regla del acento unico, eliminacion de ruido visual) con el **Motor de Inferencia de Audiencia**, los **27 Tipos Visuales de Diagramacion**, la **Gramática Editorial de 5 Primitivas (Quad-Cards, Chevrons, Rails, Step Axes, Legends)** y la métrica de **Archetype Fitness**.
 
 ---
 
@@ -28,7 +28,26 @@ Sketion adapta autonomamente la seleccion de tipos visuales, la densidad de info
 
 ---
 
-## 1. Catalogo Maestro de los 27 Tipos Visuales de Sketion 4.0
+## 1. Los 5 Patrones Editoriales de Diagram Design (render/excalidraw_builder.py)
+
+1. **Tarjetas de 4 Esquinas (`add_quad_card`):**
+   - **Top-Left:** Mini-badge de rol (`EXT`, `STORE`, `ORCH`, `FLOW`, `QUERY`, `BI`, `CUS`, `WHS`).
+   - **Top-Right:** Icono vectorial monocromático nítido (`postgres`, `minio`, `airflow`, `redis`, `server`).
+   - **Centro:** Título en Sans Bold 14-16px + Subtítulo con metadata técnica (`CDC · SQL · API`).
+   - **Bottom:** Mini-pills de tipo de dato o estado (`DB`, `LS`, `FL`, `TB`).
+   - **Dimensiones Compactas Anti-Stretch:** Ancho máximo $w \le 340\text{px}$, altura proporcional $h \in [110, 135]\text{px}$.
+2. **Cinta Chevron Superior (`add_chevron_ribbon`):**
+   - Cinta de etapas concatenadas (`DATA SOURCES` $\rightarrow$ `INGESTION` $\rightarrow$ `STORAGE` $\rightarrow$ `TRANSFORM` $\rightarrow$ `VISUALIZATION`).
+3. **Rieles Verticales Laterales (`add_vertical_rails`):**
+   - Columnas para aspectos transversales (`ORCHESTRATION`, `SECURITY`, `OBSERVABILITY`).
+4. **Eje de Pasos Circulares (`add_step_badge_axis`):**
+   - Círculos numerados para workflows y swimlanes (`1 ORDER`, `2 VERIFY`, `3 ALLOCATE`).
+5. **Bloque de Leyenda y Filosofía (`add_legend_footer`):**
+   - Swatches de color, tipos de flechas y notas editoriales en cursiva (*"One coral. Position is the signal — color reserved for the recommended option."*).
+
+---
+
+## 2. Catalogo Maestro de los 27 Tipos Visuales de Sketion 4.0
 
 ### 1. Data Platforms & Lakehouse
 * **`medallion`:** Almacenamiento Lakehouse multi-tier (`Raw` $\rightarrow$ `Bronze` $\rightarrow$ `Silver` $\rightarrow$ `Gold` $\rightarrow$ `Archive`).
@@ -55,7 +74,7 @@ Sketion adapta autonomamente la seleccion de tipos visuales, la densidad de info
 * **`flowchart`:** Flujograma de decision logica con nodos de evaluacion y bifurcacion de caminos.
 
 ### 4. Procesos & Operaciones
-* **`swimlane`:** Flujo de trabajo interdepartamental segregado por carriles funcionales.
+* **`swimlane`:** Flujo de trabajo interdepartamental segregado por carriles funcionales con eje de pasos.
 * **`process`:** Flujo secuencial continuo de proceso de negocio con traspasos (handoffs) entre actores.
 * **`gantt`:** Cronograma de fases, duraciones, dependencias y puertas de aprobacion (gates).
 * **`timeline`:** Eje cronologico con hitos estrategicos alternados arriba y abajo sin colisiones.
@@ -70,25 +89,25 @@ Sketion adapta autonomamente la seleccion de tipos visuales, la densidad de info
 
 ---
 
-## 2. Uso via CLI
+## 3. Uso via CLI
 
 ```bash
 # Listar los 27 tipos visuales disponibles:
 python3 sketion_cli.py types
 
-# Generar un tipo especifico:
+# Generar un tipo especifico con calidad editorial:
 python3 sketion_cli.py generate "Pipeline Lakehouse E-Commerce" --type medallion --output lakehouse.excalidraw --validate
 ```
 
 ---
 
-## 3. Checklist de Calidad antes de Entregar
+## 4. Checklist de Calidad Editorial antes de Entregar
 
 - [ ] El archivo tiene extension `.excalidraw` y es JSON valido minificado.
+- [ ] Las tarjetas utilizan el patrón Quad-Corner con ancho compacto ($w \le 340\text{px}$).
 - [ ] La estructura del diagrama responde a la audiencia objetivo (CEO, Ops, Tech, Devs, Data).
-- [ ] Si es un User Journey, existe correspondencia 1:1 entre pasos y slots de captura.
-- [ ] Si es una planta operativa, existen flechas de transito fisico entre zonas.
-- [ ] El texto dentro de todas las tarjetas esta centrado vertical y horizontalmente.
-- [ ] Los scopes tienen separacion limpia (minimo 65px de gutter) sin solapamiento.
-- [ ] Se utilizo la paleta editorial con maximo 1 acento focal principal.
-- [ ] El validador `validate_scene()` devuelve `PASS` con puntuacion global >= 90/100.
+- [ ] Los scopes anchos usan cuadrículas internas en lugar de tarjetas estiradas.
+- [ ] Se utilizo la paleta editorial con exactamente 1 acento focal principal (Coral / Pastel Green).
+- [ ] Si es un pipeline de datos, incluye la cinta Chevron superior y rieles laterales de seguridad.
+- [ ] Si es un proceso/swimlane, incluye el eje superior de pasos circulares numerados.
+- [ ] El validador `validate_scene()` devuelve `PASS` con puntuacion global >= 90/100 y `Archetype Fitness` >= 90/100.

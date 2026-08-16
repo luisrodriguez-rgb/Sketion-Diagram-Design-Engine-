@@ -1,11 +1,10 @@
 """
 Sketion 4.0 — Motores de Diagramas de Datos y Lakehouse (engines/data_types.py)
-Implementa:
-1. Medallion (Raw -> Bronze -> Silver -> Gold -> Archive)
-2. Data Flow (Role-Scoped Analytics Pipeline)
-3. DP Integration (Sources -> Core Storage -> BI / Consumer APIs)
-4. DP Security Matrix (Per-Role Access Permissions)
-5. ER / Data Model (Entities + Fields + Types + PK/FK)
+Incorpora la gramática editorial de Diagram Design:
+- Tarjetas de 4 esquinas (add_quad_card) con badges de rol, iconos vectoriales y pills
+- Cinta de chevrons concatenados superior (add_chevron_ribbon)
+- Rieles verticales y leyendas estructuradas (add_legend_footer)
+- Dimensiones compactas anti-stretch (w <= 340px)
 """
 
 from typing import Dict, Any, List, Optional, Tuple
@@ -32,75 +31,95 @@ PALETTE = {
 # 1. MEDALLION LAKEHOUSE STORAGE
 # =============================================================================
 def render_medallion(scene: ExcalidrawScene, title: str, stages: List[Dict[str, Any]],
-                     x: float, y: float, w: float = 2800.0, h: float = 850.0,
+                     x: float, y: float, w: float = 2400.0, h: float = 820.0,
                      frame_id: Optional[str] = None) -> str:
     fid = frame_id or scene.add_frame(f"MEDALLION: {title}", x, y, w, h)
-    scene.add_text(x + 50, y + 35, title.upper(), font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid)
-    scene.add_text(x + 50, y + 75, "arquitectura lakehouse multi-tier: ingesta raw, sanitizacion, limpieza y agregacion analitica", font_size=16, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
+    scene.add_text(x + 50, y + 35, title.upper(), font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid)
+    scene.add_text(x + 50, y + 72, "arquitectura lakehouse multi-tier: ingesta raw, sanitizacion, limpieza y agregacion analitica", font_size=14, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
+
+    # Chevron Ribbon Superior
+    stage_names = [s.get("name", f"Tier {i+1}") for i, s in enumerate(stages)]
+    scene.add_chevron_ribbon(x + 50.0, y + 115.0, w - 100.0, h=36.0, stages=stage_names, bg=PALETTE["INK"], text_color="#FFFFFF", frame_id=fid)
 
     col_count = len(stages)
-    gap = 40.0
-    col_w = (w - 120.0 - (col_count - 1) * gap) / col_count
+    gap = 35.0
+    col_w = (w - 100.0 - (col_count - 1) * gap) / col_count
+
+    badge_map = ["RAW", "BRZ", "SLV", "GLD", "ARC"]
+    icon_map = ["database", "server", "postgres", "monitoring", "bucket"]
 
     for i, stage in enumerate(stages):
-        cx = x + 60.0 + i * (col_w + gap)
-        cy = y + 130.0
-        s_title = stage.get("name", f"Tier {i+1}")
+        col_x = x + 50.0 + i * (col_w + gap)
+        col_y = y + 175.0
+        s_name = stage.get("name", f"Tier {i+1}")
         s_desc = stage.get("desc", "")
-        s_items = stage.get("items", [])
+        items = stage.get("items", [])
         is_gold = stage.get("is_gold", False)
-        
-        bg = PALETTE["PASTEL_GREEN"] if is_gold else (PALETTE["PASTEL_BLUE"] if i == 0 else "#FFFFFF")
-        scene.add_scope_container(cx, cy, col_w, 520.0, label=s_title, stroke=PALETTE["CARD_BORDER"], bg=bg, frame_id=fid)
-        
-        # Meta info
-        scene.add_text(cx + 20, cy + 50, s_desc, font_size=12, font_family=3, color=PALETTE["MUTED"], frame_id=fid)
-        
-        # Items
-        for ii, item in enumerate(s_items):
-            iy = cy + 90.0 + ii * 100.0
-            scene.add_bound_card(cx + 20, iy, col_w - 40.0, 80.0, item,
-                                 bg="#FFFFFF", stroke=PALETTE["INK"], text_color=PALETTE["INK"],
-                                 font_size=13, roundness_type=3, frame_id=fid)
 
-    scene.add_banner(x + 60, y + 680, w - 120, 50,
-                     "regla lakehouse: almacenamiento delta/parquet inmutable con transformaciones aciclicas.",
-                     bg=PALETTE["BANNER_PINK"], text_color=PALETTE["INK"], font_size=14, frame_id=fid)
+        bg = PALETTE["PASTEL_GREEN"] if is_gold else "#FFFFFF"
+        stroke = PALETTE["INK"] if is_gold else PALETTE["CARD_BORDER"]
+        scene.add_scope_container(col_x, col_y, col_w, 550.0, label=s_name.upper(), stroke=stroke, bg=bg, frame_id=fid)
+
+        badge_txt = badge_map[i] if i < len(badge_map) else "DATA"
+        icon_name = icon_map[i] if i < len(icon_map) else "database"
+
+        for j, item_text in enumerate(items):
+            item_y = col_y + 65.0 + j * 125.0
+            card_w = col_w - 40.0
+            card_h = 105.0
+            is_hero_item = is_gold and (j == 0)
+            
+            scene.add_quad_card(col_x + 20.0, item_y, card_w, card_h,
+                                item_text, sublabel=s_desc,
+                                badge=badge_txt, icon=icon_name,
+                                is_hero=is_hero_item, frame_id=fid)
+
+        if i < col_count - 1:
+            scene.add_arrow(col_x + col_w, col_y + 260.0, col_x + col_w + gap, col_y + 260.0,
+                            stroke=PALETTE["INK"], stroke_w=2.0, frame_id=fid)
+
+    # Leyenda Inferior
+    scene.add_legend_footer(x + 50.0, y + 755.0, w - 100.0,
+                            swatches=[
+                                {"label": "Gold Lakehouse (Focal)", "bg": "#FFF5F2", "stroke": "#E03A2F"},
+                                {"label": "Standard Lakehouse Tier", "bg": "#FFFFFF", "stroke": "#0C0C0C"},
+                                {"label": "Data Flow", "is_arrow": True, "stroke": "#0C0C0C"}
+                            ],
+                            note="data contracts enforce schema evolution · lakehouse is the source of truth",
+                            frame_id=fid)
+
     scene.auto_fit_frame(fid, padding=50.0)
     return fid
 
 
 # =============================================================================
-# 2. DATA FLOW (ROLE-SCOPED PIPELINE)
+# 2. DATA FLOW (ROLE-SCOPED ANALYTICS PIPELINE)
 # =============================================================================
-def render_data_flow(scene: ExcalidrawScene, title: str, roles: List[str],
-                     stages: List[str], tasks: List[Dict[str, Any]],
-                     x: float, y: float, w: float = 2800.0, h: float = 850.0,
+def render_data_flow(scene: ExcalidrawScene, title: str,
+                     roles: List[str], stages: List[str],
+                     tasks: List[Dict[str, Any]], x: float, y: float,
+                     w: float = 2400.0, h: float = 820.0,
                      frame_id: Optional[str] = None) -> str:
     fid = frame_id or scene.add_frame(f"DATA FLOW: {title}", x, y, w, h)
-    scene.add_text(x + 50, y + 35, title.upper(), font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid)
-    scene.add_text(x + 50, y + 75, "pipeline analitico segregado por roles funcionales y etapas de transformacion", font_size=16, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
+    scene.add_text(x + 50, y + 35, title.upper(), font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid)
+    scene.add_text(x + 50, y + 72, "pipeline analitico segregado por roles funcionales y etapas de transformacion", font_size=14, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
 
-    # Cabeceras de etapas (Columnas)
-    stage_w = (w - 360.0) / len(stages)
-    for si, s_name in enumerate(stages):
-        sx = x + 300.0 + si * stage_w
-        scene.add_bound_card(sx, y + 130.0, stage_w - 20.0, 45.0, s_name,
-                             bg=PALETTE["INK"], stroke=PALETTE["INK"], text_color="#FFFFFF",
-                             font_size=12, roundness_type=None, frame_id=fid)
+    # Cabeceras de etapas (Chevron Ribbon)
+    scene.add_chevron_ribbon(x + 280.0, y + 115.0, w - 330.0, h=36.0, stages=stages, bg=PALETTE["INK"], text_color="#FFFFFF", frame_id=fid)
 
-    # Carriles de roles (Filas)
+    # Carriles de roles
+    stage_w = (w - 330.0) / len(stages)
     role_h = 160.0
     for ri, r_name in enumerate(roles):
-        ry = y + 195.0 + ri * (role_h + 15.0)
-        # Etiqueta de rol
-        scene.add_bound_card(x + 60.0, ry, 220.0, role_h, r_name,
+        ry = y + 175.0 + ri * (role_h + 15.0)
+        # Etiqueta de rol lateral
+        scene.add_bound_card(x + 50.0, ry, 210.0, role_h, r_name.upper(),
                              bg=PALETTE["PASTEL_BLUE"] if ri == 0 else "#FFFFFF",
-                             stroke=PALETTE["CARD_BORDER"], text_color=PALETTE["INK"],
+                             stroke=PALETTE["INK"], text_color=PALETTE["INK"],
                              font_size=13, roundness_type=3, frame_id=fid)
         
-        # Grid line de carril
-        scene.add_rect(x + 290.0, ry, w - 350.0, role_h, bg="#FFFFFF",
+        # Carril contenedor
+        scene.add_rect(x + 275.0, ry, w - 325.0, role_h, bg="#FFFFFF",
                        stroke=PALETTE["CARD_BORDER"], stroke_w=1.0, roundness_type=3, frame_id=fid)
 
     # Posicionar tareas
@@ -108,11 +127,15 @@ def render_data_flow(scene: ExcalidrawScene, title: str, roles: List[str],
         r_idx = task.get("role_idx", 0)
         s_idx = task.get("stage_idx", 0)
         t_label = task.get("label", "")
-        tx = x + 310.0 + s_idx * stage_w
-        ty = y + 215.0 + r_idx * (role_h + 15.0)
-        scene.add_bound_card(tx, ty, stage_w - 40.0, 110.0, t_label,
-                             bg=PALETTE["PASTEL_GREEN"] if task.get("is_hero") else "#FFFFFF",
-                             stroke=PALETTE["INK"], text_color=PALETTE["INK"], font_size=12, frame_id=fid)
+        is_hero = task.get("is_hero", False)
+        
+        tx = x + 295.0 + s_idx * stage_w
+        ty = y + 195.0 + r_idx * (role_h + 15.0)
+        card_w = min(320.0, stage_w - 30.0)
+        
+        scene.add_quad_card(tx, ty, card_w, 120.0, t_label, sublabel=f"Stage {s_idx+1}",
+                            badge="TASK", icon="pipeline" if is_hero else "server",
+                            is_hero=is_hero, frame_id=fid)
 
     scene.auto_fit_frame(fid, padding=50.0)
     return fid
@@ -124,39 +147,48 @@ def render_data_flow(scene: ExcalidrawScene, title: str, roles: List[str],
 def render_dp_integration(scene: ExcalidrawScene, title: str,
                           sources: List[str], core_services: List[str],
                           consumers: List[str], x: float, y: float,
-                          w: float = 2800.0, h: float = 850.0,
+                          w: float = 2400.0, h: float = 820.0,
                           frame_id: Optional[str] = None) -> str:
     fid = frame_id or scene.add_frame(f"DP INTEGRATION: {title}", x, y, w, h)
-    scene.add_text(x + 50, y + 35, title.upper(), font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid)
-    scene.add_text(x + 50, y + 75, "topologia de integracion: ingesta de fuentes heterogeneas -> almacenamiento core -> consumidores", font_size=16, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
+    scene.add_text(x + 50, y + 35, title.upper(), font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid)
+    scene.add_text(x + 50, y + 72, "topologia de integracion: ingesta de fuentes heterogeneas -> almacenamiento core -> consumidores", font_size=14, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
+
+    # Ribbon Superior
+    scene.add_chevron_ribbon(x + 50.0, y + 115.0, w - 100.0, h=36.0,
+                             stages=["1. SOURCES", "2. INGESTION", "3. STORAGE & CORE", "4. ANALYTICS", "5. CONSUMERS"],
+                             bg=PALETTE["INK"], text_color="#FFFFFF", frame_id=fid)
 
     sections = [
-        ("1. FUENTES DE DATOS", 700.0, sources, PALETTE["PASTEL_BLUE"]),
-        ("2. DATA PLATFORM CORE", 1000.0, core_services, PALETTE["PASTEL_GREEN"]),
-        ("3. CONSUMIDORES & BI", 850.0, consumers, "#FFFFFF")
+        ("1. FUENTES DE DATOS", 600.0, sources, "EXT", "database", False),
+        ("2. DATA PLATFORM CORE", 850.0, core_services, "CORE", "server", True),
+        ("3. CONSUMIDORES & BI", 750.0, consumers, "BI", "monitoring", False)
     ]
 
-    curr_x = x + 60.0
-    sec_rects = []
-    for s_title, sw, s_items, s_bg in sections:
-        sy = y + 130.0
-        sh = 520.0
-        scene.add_scope_container(curr_x, sy, sw, sh, label=s_title, stroke=PALETTE["CARD_BORDER"], bg=s_bg, frame_id=fid)
-        sec_rects.append((curr_x, sy, sw, sh))
+    curr_x = x + 50.0
+    sec_coords = []
+    scope_y = y + 175.0
+    scope_h = 550.0
 
-        for ii, item in enumerate(s_items):
-            iy = sy + 70.0 + ii * 105.0
-            scene.add_bound_card(curr_x + 30.0, iy, sw - 60.0, 85.0, item,
-                                 bg="#FFFFFF", stroke=PALETTE["INK"], text_color=PALETTE["INK"],
-                                 font_size=13, roundness_type=3, frame_id=fid)
+    for s_title, s_w, s_items, s_badge, s_icon, s_is_hero in sections:
+        bg = PALETTE["PASTEL_GREEN"] if s_is_hero else "#FFFFFF"
+        stroke = PALETTE["INK"] if s_is_hero else PALETTE["CARD_BORDER"]
+        scene.add_scope_container(curr_x, scope_y, s_w, scope_h, label=s_title, stroke=stroke, bg=bg, frame_id=fid)
 
-        curr_x += sw + 65.0
+        for j, item_text in enumerate(s_items):
+            iy = scope_y + 65.0 + j * 135.0
+            cw = s_w - 40.0
+            ch = 110.0
+            scene.add_quad_card(curr_x + 20.0, iy, cw, ch, item_text, sublabel="CDC · Batch · Real-time",
+                                badge=s_badge, icon=s_icon, is_hero=s_is_hero and (j == 1), frame_id=fid)
 
-    # Flechas entre scopes
-    scene.add_arrow(sec_rects[0][0] + sec_rects[0][2], y + 350.0, sec_rects[1][0], y + 350.0,
-                    stroke=PALETTE["INK"], stroke_w=2.0, label="Ingest Pipeline", orthogonal=True, frame_id=fid)
-    scene.add_arrow(sec_rects[1][0] + sec_rects[1][2], y + 350.0, sec_rects[2][0], y + 350.0,
-                    stroke=PALETTE["INK"], stroke_w=2.0, label="Query & API", orthogonal=True, frame_id=fid)
+        sec_coords.append((curr_x, scope_y, s_w, scope_h))
+        curr_x += s_w + 40.0
+
+    # Conectores inter-scope
+    scene.add_arrow(sec_coords[0][0] + sec_coords[0][2], scope_y + 250.0,
+                    sec_coords[1][0], scope_y + 250.0, stroke=PALETTE["INK"], stroke_w=2.0, frame_id=fid)
+    scene.add_arrow(sec_coords[1][0] + sec_coords[1][2], scope_y + 250.0,
+                    sec_coords[2][0], scope_y + 250.0, stroke=PALETTE["INK"], stroke_w=2.0, frame_id=fid)
 
     scene.auto_fit_frame(fid, padding=50.0)
     return fid
@@ -168,28 +200,27 @@ def render_dp_integration(scene: ExcalidrawScene, title: str,
 def render_dp_security_matrix(scene: ExcalidrawScene, title: str,
                               roles: List[str], components: List[str],
                               matrix_data: List[List[str]], x: float, y: float,
-                              w: float = 2800.0, h: float = 850.0,
+                              w: float = 2400.0, h: float = 820.0,
                               frame_id: Optional[str] = None) -> str:
     fid = frame_id or scene.add_frame(f"SECURITY MATRIX: {title}", x, y, w, h)
-    scene.add_text(x + 50, y + 35, title.upper(), font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid)
-    scene.add_text(x + 50, y + 75, "matriz de control de acceso por rol (rbac): permisos sobre componentes del ecosistema de datos", font_size=16, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
+    scene.add_text(x + 50, y + 35, title.upper(), font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid)
+    scene.add_text(x + 50, y + 72, "matriz de control de acceso y politicas de seguridad por rol (rbac)", font_size=14, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
 
-    headers = ["Componente / Recurso"] + roles
+    headers = ["Componente / Recurso"] + [r.upper() for r in roles]
     rows = []
-    for c_idx, comp_name in enumerate(components):
-        row_vals = [comp_name] + matrix_data[c_idx]
-        rows.append({"values": row_vals})
+    for comp_idx, comp_name in enumerate(components):
+        row_vals = [comp_name] + matrix_data[comp_idx]
+        rows.append({"name": comp_name, "values": row_vals})
 
-    grid = compute_matrix_layout(start_x=x + 60.0, start_y=y + 130.0, headers=headers, rows=rows)
+    grid = compute_matrix_layout(x + 50.0, y + 130.0, headers, rows, min_col_w=180.0)
 
-    # Cabeceras
-    for cell in grid["headers"]:
-        c = cell["col"]
+    # Cabecera de Matriz
+    for c, cell in enumerate(grid["headers"]):
         scene.add_bound_card(cell["x"], cell["y"], cell["w"], cell["h"], headers[c],
                              bg=PALETTE["INK"], stroke=PALETTE["INK"], text_color="#FFFFFF",
                              font_size=12, roundness_type=None, frame_id=fid)
 
-    # Celdas con Pills de permiso
+    # Celdas
     for r, row_cells in enumerate(grid["rows"]):
         vals = rows[r]["values"]
         for c, cell in enumerate(row_cells):
@@ -198,7 +229,6 @@ def render_dp_security_matrix(scene: ExcalidrawScene, title: str,
             stroke = PALETTE["CARD_BORDER"]
             text_color = PALETTE["INK"]
             
-            # Solo un foco sutil en la celda crítica de partner
             if c == len(row_cells) - 1 and val.upper() == "READ":
                 bg = PALETTE["PAIN_BG"]
                 stroke = PALETTE["PAIN_BORDER"]
@@ -222,53 +252,47 @@ def render_dp_security_matrix(scene: ExcalidrawScene, title: str,
 # =============================================================================
 def render_er_model(scene: ExcalidrawScene, title: str,
                     entities: List[Dict[str, Any]], relations: List[Tuple[str, str, str]],
-                    x: float, y: float, w: float = 2800.0, h: float = 850.0,
+                    x: float, y: float, w: float = 2400.0, h: float = 820.0,
                     frame_id: Optional[str] = None) -> str:
-    fid = frame_id or scene.add_frame(f"DATA MODEL: {title}", x, y, w, h)
-    scene.add_text(x + 50, y + 35, title.upper(), font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid)
-    scene.add_text(x + 50, y + 75, "diagrama entidad-relacion: esquema relacional tipado con claves primarias (pk) y foraneas (fk)", font_size=16, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
+    fid = frame_id or scene.add_frame(f"ER MODEL: {title}", x, y, w, h)
+    scene.add_text(x + 50, y + 35, title.upper(), font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid)
+    scene.add_text(x + 50, y + 72, "modelo entidad-relacion relacional con campos tipados, claves primarias (pk) y foraneas (fk)", font_size=14, font_family=2, color=PALETTE["PAIN_RED"], frame_id=fid)
 
-    ent_coords = {}
-    card_w = 480.0
-    for idx, ent in enumerate(entities):
-        e_id = ent.get("id", f"ent_{idx}")
-        e_name = ent.get("name", "Entity")
-        e_fields = ent.get("fields", [])
+    entity_coords = {}
+    ent_count = len(entities)
+    spacing = (w - 100.0) / max(1, ent_count)
+
+    for ei, ent in enumerate(entities):
+        eid = ent.get("id", f"ent_{ei}")
+        ename = ent.get("name", f"Entity {ei+1}")
+        fields = ent.get("fields", [])
         
-        row_i = idx // 4
-        col_i = idx % 4
-        ex = x + 60.0 + col_i * (card_w + 120.0)
-        ey = y + 140.0 + row_i * 380.0
+        ex = x + 50.0 + ei * spacing
+        ey = y + 150.0
+        ew = min(320.0, spacing - 30.0)
+        eh = 60.0 + len(fields) * 32.0
         
-        # Header de Entidad
-        scene.add_bound_card(ex, ey, card_w, 45.0, e_name.upper(),
-                             bg=PALETTE["INK"], stroke=PALETTE["INK"], text_color="#FFFFFF",
-                             font_size=13, roundness_type=None, frame_id=fid)
+        # Header de Entidad con Badge DB
+        scene.add_rect(ex, ey, ew, 40.0, bg=PALETTE["INK"], stroke=PALETTE["INK"], roundness_type=None, frame_id=fid)
+        scene.add_text(ex + 15.0, ey + 10.0, ename.upper(), font_size=13, font_family=2, color="#FFFFFF", frame_id=fid)
+        scene.add_icon("database", ex + ew - 30.0, ey + 8.0, size=22.0, color="#FFFFFF", frame_id=fid)
         
-        # Cuerpo de Campos
-        body_h = max(180.0, len(e_fields) * 35.0 + 20.0)
-        scene.add_rect(ex, ey + 45.0, card_w, body_h, bg="#FFFFFF", stroke=PALETTE["CARD_BORDER"], stroke_w=1.0, frame_id=fid)
-        
-        for fi, f_str in enumerate(e_fields):
-            fy = ey + 55.0 + fi * 35.0
-            is_pk = "PK" in f_str
-            is_fk = "FK" in f_str
-            f_color = PALETTE["PAIN_RED"] if is_pk else (PALETTE["INK"] if is_fk else PALETTE["MUTED"])
-            scene.add_text(ex + 20.0, fy, f_str, font_size=12, font_family=3, color=f_color, frame_id=fid)
+        # Caja de Campos
+        scene.add_rect(ex, ey + 40.0, ew, eh - 40.0, bg="#FFFFFF", stroke=PALETTE["INK"], stroke_w=1.5, roundness_type=3, frame_id=fid)
+        for fi, fld in enumerate(fields):
+            fy = ey + 50.0 + fi * 28.0
+            is_pk = "PK" in fld.upper()
+            fcol = PALETTE["PAIN_RED"] if is_pk else PALETTE["INK"]
+            scene.add_text(ex + 15.0, fy, fld, font_size=11, font_family=2, color=fcol, frame_id=fid)
             
-        ent_coords[e_id] = (ex, ey, card_w, body_h + 45.0)
+        entity_coords[eid] = (ex, ey, ew, eh)
 
-    # Relaciones entre entidades
-    for from_id, to_id, rel_cardinality in relations:
-        if from_id in ent_coords and to_id in ent_coords:
-            fx, fy, fw, fh = ent_coords[from_id]
-            tx, ty, tw, th = ent_coords[to_id]
-            if tx >= fx + fw:
-                scene.add_arrow(fx + fw, fy + 50.0, tx, ty + 50.0,
-                                stroke=PALETTE["INK"], stroke_w=1.5, label=rel_cardinality, orthogonal=True, frame_id=fid)
-            elif tx < fx:
-                scene.add_arrow(fx, fy + 50.0, tx + tw, ty + 50.0,
-                                stroke=PALETTE["INK"], stroke_w=1.5, label=rel_cardinality, orthogonal=True, frame_id=fid)
+    for from_ent, to_ent, rel_label in relations:
+        if from_ent in entity_coords and to_ent in entity_coords:
+            fx, fy, fw, fh = entity_coords[from_ent]
+            tx, ty, tw, th = entity_coords[to_ent]
+            scene.add_arrow(fx + fw, fy + 40.0, tx, ty + 40.0,
+                            stroke=PALETTE["INK"], stroke_w=1.5, label=rel_label, orthogonal=True, frame_id=fid)
 
     scene.auto_fit_frame(fid, padding=50.0)
     return fid

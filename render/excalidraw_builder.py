@@ -506,6 +506,176 @@ class ExcalidrawScene:
         self.add_icon(icon, x + 16.0, y + 16.0, size=24.0, color=stroke, frame_id=frame_id)
         return container, text_elem
 
+    def add_quad_card(self, x: float, y: float, w: float, h: float,
+                      title: str, sublabel: Optional[str] = None,
+                      badge: Optional[str] = "EXT",
+                      icon: Optional[str] = None,
+                      pills: Optional[List[str]] = None,
+                      bg: str = "#FFFFFF", stroke: str = "#0C0C0C",
+                      text_color: str = "#0C0C0C", is_hero: bool = False,
+                      frame_id: Optional[str] = None) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+        """
+        Crea la Tarjeta Editorial de 4 Esquinas (Diagram Design Quad-Corner Card):
+        - Top-Left: Mini-badge de rol (EXT, STORE, ORCH, VIRT, etc.)
+        - Top-Right: Icono vectorial monocromático (postgres, redis, minio, etc.)
+        - Centro: Título en 15px Sans Bold + Subtítulo con metadata técnica (CDC · SQL · API)
+        - Bottom: Mini-pills de tipo de dato o estado (DB, LS, FL, TB)
+        """
+        card_bg = "#FFF5F2" if is_hero else bg
+        card_stroke = "#E03A2F" if is_hero else stroke
+        card_stroke_w = 2.0 if is_hero else 1.5
+        
+        container = self.add_rect(x, y, w, h, bg=card_bg, stroke=card_stroke,
+                                  stroke_w=card_stroke_w, roundness_type=3, frame_id=frame_id)
+        
+        # 1. Top-Left Badge
+        if badge:
+            bw = max(38.0, len(badge) * 7.5 + 14.0)
+            badge_bg = "#FFEFEF" if is_hero else "#F1F5F9"
+            badge_stroke = "#F05A5A" if is_hero else "#CBD5E1"
+            badge_text_col = "#E03A2F" if is_hero else "#475569"
+            self.add_rect(x + 12.0, y + 12.0, bw, 20.0, bg=badge_bg, stroke=badge_stroke,
+                          stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+            self.add_text(x + 12.0 + (bw - len(badge) * 6.5) * 0.5, y + 14.0, badge,
+                          font_size=10, font_family=2, color=badge_text_col, frame_id=frame_id)
+
+        # 2. Top-Right Icon
+        if icon:
+            icon_col = "#E03A2F" if is_hero else card_stroke
+            self.add_icon(icon, x + w - 36.0, y + 10.0, size=24.0, color=icon_col, frame_id=frame_id)
+
+        # 3. Center Content (Title + Subtitle)
+        text_id = rid()
+        container["boundElements"].append({"id": text_id, "type": "text"})
+        
+        full_text = f"{title}\n{sublabel}" if sublabel else title
+        text_elem = self._base_element("text", x, y + 36.0, w, h - 50.0,
+                                       text_color, "transparent", frame_id=frame_id)
+        text_elem["id"] = text_id
+        text_elem.update({
+            "fontSize": 14,
+            "fontFamily": 2,
+            "text": full_text,
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "containerId": container["id"],
+            "originalText": full_text,
+            "lineHeight": 1.25,
+            "baseline": 14,
+            "autoResize": True
+        })
+        self.elements.append(text_elem)
+
+        # 4. Bottom Data Pills (Optional)
+        if pills:
+            if len(pills) >= 1:
+                p1 = pills[0]
+                self.add_rect(x + 12.0, y + h - 22.0, 26.0, 14.0, bg="#E2E8F0", stroke="#94A3B8", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+                self.add_text(x + 15.0, y + h - 22.0, p1, font_size=9, font_family=2, color="#334155", frame_id=frame_id)
+            if len(pills) >= 2:
+                p2 = pills[1]
+                self.add_rect(x + w - 38.0, y + h - 22.0, 26.0, 14.0, bg="#E2E8F0", stroke="#94A3B8", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+                self.add_text(x + w - 35.0, y + h - 22.0, p2, font_size=9, font_family=2, color="#334155", frame_id=frame_id)
+
+        return container, text_elem
+
+    def add_chevron_ribbon(self, x: float, y: float, w: float, h: float = 38.0,
+                           stages: Optional[List[str]] = None,
+                           bg: str = "#1E293B", text_color: str = "#FFFFFF",
+                           frame_id: Optional[str] = None):
+        """Crea la cinta superior de chevrons concatenados de macro-pipeline."""
+        if not stages:
+            stages = ["DATA SOURCES", "INGESTION", "STORAGE", "TRANSFORM", "VISUALIZATION"]
+            
+        stage_count = len(stages)
+        stage_w = (w - (stage_count - 1) * 8.0) / stage_count
+        
+        for i, sname in enumerate(stages):
+            sx = x + i * (stage_w + 8.0)
+            self.add_rect(sx, y, stage_w, h, bg=bg, stroke=bg, roundness_type=3, frame_id=frame_id)
+            self.add_text(sx + (stage_w - len(sname) * 7.5) * 0.5, y + 10.0, sname.upper(),
+                          font_size=11, font_family=2, color=text_color, frame_id=frame_id)
+
+    def add_vertical_rails(self, x: float, y: float, w: float, h: float,
+                           rails: Optional[List[Dict[str, Any]]] = None,
+                           frame_id: Optional[str] = None):
+        """Crea los rieles laterales verticales para aspectos transversales (Orquestación, Seguridad, Observabilidad)."""
+        if not rails:
+            rails = [
+                {"title": "ORCHESTRATION", "bg": "#1E293B", "text_color": "#FFFFFF"},
+                {"title": "SECURITY", "bg": "#E03A2F", "text_color": "#FFFFFF"},
+                {"title": "OBSERVABILITY", "bg": "#1E293B", "text_color": "#FFFFFF"}
+            ]
+            
+        rail_count = len(rails)
+        rail_h = (h - (rail_count - 1) * 10.0) / rail_count
+        
+        for i, r in enumerate(rails):
+            ry = y + i * (rail_h + 10.0)
+            rbg = r.get("bg", "#1E293B")
+            rtxt = r.get("title", "")
+            rcol = r.get("text_color", "#FFFFFF")
+            
+            self.add_rect(x, ry, w, rail_h, bg=rbg, stroke=rbg, roundness_type=3, frame_id=frame_id)
+            
+            # Texto apilado verticalmente o compacto
+            stacked = "\n".join(list(rtxt))
+            self.add_text(x + (w - 14.0) * 0.5, ry + 15.0, stacked,
+                          font_size=10, font_family=2, color=rcol, frame_id=frame_id)
+
+    def add_step_badge_axis(self, x: float, y: float, total_w: float,
+                            steps: List[str], hero_idx: int = -1,
+                            frame_id: Optional[str] = None):
+        """Crea el eje superior de pasos con insignias circulares numeradas."""
+        step_count = len(steps)
+        spacing = total_w / max(1, step_count - 1)
+        
+        for i, stxt in enumerate(steps):
+            cx = x + i * spacing
+            is_hero = (i == hero_idx)
+            
+            bg = "#E03A2F" if is_hero else "#FFFFFF"
+            stroke = "#E03A2F" if is_hero else "#94A3B8"
+            tcol = "#FFFFFF" if is_hero else "#475569"
+            
+            # Círculo numerado
+            self.add_ellipse(cx - 12.0, y, 24.0, 24.0, bg=bg, stroke=stroke, stroke_w=1.5, frame_id=frame_id)
+            self.add_text(cx - 4.0, y + 4.0, str(i + 1), font_size=11, font_family=2, color=tcol, frame_id=frame_id)
+            
+            # Etiqueta de paso debajo
+            lbl_w = len(stxt) * 7.0
+            self.add_text(cx - lbl_w * 0.5, y + 28.0, stxt.upper(),
+                          font_size=10, font_family=2, color="#E03A2F" if is_hero else "#64748B", frame_id=frame_id)
+
+    def add_legend_footer(self, x: float, y: float, w: float,
+                          swatches: Optional[List[Dict[str, Any]]] = None,
+                          note: Optional[str] = None,
+                          frame_id: Optional[str] = None):
+        """Crea el bloque inferior de leyenda estructurada y filosofía editorial."""
+        self.add_text(x, y, "LEGEND", font_size=11, font_family=2, color="#64748B", frame_id=frame_id)
+        
+        cur_x = x + 70.0
+        if swatches:
+            for sw in swatches:
+                label = sw.get("label", "")
+                bg = sw.get("bg", "#FFFFFF")
+                stroke = sw.get("stroke", "#0C0C0C")
+                is_dashed = sw.get("dashed", False)
+                is_arrow = sw.get("is_arrow", False)
+                
+                if is_arrow:
+                    self.add_line(cur_x, y + 8.0, cur_x + 30.0, y + 8.0, stroke=stroke, stroke_w=1.5, dashed=is_dashed, frame_id=frame_id)
+                    cur_x += 38.0
+                else:
+                    self.add_rect(cur_x, y, 24.0, 14.0, bg=bg, stroke=stroke, stroke_w=1.5, roundness_type=3, frame_id=frame_id)
+                    cur_x += 30.0
+                    
+                self.add_text(cur_x, y + 1.0, label, font_size=11, font_family=2, color="#334155", frame_id=frame_id)
+                cur_x += len(label) * 7.5 + 25.0
+                
+        if note:
+            self.add_text(x + w - len(note) * 7.2, y + 1.0, note, font_size=11, font_family=1, color="#64748B", frame_id=frame_id)
+
     def to_dict(self) -> Dict[str, Any]:
         """Genera el diccionario del archivo .excalidraw completo."""
         return {

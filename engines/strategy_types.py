@@ -190,7 +190,7 @@ def render_it_current_state(scene: ExcalidrawScene, title: str,
     scene.add_scope_container(x + 60.0, y + 130.0, 850.0, 520.0, label="1. ECOSISTEMA ACTUAL (SILOS HEREDADOS)", stroke=PALETTE["PAIN_BORDER"], bg=PALETTE["PAIN_BG"], frame_id=fid)
     for li, lsys in enumerate(legacy_systems):
         scene.add_bound_card(x + 90.0, y + 190.0 + li * 95.0, 790.0, 75.0, lsys,
-                             bg="#FFFFFF", stroke=PALETTE["PAIN_BORDER"], text_color=PALETTE["INK"], font_size=12, frame_id=fid)
+                             bg="#FFFFFF", stroke=PALETTE["CARD_BORDER"], text_color=PALETTE["INK"], font_size=12, frame_id=fid)
 
     # 2. Dolores Operativos (Post-its)
     scene.add_scope_container(x + 970.0, y + 130.0, 800.0, 520.0, label="2. PUNTOS DE DOLOR & FRICCIÓN", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid)

@@ -2,7 +2,7 @@
 
 **Motor editorial de diseno y generacion de diagramas inteligentes, libres de amontonamientos y 100% editables en formato nativo .excalidraw.**
 
-Inspirado en los principios de diseno de **Diagram Design** (densidad visual 4/10, regla del acento unico, conectores ortogonales a 90 grados) y construido sobre una **arquitectura desacoplada en 4 capas** con **Motor de Inferencia de Audiencia**, **Catálogo Completo de los 27 Tipos Visuales**, **Simetria 1:1 en Journeys**, **Enrutamiento Inter-Zonas** y **Validador de Semantic Hard Constraints**.
+Inspirado en los principios de diseno de **Diagram Design** (densidad visual 4/10, regla del acento unico, conectores ortogonales a 90 grados) y construido sobre una **arquitectura desacoplada en 4 capas** con **Motor de Inferencia de Audiencia**, **Catálogo Completo de los 27 Tipos Visuales**, **Gramática Editorial de 5 Primitivas (Quad-Cards, Cintas Chevron, Rieles Verticales, Ejes de Pasos, Leyendas Estructuradas)**, **Simetria 1:1 en Journeys**, **Enrutamiento Inter-Zonas** y **Validador de Semantic Hard Constraints & Archetype Fitness**.
 
 ---
 
@@ -11,7 +11,7 @@ Inspirado en los principios de diseno de **Diagram Design** (densidad visual 4/1
 ### Opcion 1: Instalacion en 1 Comando para Agentes y Terminal (Antigravity / Cursor / Windsurf / Claude Code)
 Ejecuta en tu terminal para instalar Sketion como Skill Global y habilitar el comando `sketion`:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/luisrodriguez-rgb/Sketion-Diagram-Design-Engine-/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/luisrodriguez-rgb/Sketion-Diagram-Design-Engine-.git/main/install.sh | bash
 ```
 
 ### Opcion 2: Instalacion como Paquete Python (CLI Global)
@@ -23,13 +23,13 @@ Luego puedes usarlo en cualquier carpeta de tu equipo:
 # Listar los 27 tipos visuales disponibles:
 sketion types
 
-# Generar un diagrama de Lakehouse Medallion:
+# Generar un diagrama de Lakehouse Medallion con acabado Diagram Design:
 sketion generate "Arquitectura Lakehouse E-Commerce" --type medallion --output lakehouse.excalidraw --validate
 
 # Validar calidad visual de un archivo existente
 sketion validate mi_diagrama.excalidraw
 
-# Ejecutar el benchmark de 9 pruebas adversariales
+# Ejecutar el benchmark de pruebas adversariales
 sketion benchmark
 ```
 
@@ -38,6 +38,24 @@ Si usas Claude en la web (Claude Projects / Custom Instructions) o ChatGPT:
 1. Abre el archivo [`CLAUDE_PROJECT_INSTRUCTIONS.md`](CLAUDE_PROJECT_INSTRUCTIONS.md).
 2. Copia todo su contenido y pegalo en las **Instrucciones del Proyecto** de Claude o en las **Custom Instructions**.
 3. Pidele a Claude: *"Disena un diagrama en formato Excalidraw para [tu problema]"* y te generara el JSON listo para importar en [excalidraw.com](https://excalidraw.com).
+
+---
+
+## 🎨 Los 5 Patrones Editoriales de Diagram Design
+
+1. **Tarjetas de 4 Esquinas (`Quad-Corner Cards`):**
+   * Badge de rol superior izquierdo (`EXT`, `STORE`, `ORCH`, `FLOW`, `BI`).
+   * Icono vectorial monocromático superior derecho (`postgres`, `minio`, `redis`, `server`).
+   * Título central en Sans Bold 14-16px + Metadata técnica inferior.
+   * Límite de ancho compacto ($w \le 340\text{px}$) anti-stretch.
+2. **Cinta Chevron Superior (`Pipeline Ribbon`):**
+   * Cabecera macro de etapas concatenadas (`DATA SOURCES` $\rightarrow$ `INGESTION` $\rightarrow$ `STORAGE` $\rightarrow$ `TRANSFORM` $\rightarrow$ `VISUALIZATION`).
+3. **Rieles Verticales Laterales (`Cross-Cutting Rails`):**
+   * Columnas laterales para aspectos transversales (`ORCHESTRATION`, `SECURITY`, `OBSERVABILITY`).
+4. **Eje de Pasos Circulares Numerados (`Step Badge Axis`):**
+   * Círculos numerados para workflows y swimlanes (`1 ORDER`, `2 VERIFY`, `3 ALLOCATE`).
+5. **Bloque de Leyenda y Filosofía (`Legend Footer`):**
+   * Fila inferior con swatches de color y notas editoriales en cursiva (*"One coral. Position is the signal — color reserved for the recommended option."*).
 
 ---
 
@@ -77,14 +95,14 @@ Si usas Claude en la web (Claude Projects / Custom Instructions) o ChatGPT:
 
 ## 4. Evaluacion de Calidad y Benchmarks
 
-Sketion incluye un sistema de autoevaluacion de 6 dimensiones que garantiza calidad editorial minima de **90/100**:
+Sketion incluye un sistema dual de autoevaluacion que garantiza calidad visual mínima de **90/100** y ajuste estructural (*Archetype Fitness*) de **100/100**:
 
 ```bash
-# Correr la suite de 9 casos adversariales
-sketion benchmark
-
 # Correr la suite de los 27 tipos visuales
 python3 tests/test_all_27_types.py
+
+# Correr el benchmark editorial de Diagram Design (Open Data Lake)
+python3 tests/render_open_data_lake_benchmark.py
 ```
 
 ---

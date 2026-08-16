@@ -2,110 +2,165 @@
 
 **Motor editorial de diseno y generacion de diagramas inteligentes y 100% editables en formato nativo .excalidraw.**
 
-Inspirado en los principios de diseno de **Diagram Design** (densidad 4/10, regla del acento unico, conectores ortogonales a 90 grados) y construido sobre una **arquitectura desacoplada en 4 capas** con auditoria de **Fidelidad Semantica**, **Calidad Visual** y **Bucle de Auto-Correccion**.
+Inspirado en los principios de diseno de **Diagram Design** (densidad visual 4/10, regla del acento unico, conectores ortogonales a 90 grados) y construido sobre una **arquitectura desacoplada en 4 capas** con auditoria de **Fidelidad Semantica**, **Calidad Visual**, **Semantic Hard Constraints** y **Bucle de Auto-Correccion**.
 
 ---
 
-## Por que Sketion?
+## 1. Arquitectura de Dos Niveles: Motores Geometricos y Arquetipos de Negocio
 
-La mayoria de herramientas de IA generan diagramas como imagenes estaticas (SVG/PNG) o producen diagramas sin criterio visual ni jerarquia estructurada.
-
-**Sketion resuelve ambos problemas:**
-1. **Calidad Editorial Estricta:** Aplica un sistema de tokens de diseno (`PAPER`, `INK`, `ACCENT`), evita decoraciones innecesarias y enruta flechas con codos ortogonales limpios y carriles de retorno (*Track Lanes*).
-2. **Editabilidad Nativa Total:** Genera archivos `.excalidraw` validos v2, con texto estrictamente vinculado a contenedores (`containerId` <-> `boundElements`) y serializacion JSON minificada.
-3. **Evaluacion de Fidelidad y Auto-Correccion:** El motor evalua tanto la estetica visual como la fidelidad con respecto a la intencion del usuario, auto-reparando desviaciones antes de entregar el archivo.
-4. **Catálogo de 20 Arquetipos:** Soporta composiciones de alto impacto (El Duelo Before/After, Las Fases con numerales gigantes, El Cerebro Radial, Swimlanes, Embudo, Piramide, etc.).
-
----
-
-## Arquitectura Desacoplada en 4 Capas
+Sketion 3.3 opera mediante una separacion estricta entre la **geometria matematica** y la **composicion editorial de negocio**:
 
 ```text
-                  PROMPT / IDEA DEL USUARIO
-                             |
-        +-------------------------------------------+
-        | 1. MODELO SEMANTICO (semantic/)           |
-        |    - Representacion intermedia tipada     |
-        |    - Scopes / Zonas de infraestructura    |
-        |    - 3 Niveles de Detalle (Simple/Bal/Det)|
-        +--------------------+----------------------+
-                             |
-        +-------------------------------------------+
-        | 2. MOTOR DE LAYOUT (layout/)              |
-        |    - flow.py / hierarchy.py / grid.py     |
-        |    - routing.py (Codos ortogonales 90 deg)|
-        +--------------------+----------------------+
-                             |
-        +-------------------------------------------+
-        | 3. RENDER EXCALIDRAW (render/)            |
-        |    - Primitivas nativas (cajas, textos)   |
-        |    - Vinculacion bidireccional estricta   |
-        |    - Centrado geometrico Y de texto       |
-        |    - JSON minificado sin indentacion      |
-        +--------------------+----------------------+
-                             |
-        +-------------------------------------------+
-        | 4. QUALITY VALIDATOR & REPAIR (validation)|
-        |    - Visual Quality Score (Densidad 4/10) |
-        |    - Semantic Fidelity Score (Coverage)   |
-        |    - Semantic Hard Constraints Engine     |
-        |    - Self-Correction Loop (Repair Engine) |
-        +--------------------+----------------------+
-                             |
-                 ARCHIVO .excalidraw 100% EDITABLE
+                  PROMPT / REQUISITOS DEL USUARIO
+                                |
+                                v
++---------------------------------------------------------------+
+| CAPA EDITORIAL: 20 ARQUETIPOS DE COMPOSICION VISUAL (A - T)   |
+| (El Duelo, Las Fases, El Cerebro, La Serpiente, La Cebolla...) |
++-------------------------------+-------------------------------+
+                                |
+                                v
++---------------------------------------------------------------+
+| CAPA GEOMETRICA: 9 MOTORES DE LAYOUT BASE (layout/ & engines/)|
+| (flow.py, hierarchy.py, grid.py, routing.py, network, etc.)   |
++-------------------------------+-------------------------------+
+                                |
+                                v
++---------------------------------------------------------------+
+| CAPA DE RENDER: PRIMITIVAS NATIVAS Y TOKENS (render/)         |
+| (containerId <-> boundElements, stickies rotados, banners)    |
++-------------------------------+-------------------------------+
+                                |
+                                v
++---------------------------------------------------------------+
+| CAPA DE AUDITORIA: SEMANTIC HARD CONSTRAINTS (validation/)    |
+| (Fidelidad semantica inmutable, densidad 4/10, auto-repair)   |
++-------------------------------+-------------------------------+
+                                |
+                    ARCHIVO .excalidraw NATIVO
 ```
 
 ---
 
-## Los 20 Arquetipos de Composicion Visual
+## 2. Los 9 Motores Geometricos Base (Algoritmos de Layout)
 
-| Codigo | Arquetipo | Estructura Geometrica | Caso de Uso Principal |
+Ubicados en `layout/` y `engines/recipes.py`, constituyen la infraestructura computacional de posicionamiento:
+
+| Motor Base | Archivo / Modulo | Algoritmo Geometrico | Responsabilidad Matematica |
 | :--- | :--- | :--- | :--- |
-| **A** | **El Cerebro** | Hub circular central con 4 ramas radiales | Plataforma completa en un solo hub central |
-| **B** | **Las Fases** | 6 cuadrantes con numerales gigantes | Roadmaps de 90 dias, progresiones con gates |
-| **C** | **La Serpiente** | Curva S continua en vaiven (Boustrophedon) | Procesos lineales de 8 a 16 pasos |
-| **D** | **El Duelo (VS)** | 2 mitades enfrentadas con espina de stickies | Antes vs Despues / Legacy vs Moderno |
-| **E** | **La Cadena** | Swimlanes paralelos por actor con handoffs | Procesos multi-actor con llamadas API |
-| **F** | **El Embudo** | Bloques trapezoidales descendentes | Conversion de ventas, pipelines de seleccion |
-| **G** | **La Piramide** | Capas horizontales apiladas de base a cuspide | Modelos de madurez, capas de seguridad |
-| **H** | **El Radar 2x2** | Eje cartesiano en 4 cuadrantes pastel | Priorizacion Impacto vs Esfuerzo, riesgos |
-| **I** | **El Flywheel** | Circulo de 4-6 nodos con flechas perimetrales | Bucles de crecimiento y retencion |
-| **J** | **La Cebolla** | Anillos concentricos anidados hacia el nucleo | Clean Architecture, Hexagonal, Gobernanza |
-| **K** | **El Kanban WIP** | Columnas de estado con limites WIP | Pipelines agiles, colas de trabajo, releases |
-| **L** | **El Iceberg** | Linea de agua: 15% visible vs 85% oculto | Deuda tecnica, complejidad backend vs UI |
-| **M** | **La Espina** | Eje horizontal con costillas diagonales | Analisis de causa raiz (Ishikawa), post-mortems |
-| **N** | **Galeria 3x3** | Grilla modular simetrica con status badges | Catalogo de microfrontends, suite de APIs |
-| **O** | **Arbol Decision** | Dilema inicial con ramas SI/NO | Protocolos de escalado, triaje, reglas |
-| **P** | **Cadena de Valor**| Franjas superiores y cajas con chevron | Mapeo estrategico de operaciones y margen |
-| **Q** | **Benchmark** | Podio de columnas con barras de llenado | Comparativa de latencia, throughput y costes |
-| **R** | **Roadmap Gates** | Timeline horizontal con diamantes de control | Lanzamientos v3.0, auditorias SOC2 / ISO |
-| **S** | **Matriz CRUD** | Grilla de Servicios (Y) vs Entidades (X) | Mapeo de propiedad de datos (Data Ownership) |
-| **T** | **Caja Explotada**| Caja macro con lineas guia a zoom | Explicar el funcionamiento interno de un motor |
+| **Flow** | `layout/flow.py` | Distribucion secuencial horizontal y sinusoidal | Calcula coordenadas continuas con espaciado elastico (95px) para conectores y pastillas. |
+| **Timeline** | `layout/flow.py` | Eje cronologico alternado | Distribuye hitos temporales arriba y abajo de un eje central sin colision de texto. |
+| **Tree** | `layout/hierarchy.py`| Arbol jerarquico balanceado | Posiciona nodos padres e hijos en multiples niveles calculando anchos de sub-arbol. |
+| **Radial** | `layout/hierarchy.py`| Distribucion perimetral angular | Calcula radios y angulos equidistantes alrededor de un nodo o hub central. |
+| **Grid / Matrix** | `layout/grid.py` | Grilla tabular bidimensional proporcional | Calcula anchos de columna dinamicos segun longitud de texto (hasta 560px) y alturas de fila por lineas reales. |
+| **Board / Lanes** | `layout/grid.py` | Carriles verticales paralelos (Kanban) | Gestiona columnas de ancho uniforme y apilamiento vertical de tarjetas. |
+| **Dashboard** | `layout/grid.py` | Matriz de chips numericos | Distribuye tarjetas de KPI en grillas de 2, 3 o 4 columnas con proporciones fijas. |
+| **Network / Red** | `engines/recipes.py` | Grafo distribuido con Scopes | Agrupa nodos por columnas de infraestructura aplicando gutter de 65px entre contenedores. |
+| **Routing** | `layout/routing.py` | Enrutamiento ortogonal y Track Lanes | Genera codos a 90 grados, anclajes de salida en saltos de columna y carriles de retorno superiores. |
 
 ---
 
-## Sistema de Diseno y Tokens Semanticos
+## 3. El Catalogo Maestro de los 20 Arquetipos de Composicion Visual
+
+Los arquetipos representan las recetas de diseno de alto nivel que resuelven problemas de negocio reales combinando los motores base:
+
+| Codigo | Nombre del Arquetipo | Motores Base Utilizados | Estructura y Descripcion Visual |
+| :--- | :--- | :--- | :--- |
+| **A** | **El Cerebro** | `Radial` + `Grid` + `Routing` | Hub circular central conectado por lineas radiales a 4 columnas tematicas, con chips numericos al pie, banner de remate inferior y slots de captura. |
+| **B** | **Las Fases** | `Grid` + `Routing` + `Banners` | Grilla de 6 cuadrantes con numerales gigantes (72px a 120px) en el lateral, cajas con borde discontinuo, badges pastel y barras de entregable obligatorio en rojo. |
+| **C** | **La Serpiente** | `Flow` (Wave) + `Routing` | Flujo en curva continua en vaiven (Boustrophedon) con badges circulares numerados, ideal para procesos de 8 a 16 pasos sin desbordar el ancho del canvas. |
+| **D** | **El Duelo (VS)** | `Grid` + `Sticky` + `Routing` | Pantalla dividida en dos mitades enfrentadas con espina central de post-its amarillos rotados (-1.5 a +1.5 grados), tarjetas de dolor (gris) vs solucion (coral) y metricas comparativas. |
+| **E** | **La Cadena** | `Board` + `Grid` + `Routing` | Swimlanes paralelos horizontales organizados por actor con columnas de tiempo y flechas ortogonales que representan handoffs y llamadas API. |
+| **F** | **El Embudo (Funnel)** | `Flow` + `Banners` | Bloques trapezoidales descendentes de ancho decreciente con pastillas laterales que indican el porcentaje de caida (drop-off rate) entre etapas. |
+| **G** | **La Piramide** | `Hierarchy` + `Banners` | Capas horizontales apiladas de base a cuspide para modelos de madurez DevOps/IA y capas de seguridad defensiva (Defense-in-Depth). |
+| **H** | **El Radar 2x2** | `Grid` + `Routing` | Eje cartesiano ortogonal que divide el espacio en 4 cuadrantes con fondos pastel suaves para clasificar iniciativas por Impacto vs Esfuerzo o matrices de riesgo. |
+| **I** | **El Flywheel** | `Radial` + `Routing` | Nodos en orbita circular continua con flechas en arco perimetral en sentido horario y un nodo central que sintetiza el efecto compuesto del bucle. |
+| **J** | **La Cebolla (Onion)** | `Hierarchy` (Nested) | Cajas concentricas anidadas desde el nucleo (dominio) hacia las capas exteriores (aplicacion, adaptadores, UI) con flechas de dependencia hacia adentro. |
+| **K** | **El Kanban WIP** | `Board` + `Sticky` | Columnas verticales de estado con limites de trabajo en curso (WIP Limits) en las cabeceras y tarjetas apiladas con tags de prioridad. |
+| **L** | **El Iceberg** | `Grid` + `Banners` | Division por linea de agua: 15% superior visible (UI simple) vs 85% inferior sumergido (infraestructura oculta, bases de datos y conciliacion). |
+| **M** | **La Espina (Ishikawa)** | `Hierarchy` + `Routing` | Eje horizontal continuo que apunta al problema final a la derecha, con costillas diagonales superiores e inferiores para analisis de causa raiz y post-mortems. |
+| **N** | **Galeria 3x3** | `Dashboard` + `Grid` | Cuadricula modular simetrica de tarjetas uniformes con micro-iconos, descripcion de dos lineas y status badges ([GA], [BETA], [DEPRECATED]). |
+| **O** | **Arbol de Decision** | `Tree` + `Routing` | Nodo dilema inicial que bifurca mediante pastillas condicionales ([SI] / [NO]) hacia nodos secundarios y cajas terminales de accion. |
+| **P** | **Cadena de Valor** | `Flow` + `Grid` | Franjas horizontales superiores de soporte y secuencia inferior de 5 actividades primarias, rematando con un chevron triangular de margen comercial. |
+| **Q** | **Pilares Benchmark** | `Board` + `Dashboard` | Podio de 3 a 5 columnas verticales con barras de nivel proporcional, valores numericos gigantes y lista de ventajas competitivas. |
+| **R** | **Roadmap con Gates** | `Timeline` + `Banners` | Eje cronologico continuo con diamantes de control (Quality Gates) que contienen listas de verificacion indispensables para avanzar de fase. |
+| **S** | **Matriz CRUD** | `Grid` (Proportional) | Tabla bidireccional donde las filas representan servicios y las columnas entidades de datos, con celdas que contienen micro-pills [C][R][U][D]. |
+| **T** | **Caja Explotada** | `Network` + `Routing` | Caja macro a la izquierda conectada mediante lineas de proyeccion conicas hacia un marco detallado a la derecha que desglosa su funcionamiento interno. |
+
+---
+
+## 4. Reglas de Micro-Diseno y Cero Colisiones (Core 3.3)
+
+Sketion aplica formulas matematicas para garantizar que ningun elemento colisione o quede desalineado:
+
+1. **Centrado Geometrico Bidimensional:**
+   El texto no se coloca en el borde superior de la tarjeta. Se calcula la altura real del bloque de texto:
+   $$\text{text\_h} = \text{line\_count} \times \text{font\_size} \times 1.35$$
+   $$\text{text\_y} = y + \frac{\text{card\_h} - \text{text\_h}}{2}$$
+   Se activa `autoResize: True` y `verticalAlign: "middle"` para centrado exacto.
+
+2. **Gutter Seguro de 65px entre Scopes:**
+   Las columnas de infraestructura se disponen secuencialmente asegurando un margen lateral de 65px entre bordes adyacentes. Cero solapamiento de contenedores.
+
+3. **Anclaje de Salida en Saltos de Columna (Cross-Scope Bypass):**
+   Si una conexion cruza mas de una columna ($dx > 350\text{px}$), su pastilla protectora se ancla en el origen ($x_1 + 55\text{px}, y_1 - 14\text{px}$), dejando los scopes intermedios 100% limpios y sin acumulacion de etiquetas.
+
+4. **Espaciado de Flujo de 95px con Pastilla Centrada:**
+   Las tarjetas secuenciales se separan exactamente 95px para que las pastillas de transicion queden suspendidas en el centro exacto de la flecha sin tocar las cajas.
+
+5. **Grillas Tabulares Proporcionales:**
+   El ancho de cada columna de la matriz se calcula segun la longitud maxima de su contenido (hasta 560px para explicaciones) y la altura de fila segun el numero real de lineas.
+
+---
+
+## 5. Sistema de Tokens y Paleta Editorial
 
 Todas las decisiones visuales se rigen por `references/style-guide.md`:
 
-* **`CANVAS` (`#F4F4F4` o `#FFFFFF`):** Fondo del canvas.
-* **`CARD` (`#FFFFFF`):** Fondo de tarjetas de componentes.
-* **`CARD_BORDER` (`#BDBDBD`):** Borde suave de 1.5px.
-* **`INK` (`#0C0C0C`):** Tinta principal para titulos, bordes y texto.
-* **`MUTED` (`#8B8B8B`):** Conectores secundarios y subetiquetas mono.
-* **`STICKY` (`#FFE95C`):** Notas post-it con micro-rotacion (-1.5 a +1.5 grados).
-* **`PAIN_RED` (`#E03A2F`):** Alertas, cuellos de botella y numeros criticos.
-* **`PAIN_BG` (`#FDEFEF`):** Fondo de tarjetas de dolor o advertencia.
-* **`PAIN_BORDER` (`#F05A5A`):** Borde discontinuo de slots de captura.
-* **`BANNER_PINK` (`#F5BEC0`):** Frase de remate inferior.
-* **`PASTEL_BLUE` (`#9BC7E4`):** Cabeceras de fases y zonas de red.
-* **`PASTEL_GREEN` (`#C2E5D3`):** Confirmaciones y estados exitosos.
+```python
+MIRO_PALETTE = {
+    "CANVAS": "#F4F4F4",          # Fondo suave de pizarra
+    "CARD": "#FFFFFF",            # Tarjetas blancas nitidas
+    "CARD_BORDER": "#BDBDBD",     # Borde suave de 1.5px
+    "INK": "#0C0C0C",             # Tinta negra solida para titulares y chips
+    "MUTED": "#8B8B8B",           # Texto secundario y conectores auxiliares
+    "STICKY": "#FFE95C",          # Post-it amarillo con micro-rotacion (-1.5 a +1.5 grados)
+    "PAIN_RED": "#E03A2F",        # Alertas, cuellos de botella y numeros criticos
+    "PAIN_BG": "#FDEFEF",         # Fondo de tarjetas de dolor o advertencia
+    "PAIN_BORDER": "#F05A5A",     # Borde discontinuo de slots de captura
+    "BANNER_PINK": "#F5BEC0",     # Frase de remate inferior
+    "PASTEL_BLUE": "#9BC7E4",     # Cabeceras de fases y zonas de red
+    "PASTEL_GREEN": "#C2E5D3"     # Confirmaciones y estados exitosos
+}
+```
 
 ---
 
-## Suite de Pruebas y Validacion
+## 6. Principio de Semantic Hard Constraints
 
-Ejecucion de pruebas automatizadas:
+Cuando la **Calidad Visual** y la **Fidelidad Semantica** entran en conflicto, Sketion aplica una jerarquia estricta:
+
+```text
+                 +--------------------------------+
+                 |    SEMANTIC HARD CONSTRAINTS   |
+                 |   (Inviolables por Estetica)   |
+                 +---------------+----------------+
+                                 |
+         +-----------------------+-----------------------+
+         |                                               |
+         v                                               v
+[FATAL HARD FAILURES]                           [REPARACIONES PERMITIDAS]
+- Nodo de Dominio Omitido (ej. Ledger)           - Auto-Split en Multi-Frame
+- Arista Crítica Borrada                         - Reduccion de Acentos (>2)
+- Transicion de Estado Invalida                  - Espaciado elastico de Gaps
+- Violacion de Inmutabilidad                     - Enrutamiento por Track Lanes
+```
+
+> **Regla de Oro:** Un diagrama visualmente impecable (100/100) pero que omite un componente critico es un **HARD FAILURE INMEDIATO**. La fidelidad semantica manda sobre la estetica; ante exceso de informacion, la unica respuesta valida es la **descomposicion elastica en multiples marcos coordinados**.
+
+---
+
+## 7. Ejecucion de Pruebas y Benchmarks
 
 ```bash
 # Validacion de regresion visual
@@ -116,4 +171,9 @@ python3 tests/test_stress.py
 
 # Benchmark de fidelidad integral
 python3 tests/benchmark_dogfooding.py
+
+# Generador de casos maestros V4
+python3 PRUEBAS_V4/generate_onboarding_transformation.py
+python3 PRUEBAS_V4/generate_university_space_reservation.py
+python3 PRUEBAS_V4/generate_payment_platform.py
 ```

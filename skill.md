@@ -1,6 +1,6 @@
 ---
 name: sketion-diagram-design
-description: Generador editorial de diagramas y tableros nativos para Excalidraw (.excalidraw). Arquitectura desacoplada en 4 capas (Semantica -> Layout -> Render -> Calidad Visual) con soporte de Smart Defaults, niveles de detalle, Catalogo de 20 Arquetipos Visuales y motor de renderizado editorial de alta precision sin colisiones.
+description: Generador editorial de diagramas y tableros nativos para Excalidraw (.excalidraw). Arquitectura desacoplada en 4 capas (Semantica -> Layout -> Render -> Calidad Visual) con soporte de Smart Defaults, niveles de detalle, Catalogo de 20 Arquetipos Visuales respaldados por 9 Motores Geometricos Base y evaluador de Semantic Hard Constraints sin colisiones.
 license: MIT
 metadata:
   version: "3.3"
@@ -10,7 +10,7 @@ metadata:
 
 Crea tableros y diagramas profesionales con calidad editorial, diseno limpio, cero amontonamientos y editabilidad nativa total en formato `.excalidraw`.
 
-Combina los principios de **Diagram Design** (densidad 4/10, regla del acento unico, eliminacion de ruido visual) con los **Arquetipos Editoriales de Alto Impacto** (Post-it rotados, chips de metrica gigantes, slots de captura y banners de remate) y la precision geometrica del motor de **Sketion 3.3**.
+Combina los principios de **Diagram Design** (densidad 4/10, regla del acento unico, eliminacion de ruido visual) con los **20 Arquetipos de Negocio** y la precision geometrica de sus **9 Motores de Layout Base**.
 
 ---
 
@@ -28,7 +28,70 @@ Combina los principios de **Diagram Design** (densidad 4/10, regla del acento un
 
 ---
 
-## 1. Reglas de Micro-Diseno y Cero Colisiones (Core 3.3)
+## 1. Arquitectura de Dos Niveles: Motores Geometricos y Arquetipos
+
+```text
+PROMPT / REQUISITOS DEL USUARIO
+        |
+        v
+[CAPA EDITORIAL / NEGOCIO] -> 20 Arquetipos Visuales (A - T)
+        |                     (El Duelo, Las Fases, El Cerebro, La Serpiente, etc.)
+        v
+[CAPA GEOMETRICA / LAYOUT]  -> 9 Motores de Layout Base (layout/ & engines/)
+        |                     (flow.py, hierarchy.py, grid.py, routing.py, network)
+        v
+[CAPA DE RENDER NATIVO]     -> Primitivas Excalidraw (.excalidraw)
+        |                     (containerId <-> boundElements, stickies rotados)
+        v
+[CAPA DE AUDITORIA]         -> Semantic Hard Constraints & Auto-Repair Engine
+```
+
+---
+
+## 2. Los 9 Motores Geometricos Base (layout/ & engines/)
+
+| Motor Base | Archivo / Modulo | Algoritmo Geometrico | Responsabilidad Matematica |
+| :--- | :--- | :--- | :--- |
+| **Flow** | `layout/flow.py` | Secuencia horizontal y sinusoidal | Calcula coordenadas continuas con espaciado elastico de 95px. |
+| **Timeline** | `layout/flow.py` | Eje cronologico alternado | Distribuye hitos temporales arriba y abajo del eje central. |
+| **Tree** | `layout/hierarchy.py`| Arbol jerarquico balanceado | Posiciona nodos padres e hijos calculando anchos de sub-arbol. |
+| **Radial** | `layout/hierarchy.py`| Distribucion angular perimetral | Calcula radios y angulos equidistantes alrededor de un hub. |
+| **Grid / Matrix** | `layout/grid.py` | Grilla tabular proporcional | Calcula anchos dinamicos (hasta 560px) y alturas por lineas reales. |
+| **Board / Lanes** | `layout/grid.py` | Carriles verticales paralelos | Gestiona columnas de ancho uniforme y apilamiento vertical. |
+| **Dashboard** | `layout/grid.py` | Matriz de chips numericos | Distribuye tarjetas de KPI en grillas de 2, 3 o 4 columnas. |
+| **Network / Red** | `engines/recipes.py` | Grafo distribuido con Scopes | Agrupa nodos en columnas de infraestructura con gutter de 65px. |
+| **Routing** | `layout/routing.py` | Enrutamiento ortogonal y Track Lanes | Genera codos a 90 grados, anclajes de salida y carriles de retorno. |
+
+---
+
+## 3. Catalogo Maestro de los 20 Arquetipos Visuales (A a T)
+
+| Codigo | Nombre del Arquetipo | Motores Base Utilizados | Caso de Uso Principal |
+| :--- | :--- | :--- | :--- |
+| **A** | **El Cerebro** | `Radial` + `Grid` + `Routing` | Plataforma completa en un solo hub central |
+| **B** | **Las Fases** | `Grid` + `Routing` + `Banners` | Roadmaps de 90 dias, progresiones con gates |
+| **C** | **La Serpiente** | `Flow` (Wave) + `Routing` | Procesos lineales de 8 a 16 pasos |
+| **D** | **El Duelo (VS)** | `Grid` + `Sticky` + `Routing` | Antes vs Despues / Legacy vs Moderno |
+| **E** | **La Cadena** | `Board` + `Grid` + `Routing` | Swimlanes paralelos por actor con handoffs |
+| **F** | **El Embudo (Funnel)** | `Flow` + `Banners` | Conversion de ventas, pipelines de seleccion |
+| **G** | **La Piramide** | `Hierarchy` + `Banners` | Modelos de madurez, capas de seguridad |
+| **H** | **El Radar 2x2** | `Grid` + `Routing` | Priorizacion Impacto vs Esfuerzo, riesgos |
+| **I** | **El Flywheel** | `Radial` + `Routing` | Bucles de crecimiento y retencion |
+| **J** | **La Cebolla (Onion)** | `Hierarchy` (Nested) | Clean Architecture, Hexagonal, Gobernanza |
+| **K** | **El Kanban WIP** | `Board` + `Sticky` | Pipelines agiles, colas de trabajo, releases |
+| **L** | **El Iceberg** | `Grid` + `Banners` | Deuda tecnica, complejidad backend vs UI |
+| **M** | **La Espina (Ishikawa)** | `Hierarchy` + `Routing` | Analisis de causa raiz (Ishikawa), post-mortems |
+| **N** | **Galeria 3x3** | `Dashboard` + `Grid` | Catalogo de microfrontends, suite de APIs |
+| **O** | **Arbol de Decision** | `Tree` + `Routing` | Protocolos de escalado, triaje, reglas |
+| **P** | **Cadena de Valor** | `Flow` + `Grid` | Mapeo estrategico de operaciones y margen |
+| **Q** | **Pilares Benchmark** | `Board` + `Dashboard` | Comparativa de latencia, throughput y costes |
+| **R** | **Roadmap con Gates** | `Timeline` + `Banners` | Lanzamientos v3.0, auditorias SOC2 / ISO |
+| **S** | **Matriz CRUD** | `Grid` (Proportional) | Mapeo de propiedad de datos (Data Ownership) |
+| **T** | **Caja Explotada** | `Network` + `Routing` | Explicar el funcionamiento interno de un motor |
+
+---
+
+## 4. Reglas de Micro-Diseno y Cero Colisiones (Core 3.3)
 
 1. **Centrado Geometrico del Texto:**
    - La coordenada Y del elemento de texto se calcula exactamente segun la altura real de las lineas:
@@ -50,7 +113,7 @@ Combina los principios de **Diagram Design** (densidad 4/10, regla del acento un
 
 ---
 
-## 2. Paleta Editorial Miro Nico en Excalidraw
+## 5. Paleta Editorial Miro Nico en Excalidraw
 
 ```python
 MIRO_PALETTE = {
@@ -71,34 +134,29 @@ MIRO_PALETTE = {
 
 ---
 
-## 3. Catalogo Maestro de los 20 Arquetipos Visuales
+## 6. Principio de Semantic Hard Constraints
 
-| Codigo | Arquetipo | Estructura Geometrica | Caso de Uso Principal |
-| :--- | :--- | :--- | :--- |
-| **A** | **El Cerebro** | Hub circular central con 4 ramas radiales | Plataforma completa en un solo hub central |
-| **B** | **Las Fases** | 6 cuadrantes con numerales gigantes | Roadmaps de 90 dias, progresiones con gates |
-| **C** | **La Serpiente** | Curva S continua en vaiven (Boustrophedon) | Procesos lineales de 8 a 16 pasos |
-| **D** | **El Duelo (VS)** | 2 mitades enfrentadas con espina de stickies | Antes vs Despues / Legacy vs Moderno |
-| **E** | **La Cadena** | Swimlanes paralelos por actor con handoffs | Procesos multi-actor con llamadas API |
-| **F** | **El Embudo** | Bloques trapezoidales descendentes | Conversion de ventas, pipelines de seleccion |
-| **G** | **La Piramide** | Capas horizontales apiladas de base a cuspide | Modelos de madurez, capas de seguridad |
-| **H** | **El Radar 2x2** | Eje cartesiano en 4 cuadrantes pastel | Priorizacion Impacto vs Esfuerzo, riesgos |
-| **I** | **El Flywheel** | Circulo de 4-6 nodos con flechas perimetrales | Bucles de crecimiento y retencion |
-| **J** | **La Cebolla** | Anillos concentricos anidados hacia el nucleo | Clean Architecture, Hexagonal, Gobernanza |
-| **K** | **El Kanban WIP** | Columnas de estado con limites WIP | Pipelines agiles, colas de trabajo, releases |
-| **L** | **El Iceberg** | Linea de agua: 15% visible vs 85% oculto | Deuda tecnica, complejidad backend vs UI |
-| **M** | **La Espina** | Eje horizontal con costillas diagonales | Analisis de causa raiz (Ishikawa), post-mortems |
-| **N** | **Galeria 3x3** | Grilla modular simetrica con status badges | Catalogo de microfrontends, suite de APIs |
-| **O** | **Arbol Decision** | Dilema inicial con ramas SI/NO | Protocolos de escalado, triaje, reglas |
-| **P** | **Cadena de Valor**| Franjas superiores y cajas con chevron | Mapeo estrategico de operaciones y margen |
-| **Q** | **Benchmark** | Podio de columnas con barras de llenado | Comparativa de latencia, throughput y costes |
-| **R** | **Roadmap Gates** | Timeline horizontal con diamantes de control | Lanzamientos v3.0, auditorias SOC2 / ISO |
-| **S** | **Matriz CRUD** | Grilla de Servicios (Y) vs Entidades (X) | Mapeo de propiedad de datos (Data Ownership) |
-| **T** | **Caja Explotada**| Caja macro con lineas guia a zoom | Explicar el funcionamiento interno de un motor |
+```text
+                 +--------------------------------+
+                 |    SEMANTIC HARD CONSTRAINTS   |
+                 |   (Inviolables por Estetica)   |
+                 +---------------+----------------+
+                                 |
+         +-----------------------+-----------------------+
+         |                                               |
+         v                                               v
+[FATAL HARD FAILURES]                           [REPARACIONES PERMITIDAS]
+- Nodo de Dominio Omitido (ej. Ledger)           - Auto-Split en Multi-Frame
+- Arista Crítica Borrada                         - Reduccion de Acentos (>2)
+- Transicion de Estado Invalida                  - Espaciado elastico de Gaps
+- Violacion de Inmutabilidad                     - Enrutamiento por Track Lanes
+```
+
+> **Regla de Oro:** Un diagrama visualmente impecable (100/100) pero que omite un componente critico es un **HARD FAILURE INMEDIATO**. La fidelidad semantica manda sobre la estetica; ante exceso de informacion, la unica respuesta valida es la **descomposicion elastica en multiples marcos coordinados**.
 
 ---
 
-## 4. Checklist de Calidad antes de Entregar
+## 7. Checklist de Calidad antes de Entregar
 
 - [ ] El archivo tiene extension `.excalidraw` y es JSON valido minificado.
 - [ ] El texto dentro de todas las tarjetas esta centrado vertical y horizontalmente.
@@ -110,7 +168,7 @@ MIRO_PALETTE = {
 
 ---
 
-## 5. Referencias y Archivos de Prueba
+## 8. Referencias y Archivos de Prueba
 
 - Catalogo Completo de Arquetipos: `docs/catalogo-20-arquetipos-visuales.md`
 - Propuesta de Mejoras Estrategicas: `docs/propuesta-mejoras-miro-sketion.md`

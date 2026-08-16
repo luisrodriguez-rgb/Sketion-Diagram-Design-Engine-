@@ -1,0 +1,75 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://sketion.engine.v7",
+  "elements": [
+    {
+      "id": "frame_25f22083",
+      "type": "frame",
+      "x": 40.0,
+      "y": 40.0,
+      "width": 1100.0,
+      "height": 420.0,
+      "name": "01. Ecosistema Global de Pagos & Liquidación Masiva",
+      "strokeColor": "#CED4DA",
+      "backgroundColor": "#F8F9FA"
+    },
+    {
+      "id": "title_32c756b1",
+      "type": "text",
+      "x": 80.0,
+      "y": 65.0,
+      "text": "PROCESO: ECOSISTEMA GLOBAL DE PAGOS & LIQUIDACIÓN MASIVA",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_25f22083"
+    },
+    {
+      "id": "card_4abf15c8",
+      "type": "rectangle",
+      "x": 80.0,
+      "y": 120.0,
+      "width": 240.0,
+      "height": 110.0,
+      "strokeColor": "#D93829",
+      "backgroundColor": "#FFF5F5",
+      "fillStyle": "solid",
+      "strokeWidth": 2.0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      },
+      "frameId": "frame_25f22083"
+    },
+    {
+      "id": "badge_e19261b9",
+      "type": "text",
+      "x": 94.0,
+      "y": 134.0,
+      "text": "PASO 01 · CORE",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#D93829",
+      "frameId": "frame_25f22083"
+    },
+    {
+      "id": "label_449767b1",
+      "type": "text",
+      "x": 94.0,
+      "y": 158.0,
+      "text": "Payment Orchestrator Core",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_25f22083"
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#FFFFFF",
+    "gridSize": 20
+  }
+}

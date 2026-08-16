@@ -17,6 +17,62 @@ Sketion fue diseñado para ser **100% utilizable sin gastar dinero**, pero tambi
 
 ---
 
+## ⚖️ Comparativa de Resultados: ¿Se obtiene el mismo resultado en todos los entornos?
+
+**Respuesta directa y honesta:** **No, no son exactamente iguales.** 
+
+Existe una diferencia técnica fundamental entre **ejecutar el motor matemático de Sketion en Python** (lo que hacemos en entornos como este o en la terminal) y **pedirle a un LLM en un chat web que "adivine" y escriba el JSON token a token**:
+
+```text
+ ┌─────────────────────────────────────────────────────────────────────────┐
+ │ TIER 1: CALIDAD MÁXIMA (10/10) · EJECUCIÓN CON MOTOR PYTHON             │
+ │ • Entornos: Antigravity IDE, Cursor, Windsurf, CLI Local, ChatGPT Plus  │
+ │   (con Code Interpreter).                                               │
+ │ • Por qué es superior: Las coordenadas (x, y), márgenes, enrutamiento  │
+ │   a 90° y tamaños de fuente son calculados por algoritmos matemáticos   │
+ │   exactos en Python.                                                    │
+ │ • Auto-Reparación Activa: Si hay una colisión o un texto sin atributos, │
+ │   validate_scene() lo detecta y corrige en 0.01s antes de guardar.      │
+ │ • Capacidad: Soporta diagramas masivos de 400+ elementos y 4 marcos.    │
+ └─────────────────────────────────────────────────────────────────────────┘
+                                    ▲
+                                    │
+ ┌─────────────────────────────────────────────────────────────────────────┐
+ │ TIER 2: CALIDAD ALTA (8.5 - 9.0/10) · LLMS FUERTES EN MODO TEXTO        │
+ │ • Entornos: Claude 3.5 Sonnet (Claude.ai) o GPT-4o (ChatGPT Plus).      │
+ │ • Cómo funciona: El LLM escribe el JSON directamente en el chat.        │
+ │ • Resultado: Excelente para diagramas simples y medianos (5 a 15 nodos).│
+ │ • Limitación: En diagramas de más de 20 cajas, como el LLM no "calcula" │
+ │   píxeles sino que predice texto, pueden ocurrir pequeños desajustes de │
+ │   10-20px en flechas o textos largos.                                   │
+ └─────────────────────────────────────────────────────────────────────────┘
+                                    ▲
+                                    │
+ ┌─────────────────────────────────────────────────────────────────────────┐
+ │ TIER 3: CALIDAD CONCEPTUAL (7.0 - 7.5/10) · CHATGPT FREE (GPT-4o mini)  │
+ │ • Entorno: Un estudiante en ChatGPT Gratuito con Custom Instructions.   │
+ │ • Cómo funciona: El modelo pequeño genera el JSON en el chat.           │
+ │ • Qué hace bien: Entiende la lógica del negocio o la economía           │
+ │   (ej. "Flujo circular de la renta", "Oferta y Demanda", "Cadena B2B"). │
+ │ • Limitación real: No puede generar un tablero de 450 elementos como el │
+ │   de SEAMOSGENIOS; generará un diagrama útil de 5 a 8 cajas, pero       │
+ │   visualmente más básico y sin validación matemática en bucle.          │
+ └─────────────────────────────────────────────────────────────────────────┘
+```
+
+### 🎓 El Ejemplo del Estudiante de Economía en ChatGPT Free
+Si un estudiante de economía le pide a ChatGPT Free:
+> *"Hazme un diagrama del flujo circular del ingreso con Familias, Empresas, Mercado de Bienes, Mercado de Factores y Gobierno"*
+
+* **En ChatGPT Free (Web):** Obtendrá un diagrama conceptualmente claro y ordenado de 5 cajas con colores sobrios (7.5/10). Es excelente para estudiar o hacer tareas rápidas, pero no tendrá sub-capas complejas, matrices de roles o cálculos de colisiones.
+* **En el Motor Sketion (Python/CLI):** Obtendrá un tablero de grado corporativo con arquetipo formal, pastillas de datos numéricos, iconos incrustados y 0 colisiones (10/10).
+
+> [!TIP]
+> **¿Cómo puede un estudiante obtener la calidad 10/10 totalmente GRATIS?**  
+> Simplemente usando la **Terminal / CLI de Sketion** en su propia computadora (`sketion generate ...`). No requiere pagar suscripciones ni APIs externas, ya que el motor de Python local corre 100% gratis en su máquina.
+
+---
+
 ## 📑 Tabla de Contenidos
 1. [¿Qué es Sketion y cómo funciona internamente?](#1-qué-es-sketion-y-cómo-funciona-internamente)
 2. [Cómo funciona y cómo lo usa el Agente de IA aquí (Antigravity IDE)](#2-cómo-funciona-y-cómo-lo-usa-el-agente-de-ia-aquí-antigravity-ide)

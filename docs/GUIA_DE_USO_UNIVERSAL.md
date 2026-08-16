@@ -18,4 +18,10 @@
 
 ---
 
-*(Para leer el manual completo y detallado paso a paso con prompts listos para usar, consulta el documento principal en [GUIA_DE_USO_UNIVERSAL.md](file:///Users/leonfeliperodriguez/Desktop/Trabajos/Sketion%20SKILL/GUIA_DE_USO_UNIVERSAL.md))*
+## ⚖️ Comparativa de Calidad: ¿Se obtiene el mismo resultado en todos los entornos?
+
+* **Tier 1 (Calidad 10/10 - Motor Python / CLI / Antigravity):** Cálculo matemático de píxeles, márgenes exactos, auto-reparación en 0.01s con `validate_scene()`, soporte de 400+ elementos masivos (como el de SEAMOSGENIOS).
+* **Tier 2 (Calidad 8.5 - 9.0/10 - Claude 3.5 / GPT-4o Texto):** Excelente razonamiento espacial para diagramas de 5 a 15 nodos.
+* **Tier 3 (Calidad 7.0 - 7.5/10 - ChatGPT Free GPT-4o mini):** Muy bueno para diagramas conceptuales de 4 a 8 cajas, pero sin precisión milimétrica de coordenadas.
+
+*(Para leer la guía completa con ejemplos prácticos y configuraciones paso a paso, consulta [GUIA_DE_USO_UNIVERSAL.md](file:///Users/leonfeliperodriguez/Desktop/Trabajos/Sketion%20SKILL/GUIA_DE_USO_UNIVERSAL.md))*

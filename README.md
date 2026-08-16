@@ -5,6 +5,18 @@
 > **Official Core Certification (Sketion 8.0 — Tri-Intelligence System FROZEN):**  
 > *Sketion 8.0 has successfully passed the Grand Holdout End-to-End Benchmark across 160 blind runs (40 novel scenarios x 4 audience-goal matrices), achieving **Quality Score: 96.0/100**, **Render Fidelity: 89.0/100**, **ATS: 96.0/100**, **PFR: 81.4%**, **RDS: 0.00**, and **0.0% Crashes**.*
 
+---
+
+> [!IMPORTANT]
+> ### 📖 ¿Cómo usar Sketion según tu caso o plataforma?
+> Para saber exactamente cómo configurar, integrar y usar Sketion en tu entorno particular (**Antigravity IDE, ChatGPT Gratuito vs Plus, Claude Pro vs Free, Cursor, Windsurf, Terminal CLI local, VS Code o Excalidraw Web**), lee nuestra guía maestra paso a paso:
+> 👉 [**GUIA_DE_USO_UNIVERSAL.md**](GUIA_DE_USO_UNIVERSAL.md) (o en [`docs/GUIA_DE_USO_UNIVERSAL.md`](docs/GUIA_DE_USO_UNIVERSAL.md))
+> *Incluye: Matriz de Costos (Planes Gratuitos vs Pago), Comparativa de Calidad (Tier 1 Python vs Tier 3 Web LLM), Métodos 100% Gratis sin suscripción y Plantillas de Prompts.*
+
+---
+
+## 🏛️ Arquitectura del Sistema
+
 Inspirado en los principios de diseño de **Diagram Design** (densidad visual 4/10, regla del acento único, conectores ortogonales a 90 grados) y construido sobre una **arquitectura desacoplada de 3 Inteligencias Integradas**:
 1. **Composition Intelligence** (Modelado Narrativo & Oracle Composition Judge FROZEN 1.0).
 2. **Rendering Intelligence** (AnchorGeometry, Routing Ortogonal 90°, Confinamiento de Frames & Cero Colisiones).

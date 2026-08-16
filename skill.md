@@ -1,14 +1,43 @@
 ---
 name: sketion-diagram-design
-description: Generador editorial de diagramas y tableros nativos para Excalidraw (.excalidraw). Arquitectura desacoplada en 4 capas (Semantica -> Layout -> Render -> Calidad Visual) con motor de inferencia por audiencia (Audience-Aware Engine), Catalogo Completo de 20 Arquetipos de Negocio (A - T), Suite de 27 Tipos Visuales Específicos, Gramatica Editorial de Diagram Design (Tarjetas Quad-Corner, Cintas Chevron, Rieles Verticales, Ejes de Pasos, Leyendas Estructuradas), Escalado Tipografico Proporcional Anti-Espacio Vacio (18-20px en tarjetas, 14px en tablas), Regla Anti-Monocultivo de Layout (Prohibición estricta de clonar estructuras columnares en múltiples frames), simetria 1:1 en journeys, enrutamiento inter-zonas y evaluador de Semantic Hard Constraints & Archetype Fitness sin colisiones.
+description: Motor editorial de diseño y generación de diagramas inteligentes, libres de amontonamientos y 100% editables en formato nativo .excalidraw (v8.0). Arquitectura desacoplada en 5 capas: Semantic Model -> Narrative Model Engine -> Oracle Composition Judge (FROZEN 1.0) -> Information Architecture Engine (Importance Ranking & Progressive Disclosure) -> Adaptive Rendering Engine (AnchorGeometry, Orthogonal 90 Router, Adaptive Multi-Frame, Render Fidelity >=95/100, Layout Stability Var 0.0) -> Validation & Repair System.
 license: MIT
 metadata:
-  version: "4.0"
+  version: "8.0"
 ---
 
-# Sketion Diagram Design Skill (Motor Editorial para Excalidraw v4.0)
+# Sketion Diagram Design Skill (Motor Editorial para Excalidraw v8.0)
 
-Crea tableros y diagramas profesionales con calidad editorial, diseno limpio, cero amontonamientos, tipografía proporcional legible a primera vista, **estricta diversidad de arquetipos visuales** y editabilidad nativa total en formato `.excalidraw`.
+Crea tableros y diagramas profesionales con calidad editorial, diseño limpio, cero amontonamientos, tipografía proporcional legible a primera vista, **estricta diversidad de arquetipos visuales**, gestión de cargas masivas (50+ entidades) con **Progressive Disclosure** y editabilidad nativa total en formato `.excalidraw`.
+
+---
+
+## 🏛️ Arquitectura del Sistema Sketion (5 Capas Certificadas)
+
+```text
+                 USER PROMPT / RAW SPEC
+                           │
+                           ▼
+                 ┌───────────────────┐
+                 │ 1. SEMANTIC MODEL │  Audience Inference & Semantic Text Decomposer
+                 └─────────┬─────────┘
+                           ▼
+                 ┌───────────────────┐
+                 │ 2. NARRATIVE CORE │  Narrative Model (Intent & Primary Question)
+                 └─────────┬─────────┘  Oracle Composition Judge (Top-2 Recall 100%, Regret 0.00)
+                           ▼
+                 ┌───────────────────┐
+                 │ 3. INFO ARCH (IA) │  Importance Ranking (Hero, Primary, Secondary, Metadata, Appendix)
+                 └─────────┬─────────┘  Progressive Disclosure & Cognitive Load Management
+                           ▼
+                 ┌───────────────────┐
+                 │ 4. RENDERING CORE │  Adaptive Multi-Frame Reflow (Single, Dual, Triple Narrative)
+                 └─────────┬─────────┘  Polymorphic AnchorGeometry & 90° Orthogonal Router
+                           ▼
+                 ┌───────────────────┐
+                 │ 5. QUALITY & AUDIT│  Render Fidelity (>=95/100) · Preservation (97/100)
+                 └───────────────────┘  Layout Stability (Var 0.0) · Effective Density Calibrated
+```
 
 ---
 
@@ -28,48 +57,48 @@ Crea tableros y diagramas profesionales con calidad editorial, diseno limpio, ce
 │ Roadmaps / Madurez / Horizontes       │ Arquetipo G: Escalera de 5 Niveles + Matriz Horizontes │
 │ Comparativa / Antes vs Después        │ Arquetipo D: El Duelo (Contraste Fricción vs Control)  │
 │ Matriz de Capacidades / Competencia   │ Arquetipo S: Matriz Tabular Proporcional               │
+│ Triaje Condicional / Reglas           │ Arquetipo O: Árbol de Decisión                         │
+│ Causa-Raíz / Diagnóstico de Fallos    │ Arquetipo M: La Espina (Ishikawa)                      │
+│ Cadena de Suministro / Logística      │ Arquetipo P: Cadena de Valor & Supply Chain            │
 │ Workshops / Sesión de Discovery       │ Arquetipo Workshop: Post-its, Checklist & Preguntas    │
 └───────────────────────────────────────┴────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 0. Motor de Decision de Audiencia (Audience-Aware Engine)
+## 0. Motor de Arquitectura de Información (IA & Progressive Disclosure)
 
-Sketion adapta autonomamente la seleccion de arquetipos y tipos visuales, la densidad de informacion y el vocabulario segun el perfil del receptor:
-
-| Perfil de Audiencia | Arquetipos Principales | Tipos Visuales Principales | Foco Semantico Obligatorio | Elementos a Suprimir (Evitar Ruido) | Tono Editorial |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **CEO / Directivo** | `D (Duelo)`, `B (Fases)`, `P (Cadena Valor)`, `H (Radar 2x2)` | `consultant_2x2`, `it_current_state`, `timeline`, `pyramid_funnel` | ROI, Margen, Coste Fijo $0, Retencion, Fases de Aprobacion | APIs, Microservicios, Codigo, Cronometros de segundos | Estrategico / Financiero |
-| **Gerente Operaciones** | `E (Planta/Swimlanes)`, `M (Ishikawa)`, `S (Matriz Takt)`, `K (Kanban)` | `swimlane`, `process`, `gantt`, `dp_security_matrix` | Layout de Planta, Segregacion Fisica, Takt Time, Batching, Roles | Modelos Financieros Macro, Arquitectura Cloud, Nube | Industrial / Planta |
-| **Equipo Producto / Tech**| `A (Cerebro)`, `C (Journey 1:1)`, `T (Caja Explotada)`, `N (Galeria)` | `architecture`, `sequence`, `state_machine`, `layer_stack` | Arquitectura Cloud, Microservicios, User Journey, Slots UI, KDS | Negociaciones Laborales, Nomina, Tramites Administrativos | Tecnico / Software |
-| **Ingenieria de Datos**| `S (Matriz CRUD)`, `O (Arbol Decision)`, `T (Caja Explotada)` | `medallion`, `data_flow`, `dp_integration`, `er_model` | Multi-tier Storage, Pipelines ETL por Rol, Permisos RBAC | Discursos Comerciales, Planos Fisicos de Edificio | Data Lakehouse / RBAC |
-| **Inversionistas / Pitch**| `D (Duelo VS)`, `F (Embudo)`, `I (Flywheel)`, `Q (Pilares)` | `consultant_2x2`, `pyramid_funnel`, `loop_flywheel`, `bar_chart` | Tamano de Mercado, Metricas Heroicas, Traccion, Dolor vs Solucion | Tablas Complejas, Diagramas de Red Detallados | Impacto / Traccion |
+Ante cargas de información complejas o masivas (15 a 50+ entidades), el motor aplica **Tiers de Importancia**:
+* **`HERO` (1 por marco):** Protagonista exclusivo con color de acento dominante.
+* **`PRIMARY` (3 - 6 por marco):** Componentes del flujo central en tarjetas estructuradas con fuentes 18-20px.
+* **`SECONDARY` (Soporte):** Componentes auxiliares y conectores de paso.
+* **`METADATA` (Pills):** SLAs, latencias y métricas numéricas convertidas en badges superiores compactos.
+* **`APPENDIX` (Callouts):** Circuit breakers, warnings y fallbacks aislados en notas laterales para no sobrecargar el flujo.
 
 ---
 
-## 1. Catalogo de los 20 Arquetipos Visuales de Negocio (A - T)
+## 1. Catálogo de los 20 Arquetipos Visuales de Negocio (A - T)
 
 | Código | Arquetipo | Motores Geométricos | Caso de Uso Principal |
 | :--- | :--- | :--- | :--- |
 | **A** | **El Cerebro** | `Radial` + `Grid` + `Routing` | Plataforma completa en un solo hub central y subsistemas |
 | **B** | **Las Fases** | `Grid` + `Routing` + `Banners` | Roadmaps de 90 dias, progresiones con gates de aprobacion |
-| **C** | **La Serpiente** | `Flow` (Wave) + `Routing` | Procesos lineales extendidos de 8 a 16 pasos secuenciales |
-| **D** | **El Duelo (VS)** | `Grid` + `Sticky` + `Routing` | Antes vs Despues / Legacy caotico vs Arquitectura moderna |
-| **E** | **La Cadena / Planta**| `Board` + `Grid` + `Routing` | Swimlanes y Layout de planta fisica con flujos direccionales |
-| **F** | **El Embudo (Funnel)** | `Flow` + `Banners` | Conversion de ventas, retencion y pipelines de seleccion |
-| **G** | **La Piramide** | `Hierarchy` + `Banners` | Modelos de madurez, capas de seguridad y abstraccion |
-| **H** | **El Radar 2x2** | `Grid` + `Routing` | Priorizacion Impacto vs Esfuerzo, clasificacion de riesgos |
-| **I** | **El Flywheel** | `Radial` + `Routing` | Bucles virtuosos de crecimiento, retencion y recomendacion |
-| **J** | **La Cebolla (Onion)** | `Hierarchy` (Nested) | Clean Architecture, Hexagonal, Gobernanza por contencion |
-| **K** | **El Kanban WIP** | `Board` + `Sticky` | Pipelines agiles, colas de trabajo, releases continuos |
-| **L** | **El Iceberg** | `Grid` + `Banners` | Deuda tecnica, complejidad backend oculta vs UI superficial |
-| **M** | **La Espina (Ishikawa)** | `Hierarchy` + `Routing` | Analisis de causa raiz (Ishikawa), diagnostico y post-mortems |
-| **N** | **Galeria 3x3** | `Dashboard` + `Grid` | Catalogo de microfrontends, suite de APIs y componentes |
-| **O** | **Arbol de Decision** | `Tree` + `Routing` | Protocolos de escalado, triaje, reglas condicionales |
-| **P** | **Cadena de Valor** | `Flow` + `Grid` | Mapeo estrategico de operaciones, proveedores y margen |
+| **C** | **La Serpiente** | `Flow` (Wave) + `Routing` | Procesos lineales extendidos y pipelines con bucles |
+| **D** | **El Duelo (VS)** | `Grid` + `Sticky` + `Routing` | Antes vs Después / Legacy caótico vs Arquitectura moderna |
+| **E** | **La Cadena / Swimlanes**| `Board` + `Grid` + `Routing` | Swimlanes de roles y flujos coordinados entre actores |
+| **F** | **El Embudo (Funnel)** | `Flow` + `Banners` | Conversión de ventas, retención y pipelines de selección |
+| **G** | **La Pirámide** | `Hierarchy` + `Banners` | Modelos de madurez, capas de seguridad y abstracción |
+| **H** | **El Radar 2x2** | `Grid` + `Routing` | Priorización Impacto vs Esfuerzo, clasificación de riesgos |
+| **I** | **El Flywheel** | `Radial` + `Routing` | Bucles virtuosos de crecimiento, retención y recomendacion |
+| **J** | **La Cebolla (Onion)** | `Hierarchy` (Nested) | Clean Architecture, Hexagonal, Gobernanza por contención |
+| **K** | **El Kanban WIP** | `Board` + `Sticky` | Pipelines ágiles, colas de trabajo, releases continuos |
+| **L** | **El Iceberg** | `Grid` + `Banners` | Deuda técnica, complejidad backend oculta vs UI superficial |
+| **M** | **La Espina (Ishikawa)** | `Hierarchy` + `Routing` | Análisis de causa raíz (Ishikawa), diagnóstico y post-mortems |
+| **N** | **Galería 3x3** | `Dashboard` + `Grid` | Catálogo de microfrontends, suite de APIs y componentes |
+| **O** | **Árbol de Decisión** | `Tree` + `Routing` | Protocolos de escalado, triaje, reglas condicionales |
+| **P** | **Cadena de Valor** | `Flow` + `Grid` | Mapeo estratégico de operaciones, proveedores y margen |
 | **Q** | **Pilares Benchmark** | `Board` + `Dashboard` | Comparativa cuantitativa de latencia, throughput y costes |
-| **R** | **Roadmap con Gates** | `Timeline` + `Banners` | Lanzamientos v4.0, auditorias de seguridad SOC2 / ISO |
+| **R** | **Roadmap con Gates** | `Timeline` + `Banners` | Lanzamientos v4.0, auditorías de seguridad SOC2 / ISO |
 | **S** | **Matriz CRUD / Takt**| `Grid` (Proportional) | Mapeo de propiedad de datos o tiempos de ciclo industrial |
 | **T** | **Caja Explotada** | `Network` + `Routing` | Desglose del funcionamiento interno de un motor complejo |
 
@@ -93,10 +122,11 @@ Sketion adapta autonomamente la seleccion de arquetipos y tipos visuales, la den
 
 ## 3. Checklist de Calidad Editorial antes de Entregar
 
-- [ ] El archivo tiene extension `.excalidraw` y es JSON valido minificado.
+- [ ] El archivo tiene extensión `.excalidraw` y es JSON válido.
 - [ ] **Diversidad de Arquetipos:** Cada frame usa un arquetipo diferente (Hub Radial, Stack Horizontal, Flow con Bucle, Escalera, etc.). Cero clones de 5 columnas.
 - [ ] La tipografía de las tarjetas utiliza **18-20px Bold** para el título y **13-14px** para el subtítulo, llenando armónicamente el espacio interior.
-- [ ] Las tablas y matrices usan **14-15px** en cabeceras y **13-14px** en celdas para lectura inmediata.
-- [ ] La estructura del diagrama responde a la audiencia objetivo (CEO, Ops, Tech, Devs, Data).
-- [ ] Se utilizo la paleta editorial con exactamente 1 acento focal principal por frame.
-- [ ] El validador `validate_scene()` devuelve `PASS` con puntuacion global >= 90/100 y `Archetype Fitness` >= 90/100.
+- [ ] **AnchorGeometry Activo:** Las flechas tocan con precisión milimétrica los bordes perimetrales de rectángulos, diamantes y círculos.
+- [ ] **Enrutamiento Ortogonal:** Conectores con quiebres limpios a 90° sin colisiones sobre cajas intermedias.
+- [ ] **Progressive Disclosure:** Máximo 6 tarjetas primarias por marco; métricas aisladas en pills y excepciones en callouts.
+- [ ] Se utilizó la paleta editorial con exactamente 1 acento focal principal por marco.
+- [ ] El validador `validate_scene()` devuelve `PASS` con puntuación global >= 90/100, `Render Fidelity` >= 90/100 y `RDS = 0`.

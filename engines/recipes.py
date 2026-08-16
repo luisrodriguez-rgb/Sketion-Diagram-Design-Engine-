@@ -120,46 +120,77 @@ def engine_red(scene: ExcalidrawScene, title: str,
                scopes: Optional[List[Dict[str, Any]]] = None,
                palette: Dict[str, str] = DEFAULT_PALETTE,
                w: float = 1200, h: float = 700) -> str:
-    """Motor RED: Arquitectura distribuida con soporte de Scopes, Doble Jerarquía y Auto-Fit."""
+    """Motor RED: Arquitectura distribuida con ancho de columna uniforme, Scopes dinámicos y Track Lanes."""
     fx, fy = place(w, h)
     fid = scene.add_frame(f"ARQUITECTURA: {title}", fx, fy, w, h)
     
     scene.add_text(fx + 35, fy + 30, title.upper(), font_size=20, font_family=2, color=palette["INK"], frame_id=fid)
 
-    # 1. Render de Scopes (Zonas de infraestructura)
+    # 1. Homogeneización de Ancho por Columna / Scope
+    # Agrupar nodos por scope_id o por posición X similar (+/- 60px)
+    cols: Dict[str, List[Dict[str, Any]]] = {}
+    for node in nodes:
+        cid = node.get("scope_id")
+        if not cid:
+            # Agrupar por columna X aproximada
+            cid = f"col_{int(node.get('rel_x', 50) // 250)}"
+        cols.setdefault(cid, []).append(node)
+
+    for cid, col_nodes in cols.items():
+        max_col_w = max(
+            compute_card_dimensions(n["label"], n.get("sublabel"), n.get("metadata"), font_size=13, min_w=240.0)[0]
+            for n in col_nodes
+        )
+        uniform_w = max(250.0, max_col_w)
+        for n in col_nodes:
+            n["computed_w"] = uniform_w
+
+    # 2. Pre-cálculo de coordenadas y dimensiones de nodos
+    coords_map = {}
+    for node in nodes:
+        nx = fx + node.get("rel_x", 50)
+        ny = fy + node.get("rel_y", 100)
+        card_w = node.get("computed_w", 250.0)
+        calc_w, calc_h = compute_card_dimensions(node["label"], node.get("sublabel"), node.get("metadata"), font_size=13, min_w=card_w)
+        coords_map[node["id"]] = (nx, ny, max(card_w, calc_w), max(85.0, calc_h))
+
+    # 3. Render de Scopes PRIMERO (Z-Index 0: Fondo detrás de las tarjetas)
     if scopes:
         for scope in scopes:
-            sx = fx + scope.get("rel_x", 30)
-            sy = fy + scope.get("rel_y", 80)
-            sw = scope.get("w", 380)
-            sh = scope.get("h", 550)
+            scope_nodes = [n for n in nodes if n.get("scope_id") == scope["id"]]
+            if scope_nodes:
+                sx = min(coords_map[n["id"]][0] for n in scope_nodes) - 25.0
+                sy = min(coords_map[n["id"]][1] for n in scope_nodes) - 52.0
+                sw = max(coords_map[n["id"]][0] + coords_map[n["id"]][2] for n in scope_nodes) - sx + 25.0
+                sh = max(coords_map[n["id"]][1] + coords_map[n["id"]][3] for n in scope_nodes) - sy + 28.0
+            else:
+                sx = fx + scope.get("rel_x", 30)
+                sy = fy + scope.get("rel_y", 80)
+                sw = scope.get("w", 380)
+                sh = scope.get("h", 450)
+            
             s_label = scope.get("label", "SCOPE")
             scene.add_scope_container(sx, sy, sw, sh, label=s_label, stroke=palette["RULE"],
                                       bg=palette["PAPER_CONTAINER"], frame_id=fid)
 
-    # 2. Render de Nodos con Doble Jerarquía Dinámica
+    # 4. Render de Nodos (Z-Index 1: Encima de los Scopes)
     node_map = {}
     for node in nodes:
-        nx = fx + node.get("rel_x", 50)
-        ny = fy + node.get("rel_y", 100)
-        req_w = node.get("w", 240)
-        req_h = node.get("h", 85)
-        
+        nx, ny, card_w, card_h = coords_map[node["id"]]
         is_hero = node.get("is_hero", False)
         is_pain = node.get("is_pain", False)
         bg = palette["ACCENT_BG"] if is_hero else (palette["PAIN_BG"] if is_pain else palette["PAPER_CARD"])
         stroke = palette["ACCENT"] if is_hero else (palette["PAIN"] if is_pain else palette["INK"])
 
-        container, _ = scene.add_dual_card(nx, ny, req_w, req_h,
+        container, _ = scene.add_dual_card(nx, ny, card_w, card_h,
                                            title=node["label"],
                                            sublabel=node.get("sublabel"),
                                            metadata=node.get("metadata"),
                                            bg=bg, stroke=stroke,
                                            text_color=palette["INK"], frame_id=fid)
-        # Guardar las dimensiones reales computadas del contenedor
         node_map[node["id"]] = (container["x"], container["y"], container["width"], container["height"])
 
-    # 3. Conexiones ortogonales con Pastilla Protectora en etiquetas
+    # 4. Conexiones ortogonales con Carriles de Retorno (Track Lanes)
     for edge in edges:
         from_node = node_map.get(edge["from"])
         to_node = node_map.get(edge["to"])
@@ -167,25 +198,31 @@ def engine_red(scene: ExcalidrawScene, title: str,
             fx1, fy1, fw1, fh1 = from_node
             tx2, ty2, tw2, th2 = to_node
             
-            # Anclajes laterales limpios
-            if tx2 >= fx1 + fw1:
+            # Flujo de Retorno (Retroceso horizontal): usar carril superior
+            if tx2 < fx1:
+                start_x = fx1
+                start_y = fy1 + 18.0
+                end_x = tx2 + tw2
+                end_y = ty2 + 18.0
+                return_track_y = min(fy1, ty2) - 35.0
+                scene.add_arrow(start_x, start_y, end_x, end_y, stroke=palette["MUTED"],
+                                stroke_w=1.5, label=edge.get("label"), orthogonal=True,
+                                track_y=return_track_y, frame_id=fid)
+            elif tx2 >= fx1 + fw1:
                 start_x = fx1 + fw1
                 start_y = fy1 + fh1 * 0.5
                 end_x = tx2
                 end_y = ty2 + th2 * 0.5
-            elif fx1 >= tx2 + tw2:
-                start_x = fx1
-                start_y = fy1 + fh1 * 0.5
-                end_x = tx2 + tw2
-                end_y = ty2 + th2 * 0.5
+                scene.add_arrow(start_x, start_y, end_x, end_y, stroke=palette["MUTED"],
+                                stroke_w=1.5, label=edge.get("label"), orthogonal=True, frame_id=fid)
             else:
+                # Vertical en la misma columna
                 start_x = fx1 + fw1 * 0.5
-                start_y = fy1 + fh1
+                start_y = fy1 + fh1 if ty2 > fy1 else fy1
                 end_x = tx2 + tw2 * 0.5
-                end_y = ty2
-
-            scene.add_arrow(start_x, start_y, end_x, end_y, stroke=palette["MUTED"],
-                            stroke_w=1.5, label=edge.get("label"), orthogonal=True, frame_id=fid)
+                end_y = ty2 if ty2 > fy1 else ty2 + th2
+                scene.add_arrow(start_x, start_y, end_x, end_y, stroke=palette["MUTED"],
+                                stroke_w=1.5, label=edge.get("label"), orthogonal=True, frame_id=fid)
 
     scene.auto_fit_frame(fid, padding=60.0)
     return fid

@@ -268,16 +268,18 @@ class ExcalidrawScene:
                   stroke: str = "#64748B", stroke_w: float = 1.5,
                   dashed: bool = False, arrowhead: str = "triangle",
                   label: Optional[str] = None, orthogonal: bool = False,
+                  track_y: Optional[float] = None,
+                  label_pos: Optional[Tuple[float, float]] = None,
                   frame_id: Optional[str] = None) -> Dict[str, Any]:
         """
-        Crea una flecha con soporte ortogonal y Pastilla Protectora (Pill Label)
-        para que el texto jamás choque con la línea de la flecha.
+        Crea una flecha con soporte ortogonal, carriles de retorno (Track Lanes)
+        y Pastilla Protectora (Pill Label) libre de colisiones.
         """
         dx = x2 - x1
         dy = y2 - y1
         stroke_style = "dashed" if dashed else "solid"
 
-        points = compute_orthogonal_arrow(x1, y1, x2, y2) if orthogonal else [[0.0, 0.0], [dx, dy]]
+        points = compute_orthogonal_arrow(x1, y1, x2, y2, track_y=track_y) if orthogonal else [[0.0, 0.0], [dx, dy]]
 
         elem = self._base_element("arrow", x1, y1, dx, dy, stroke, "transparent",
                                   stroke_w=stroke_w, stroke_style=stroke_style, frame_id=frame_id)
@@ -292,14 +294,24 @@ class ExcalidrawScene:
         self.elements.append(elem)
 
         if label:
-            # Pastilla Protectora (Pill Label): Fondo blanco detrás del texto
             label_len = len(str(label))
-            pill_w = max(70.0, label_len * 7.5 + 16.0)
+            pill_w = max(65.0, label_len * 7.5 + 16.0)
             pill_h = 24.0
 
-            # Ubicación en el punto medio del segmento
-            mid_x = x1 + dx * 0.5 - (pill_w * 0.5)
-            mid_y = y1 + dy * 0.5 - (pill_h * 0.5)
+            if label_pos:
+                mid_x = label_pos[0] - (pill_w * 0.5)
+                mid_y = label_pos[1] - (pill_h * 0.5)
+            elif dx < -20 and track_y is not None:
+                # Flujo de retorno por carril superior
+                mid_x = x1 + dx * 0.5 - (pill_w * 0.5)
+                mid_y = track_y - (pill_h * 0.5)
+            elif abs(dx) < 25 and abs(dy) > 100:
+                # Flecha vertical larga: colocar cerca del inicio para evitar tapar nodo intermedio
+                mid_x = x1 - (pill_w * 0.5)
+                mid_y = y1 + 35.0 - (pill_h * 0.5)
+            else:
+                mid_x = x1 + dx * 0.5 - (pill_w * 0.5)
+                mid_y = y1 + dy * 0.5 - (pill_h * 0.5)
 
             # Fondo protector blanco
             pill_bg = self.add_rect(mid_x, mid_y, pill_w, pill_h, bg="#FFFFFF",

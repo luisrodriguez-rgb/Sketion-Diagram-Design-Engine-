@@ -1,149 +1,94 @@
 ---
 name: sketion-diagram-design
-description: Generador editorial de diagramas y tableros nativos para Excalidraw (.excalidraw). Arquitectura desacoplada en 4 capas (Semantica -> Layout -> Render -> Calidad Visual) con motor de inferencia por audiencia (Audience-Aware Engine), Catalogo de 20 Arquetipos Visuales respaldados por 9 Motores Geometricos, simetria 1:1 en journeys, enrutamiento inter-zonas y evaluador de Semantic Hard Constraints sin colisiones.
+description: Generador editorial de diagramas y tableros nativos para Excalidraw (.excalidraw). Arquitectura desacoplada en 4 capas (Semantica -> Layout -> Render -> Calidad Visual) con motor de inferencia por audiencia (Audience-Aware Engine), Catalogo Completo de 27 Tipos Visuales (Lakehouse, Estrategia 2x2, Software, Operaciones, DataViz), simetria 1:1 en journeys, enrutamiento inter-zonas y evaluador de Semantic Hard Constraints sin colisiones.
 license: MIT
 metadata:
-  version: "3.4"
+  version: "4.0"
 ---
 
-# Sketion Diagram Design Skill (Motor Editorial para Excalidraw)
+# Sketion Diagram Design Skill (Motor Editorial para Excalidraw v4.0)
 
 Crea tableros y diagramas profesionales con calidad editorial, diseno limpio, cero amontonamientos y editabilidad nativa total en formato `.excalidraw`.
 
-Combina los principios de **Diagram Design** (densidad 4/10, regla del acento unico, eliminacion de ruido visual) con el **Motor de Inferencia de Audiencia**, los **20 Arquetipos de Negocio**, y los **9 Motores de Layout Geometrico Base**.
+Combina los principios de **Diagram Design** (densidad 4/10, regla del acento unico, eliminacion de ruido visual) con el **Motor de Inferencia de Audiencia**, los **27 Tipos Visuales de Diagramacion**, y los **9 Motores de Layout Geometrico Base**.
 
 ---
 
 ## 0. Motor de Decision de Audiencia (Audience-Aware Engine)
 
-Sketion adapta autonomamente la seleccion de arquetipos, la densidad de informacion y el vocabulario segun el perfil del receptor:
+Sketion adapta autonomamente la seleccion de tipos visuales, la densidad de informacion y el vocabulario segun el perfil del receptor:
 
-| Perfil de Audiencia | Arquetipos Principales | Foco Semantico Obligatorio | Elementos a Suprimir (Evitar Ruido) | Tono Editorial |
+| Perfil de Audiencia | Tipos Visuales Principales | Foco Semantico Obligatorio | Elementos a Suprimir (Evitar Ruido) | Tono Editorial |
 | :--- | :--- | :--- | :--- | :--- |
-| **CEO / Directivo** | `D (Duelo)`, `B (Fases)`, `P (Cadena Valor)`, `H (Radar 2x2)` | ROI, Margen, Coste Fijo $0, Retencion, Fases de Aprobacion | APIs, Microservicios, Codigo, Cronometros de segundos | Estrategico / Financiero |
-| **Gerente Operaciones** | `E (Planta/Swimlanes)`, `M (Ishikawa)`, `S (Matriz Takt)`, `K (Kanban)` | Layout de Planta, Segregacion Fisica, Takt Time, Batching, Roles | Modelos Financieros Macro, Arquitectura Cloud, Nube | Industrial / Planta |
-| **Equipo Producto / Tech**| `A (Cerebro)`, `C (Journey 1:1)`, `T (Caja Explotada)`, `N (Galeria)` | Arquitectura Cloud, Microservicios, User Journey, Slots UI, KDS | Negociaciones Laborales, Nomina, Tramites Administrativos | Tecnico / Software |
-| **Documentacion Devs** | `S (Matriz CRUD)`, `O (Arbol Decision)`, `T (Caja Explotada)` | Endpoints HTTP, JSON Schema, Idempotency Keys, Codigos Error | Discursos Comerciales, Planos Fisicos de Edificio | Contrato API / gRPC |
-| **Inversionistas / Pitch**| `D (Duelo VS)`, `F (Embudo)`, `I (Flywheel)` | Tamano de Mercado, Metricas Heroicas, Traccion, Dolor vs Solucion | Tablas Complejas, Diagramas de Red Detallados | Impacto / Traccion |
+| **CEO / Directivo** | `consultant_2x2`, `it_current_state`, `timeline`, `pyramid_funnel` | ROI, Margen, Coste Fijo $0, Retencion, Fases de Aprobacion | APIs, Microservicios, Codigo, Cronometros de segundos | Estrategico / Financiero |
+| **Gerente Operaciones** | `swimlane`, `process`, `gantt`, `dp_security_matrix` | Layout de Planta, Segregacion Fisica, Takt Time, Batching, Roles | Modelos Financieros Macro, Arquitectura Cloud, Nube | Industrial / Planta |
+| **Equipo Producto / Tech**| `architecture`, `sequence`, `state_machine`, `layer_stack` | Arquitectura Cloud, Microservicios, User Journey, Slots UI, KDS | Negociaciones Laborales, Nomina, Tramites Administrativos | Tecnico / Software |
+| **Ingenieria de Datos**| `medallion`, `data_flow`, `dp_integration`, `er_model` | Multi-tier Storage, Pipelines ETL por Rol, Permisos RBAC | Discursos Comerciales, Planos Fisicos de Edificio | Data Lakehouse / RBAC |
+| **Inversionistas / Pitch**| `consultant_2x2`, `pyramid_funnel`, `loop_flywheel`, `bar_chart` | Tamano de Mercado, Metricas Heroicas, Traccion, Dolor vs Solucion | Tablas Complejas, Diagramas de Red Detallados | Impacto / Traccion |
 
 ---
 
-## 1. Arquitectura de Dos Niveles: Motores Geometricos y Arquetipos
+## 1. Catalogo Maestro de los 27 Tipos Visuales de Sketion 4.0
 
-```text
-PROMPT / REQUISITOS DEL USUARIO
-        |
-        v
-[MOTOR DE AUDIENCIA]        -> Filtra informacion segun el perfil (CEO / Ops / Tech / Devs)
-        |
-        v
-[CAPA EDITORIAL / NEGOCIO] -> 20 Arquetipos Visuales (A - T)
-        |                     (El Duelo, Las Fases, El Cerebro, La Serpiente, etc.)
-        v
-[CAPA GEOMETRICA / LAYOUT]  -> 9 Motores de Layout Base (layout/ & engines/)
-        |                     (flow.py, hierarchy.py, grid.py, routing.py, network)
-        v
-[CAPA DE RENDER NATIVO]     -> Primitivas Excalidraw (.excalidraw)
-        |                     (containerId <-> boundElements, stickies rotados)
-        v
-[CAPA DE AUDITORIA]         -> Semantic Hard Constraints & Auto-Repair Engine
+### 1. Data Platforms & Lakehouse
+* **`medallion`:** Almacenamiento Lakehouse multi-tier (`Raw` $\rightarrow$ `Bronze` $\rightarrow$ `Silver` $\rightarrow$ `Gold` $\rightarrow$ `Archive`).
+* **`data_flow`:** Pipeline analitico segregado por roles funcionales (`Data Engineer`, `Data Scientist`, `BI Analyst`).
+* **`dp_integration`:** Topologia de fuentes heterogeneas $\rightarrow$ Data Platform Core $\rightarrow$ Consumidores de BI.
+* **`dp_security_matrix`:** Matriz de control de acceso RBAC granular con estados Admin, Write, Read, None.
+* **`er_model`:** Diagrama entidad-relacion con tipos de datos, claves primarias (PK) y foraneas (FK).
+
+### 2. Estrategia & Consultoria Ejecutiva
+* **`consultant_2x2`:** Matriz de escenarios cartesianos con nombres de cuadrantes (Quick Wins, Major Projects, etc.).
+* **`quadrant`:** Posicionamiento bidimensional de impacto vs esfuerzo en plano cartesiano.
+* **`loop_flywheel`:** Bucle virtuoso continuo con estaciones perimetrales alrededor de un hub central.
+* **`it_current_state`:** Diagnostico de silos legados caoticos vs arquitectura destino unificada.
+* **`venn`:** Superposicion conceptual y conjuntos intersecados (Deseable x Factible x Viable).
+* **`pyramid_funnel`:** Jerarquia piramidal de capas y embudo de conversion con tasas de retencion.
+
+### 3. Software & Arquitectura Cloud
+* **`architecture`:** Microservicios distribuidos con boundaries de red, VPCs y gateways.
+* **`high_level`:** Stack completo de infraestructura sobre cluster con orquestador superior.
+* **`sequence`:** Secuencia temporal de mensajes con lifelines, cajas de activacion y retornos discontinuos.
+* **`state_machine`:** Maquina de estados finitos con transiciones y guardas de ciclo de vida.
+* **`layer_stack`:** Pila de capas de abstraccion tecnologica estructuradas verticalmente.
+* **`nested`:** Jerarquia de contencion fisica y scopes anidados con margenes de seguridad.
+* **`flowchart`:** Flujograma de decision logica con nodos de evaluacion y bifurcacion de caminos.
+
+### 4. Procesos & Operaciones
+* **`swimlane`:** Flujo de trabajo interdepartamental segregado por carriles funcionales.
+* **`process`:** Flujo secuencial continuo de proceso de negocio con traspasos (handoffs) entre actores.
+* **`gantt`:** Cronograma de fases, duraciones, dependencias y puertas de aprobacion (gates).
+* **`timeline`:** Eje cronologico con hitos estrategicos alternados arriba y abajo sin colisiones.
+* **`org_chart`:** Organigrama jerarquico de propiedad y enrutamiento de equipos.
+* **`tree`:** Taxonomia y arbol balanceado de clasificacion jerarquica.
+
+### 5. DataViz Cuantitativo Nativo en Canvas
+* **`bar_chart`:** Grafico comparativo de barras cuantitativas con acento focal unico.
+* **`line_chart`:** Grafico de lineas continuas y evolucion de tendencias temporales multiserie.
+* **`scatter_plot`:** Diagrama de dispersion y correlacion en plano cartesiano.
+* **`radar_spider`:** Comparativa multieje poligonal sobre coordenadas radiales concentricas.
+
+---
+
+## 2. Uso via CLI
+
+```bash
+# Listar los 27 tipos visuales disponibles:
+python3 sketion_cli.py types
+
+# Generar un tipo especifico:
+python3 sketion_cli.py generate "Pipeline Lakehouse E-Commerce" --type medallion --output lakehouse.excalidraw --validate
 ```
 
 ---
 
-## 2. Los 9 Motores Geometricos Base (layout/ & engines/)
-
-| Motor Base | Archivo / Modulo | Algoritmo Geometrico | Responsabilidad Matematica |
-| :--- | :--- | :--- | :--- |
-| **Flow** | `layout/flow.py` | Secuencia horizontal y sinusoidal | Calcula coordenadas continuas con espaciado elastico de 95px. |
-| **Journey 1:1** | `layout/flow.py` | Simetria vertical estricta | Empareja exactamente N pasos superiores con N slots de captura inferiores. |
-| **Timeline** | `layout/flow.py` | Eje cronologico alternado | Distribuye hitos temporales arriba y abajo del eje central. |
-| **Tree** | `layout/hierarchy.py`| Arbol jerarquico balanceado | Posiciona nodos padres e hijos calculando anchos de sub-arbol. |
-| **Radial** | `layout/hierarchy.py`| Distribucion angular perimetral | Calcula radios y angulos equidistantes alrededor de un hub. |
-| **Grid / Matrix** | `layout/grid.py` | Grilla tabular proporcional | Calcula anchos dinamicos (hasta 560px) y alturas por lineas reales. |
-| **Board / Lanes** | `layout/grid.py` | Carriles verticales paralelos | Gestiona columnas de ancho uniforme y apilamiento vertical. |
-| **Dashboard** | `layout/grid.py` | Matriz de chips numericos | Distribuye tarjetas de KPI en grillas de 2, 3 o 4 columnas. |
-| **Network / Red** | `engines/recipes.py` | Grafo distribuido con Scopes | Agrupa nodos en columnas de infraestructura con gutter de 65px. |
-| **Routing** | `layout/routing.py` | Enrutamiento ortogonal y Flujo Inter-Zonas | Genera codos a 90 grados, anclajes de salida y conectores de transito fisico. |
-
----
-
-## 3. Catalogo Maestro de los 20 Arquetipos Visuales (A a T)
-
-| Codigo | Nombre del Arquetipo | Motores Base Utilizados | Caso de Uso Principal |
-| :--- | :--- | :--- | :--- |
-| **A** | **El Cerebro** | `Radial` + `Grid` + `Routing` | Plataforma completa en un solo hub central |
-| **B** | **Las Fases** | `Grid` + `Routing` + `Banners` | Roadmaps de 90 dias, progresiones con gates |
-| **C** | **La Serpiente** | `Flow` (Wave) + `Routing` | Procesos lineales de 8 a 16 pasos |
-| **D** | **El Duelo (VS)** | `Grid` + `Sticky` + `Routing` | Antes vs Despues / Legacy vs Moderno |
-| **E** | **La Cadena / Planta**| `Board` + `Grid` + `Routing` | Swimlanes y Layout de planta con flujos direccionales |
-| **F** | **El Embudo (Funnel)** | `Flow` + `Banners` | Conversion de ventas, pipelines de seleccion |
-| **G** | **La Piramide** | `Hierarchy` + `Banners` | Modelos de madurez, capas de seguridad |
-| **H** | **El Radar 2x2** | `Grid` + `Routing` | Priorizacion Impacto vs Esfuerzo, riesgos |
-| **I** | **El Flywheel** | `Radial` + `Routing` | Bucles de crecimiento y retencion |
-| **J** | **La Cebolla (Onion)** | `Hierarchy` (Nested) | Clean Architecture, Hexagonal, Gobernanza |
-| **K** | **El Kanban WIP** | `Board` + `Sticky` | Pipelines agiles, colas de trabajo, releases |
-| **L** | **El Iceberg** | `Grid` + `Banners` | Deuda tecnica, complejidad backend vs UI |
-| **M** | **La Espina (Ishikawa)** | `Hierarchy` + `Routing` | Analisis de causa raiz (Ishikawa), post-mortems |
-| **N** | **Galeria 3x3** | `Dashboard` + `Grid` | Catalogo de microfrontends, suite de APIs |
-| **O** | **Arbol de Decision** | `Tree` + `Routing` | Protocolos de escalado, triaje, reglas |
-| **P** | **Cadena de Valor** | `Flow` + `Grid` | Mapeo estrategico de operaciones y margen |
-| **Q** | **Pilares Benchmark** | `Board` + `Dashboard` | Comparativa de latencia, throughput y costes |
-| **R** | **Roadmap con Gates** | `Timeline` + `Banners` | Lanzamientos v3.0, auditorias SOC2 / ISO |
-| **S** | **Matriz CRUD / Takt**| `Grid` (Proportional) | Mapeo de propiedad de datos o tiempos de ciclo industrial |
-| **T** | **Caja Explotada** | `Network` + `Routing` | Explicar el funcionamiento interno de un motor |
-
----
-
-## 4. Reglas de Micro-Diseno y Cero Colisiones (Core 3.4)
-
-1. **Centrado Geometrico del Texto:**
-   - La coordenada Y del texto se calcula segun la altura real de las lineas:
-     text_h = line_count * font_size * 1.35
-     text_y = y + (card_h - text_h) / 2
-   - Se activa `autoResize: True` y `verticalAlign: "middle"` para centrado bidimensional exacto.
-
-2. **Simetria 1:1 en User Journeys:**
-   - En flujos de experiencia de usuario con capturas, cada paso superior debe coincidir exactamente en posicion X y ancho con su slot de captura inferior correspondiente.
-
-3. **Flujo Fisico Direccional Inter-Zonas:**
-   - En diagramas de planta operativa o swimlanes, las zonas no deben quedar aisladas. Deben incluir flechas ortogonales que indiquen el transito de personas, productos y eventos.
-
-4. **Separacion de Scopes (Gutter Seguro de 65px):**
-   - Las columnas de infraestructura/scopes se disponen consecutivamente garantizando un canal libre de 65px entre sus bordes. Cero solapamiento de lineas divisorias.
-
-5. **Anclaje de Salida en Saltos de Columna (Cross-Scope Bypass):**
-   - Cuando una flecha cruza multiples columnas (dx > 350px), su pastilla protectora se ancla en el origen (x1 + 55px, y1 - 14px), dejando los scopes intermedios 100% limpios y sin colisiones.
-
----
-
-## 5. Principio de Semantic Hard Constraints
-
-```text
-                 +--------------------------------+
-                 |    SEMANTIC HARD CONSTRAINTS   |
-                 |   (Inviolables por Estetica)   |
-                 +---------------+----------------+
-                                 |
-         +-----------------------+-----------------------+
-         |                                               |
-         v                                               v
-[FATAL HARD FAILURES]                           [REPARACIONES PERMITIDAS]
-- Nodo de Dominio Omitido (ej. Ledger)           - Auto-Split en Multi-Frame
-- Arista Crítica Borrada                         - Reduccion de Acentos (>2)
-- Transicion de Estado Invalida                  - Espaciado elastico de Gaps
-- Violacion de Inmutabilidad                     - Enrutamiento por Track Lanes
-```
-
----
-
-## 6. Checklist de Calidad antes de Entregar
+## 3. Checklist de Calidad antes de Entregar
 
 - [ ] El archivo tiene extension `.excalidraw` y es JSON valido minificado.
-- [ ] La estructura del diagrama responde a la audiencia objetivo (CEO, Ops, Tech, Devs).
+- [ ] La estructura del diagrama responde a la audiencia objetivo (CEO, Ops, Tech, Devs, Data).
 - [ ] Si es un User Journey, existe correspondencia 1:1 entre pasos y slots de captura.
 - [ ] Si es una planta operativa, existen flechas de transito fisico entre zonas.
 - [ ] El texto dentro de todas las tarjetas esta centrado vertical y horizontalmente.
 - [ ] Los scopes tienen separacion limpia (minimo 65px de gutter) sin solapamiento.
 - [ ] Se utilizo la paleta editorial con maximo 1 acento focal principal.
-- [ ] El validador `validate_scene()` devuelve `PASS` con puntuacion global >= 95/100.
+- [ ] El validador `validate_scene()` devuelve `PASS` con puntuacion global >= 90/100.

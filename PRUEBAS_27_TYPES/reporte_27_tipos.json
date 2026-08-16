@@ -1,0 +1,137 @@
+[
+  {
+    "type": "medallion",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/01_medallion.excalidraw",
+    "score": 97
+  },
+  {
+    "type": "data_flow",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/02_data_flow.excalidraw",
+    "score": 97
+  },
+  {
+    "type": "dp_integration",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/03_dp_integration.excalidraw",
+    "score": 93
+  },
+  {
+    "type": "dp_security_matrix",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/04_dp_security_matrix.excalidraw",
+    "score": 97
+  },
+  {
+    "type": "er_model",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/05_er_model.excalidraw",
+    "score": 91
+  },
+  {
+    "type": "consultant_2x2",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/06_consultant_2x2.excalidraw",
+    "score": 94
+  },
+  {
+    "type": "quadrant",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/07_quadrant.excalidraw",
+    "score": 92
+  },
+  {
+    "type": "loop_flywheel",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/08_loop_flywheel.excalidraw",
+    "score": 91
+  },
+  {
+    "type": "it_current_state",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/09_it_current_state.excalidraw",
+    "score": 90
+  },
+  {
+    "type": "venn",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/10_venn.excalidraw",
+    "score": 92
+  },
+  {
+    "type": "pyramid_funnel",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/11_pyramid_funnel.excalidraw",
+    "score": 92
+  },
+  {
+    "type": "architecture",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/12_architecture.excalidraw",
+    "score": 91
+  },
+  {
+    "type": "high_level",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/13_high_level.excalidraw",
+    "score": 92
+  },
+  {
+    "type": "sequence",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/14_sequence.excalidraw",
+    "score": 91
+  },
+  {
+    "type": "state_machine",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/15_state_machine.excalidraw",
+    "score": 91
+  },
+  {
+    "type": "layer_stack",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/16_layer_stack.excalidraw",
+    "score": 92
+  },
+  {
+    "type": "nested",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/17_nested.excalidraw",
+    "score": 92
+  },
+  {
+    "type": "flowchart",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/18_flowchart.excalidraw",
+    "score": 91
+  },
+  {
+    "type": "swimlane",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/19_swimlane.excalidraw",
+    "score": 95
+  },
+  {
+    "type": "process",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/20_process.excalidraw",
+    "score": 91
+  },
+  {
+    "type": "gantt",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/21_gantt.excalidraw",
+    "score": 92
+  },
+  {
+    "type": "timeline",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/22_timeline.excalidraw",
+    "score": 90
+  },
+  {
+    "type": "org_chart",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/23_org_chart.excalidraw",
+    "score": 94
+  },
+  {
+    "type": "tree",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/24_tree.excalidraw",
+    "score": 92
+  },
+  {
+    "type": "bar_chart",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/25_bar_chart.excalidraw",
+    "score": 92
+  },
+  {
+    "type": "line_chart",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/26_line_chart.excalidraw",
+    "score": 90
+  },
+  {
+    "type": "scatter_plot",
+    "file": "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL/PRUEBAS_27_TYPES/27_scatter_plot.excalidraw",
+    "score": 90
+  }
+]

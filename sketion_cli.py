@@ -113,8 +113,18 @@ def cmd_benchmark(args):
     run_adversarial_benchmark()
 
 
+def cmd_types(args):
+    from engines.catalog import list_all_visual_types
+    print("==================================================================")
+    print("SKETION 4.0 — CATÁLOGO COMPLETO DE LOS 27 TIPOS VISUALES")
+    print("==================================================================")
+    for t in list_all_visual_types():
+        print(f"• `{t['key']:<20}` | {t['family']:<22} | {t['name']}")
+    print("==================================================================")
+
+
 def main():
-    parser = argparse.ArgumentParser(description="Sketion 3.4 CLI — Motor Editorial de Diagramas para Excalidraw")
+    parser = argparse.ArgumentParser(description="Sketion 4.0 CLI — Motor Editorial de Diagramas para Excalidraw")
     subparsers = parser.add_subparsers(dest="command", help="Comandos disponibles")
     
     # Subcomando: generate
@@ -122,6 +132,7 @@ def main():
     p_gen.add_argument("prompt", type=str, help="Texto del prompt o ruta a archivo de texto")
     p_gen.add_argument("-o", "--output", type=str, default="sketion_output.excalidraw", help="Ruta del archivo de salida")
     p_gen.add_argument("-a", "--audience", type=str, choices=["ceo", "ops", "tech", "devs", "pitch"], help="Perfil de audiencia")
+    p_gen.add_argument("-t", "--type", type=str, help="Tipo visual específico (ej: medallion, sequence, gantt, consultant_2x2...)")
     p_gen.add_argument("-v", "--validate", action="store_true", help="Ejecutar validación de calidad tras generar")
     
     # Subcomando: validate
@@ -131,6 +142,9 @@ def main():
     # Subcomando: benchmark
     p_bm = subparsers.add_parser("benchmark", help="Ejecuta la suite de 9 pruebas adversariales")
     
+    # Subcomando: types
+    p_tp = subparsers.add_parser("types", help="Lista los 27 tipos visuales soportados")
+    
     args = parser.parse_args()
     
     if args.command == "generate":
@@ -139,6 +153,8 @@ def main():
         cmd_validate(args)
     elif args.command == "benchmark":
         cmd_benchmark(args)
+    elif args.command == "types":
+        cmd_types(args)
     else:
         parser.print_help()
 

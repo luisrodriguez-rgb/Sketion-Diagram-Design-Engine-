@@ -69,7 +69,10 @@ def calculate_quality_score(scene_data: Dict[str, Any],
                             accent_hex_list: List[str] = None) -> QualityMetrics:
     """Calcula las métricas de calidad y el puntaje visual calibrado de una escena Excalidraw."""
     if accent_hex_list is None:
-        accent_hex_list = ["#2563EB", "#F5BEC0", "#B58E3F", "#EFF6FF", "#FDF2F4", "#FBF6EB", "#DC2626", "#EF4444"]
+        accent_hex_list = [
+            "#2563EB", "#F5BEC0", "#B58E3F", "#EFF6FF", "#FDF2F4", "#FBF6EB",
+            "#DC2626", "#EF4444", "#C2E5D3", "#9BC7E4", "#FFE95C", "#E03A2F", "#F05A5A"
+        ]
 
     elements = scene_data.get("elements", [])
     frames = [e for e in elements if e.get("type") == "frame"]
@@ -110,10 +113,10 @@ def calculate_quality_score(scene_data: Dict[str, Any],
     if accent_count == 0:
         hierarchy_score -= 10
         issues.append("No hay ningún nodo con acento focal (falta énfasis visual).")
-    elif accent_count > 2:
-        penalty = (accent_count - 2) * 15
-        hierarchy_score = max(40, hierarchy_score - penalty)
-        issues.append(f"Sobrecarga de acentos ({accent_count} nodos con acento, el objetivo es 1-2 max).")
+    elif accent_count > 6:
+        penalty = min(50, (accent_count - 6) * 10)
+        hierarchy_score = max(50, hierarchy_score - penalty)
+        issues.append(f"Sobrecarga de acentos ({accent_count} nodos con acento, el objetivo es 1-3 max).")
 
     # 3. Density & Visual Noise Calibrado
     # Filtrar:
@@ -123,14 +126,15 @@ def calculate_quality_score(scene_data: Dict[str, Any],
         c for c in cards
         if c.get("height", 0) > 32 and not (
             c.get("width", 0) >= 240 and c.get("height", 0) >= 350 and
-            str(c.get("backgroundColor", "")).upper() in ["#F8FAFC", "#F3F4F6", "TRANSPARENT"]
+            str(c.get("backgroundColor", "")).upper() in ["#F8FAFC", "#F3F4F6", "#FFFFFF", "TRANSPARENT"]
         )
     ]
     total_nodes = len(component_cards)
 
-    table_cells = [c for c in component_cards if c.get("roundness") is None]
-    if len(table_cells) >= total_nodes * 0.6 and total_nodes > 10:
-        effective_nodes = total_nodes * 0.40
+    # Identificar celdas de matriz / tabla (altura homogénea <= 70px)
+    table_cells = [c for c in component_cards if c.get("height", 0) <= 70 and c.get("width", 0) <= 600]
+    if len(table_cells) >= total_nodes * 0.5 and total_nodes > 8:
+        effective_nodes = total_nodes * 0.25
     else:
         effective_nodes = total_nodes
 

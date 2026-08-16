@@ -1,6 +1,6 @@
 ---
 name: sketion-diagram-design
-description: Generador editorial de diagramas y tableros nativos para Excalidraw (.excalidraw). Arquitectura desacoplada en 4 capas (Semantica -> Layout -> Render -> Calidad Visual) con motor de inferencia por audiencia (Audience-Aware Engine), Catalogo Completo de 27 Tipos Visuales (Lakehouse, Estrategia 2x2, Software, Operaciones, DataViz), Gramatica Editorial de Diagram Design (Tarjetas Quad-Corner, Cintas Chevron, Rieles Verticales, Ejes de Pasos, Leyendas Estructuradas), simetria 1:1 en journeys, enrutamiento inter-zonas y evaluador de Semantic Hard Constraints & Archetype Fitness sin colisiones.
+description: Generador editorial de diagramas y tableros nativos para Excalidraw (.excalidraw). Arquitectura desacoplada en 4 capas (Semantica -> Layout -> Render -> Calidad Visual) con motor de inferencia por audiencia (Audience-Aware Engine), Catalogo Completo de 20 Arquetipos de Negocio (A - T), Suite de 27 Tipos Visuales Específicos, Gramatica Editorial de Diagram Design (Tarjetas Quad-Corner, Cintas Chevron, Rieles Verticales, Ejes de Pasos, Leyendas Estructuradas), simetria 1:1 en journeys, enrutamiento inter-zonas y evaluador de Semantic Hard Constraints & Archetype Fitness sin colisiones.
 license: MIT
 metadata:
   version: "4.0"
@@ -10,25 +10,52 @@ metadata:
 
 Crea tableros y diagramas profesionales con calidad editorial, diseno limpio, cero amontonamientos y editabilidad nativa total en formato `.excalidraw`.
 
-Combina los principios de **Diagram Design** (densidad 4/10, regla del acento unico, eliminacion de ruido visual) con el **Motor de Inferencia de Audiencia**, los **27 Tipos Visuales de Diagramacion**, la **Gramática Editorial de 5 Primitivas (Quad-Cards, Chevrons, Rails, Step Axes, Legends)** y la métrica de **Archetype Fitness**.
+Combina los principios de **Diagram Design** (densidad 4/10, regla del acento unico, eliminacion de ruido visual) con el **Motor de Inferencia de Audiencia**, los **20 Arquetipos Visuales de Negocio (A - T)**, los **27 Tipos Visuales de Diagramacion**, la **Gramática Editorial de 5 Primitivas (Quad-Cards, Chevrons, Rails, Step Axes, Legends)** y la métrica de **Archetype Fitness**.
 
 ---
 
 ## 0. Motor de Decision de Audiencia (Audience-Aware Engine)
 
-Sketion adapta autonomamente la seleccion de tipos visuales, la densidad de informacion y el vocabulario segun el perfil del receptor:
+Sketion adapta autonomamente la seleccion de arquetipos y tipos visuales, la densidad de informacion y el vocabulario segun el perfil del receptor:
 
-| Perfil de Audiencia | Tipos Visuales Principales | Foco Semantico Obligatorio | Elementos a Suprimir (Evitar Ruido) | Tono Editorial |
-| :--- | :--- | :--- | :--- | :--- |
-| **CEO / Directivo** | `consultant_2x2`, `it_current_state`, `timeline`, `pyramid_funnel` | ROI, Margen, Coste Fijo $0, Retencion, Fases de Aprobacion | APIs, Microservicios, Codigo, Cronometros de segundos | Estrategico / Financiero |
-| **Gerente Operaciones** | `swimlane`, `process`, `gantt`, `dp_security_matrix` | Layout de Planta, Segregacion Fisica, Takt Time, Batching, Roles | Modelos Financieros Macro, Arquitectura Cloud, Nube | Industrial / Planta |
-| **Equipo Producto / Tech**| `architecture`, `sequence`, `state_machine`, `layer_stack` | Arquitectura Cloud, Microservicios, User Journey, Slots UI, KDS | Negociaciones Laborales, Nomina, Tramites Administrativos | Tecnico / Software |
-| **Ingenieria de Datos**| `medallion`, `data_flow`, `dp_integration`, `er_model` | Multi-tier Storage, Pipelines ETL por Rol, Permisos RBAC | Discursos Comerciales, Planos Fisicos de Edificio | Data Lakehouse / RBAC |
-| **Inversionistas / Pitch**| `consultant_2x2`, `pyramid_funnel`, `loop_flywheel`, `bar_chart` | Tamano de Mercado, Metricas Heroicas, Traccion, Dolor vs Solucion | Tablas Complejas, Diagramas de Red Detallados | Impacto / Traccion |
+| Perfil de Audiencia | Arquetipos Principales | Tipos Visuales Principales | Foco Semantico Obligatorio | Elementos a Suprimir (Evitar Ruido) | Tono Editorial |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **CEO / Directivo** | `D (Duelo)`, `B (Fases)`, `P (Cadena Valor)`, `H (Radar 2x2)` | `consultant_2x2`, `it_current_state`, `timeline`, `pyramid_funnel` | ROI, Margen, Coste Fijo $0, Retencion, Fases de Aprobacion | APIs, Microservicios, Codigo, Cronometros de segundos | Estrategico / Financiero |
+| **Gerente Operaciones** | `E (Planta/Swimlanes)`, `M (Ishikawa)`, `S (Matriz Takt)`, `K (Kanban)` | `swimlane`, `process`, `gantt`, `dp_security_matrix` | Layout de Planta, Segregacion Fisica, Takt Time, Batching, Roles | Modelos Financieros Macro, Arquitectura Cloud, Nube | Industrial / Planta |
+| **Equipo Producto / Tech**| `A (Cerebro)`, `C (Journey 1:1)`, `T (Caja Explotada)`, `N (Galeria)` | `architecture`, `sequence`, `state_machine`, `layer_stack` | Arquitectura Cloud, Microservicios, User Journey, Slots UI, KDS | Negociaciones Laborales, Nomina, Tramites Administrativos | Tecnico / Software |
+| **Ingenieria de Datos**| `S (Matriz CRUD)`, `O (Arbol Decision)`, `T (Caja Explotada)` | `medallion`, `data_flow`, `dp_integration`, `er_model` | Multi-tier Storage, Pipelines ETL por Rol, Permisos RBAC | Discursos Comerciales, Planos Fisicos de Edificio | Data Lakehouse / RBAC |
+| **Inversionistas / Pitch**| `D (Duelo VS)`, `F (Embudo)`, `I (Flywheel)`, `Q (Pilares)` | `consultant_2x2`, `pyramid_funnel`, `loop_flywheel`, `bar_chart` | Tamano de Mercado, Metricas Heroicas, Traccion, Dolor vs Solucion | Tablas Complejas, Diagramas de Red Detallados | Impacto / Traccion |
 
 ---
 
-## 1. Los 5 Patrones Editoriales de Diagram Design (render/excalidraw_builder.py)
+## 1. Catalogo de los 20 Arquetipos Visuales de Negocio (A - T)
+
+| Código | Arquetipo | Motores Geométricos | Caso de Uso Principal |
+| :--- | :--- | :--- | :--- |
+| **A** | **El Cerebro** | `Radial` + `Grid` + `Routing` | Plataforma completa en un solo hub central y subsistemas |
+| **B** | **Las Fases** | `Grid` + `Routing` + `Banners` | Roadmaps de 90 dias, progresiones con gates de aprobacion |
+| **C** | **La Serpiente** | `Flow` (Wave) + `Routing` | Procesos lineales extendidos de 8 a 16 pasos secuenciales |
+| **D** | **El Duelo (VS)** | `Grid` + `Sticky` + `Routing` | Antes vs Despues / Legacy caotico vs Arquitectura moderna |
+| **E** | **La Cadena / Planta**| `Board` + `Grid` + `Routing` | Swimlanes y Layout de planta fisica con flujos direccionales |
+| **F** | **El Embudo (Funnel)** | `Flow` + `Banners` | Conversion de ventas, retencion y pipelines de seleccion |
+| **G** | **La Piramide** | `Hierarchy` + `Banners` | Modelos de madurez, capas de seguridad y abstraccion |
+| **H** | **El Radar 2x2** | `Grid` + `Routing` | Priorizacion Impacto vs Esfuerzo, clasificacion de riesgos |
+| **I** | **El Flywheel** | `Radial` + `Routing` | Bucles virtuosos de crecimiento, retencion y recomendacion |
+| **J** | **La Cebolla (Onion)** | `Hierarchy` (Nested) | Clean Architecture, Hexagonal, Gobernanza por contencion |
+| **K** | **El Kanban WIP** | `Board` + `Sticky` | Pipelines agiles, colas de trabajo, releases continuos |
+| **L** | **El Iceberg** | `Grid` + `Banners` | Deuda tecnica, complejidad backend oculta vs UI superficial |
+| **M** | **La Espina (Ishikawa)** | `Hierarchy` + `Routing` | Analisis de causa raiz (Ishikawa), diagnostico y post-mortems |
+| **N** | **Galeria 3x3** | `Dashboard` + `Grid` | Catalogo de microfrontends, suite de APIs y componentes |
+| **O** | **Arbol de Decision** | `Tree` + `Routing` | Protocolos de escalado, triaje, reglas condicionales |
+| **P** | **Cadena de Valor** | `Flow` + `Grid` | Mapeo estrategico de operaciones, proveedores y margen |
+| **Q** | **Pilares Benchmark** | `Board` + `Dashboard` | Comparativa cuantitativa de latencia, throughput y costes |
+| **R** | **Roadmap con Gates** | `Timeline` + `Banners` | Lanzamientos v4.0, auditorias de seguridad SOC2 / ISO |
+| **S** | **Matriz CRUD / Takt**| `Grid` (Proportional) | Mapeo de propiedad de datos o tiempos de ciclo industrial |
+| **T** | **Caja Explotada** | `Network` + `Routing` | Desglose del funcionamiento interno de un motor complejo |
+
+---
+
+## 2. Los 5 Patrones Editoriales de Diagram Design (render/excalidraw_builder.py)
 
 1. **Tarjetas de 4 Esquinas (`add_quad_card`):**
    - **Top-Left:** Mini-badge de rol (`EXT`, `STORE`, `ORCH`, `FLOW`, `QUERY`, `BI`, `CUS`, `WHS`).
@@ -47,7 +74,7 @@ Sketion adapta autonomamente la seleccion de tipos visuales, la densidad de info
 
 ---
 
-## 2. Catalogo Maestro de los 27 Tipos Visuales de Sketion 4.0
+## 3. Catalogo Maestro de los 27 Tipos Visuales de Sketion 4.0
 
 ### 1. Data Platforms & Lakehouse
 * **`medallion`:** Almacenamiento Lakehouse multi-tier (`Raw` $\rightarrow$ `Bronze` $\rightarrow$ `Silver` $\rightarrow$ `Gold` $\rightarrow$ `Archive`).
@@ -86,18 +113,6 @@ Sketion adapta autonomamente la seleccion de tipos visuales, la densidad de info
 * **`line_chart`:** Grafico de lineas continuas y evolucion de tendencias temporales multiserie.
 * **`scatter_plot`:** Diagrama de dispersion y correlacion en plano cartesiano.
 * **`radar_spider`:** Comparativa multieje poligonal sobre coordenadas radiales concentricas.
-
----
-
-## 3. Uso via CLI
-
-```bash
-# Listar los 27 tipos visuales disponibles:
-python3 sketion_cli.py types
-
-# Generar un tipo especifico con calidad editorial:
-python3 sketion_cli.py generate "Pipeline Lakehouse E-Commerce" --type medallion --output lakehouse.excalidraw --validate
-```
 
 ---
 

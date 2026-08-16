@@ -2,7 +2,7 @@
 
 **Motor editorial de diseno y generacion de diagramas inteligentes, libres de amontonamientos y 100% editables en formato nativo .excalidraw.**
 
-Inspirado en los principios de diseno de **Diagram Design** (densidad visual 4/10, regla del acento unico, conectores ortogonales a 90 grados) y construido sobre una **arquitectura desacoplada en 4 capas** con **Motor de Inferencia de Audiencia**, **Catálogo Completo de los 27 Tipos Visuales**, **Gramática Editorial de 5 Primitivas (Quad-Cards, Cintas Chevron, Rieles Verticales, Ejes de Pasos, Leyendas Estructuradas)**, **Simetria 1:1 en Journeys**, **Enrutamiento Inter-Zonas** y **Validador de Semantic Hard Constraints & Archetype Fitness**.
+Inspirado en los principios de diseno de **Diagram Design** (densidad visual 4/10, regla del acento unico, conectores ortogonales a 90 grados) y construido sobre una **arquitectura desacoplada en 4 capas** con **Motor de Inferencia de Audiencia**, **Catálogo Completo de los 20 Arquetipos Visuales (A - T)**, **Suite de 27 Tipos Visuales Específicos**, **Gramática Editorial de 5 Primitivas (Quad-Cards, Cintas Chevron, Rieles Verticales, Ejes de Pasos, Leyendas Estructuradas)**, **Simetria 1:1 en Journeys**, **Enrutamiento Inter-Zonas** y **Validador de Semantic Hard Constraints & Archetype Fitness**.
 
 ---
 
@@ -41,12 +41,41 @@ Si usas Claude en la web (Claude Projects / Custom Instructions) o ChatGPT:
 
 ---
 
+## 🏛️ Catalogo de los 20 Arquetipos Visuales de Negocio (A - T)
+
+Sketion implementa un catálogo exhaustivo de 20 arquetipos de diseño para resolver cualquier problema de comunicación técnica, estratégica y operativa:
+
+| Código | Arquetipo | Motores Geométricos | Caso de Uso Principal |
+| :--- | :--- | :--- | :--- |
+| **A** | **El Cerebro** | `Radial` + `Grid` + `Routing` | Plataforma completa en un solo hub central y subsistemas |
+| **B** | **Las Fases** | `Grid` + `Routing` + `Banners` | Roadmaps de 90 dias, progresiones con gates de aprobacion |
+| **C** | **La Serpiente** | `Flow` (Wave) + `Routing` | Procesos lineales extendidos de 8 a 16 pasos secuenciales |
+| **D** | **El Duelo (VS)** | `Grid` + `Sticky` + `Routing` | Antes vs Despues / Legacy caotico vs Arquitectura moderna |
+| **E** | **La Cadena / Planta**| `Board` + `Grid` + `Routing` | Swimlanes y Layout de planta fisica con flujos direccionales |
+| **F** | **El Embudo (Funnel)** | `Flow` + `Banners` | Conversion de ventas, retencion y pipelines de seleccion |
+| **G** | **La Piramide** | `Hierarchy` + `Banners` | Modelos de madurez, capas de seguridad y abstraccion |
+| **H** | **El Radar 2x2** | `Grid` + `Routing` | Priorizacion Impacto vs Esfuerzo, clasificacion de riesgos |
+| **I** | **El Flywheel** | `Radial` + `Routing` | Bucles virtuosos de crecimiento, retencion y recomendacion |
+| **J** | **La Cebolla (Onion)** | `Hierarchy` (Nested) | Clean Architecture, Hexagonal, Gobernanza por contencion |
+| **K** | **El Kanban WIP** | `Board` + `Sticky` | Pipelines agiles, colas de trabajo, releases continuos |
+| **L** | **El Iceberg** | `Grid` + `Banners` | Deuda tecnica, complejidad backend oculta vs UI superficial |
+| **M** | **La Espina (Ishikawa)** | `Hierarchy` + `Routing` | Analisis de causa raiz (Ishikawa), diagnostico y post-mortems |
+| **N** | **Galeria 3x3** | `Dashboard` + `Grid` | Catalogo de microfrontends, suite de APIs y componentes |
+| **O** | **Arbol de Decision** | `Tree` + `Routing` | Protocolos de escalado, triaje, reglas condicionales |
+| **P** | **Cadena de Valor** | `Flow` + `Grid` | Mapeo estrategico de operaciones, proveedores y margen |
+| **Q** | **Pilares Benchmark** | `Board` + `Dashboard` | Comparativa cuantitativa de latencia, throughput y costes |
+| **R** | **Roadmap con Gates** | `Timeline` + `Banners` | Lanzamientos v4.0, auditorias de seguridad SOC2 / ISO |
+| **S** | **Matriz CRUD / Takt**| `Grid` (Proportional) | Mapeo de propiedad de datos o tiempos de ciclo industrial |
+| **T** | **Caja Explotada** | `Network` + `Routing` | Desglose del funcionamiento interno de un motor complejo |
+
+---
+
 ## 🎨 Los 5 Patrones Editoriales de Diagram Design
 
 1. **Tarjetas de 4 Esquinas (`Quad-Corner Cards`):**
    * Badge de rol superior izquierdo (`EXT`, `STORE`, `ORCH`, `FLOW`, `BI`).
    * Icono vectorial monocromático superior derecho (`postgres`, `minio`, `redis`, `server`).
-   * Título central en Sans Bold 14-16px + Metadata técnica inferior.
+   * Título central en Sans Bold 14-16px + Metadata técnica inferior (`CDC · SQL · API`).
    * Límite de ancho compacto ($w \le 340\text{px}$) anti-stretch.
 2. **Cinta Chevron Superior (`Pipeline Ribbon`):**
    * Cabecera macro de etapas concatenadas (`DATA SOURCES` $\rightarrow$ `INGESTION` $\rightarrow$ `STORAGE` $\rightarrow$ `TRANSFORM` $\rightarrow$ `VISUALIZATION`).
@@ -59,7 +88,7 @@ Si usas Claude en la web (Claude Projects / Custom Instructions) o ChatGPT:
 
 ---
 
-## 🏛️ Catalogo de los 27 Tipos Visuales Soportados
+## 📊 Suite de los 27 Tipos Visuales Específicos
 
 | # | Clave (`--type`) | Nombre Visual | Familia Semantica | Descripcion |
 |---|---|---|---|---|
@@ -93,7 +122,7 @@ Si usas Claude en la web (Claude Projects / Custom Instructions) o ChatGPT:
 
 ---
 
-## 4. Evaluacion de Calidad y Benchmarks
+## 5. Evaluacion de Calidad y Benchmarks
 
 Sketion incluye un sistema dual de autoevaluacion que garantiza calidad visual mínima de **90/100** y ajuste estructural (*Archetype Fitness*) de **100/100**:
 
@@ -103,7 +132,17 @@ python3 tests/test_all_27_types.py
 
 # Correr el benchmark editorial de Diagram Design (Open Data Lake)
 python3 tests/render_open_data_lake_benchmark.py
+
+# Correr la suite de los 9 casos adversariales de negocio
+python3 sketion_cli.py benchmark
 ```
+
+* **Structure (100/100):** Vinculacion bidireccional estricta `containerId <-> boundElements`.
+* **Layout (100/100):** Espaciado elastico de 95px y gutter de 65px entre scopes.
+* **Readability (100/100):** Centrado bidimensional exacto y alturas proporcionales.
+* **Hierarchy (100/100):** Regla del acento unico (maximo 1 nodo de color focal).
+* **Noise Balance (Densidad ~4.0/10):** Espacio blanco calibrado sin amontonamiento.
+* **Tokens (100/100):** Paleta editorial Miro y fuentes Sans/Mono sin colores aleatorios.
 
 ---
 

@@ -1,6 +1,6 @@
 # Sketion Style Guide & Design Tokens
 
-Esta guía define el sistema visual editorial para la generación de archivos `.excalidraw`. Todas las decisiones visuales se basan en tokens semánticos rigurosos y una jerarquía tipográfica proporcional que garantiza **legibilidad inmediata sin forzar zoom**.
+Esta guía define el sistema visual editorial para la generación de archivos `.excalidraw`. Todas las decisiones visuales se basan en tokens semánticos rigurosos, una jerarquía tipográfica proporcional y una **estricta diversidad de arquetipos visuales**.
 
 ---
 
@@ -9,10 +9,14 @@ Esta guía define el sistema visual editorial para la generación de archivos `.
 1. **La regla de oro:** *El movimiento de mayor calidad es la eliminación*. Cada nodo, línea y etiqueta debe ganarse su lugar.
 2. **Densidad objetivo: 4/10:** Espacio en blanco amplio y respirable. `gap` generoso entre bloques. No saturar tarjetas de texto largo.
 3. **Regla del acento único (1 Accent Rule):** El color de acento (`ACCENT` / `HERO`) se reserva exclusivamente para **1 o 2 nodos focales** por frame.
-4. **Tipografía Proporcional Anti-Espacio Vacío:** El tamaño del texto debe llenar armónicamente el contenedor (60-70% del área vertical útil). Prohibido usar texto diminuto (11-14px) en tarjetas amplias de 300px+.
-5. **Sin sombras ni degradados:** Excalidraw no requiere sombras. Las separaciones se hacen con bordes limpios (`hairlines`), fondos contrastados o franjas sutiles.
-6. **Conectores ortogonales:** Conectores con codos en ángulo recto (90º) en lugar de líneas diagonales cruzando cajas.
-7. **Esquinas controladas:** `roundness: {"type": 3}` para tarjetas estándar, `roundness: None` para tablas y contenedores técnicos.
+4. **Tipografía Proporcional Anti-Espacio Vacío:** El tamaño del texto debe llenar armónicamente el contenedor (60-70% del área vertical útil: **18-20px Bold** en títulos de tarjetas, **13-14px** en subtítulos, **14-15px** en tablas).
+5. **🚫 Regla Anti-Monocultivo de Layout (Diversidad de Arquetipos):** En tableros multi-frame, **queda terminantemente prohibido repetir la misma estructura geométrica** (ej. 5 columnas verticales idénticas con chevrons). Cada frame debe usar el arquetipo geométrico nativo que corresponde a su semántica:
+   - *Ecosistema / Visión Central:* **Arquetipo A (El Cerebro / Hub Radial)**.
+   - *Arquitectura de Software:* **Arquetipo Layer Stack (Pila Horizontal de Capas)**.
+   - *Pipelines / Algoritmos:* **Arquetipo C (Flow Pipeline) con bucle visible de Auto-Repair**.
+   - *Roadmaps / Madurez:* **Arquetipo G (Escalera de Madurez de 5 Niveles) + Horizontes**.
+   - *Comparativa de Mercado:* **Arquetipo D (El Duelo VS)** o **Arquetipo S (Matriz Tabular)**.
+   - *Workshops / Discovery:* **Arquetipo Workshop Canvas (Post-its libres, slots y preguntas)**.
 
 ---
 
@@ -44,8 +48,8 @@ Esta guía define el sistema visual editorial para la generación de archivos `.
 | `INK` | Tinta principal (títulos, bordes, texto primario) | `#0F172A` |
 | `MUTED` | Texto secundario, subtítulos, flechas neutras | `#64748B` |
 | `RULE` | Líneas divisorias, separadores de carril, ejes | `#CBD5E1` |
-| `ACCENT` | Color focal de marca (1-2 nodos por diagrama) | `#D93829` (Coral) / `#059669` (Verde) |
-| `ACCENT_BG` | Tinte suave de fondo para el nodo focal | `#FFF5F2` / `#F0FDF4` |
+| `ACCENT` | Color focal de marca (1-2 nodos por diagrama) | `#2563EB` (Cobalto) / `#059669` (Verde) / `#D93829` (Coral) |
+| `ACCENT_BG` | Tinte suave de fondo para el nodo focal | `#EFF6FF` / `#F0FDF4` / `#FFF5F2` |
 | `PAIN` | Alertas, riesgos, cuellos de botella, deuda | `#E03A2F` |
 | `PAIN_BG` | Tinte suave de fondo para alertas | `#FEF2F2` |
 | `SUCCESS` | Estados completados, confirmaciones | `#059669` |
@@ -54,55 +58,18 @@ Esta guía define el sistema visual editorial para la generación de archivos `.
 
 ---
 
-## 4. Catálogo de Paletas Predefinidas
+## 4. Mapeo Obligatorio: Dominio Semántico ──► Arquetipo Visual
 
-### A. Jet Editorial & Diagram Design (Arquitectura Cloud & Datos)
-```python
-JET_EDITORIAL = {
-    "PAPER": "#F8FAFC",
-    "PAPER_CARD": "#FFFFFF",
-    "PAPER_CONTAINER": "#FFFFFF",
-    "INK": "#0F172A",
-    "MUTED": "#64748B",
-    "RULE": "#CBD5E1",
-    "ACCENT": "#D93829",       # Coral editorial Diagram Design
-    "ACCENT_BG": "#FFF5F2",
-    "PAIN": "#E03A2F",
-    "PAIN_BG": "#FEF2F2",
-    "STICKY": "#FFE95C"
-}
-```
-
-### B. Miro Nico (Discovery, Brainstorming, Workshops)
-```python
-MIRO_NICO = {
-    "PAPER": "#F4F4F4",
-    "PAPER_CARD": "#FFFFFF",
-    "PAPER_CONTAINER": "#EBEBEB",
-    "INK": "#0C0C0C",
-    "MUTED": "#9A9A9A",
-    "RULE": "#D1D1D1",
-    "ACCENT": "#F5BEC0",       # Rosa editorial
-    "ACCENT_BG": "#FDF2F4",
-    "PAIN": "#E03A2F",
-    "PAIN_BG": "#FCE8E6",
-    "STICKY": "#FFE95C"        # Amarillo canario post-it
-}
-```
-
-### C. El Sabio / Hospitality OS (Plataformas de Restaurantes & Operaciones)
-```python
-EL_SABIO = {
-    "PAPER": "#F8FAFC",
-    "PAPER_CARD": "#FFFFFF",
-    "PAPER_CONTAINER": "#F1F5F9",
-    "INK": "#0F172A",
-    "MUTED": "#64748B",
-    "RULE": "#CBD5E1",
-    "ACCENT": "#059669",       # Verde esmeralda de control
-    "ACCENT_BG": "#F0FDF4",
-    "PAIN": "#D93829",         # Coral de fricción
-    "PAIN_BG": "#FEF2F2",
-    "STICKY": "#FFE95C"
-}
+```text
+┌───────────────────────────────────────┬────────────────────────────────────────────────────────┐
+│ DOMINIO SEMÁNTICO                     │ ARQUETIPO GEOMÉTRICO OBLIGATORIO                       │
+├───────────────────────────────────────┼────────────────────────────────────────────────────────┤
+│ Ecosistema / Visión Central / Hub     │ Arquetipo A: El Cerebro (Hub Radial con Satélites)     │
+│ Arquitectura Software / Cloud / Infra │ Arquetipo Layer Stack: Pila Horizontal de 4 Capas      │
+│ Pipelines / Algoritmos / Lifecycles   │ Arquetipo C: Flow con Bucle de Feedback Visible        │
+│ Roadmaps / Madurez / Horizontes       │ Arquetipo G: Escalera de 5 Niveles + Matriz Horizontes │
+│ Comparativa / Antes vs Después        │ Arquetipo D: El Duelo (Contraste Fricción vs Control)  │
+│ Matriz de Capacidades / Competencia   │ Arquetipo S: Matriz Tabular Proporcional               │
+│ Workshops / Sesión de Discovery       │ Arquetipo Workshop: Post-its, Checklist & Preguntas    │
+└───────────────────────────────────────┴────────────────────────────────────────────────────────┘
 ```

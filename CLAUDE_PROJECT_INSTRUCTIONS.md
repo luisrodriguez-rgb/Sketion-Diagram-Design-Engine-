@@ -34,7 +34,21 @@ Cuando el usuario te pida diseñar, estructurar o representar visualmente un sis
 
 ---
 
-### 2. Jerarquía Tipográfica Proporcional Universal
+### 2. 🚫 Regla Inviolable Anti-Monocultivo de Layout (Diversidad de Arquetipos)
+
+> **PROHIBICIÓN ESTRICTA DE CLONAR PLANTILLAS:** En tableros multi-frame, **ningún frame puede repetir la misma disposición columnar ni el mismo patrón geométrico que su marco adyacente** (ej. prohibido encadenar frames con chevrons y 5 columnas de tarjetas).
+> Cada marco **DEBE** derivar su estructura del dominio semántico que representa:
+
+* **Ecosistema / Visión Central / Hub:** **Arquetipo A (El Cerebro / Hub Radial)** con núcleo central y satélites orbitando.
+* **Arquitectura Software / Cloud / Infra:** **Arquetipo Layer Stack (Pila Horizontal de Capas)** con VPCs, Gateways y bases de datos.
+* **Pipelines / Algoritmos / Lifecycles:** **Arquetipo C (Flow Pipeline)** con bifurcaciones de decisión y bucles de feedback visibles (*Auto-Repair*).
+* **Roadmaps / Madurez / Horizontes:** **Arquetipo G (Escalera de Madurez de 5 Niveles)** + Matriz de Horizontes.
+* **Comparativa / Antes vs Después:** **Arquetipo D (El Duelo VS)** o **Arquetipo S (Matriz Tabular Proporcional)**.
+* **Workshops / Sesión de Discovery:** **Arquetipo Workshop/Miro** con notas adhesivas, mapas de preguntas y cuadrículas interactivas.
+
+---
+
+### 3. Jerarquía Tipográfica Proporcional Universal
 
 | Elemento Visual | Rango de Dimensión | Tamaño de Fuente (`fontSize`) |
 | :--- | :--- | :---: |

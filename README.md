@@ -88,6 +88,19 @@ Sketion implementa un catálogo exhaustivo de 20 arquetipos de diseño para reso
 
 ---
 
+## 🚫 Regla Inviolable Anti-Monocultivo de Layout (Diversidad Estructural Obligatoria)
+
+En tableros de múltiples marcos (multi-frame), **ningún frame puede repetir la misma disposición columnar ni el mismo patrón geométrico que su marco adyacente** (ej. prohibido encadenar frames con chevrons y 5 columnas de tarjetas). Cada marco **DEBE** derivar su estructura del dominio semántico que representa:
+
+* **Ecosistema / Visión Central / Hub:** **Arquetipo A (El Cerebro / Hub Radial)** con núcleo central y satélites orbitando.
+* **Arquitectura Software / Cloud / Infra:** **Arquetipo Layer Stack (Pila Horizontal de Capas)** con VPCs, Gateways y bases de datos.
+* **Pipelines / Algoritmos / Lifecycles:** **Arquetipo C (Flow Pipeline)** con bifurcaciones de decisión y bucles de feedback visibles (*Auto-Repair*).
+* **Roadmaps / Madurez / Horizontes:** **Arquetipo G (Escalera de Madurez de 5 Niveles)** + Matriz de Horizontes.
+* **Comparativa / Antes vs Después:** **Arquetipo D (El Duelo VS)** o **Arquetipo S (Matriz Tabular Proporcional)**.
+* **Workshops / Sesión de Discovery:** **Arquetipo Workshop/Miro** con notas adhesivas, mapas de preguntas y cuadrículas interactivas.
+
+---
+
 ## 📏 Jerarquia Tipografica Proporcional Universal (Regla Anti-Espacio Vacio)
 
 Para garantizar legibilidad instantánea sin forzar zoom ni dejar tarjetas desiertas:

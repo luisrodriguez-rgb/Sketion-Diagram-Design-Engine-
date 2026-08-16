@@ -1,11 +1,10 @@
 """
 Sketion 4.0 — Generador del Tablero Maestro de Visión y Arquitectura SKETION
-Paleta: Azul Sketion (#2563EB), Azul Profundo (#1D4ED8), Blanco (#FFFFFF), Negro Tinta (#0F172A), Slate (#64748B), Verde (#059669), Coral (#D93829).
-Frames:
-- Frame 1: Identidad, Misión & El Gran Problema (Fragmentación vs. Sketion Workspace)
-- Frame 2: Arquitectura del Sistema (Local-First, Canvas Engines & Cloud Backend)
-- Frame 3: Sketion Intelligence — Pipeline Semántico y Motor de IA Estructurado
-- Frame 4: Estado del Producto, Roadmap Oficial y los 5 Niveles de Evolución
+Rediseñado con 4 Arquetipos Visuales Distintos y Auténticos:
+- Frame 1: Arquetipo D (Duelo de Fragmentación) + Arquetipo A (El Hub Central / Radial Core)
+- Frame 2: Arquetipo Layer Stack (Pila Horizontal de 4 Capas Técnicas de Software)
+- Frame 3: Arquetipo C (Flow Pipeline) con Bucle Visible de Auto-Repair y Feedback
+- Frame 4: Arquetipo G (Escalera de Madurez de 5 Niveles) + Matriz de Horizontes (Live, Building, R&D)
 """
 
 import os
@@ -46,259 +45,318 @@ def build_sketion_master_project():
     scene = ExcalidrawScene(roughness=0, bg_color=PALETTE["CANVAS"])
 
     # =========================================================================
-    # FRAME 1: IDENTIDAD, POSICIONAMIENTO & EL DUELO DE LA FRAGMENTACIÓN
+    # FRAME 1: ARQUETIPO D (DUELO) + ARQUETIPO A (EL CEREBRO / RADIAL HUB)
     # =========================================================================
-    w1, h1 = 2800.0, 960.0
+    w1, h1 = 2800.0, 980.0
     f1_x, f1_y = place(w1, h1)
-    fid1 = scene.add_frame("FRAME 1: SKETION MASTER — IDENTIDAD, POSICIONAMIENTO & EL GRAN PROBLEMA", f1_x, f1_y, w1, h1)
+    fid1 = scene.add_frame("FRAME 1: SKETION MASTER — IDENTIDAD, POSICIONAMIENTO & HUB RADIAL DE CONOCIMIENTO", f1_x, f1_y, w1, h1)
 
     scene.add_text(f1_x + 60.0, f1_y + 35.0, "SKETION MASTER PROJECT  ·  THINK. STRUCTURE. BUILD.", font_size=13, font_family=2, color=PALETTE["MUTED"], frame_id=fid1)
-    scene.add_text(f1_x + 60.0, f1_y + 60.0, "Sketion: The Visual Knowledge Workspace (Everything Connected. Everything Visual.)", font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid1)
+    scene.add_text(f1_x + 60.0, f1_y + 60.0, "De la Fragmentación de 10 Apps al Hub Central de Conocimiento Visual", font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid1)
 
-    stages_f1 = ["1. PROBLEMA: 10 APPS", "2. FRICCIÓN COGNITIVA", "3. CANVAS UNIFICADO", "4. KNOWLEDGE GRAPH", "5. CONTROL HUMANO"]
-    scene.add_chevron_ribbon(f1_x + 60.0, f1_y + 115.0, w1 - 220.0, h=38.0, stages=stages_f1, bg=PALETTE["DARK_SLATE"], text_color="#FFFFFF", frame_id=fid1)
+    scope_y = f1_y + 115.0
+    scope_h = 740.0
 
-    scene.add_vertical_rails(f1_x + w1 - 130.0, f1_y + 115.0, 70.0, 720.0, rails=[
-        {"title": "LOCAL-FIRST", "bg": PALETTE["BLUE_HERO"], "text_color": "#FFFFFF"},
-        {"title": "KNOWLEDGE OS", "bg": PALETTE["DARK_SLATE"], "text_color": "#FFFFFF"},
-        {"title": "AI STRUCTURE", "bg": PALETTE["DARK_SLATE"], "text_color": "#FFFFFF"}
-    ], frame_id=fid1)
-
-    scope_y = f1_y + 175.0
-    scope_h = 660.0
-
-    # SCOPE 1.1: REALIDAD ACTUAL (FRAGMENTACIÓN DE 6+ APPS)
-    sc1_w = 1100.0
+    # PANEL IZQUIERDO: EL DOLOR DE LA FRAGMENTACIÓN (Arquetipo D - Duelo)
+    sc1_w = 950.0
     sc1_x = f1_x + 60.0
-    scene.add_scope_container(sc1_x, scope_y, sc1_w, scope_h, label="1. EL PROBLEMA ACTUAL: FRAGMENTACIÓN DE HERRAMIENTAS", stroke=PALETTE["CORAL_BORDER"], bg=PALETTE["CORAL_BG"], frame_id=fid1)
+    scene.add_scope_container(sc1_x, scope_y, sc1_w, scope_h, label="1. EL PROBLEMA: STACK FRAGMENTADO (6+ APPS AISLADAS)", stroke=PALETTE["CORAL_BORDER"], bg=PALETTE["CORAL_BG"], frame_id=fid1)
 
-    card_w1 = 490.0
-    scene.add_quad_card(sc1_x + 35.0, scope_y + 60.0, card_w1, 115.0, "PDFs en Adobe / Preview", sublabel="Texto muerto · Sin conexión a notas", badge="DOCS", icon="file", font_size=18, frame_id=fid1)
-    scene.add_quad_card(sc1_x + 565.0, scope_y + 60.0, card_w1, 115.0, "Notas en Notion / Docs", sublabel="Listas lineales · Sin espacialidad", badge="NOTES", icon="laptop", font_size=18, frame_id=fid1)
-    
-    scene.add_quad_card(sc1_x + 35.0, scope_y + 195.0, card_w1, 115.0, "Fórmulas en Overleaf / LaTeX", sublabel="Aislado de explicaciones visuales", badge="MATH", icon="server", font_size=18, frame_id=fid1)
-    scene.add_quad_card(sc1_x + 565.0, scope_y + 195.0, card_w1, 115.0, "Diagramas en Excalidraw", sublabel="Solo dibujo · Sin datos ni documentos", badge="DRAW", icon="container", font_size=18, frame_id=fid1)
+    c_f1 = 410.0
+    scene.add_quad_card(sc1_x + 35.0, scope_y + 60.0, c_f1, 105.0, "PDFs en Adobe / Reader", sublabel="Texto estático · Sin conexión a notas", badge="DOCS", icon="file", font_size=18, frame_id=fid1)
+    scene.add_quad_card(sc1_x + 505.0, scope_y + 60.0, c_f1, 105.0, "Notas en Notion / Docs", sublabel="Listas lineales · Sin espacialidad", badge="NOTES", icon="laptop", font_size=18, frame_id=fid1)
 
-    scene.add_quad_card(sc1_x + 35.0, scope_y + 330.0, card_w1, 115.0, "Datos en Excel / Sheets", sublabel="Tablas frías desconectadas de notas", badge="DATA", icon="database", font_size=18, frame_id=fid1)
-    scene.add_quad_card(sc1_x + 565.0, scope_y + 330.0, card_w1, 115.0, "Flashcards en Anki", sublabel="Preguntas aisladas del material original", badge="CARDS", icon="users", font_size=18, frame_id=fid1)
+    scene.add_quad_card(sc1_x + 35.0, scope_y + 185.0, c_f1, 105.0, "Fórmulas en Overleaf", sublabel="LaTeX aislado de explicaciones", badge="MATH", icon="server", font_size=18, frame_id=fid1)
+    scene.add_quad_card(sc1_x + 505.0, scope_y + 185.0, c_f1, 105.0, "Diagramas en Excalidraw", sublabel="Solo dibujo libre · Sin datos ni docs", badge="DRAW", icon="container", font_size=18, frame_id=fid1)
 
-    scene.add_sticky_note(sc1_x + 35.0, scope_y + 465.0, 1020.0, 95.0, "CICLO DE FRICCIÓN CONSTANTE:\nOpen -> Switch -> Copy -> Paste -> Reorganize -> Switch Again (Pérdida del 40% del tiempo de estudio y desarrollo).", angle_deg=-0.5, font_size=14, frame_id=fid1)
+    scene.add_quad_card(sc1_x + 35.0, scope_y + 310.0, c_f1, 105.0, "Datos en Excel / Sheets", sublabel="Tablas frías desconectadas de notas", badge="DATA", icon="database", font_size=18, frame_id=fid1)
+    scene.add_quad_card(sc1_x + 505.0, scope_y + 310.0, c_f1, 105.0, "Flashcards en Anki", sublabel="Preguntas aisladas del material", badge="CARDS", icon="users", font_size=18, frame_id=fid1)
 
-    # SCOPE 1.2: SKETION UNIFIED WORKSPACE
-    sc2_w = 1350.0
-    sc2_x = sc1_x + sc1_w + 45.0
-    scene.add_scope_container(sc2_x, scope_y, sc2_w, scope_h, label="2. SOLUCIÓN SKETION: VISUAL KNOWLEDGE WORKSPACE UNIFICADO", stroke=PALETTE["BLUE_BORDER"], bg=PALETTE["BLUE_BG"], frame_id=fid1)
+    # Flechas rojas de fricción entre apps
+    scene.add_arrow(sc1_x + 240.0, scope_y + 165.0, sc1_x + 240.0, scope_y + 185.0, stroke=PALETTE["CORAL_HERO"], stroke_w=1.5, dashed=True, frame_id=fid1)
+    scene.add_arrow(sc1_x + 710.0, scope_y + 165.0, sc1_x + 710.0, scope_y + 185.0, stroke=PALETTE["CORAL_HERO"], stroke_w=1.5, dashed=True, frame_id=fid1)
+    scene.add_arrow(sc1_x + 240.0, scope_y + 290.0, sc1_x + 240.0, scope_y + 310.0, stroke=PALETTE["CORAL_HERO"], stroke_w=1.5, dashed=True, frame_id=fid1)
 
-    card_w2 = 615.0
-    scene.add_quad_card(sc2_x + 35.0, scope_y + 60.0, card_w2, 115.0, "PDFs Interactivos con Overlays", sublabel="Capas de texto vivo sobre el lienzo", badge="PDF ENGINE", icon="file", font_size=18, frame_id=fid1)
-    scene.add_quad_card(sc2_x + 685.0, scope_y + 60.0, card_w2, 115.0, "Notas Conectadas Espaciales", sublabel="Nodos de conocimiento interrelacionados", badge="KNOWLEDGE GRAPH", icon="laptop", is_hero=True, font_size=18, frame_id=fid1)
+    scene.add_sticky_note(sc1_x + 35.0, scope_y + 440.0, 880.0, 110.0,
+                          "CICLO DE FRICCIÓN COGNITIVA:\nOpen -> Switch -> Copy -> Paste -> Reorganize -> Switch Again.\nSe pierde el 40% del tiempo de investigación y estudio cambiando de pestañas.",
+                          angle_deg=-1.0, font_size=15, frame_id=fid1)
 
-    scene.add_quad_card(sc2_x + 35.0, scope_y + 195.0, card_w2, 115.0, "Renderizado Nativo de LaTeX", sublabel="Fórmulas vivas integradas al diagrama", badge="KATEX", icon="server", font_size=18, frame_id=fid1)
-    scene.add_quad_card(sc2_x + 685.0, scope_y + 195.0, card_w2, 115.0, "Mermaid & Diagramación Técnica", sublabel="Arquitectura de software y flujos lógicos", badge="MERMAID", icon="container", font_size=18, frame_id=fid1)
+    # PANEL DERECHO: ARQUETIPO A (EL CEREBRO / RADIAL HUB)
+    sc2_w = 1660.0
+    sc2_x = sc1_x + sc1_w + 70.0
+    scene.add_scope_container(sc2_x, scope_y, sc2_w, scope_h, label="2. SOLUCIÓN SKETION: HUB CENTRAL DE CONOCIMIENTO (ARQUETIPO RADIAL)", stroke=PALETTE["BLUE_BORDER"], bg=PALETTE["BLUE_BG"], frame_id=fid1)
 
-    scene.add_quad_card(sc2_x + 35.0, scope_y + 330.0, card_w2, 115.0, "Datasets & Gráficos en Vivo", sublabel="Importación CSV y Google Sheets en canvas", badge="DATA VIS", icon="database", font_size=18, frame_id=fid1)
-    scene.add_quad_card(sc2_x + 685.0, scope_y + 330.0, card_w2, 115.0, "Study Mode & Flashcards Vivas", sublabel="Active recall nacido del propio canvas", badge="ACTIVE RECALL", icon="users", is_hero=True, font_size=18, frame_id=fid1)
+    # HUB CENTRAL (EL CEREBRO)
+    hub_w, hub_h = 560.0, 160.0
+    hub_x = sc2_x + (sc2_w - hub_w) * 0.5
+    hub_y = scope_y + (scope_h - hub_h) * 0.5 - 30.0
+    hub_box, _ = scene.add_quad_card(hub_x, hub_y, hub_w, hub_h,
+                                     "SKETION INFINITE CANVAS CORE",
+                                     sublabel="Lienzo espacial donde todo el conocimiento converge y se conecta en vivo",
+                                     badge="NUCLEUS", icon="laptop", is_hero=True, font_size=20, pills=["LOCAL-FIRST", "INTERACTIVE"], frame_id=fid1)
 
-    scene.add_quad_card(sc2_x + 35.0, scope_y + 465.0, 1265.0, 95.0, "Filosofía Central de IA", sublabel="AI should organize your thinking, not replace it · Generación estructurada de artefactos editables", badge="AI PHILOSOPHY", icon="key", font_size=18, frame_id=fid1)
+    # 6 SATÉLITES RADIALES CONECTADOS AL HUB
+    sat_w, sat_h = 440.0, 115.0
 
-    scene.add_arrow(sc1_x + sc1_w, scope_y + 250.0, sc2_x, scope_y + 250.0, stroke=PALETTE["BLUE_HERO"], stroke_w=2.5, label="UNIFICACIÓN ESPACIAL", orthogonal=True, frame_id=fid1)
+    # 1. Top-Left: PDFs
+    s1_x, s1_y = sc2_x + 45.0, scope_y + 55.0
+    c_s1, _ = scene.add_quad_card(s1_x, s1_y, sat_w, sat_h, "PDFs con Text Overlays", sublabel="Anotaciones y capas de texto vivo", badge="DOCS", icon="file", font_size=18, frame_id=fid1)
+    scene.add_arrow(c_s1["x"] + sat_w, c_s1["y"] + sat_h * 0.5, hub_x, hub_y + 30.0, stroke=PALETTE["BLUE_HERO"], stroke_w=2.0, frame_id=fid1)
 
-    scene.add_legend_footer(f1_x + 60.0, f1_y + 865.0, w1 - 220.0, swatches=[
-        {"label": "Sketion Knowledge Core", "bg": PALETTE["BLUE_BG"], "stroke": PALETTE["BLUE_HERO"]},
-        {"label": "Stack Legado / Fragmentación", "bg": PALETTE["CORAL_BG"], "stroke": PALETTE["CORAL_HERO"]},
-        {"label": "Conexión Unificada", "is_arrow": True, "stroke": PALETTE["BLUE_HERO"]}
-    ], note="Knowledge shouldn't have to live in ten disconnected apps · Everything connected · Everything visual", frame_id=fid1)
+    # 2. Top-Right: LaTeX
+    s2_x, s2_y = sc2_x + sc2_w - sat_w - 45.0, scope_y + 55.0
+    c_s2, _ = scene.add_quad_card(s2_x, s2_y, sat_w, sat_h, "LaTeX & Math (KaTeX)", sublabel="Fórmulas integradas al espacio visual", badge="MATH", icon="server", font_size=18, frame_id=fid1)
+    scene.add_arrow(c_s2["x"], c_s2["y"] + sat_h * 0.5, hub_x + hub_w, hub_y + 30.0, stroke=PALETTE["BLUE_HERO"], stroke_w=2.0, frame_id=fid1)
+
+    # 3. Mid-Left: Notes
+    s3_x, s3_y = sc2_x + 45.0, hub_y + 20.0
+    c_s3, _ = scene.add_quad_card(s3_x, s3_y, sat_w, sat_h, "Knowledge Graph Notes", sublabel="Notas espaciales conectadas entre sí", badge="GRAPH", icon="laptop", font_size=18, frame_id=fid1)
+    scene.add_arrow(c_s3["x"] + sat_w, c_s3["y"] + sat_h * 0.5, hub_x, hub_y + hub_h * 0.5, stroke=PALETTE["BLUE_HERO"], stroke_w=2.0, frame_id=fid1)
+
+    # 4. Mid-Right: Mermaid
+    s4_x, s4_y = sc2_x + sc2_w - sat_w - 45.0, hub_y + 20.0
+    c_s4, _ = scene.add_quad_card(s4_x, s4_y, sat_w, sat_h, "Mermaid Diagrams", sublabel="Arquitecturas y flujos lógicos", badge="DIAGRAMS", icon="container", font_size=18, frame_id=fid1)
+    scene.add_arrow(c_s4["x"], c_s4["y"] + sat_h * 0.5, hub_x + hub_w, hub_y + hub_h * 0.5, stroke=PALETTE["BLUE_HERO"], stroke_w=2.0, frame_id=fid1)
+
+    # 5. Bottom-Left: Datasets
+    s5_x, s5_y = sc2_x + 45.0, scope_y + scope_h - sat_h - 75.0
+    c_s5, _ = scene.add_quad_card(s5_x, s5_y, sat_w, sat_h, "Datasets & Live Charts", sublabel="CSV y Google Sheets en el canvas", badge="DATA", icon="database", font_size=18, frame_id=fid1)
+    scene.add_arrow(c_s5["x"] + sat_w, c_s5["y"] + sat_h * 0.5, hub_x, hub_y + hub_h - 30.0, stroke=PALETTE["BLUE_HERO"], stroke_w=2.0, frame_id=fid1)
+
+    # 6. Bottom-Right: Flashcards
+    s6_x, s6_y = sc2_x + sc2_w - sat_w - 45.0, scope_y + scope_h - sat_h - 75.0
+    c_s6, _ = scene.add_quad_card(s6_x, s6_y, sat_w, sat_h, "Study Mode & Flashcards", sublabel="Active recall nacido del propio canvas", badge="RECALL", icon="users", is_hero=True, font_size=18, frame_id=fid1)
+    scene.add_arrow(c_s6["x"], c_s6["y"] + sat_h * 0.5, hub_x + hub_w, hub_y + hub_h - 30.0, stroke=PALETTE["BLUE_HERO"], stroke_w=2.0, frame_id=fid1)
+
+    # Conexión de Transformación
+    scene.add_arrow(sc1_x + sc1_w, scope_y + scope_h * 0.5, sc2_x, scope_y + scope_h * 0.5, stroke=PALETTE["BLUE_HERO"], stroke_w=3.0, label="UNIFICACIÓN TOTAL", orthogonal=True, frame_id=fid1)
+
+    scene.add_legend_footer(f1_x + 60.0, f1_y + 885.0, w1 - 120.0, swatches=[
+        {"label": "Núcleo del Canvas Sketion", "bg": PALETTE["BLUE_BG"], "stroke": PALETTE["BLUE_HERO"]},
+        {"label": "Formatos Satelitales Conectados", "bg": "#FFFFFF", "stroke": PALETTE["CARD_BORDER"]},
+        {"label": "Fragmentación Legada", "bg": PALETTE["CORAL_BG"], "stroke": PALETTE["CORAL_HERO"]}
+    ], note="Think. Structure. Build. · Everything connected · Everything visual", frame_id=fid1)
 
     scene.auto_fit_frame(fid1, padding=50.0)
 
     # =========================================================================
-    # FRAME 2: ARQUITECTURA TÉCNICA (LOCAL-FIRST, CANVAS & CLOUD)
+    # FRAME 2: ARQUETIPO LAYER STACK (PILA HORIZONTAL DE 4 CAPAS TÉCNICAS)
     # =========================================================================
-    w2, h2 = 2800.0, 960.0
+    w2, h2 = 2800.0, 980.0
     f2_x, f2_y = place(w2, h2)
-    fid2 = scene.add_frame("FRAME 2: ARQUITECTURA TÉCNICA — LOCAL-FIRST STACK & CLOUD SYNC", f2_x, f2_y, w2, h2)
+    fid2 = scene.add_frame("FRAME 2: SKETION ARCHITECTURE — LAYER STACK HORIZONTAL & LOCAL-FIRST", f2_x, f2_y, w2, h2)
 
-    scene.add_text(f2_x + 60.0, f2_y + 35.0, "SKETION ARCHITECTURE  ·  LOCAL-FIRST & EDGE COMPUTING", font_size=13, font_family=2, color=PALETTE["MUTED"], frame_id=fid2)
-    scene.add_text(f2_x + 60.0, f2_y + 60.0, "Arquitectura de la Aplicación: React 18 · Excalidraw Engine · IndexedDB · Supabase", font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid2)
+    scene.add_text(f2_x + 60.0, f2_y + 35.0, "SKETION ARCHITECTURE  ·  LAYERED TIER ARCHITECTURE", font_size=13, font_family=2, color=PALETTE["MUTED"], frame_id=fid2)
+    scene.add_text(f2_x + 60.0, f2_y + 60.0, "Pila de Arquitectura por Capas: De la Interfaz React al Backend Supabase", font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid2)
 
-    stages_f2 = ["1. FRONTEND CORE", "2. CANVAS ENGINES", "3. LOCAL PERSISTENCE", "4. SUPABASE CLOUD", "5. REALTIME COLLAB"]
-    scene.add_chevron_ribbon(f2_x + 60.0, f2_y + 115.0, w2 - 120.0, h=38.0, stages=stages_f2, bg=PALETTE["DARK_SLATE"], text_color="#FFFFFF", frame_id=fid2)
+    layer_w = w2 - 120.0
+    layer_x = f2_x + 60.0
+    layer_start_y = f2_y + 115.0
+    layer_h = 165.0
+    layer_gap = 25.0
 
-    st2_w = (w2 - 120.0 - 4 * 40.0) / 5.0
-    st2_y = f2_y + 175.0
-    st2_h = 680.0
+    # CAPA 1: CAPA DE PRESENTACIÓN & UI
+    l1_y = layer_start_y
+    scene.add_scope_container(layer_x, l1_y, layer_w, layer_h, label="CAPA 1: PRESENTACIÓN & INTERFAZ (BROWSER CLIENT)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
+    sub_w1 = (layer_w - 40.0 - 2 * 30.0) / 3.0
+    scene.add_quad_card(layer_x + 20.0, l1_y + 40.0, sub_w1, 105.0, "React 18 & Vite", sublabel="Arquitectura de componentes modulares y hot-reload", badge="FRONTEND", icon="laptop", font_size=18, frame_id=fid2)
+    scene.add_quad_card(layer_x + 20.0 + sub_w1 + 30.0, l1_y + 40.0, sub_w1, 105.0, "TypeScript Strict Mode", sublabel="Tipado estático seguro para modelos y estados de canvas", badge="TYPES", icon="server", font_size=18, frame_id=fid2)
+    scene.add_quad_card(layer_x + 20.0 + 2 * (sub_w1 + 30.0), l1_y + 40.0, sub_w1, 105.0, "Tailwind CSS + Outfit / Inter", sublabel="Sistema de diseño sobrio, tokens y micro-animaciones", badge="DESIGN TOKENS", icon="file", font_size=18, frame_id=fid2)
 
-    # COLUMNA 1: FRONTEND CORE
-    x2_1 = f2_x + 60.0
-    scene.add_scope_container(x2_1, st2_y, st2_w, st2_h, label="1. FRONTEND CORE", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
-    c2_1, _ = scene.add_quad_card(x2_1 + 20.0, st2_y + 65.0, st2_w - 40.0, 115.0, "React 18 & Vite", sublabel="Arquitectura modular rápida", badge="FRAMEWORK", icon="laptop", font_size=18, frame_id=fid2)
-    c2_2, _ = scene.add_quad_card(x2_1 + 20.0, st2_y + 215.0, st2_w - 40.0, 115.0, "TypeScript Strict", sublabel="Tipado robusto end-to-end", badge="LANG", icon="server", font_size=18, frame_id=fid2)
-    c2_3, _ = scene.add_quad_card(x2_1 + 20.0, st2_y + 365.0, st2_w - 40.0, 115.0, "Tailwind & Typography", sublabel="Outfit headings + Inter body", badge="UI", icon="file", font_size=18, frame_id=fid2)
+    # CAPA 2: MOTORES DE RENDERIZADO EN EL CANVAS
+    l2_y = l1_y + layer_h + layer_gap
+    scene.add_scope_container(layer_x, l2_y, layer_w, layer_h, label="CAPA 2: MOTORES DE RENDERIZADO & VISUALIZACIÓN DEL CANVAS", stroke=PALETTE["BLUE_BORDER"], bg=PALETTE["BLUE_BG"], frame_id=fid2)
+    sub_w2 = (layer_w - 40.0 - 3 * 25.0) / 4.0
+    scene.add_quad_card(layer_x + 20.0, l2_y + 40.0, sub_w2, 105.0, "Excalidraw Core", sublabel="Lienzo infinito, render por capas y selección espacial", badge="CANVAS ENGINE", icon="container", is_hero=True, font_size=18, frame_id=fid2)
+    scene.add_quad_card(layer_x + 20.0 + (sub_w2 + 25.0), l2_y + 40.0, sub_w2, 105.0, "PDF.js Engine", sublabel="Decodificación de blobs, overlays y texto interactivo", badge="PDF ENGINE", icon="file", font_size=18, frame_id=fid2)
+    scene.add_quad_card(layer_x + 20.0 + 2 * (sub_w2 + 25.0), l2_y + 40.0, sub_w2, 105.0, "KaTeX Math Parser", sublabel="Renderizado vectorial de fórmulas matemáticas complejas", badge="LATEX PARSER", icon="server", font_size=18, frame_id=fid2)
+    scene.add_quad_card(layer_x + 20.0 + 3 * (sub_w2 + 25.0), l2_y + 40.0, sub_w2, 105.0, "Mermaid Runtime", sublabel="Generación de diagramas de secuencia y flujos de código", badge="MERMAID RUNTIME", icon="database", font_size=18, frame_id=fid2)
 
-    # COLUMNA 2: CANVAS ENGINES
-    x2_2 = x2_1 + st2_w + 40.0
-    scene.add_scope_container(x2_2, st2_y, st2_w, st2_h, label="2. CANVAS ENGINES", stroke=PALETTE["BLUE_BORDER"], bg=PALETTE["BLUE_BG"], frame_id=fid2)
-    c2_4, _ = scene.add_quad_card(x2_2 + 20.0, st2_y + 65.0, st2_w - 40.0, 115.0, "Excalidraw Engine", sublabel="Lienzo infinito, zoom & pan", badge="CANVAS CORE", icon="container", is_hero=True, font_size=18, frame_id=fid2)
-    c2_5, _ = scene.add_quad_card(x2_2 + 20.0, st2_y + 215.0, st2_w - 40.0, 115.0, "PDF.js Text Layer", sublabel="Renderizado de blobs y overlays", badge="PDF ENGINE", icon="file", font_size=18, frame_id=fid2)
-    c2_6, _ = scene.add_quad_card(x2_2 + 20.0, st2_y + 365.0, st2_w - 40.0, 115.0, "KaTeX & Mermaid", sublabel="Ecuaciones y flujos en código", badge="MATH/FLOW", icon="database", font_size=18, frame_id=fid2)
+    # CAPA 3: PERSISTENCIA LOCAL (LOCAL-FIRST TIER) - HÉROE
+    l3_y = l2_y + layer_h + layer_gap
+    scene.add_scope_container(layer_x, l3_y, layer_w, layer_h, label="CAPA 3: MOTOR DE PERSISTENCIA LOCAL-FIRST (LATENCIA CERO & OFFLINE RESILIENCE)", stroke=PALETTE["GREEN_BORDER"], bg=PALETTE["GREEN_BG"], frame_id=fid2)
+    sub_w3 = (layer_w - 40.0 - 2 * 30.0) / 3.0
+    scene.add_quad_card(layer_x + 20.0, l3_y + 40.0, sub_w3, 105.0, "IndexedDB (Dexie.js)", sublabel="Persistencia local instantánea de boards, notas y blobs", badge="LOCAL DB", icon="database", is_hero=True, font_size=18, pills=["FAST", "OFFLINE"], frame_id=fid2)
+    scene.add_quad_card(layer_x + 20.0 + sub_w3 + 30.0, l3_y + 40.0, sub_w3, 105.0, "Offline State Manager", sublabel="Cola de operaciones locales para sincronización diferida", badge="STATE QUEUE", icon="lock", font_size=18, frame_id=fid2)
+    scene.add_quad_card(layer_x + 20.0 + 2 * (sub_w3 + 30.0), l3_y + 40.0, sub_w3, 105.0, "Blob Cache & Rehydration", sublabel="Carga ultrarrápida de documentos sin depender de red", badge="BLOB CACHE", icon="sync", font_size=18, frame_id=fid2)
 
-    # COLUMNA 3: LOCAL PERSISTENCE (LOCAL-FIRST)
-    x2_3 = x2_2 + st2_w + 40.0
-    scene.add_scope_container(x2_3, st2_y, st2_w, st2_h, label="3. LOCAL-FIRST ENGINE", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
-    c2_7, _ = scene.add_quad_card(x2_3 + 20.0, st2_y + 65.0, st2_w - 40.0, 115.0, "IndexedDB (Dexie.js)", sublabel="Persistencia local sin latencia", badge="STORAGE", icon="database", is_hero=True, font_size=18, frame_id=fid2)
-    c2_8, _ = scene.add_quad_card(x2_3 + 20.0, st2_y + 215.0, st2_w - 40.0, 115.0, "Offline Resilience", sublabel="Funciona 100% sin internet", badge="OFFLINE", icon="lock", font_size=18, frame_id=fid2)
-    c2_9, _ = scene.add_quad_card(x2_3 + 20.0, st2_y + 365.0, st2_w - 40.0, 115.0, "State Rehydration", sublabel="Recuperación instantánea de sesión", badge="STATE", icon="sync", font_size=18, frame_id=fid2)
+    # CAPA 4: CLOUD BACKEND & SINCRONIZACIÓN
+    l4_y = l3_y + layer_h + layer_gap
+    scene.add_scope_container(layer_x, l4_y, layer_w, layer_h, label="CAPA 4: INFRAESTRUCTURA CLOUD, SINCRONIZACIÓN & COLABORACIÓN", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
+    sub_w4 = (layer_w - 40.0 - 3 * 25.0) / 4.0
+    scene.add_quad_card(layer_x + 20.0, l4_y + 40.0, sub_w4, 105.0, "Supabase Auth & RLS", sublabel="Autenticación segura y permisos por proyecto", badge="SECURITY", icon="key", font_size=18, frame_id=fid2)
+    scene.add_quad_card(layer_x + 20.0 + (sub_w4 + 25.0), l4_y + 40.0, sub_w4, 105.0, "PostgreSQL Database", sublabel="Almacén relacional de metadatos y workspaces", badge="POSTGRES", icon="database", font_size=18, frame_id=fid2)
+    scene.add_quad_card(layer_x + 20.0 + 2 * (sub_w4 + 25.0), l4_y + 40.0, sub_w4, 105.0, "Supabase Storage", sublabel="Buckets seguros para almacenamiento de PDFs", badge="STORAGE", icon="server", font_size=18, frame_id=fid2)
+    scene.add_quad_card(layer_x + 20.0 + 3 * (sub_w4 + 25.0), l4_y + 40.0, sub_w4, 105.0, "Socket.IO Collab", sublabel="Comentarios espaciales y presencia en tiempo real", badge="REALTIME", icon="sync", font_size=18, frame_id=fid2)
 
-    # COLUMNA 4: CLOUD & SYNC BACKEND
-    x2_4 = x2_3 + st2_w + 40.0
-    scene.add_scope_container(x2_4, st2_y, st2_w, st2_h, label="4. SUPABASE BACKEND", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
-    c2_10, _ = scene.add_quad_card(x2_4 + 20.0, st2_y + 65.0, st2_w - 40.0, 115.0, "Supabase Auth & RLS", sublabel="Seguridad por fila y roles", badge="AUTH", icon="key", font_size=18, frame_id=fid2)
-    c2_11, _ = scene.add_quad_card(x2_4 + 20.0, st2_y + 215.0, st2_w - 40.0, 115.0, "PostgreSQL Database", sublabel="Almacén de proyectos y boards", badge="POSTGRES", icon="database", font_size=18, frame_id=fid2)
-    c2_12, _ = scene.add_quad_card(x2_4 + 20.0, st2_y + 365.0, st2_w - 40.0, 115.0, "Supabase Storage", sublabel="Gestión de PDFs y activos binarios", badge="STORAGE", icon="server", font_size=18, frame_id=fid2)
+    # Conectores Verticales entre Capas
+    scene.add_arrow(layer_x + layer_w * 0.25, l1_y + layer_h, layer_x + layer_w * 0.25, l2_y, stroke=PALETTE["INK"], stroke_w=1.5, frame_id=fid2)
+    scene.add_arrow(layer_x + layer_w * 0.5, l2_y + layer_h, layer_x + layer_w * 0.5, l3_y, stroke=PALETTE["BLUE_HERO"], stroke_w=2.5, label="PERSISTENCIA DIRECTA", frame_id=fid2)
+    scene.add_arrow(layer_x + layer_w * 0.75, l3_y + layer_h, layer_x + layer_w * 0.75, l4_y, stroke=PALETTE["GREEN_HERO"], stroke_w=2.5, label="SYNC ASÍNCRONO", frame_id=fid2)
 
-    # COLUMNA 5: REALTIME & DEPLOY
-    x2_5 = x2_4 + st2_w + 40.0
-    scene.add_scope_container(x2_5, st2_y, st2_w, st2_h, label="5. REALTIME & INFRA", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
-    c2_13, _ = scene.add_quad_card(x2_5 + 20.0, st2_y + 65.0, st2_w - 40.0, 115.0, "Socket.IO Collab", sublabel="Colaboración multiusuario en vivo", badge="REALTIME", icon="sync", font_size=18, frame_id=fid2)
-    c2_14, _ = scene.add_quad_card(x2_5 + 20.0, st2_y + 215.0, st2_w - 40.0, 115.0, "Vercel Edge Network", sublabel="Despliegue global de baja latencia", badge="HOSTING", icon="server", font_size=18, frame_id=fid2)
-    c2_15, _ = scene.add_quad_card(x2_5 + 20.0, st2_y + 365.0, st2_w - 40.0, 115.0, "VitePress Docs", sublabel="Documentación viva indexada", badge="DOCS", icon="file", font_size=18, frame_id=fid2)
-
-    # Conexiones Ortogonales
-    scene.add_arrow(c2_1["x"] + c2_1["width"], c2_1["y"] + c2_1["height"]*0.5, c2_4["x"], c2_4["y"] + c2_4["height"]*0.5, stroke=PALETTE["INK"], stroke_w=1.5, orthogonal=True, frame_id=fid2)
-    scene.add_arrow(c2_4["x"] + c2_4["width"], c2_4["y"] + c2_4["height"]*0.5, c2_7["x"], c2_7["y"] + c2_7["height"]*0.5, stroke=PALETTE["BLUE_HERO"], stroke_w=2.0, label="LOCAL WRITE", orthogonal=True, frame_id=fid2)
-    scene.add_arrow(c2_7["x"] + c2_7["width"], c2_7["y"] + c2_7["height"]*0.5, c2_11["x"], c2_11["y"] + c2_11["height"]*0.5, stroke=PALETTE["BLUE_HERO"], stroke_w=2.0, label="ASYNC SYNC", orthogonal=True, frame_id=fid2)
-    scene.add_arrow(c2_11["x"] + c2_11["width"], c2_11["y"] + c2_11["height"]*0.5, c2_13["x"], c2_13["y"] + c2_13["height"]*0.5, stroke=PALETTE["INK"], stroke_w=1.5, orthogonal=True, frame_id=fid2)
-
-    scene.add_legend_footer(f2_x + 60.0, f2_y + 865.0, w2 - 120.0, swatches=[
-        {"label": "Núcleo de Ejecución Local", "bg": PALETTE["BLUE_BG"], "stroke": PALETTE["BLUE_HERO"]},
-        {"label": "Módulos de Infraestructura", "bg": "#FFFFFF", "stroke": PALETTE["CARD_BORDER"]},
-        {"label": "Sincronización Local-to-Cloud", "is_arrow": True, "stroke": PALETTE["BLUE_HERO"]}
+    scene.add_legend_footer(f2_x + 60.0, f2_y + 885.0, w2 - 120.0, swatches=[
+        {"label": "Capa Local-First Héroe", "bg": PALETTE["GREEN_BG"], "stroke": PALETTE["GREEN_HERO"]},
+        {"label": "Motores del Canvas", "bg": PALETTE["BLUE_BG"], "stroke": PALETTE["BLUE_HERO"]},
+        {"label": "Servicios de Infraestructura", "bg": "#FFFFFF", "stroke": PALETTE["CARD_BORDER"]}
     ], note="Your workspace should remain useful even when the network doesn't · Local-First Architecture", frame_id=fid2)
 
     scene.auto_fit_frame(fid2, padding=50.0)
 
     # =========================================================================
-    # FRAME 3: SKETION INTELLIGENCE — EL PIPELINE SEMÁNTICO DE IA
+    # FRAME 3: ARQUETIPO C (FLOW PIPELINE) CON BUCLE VISIBLE DE AUTO-REPAIR
     # =========================================================================
-    w3, h3 = 2800.0, 960.0
+    w3, h3 = 2800.0, 980.0
     f3_x, f3_y = place(w3, h3)
-    fid3 = scene.add_frame("FRAME 3: SKETION INTELLIGENCE — PIPELINE SEMÁNTICO & AUTO-REPAIR", f3_x, f3_y, w3, h3)
+    fid3 = scene.add_frame("FRAME 3: SKETION INTELLIGENCE — PIPELINE SEMÁNTICO & AUTO-REPAIR LOOP", f3_x, f3_y, w3, h3)
 
     scene.add_text(f3_x + 60.0, f3_y + 35.0, "SKETION INTELLIGENCE  ·  STRUCTURED AI DIAGRAMMING ENGINE", font_size=13, font_family=2, color=PALETTE["MUTED"], frame_id=fid3)
-    scene.add_text(f3_x + 60.0, f3_y + 60.0, "De Lenguaje Natural a Artefactos Nativos Editables (.excalidraw)", font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid3)
+    scene.add_text(f3_x + 60.0, f3_y + 60.0, "Pipeline de 4 Capas: Comprensión Semántica, Geometría Determinista & Bucle de Reparación", font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid3)
 
-    stages_f3 = ["1. PROMPT USUARIO", "2. ANÁLISIS SEMÁNTICO", "3. SELECCIÓN ARQUETIPO", "4. GEOMETRÍA & LAYOUT", "5. AUTO-REPAIR & RENDER"]
-    scene.add_chevron_ribbon(f3_x + 60.0, f3_y + 115.0, w3 - 120.0, h=38.0, stages=stages_f3, bg=PALETTE["DARK_SLATE"], text_color="#FFFFFF", frame_id=fid3)
+    # 5 ETAPAS DEL PIPELINE PRINCIPAL (FLUJO HORIZONTAL)
+    pipe_y = f3_y + 360.0
+    pipe_w = (w3 - 120.0 - 4 * 60.0) / 5.0
+    pipe_h = 240.0
 
-    st3_w = (w3 - 120.0 - 4 * 40.0) / 5.0
-    st3_y = f3_y + 175.0
-    st3_h = 680.0
+    # PASO 1: INPUT
+    p1_x = f3_x + 60.0
+    scene.add_scope_container(p1_x, pipe_y, pipe_w, pipe_h, label="1. INPUT BRUTO", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
+    c_p1, _ = scene.add_quad_card(p1_x + 20.0, pipe_y + 50.0, pipe_w - 40.0, 160.0, "Prompt del Usuario", sublabel="Texto desestructurado · Requerimientos técnicos · Audiencia objetivo (CEO/Ops/Tech)", badge="INPUT", icon="laptop", font_size=18, frame_id=fid3)
 
-    # PASO 1: ENTRADA
-    x3_1 = f3_x + 60.0
-    scene.add_scope_container(x3_1, st3_y, st3_w, st3_h, label="1. INPUT BRUTO", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
-    c3_1, _ = scene.add_quad_card(x3_1 + 20.0, st3_y + 65.0, st3_w - 40.0, 120.0, "Prompt Desestructurado", sublabel="Texto en lenguaje natural o brief", badge="INPUT", icon="laptop", font_size=18, frame_id=fid3)
-    c3_2, _ = scene.add_quad_card(x3_1 + 20.0, st3_y + 225.0, st3_w - 40.0, 120.0, "Documentos / PDFs", sublabel="Contenido técnico o requerimientos", badge="CONTEXT", icon="file", font_size=18, frame_id=fid3)
-    c3_3, _ = scene.add_quad_card(x3_1 + 20.0, st3_y + 385.0, st3_w - 40.0, 120.0, "Perfil de Audiencia", sublabel="CEO · Ops · Tech · Data · Pitch", badge="AUDIENCE", icon="users", font_size=18, frame_id=fid3)
+    # PASO 2: SEMÁNTICA
+    p2_x = p1_x + pipe_w + 60.0
+    scene.add_scope_container(p2_x, pipe_y, pipe_w, pipe_h, label="2. MOTOR SEMÁNTICO", stroke=PALETTE["BLUE_BORDER"], bg=PALETTE["BLUE_BG"], frame_id=fid3)
+    c_p2, _ = scene.add_quad_card(p2_x + 20.0, pipe_y + 50.0, pipe_w - 40.0, 160.0, "Análisis de Entidades", sublabel="Extracción de nodos, jerarquías y restricciones semánticas duras (IR Schema)", badge="SEMANTICS", icon="database", is_hero=True, font_size=18, frame_id=fid3)
 
-    # PASO 2: SEMANTIC ENGINE
-    x3_2 = x3_1 + st3_w + 40.0
-    scene.add_scope_container(x3_2, st3_y, st3_w, st3_h, label="2. MOTOR SEMÁNTICO", stroke=PALETTE["BLUE_BORDER"], bg=PALETTE["BLUE_BG"], frame_id=fid3)
-    c3_4, _ = scene.add_quad_card(x3_2 + 20.0, st3_y + 65.0, st3_w - 40.0, 120.0, "Extracción de Entidades", sublabel="Nodos, relaciones y dependencias", badge="ENTITIES", icon="database", is_hero=True, font_size=18, frame_id=fid3)
-    c3_5, _ = scene.add_quad_card(x3_2 + 20.0, st3_y + 225.0, st3_w - 40.0, 120.0, "Hard Constraints", sublabel="Restricciones lógicas innegociables", badge="RULES", icon="lock", font_size=18, frame_id=fid3)
-    c3_6, _ = scene.add_quad_card(x3_2 + 20.0, st3_y + 385.0, st3_w - 40.0, 120.0, "Intermediate Rep (IR)", sublabel="Esquema JSON desacoplado", badge="SCHEMA", icon="server", font_size=18, frame_id=fid3)
+    # PASO 3: SELECCIÓN ARQUETIPO
+    p3_x = p2_x + pipe_w + 60.0
+    scene.add_scope_container(p3_x, pipe_y, pipe_w, pipe_h, label="3. CATÁLOGO ARQUETIPOS", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
+    c_p3, _ = scene.add_quad_card(p3_x + 20.0, pipe_y + 50.0, pipe_w - 40.0, 160.0, "Mapeo 20 Arquetipos", sublabel="Selección óptima entre A-T y los 27 tipos visuales + Archetype Fitness Score", badge="ARCHETYPE", icon="container", font_size=18, frame_id=fid3)
 
-    # PASO 3: SELECCIÓN DE ARQUETIPO
-    x3_3 = x3_2 + st3_w + 40.0
-    scene.add_scope_container(x3_3, st3_y, st3_w, st3_h, label="3. CATÁLOGO ARQUETIPOS", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
-    c3_7, _ = scene.add_quad_card(x3_3 + 20.0, st3_y + 65.0, st3_w - 40.0, 120.0, "20 Arquetipos (A - T)", sublabel="Cerebro · Fases · Duelo · Planta", badge="ARCHETYPES", icon="container", font_size=18, frame_id=fid3)
-    c3_8, _ = scene.add_quad_card(x3_3 + 20.0, st3_y + 225.0, st3_w - 40.0, 120.0, "27 Tipos Visuales", sublabel="Medallion · 2x2 · Sequence · Swimlane", badge="TYPES", icon="file", font_size=18, frame_id=fid3)
-    c3_9, _ = scene.add_quad_card(x3_3 + 20.0, st3_y + 385.0, st3_w - 40.0, 120.0, "Archetype Fitness Test", sublabel="Evaluación de adecuación estructural", badge="FITNESS", icon="monitoring", is_hero=True, font_size=18, frame_id=fid3)
+    # PASO 4: LAYOUT & TOKENS
+    p4_x = p3_x + pipe_w + 60.0
+    scene.add_scope_container(p4_x, pipe_y, pipe_w, pipe_h, label="4. MOTOR DE LAYOUT", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
+    c_p4, _ = scene.add_quad_card(p4_x + 20.0, pipe_y + 50.0, pipe_w - 40.0, 160.0, "Cálculo Geométrico", sublabel="Gaps de 95px · Fuentes 18-20px · 1 Acento · Conectores ortogonales a 90°", badge="GEOMETRY", icon="server", font_size=18, frame_id=fid3)
 
-    # PASO 4: LAYOUT & DESIGN TOKENS
-    x3_4 = x3_3 + st3_w + 40.0
-    scene.add_scope_container(x3_4, st3_y, st3_w, st3_h, label="4. MOTOR DE LAYOUT", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
-    c3_10, _ = scene.add_quad_card(x3_4 + 20.0, st3_y + 65.0, st3_w - 40.0, 120.0, "Gaps & Gutters (95/65px)", sublabel="Espaciado editorial anti-amontonamiento", badge="GRID", icon="container", font_size=18, frame_id=fid3)
-    c3_11, _ = scene.add_quad_card(x3_4 + 20.0, st3_y + 225.0, st3_w - 40.0, 120.0, "Tipografía Proporcional", sublabel="18-20px en tarjetas · 14px en tablas", badge="FONTS", icon="file", font_size=18, frame_id=fid3)
-    c3_12, _ = scene.add_quad_card(x3_4 + 20.0, st3_y + 385.0, st3_w - 40.0, 120.0, "1 Accent Rule (Focal)", sublabel="Exactamente 1 héroe con acento", badge="PALETTE", icon="key", font_size=18, frame_id=fid3)
+    # PASO 5: VALIDADOR
+    p5_x = p4_x + pipe_w + 60.0
+    scene.add_scope_container(p5_x, pipe_y, pipe_w, pipe_h, label="5. VALIDADOR 6D", stroke=PALETTE["GREEN_BORDER"], bg=PALETTE["GREEN_BG"], frame_id=fid3)
+    c_p5, _ = scene.add_quad_card(p5_x + 20.0, pipe_y + 50.0, pipe_w - 40.0, 160.0, "Quality Score (0-100)", sublabel="Inspección de solapamientos, densidad, legibilidad y tokens de marca", badge="VALIDATOR", icon="monitoring", is_hero=True, font_size=18, frame_id=fid3)
 
-    # PASO 5: VALIDACIÓN & REPARACIÓN
-    x3_5 = x3_4 + st3_w + 40.0
-    scene.add_scope_container(x3_5, st3_y, st3_w, st3_h, label="5. VALIDACIÓN 6D", stroke=PALETTE["GREEN_BORDER"], bg=PALETTE["GREEN_BG"], frame_id=fid3)
-    c3_13, _ = scene.add_quad_card(x3_5 + 20.0, st3_y + 65.0, st3_w - 40.0, 120.0, "Quality Score (0-100)", sublabel="Estructura · Layout · Jerarquía · Ruido", badge="QUALITY", icon="monitoring", is_hero=True, font_size=18, frame_id=fid3)
-    c3_14, _ = scene.add_quad_card(x3_5 + 20.0, st3_y + 225.0, st3_w - 40.0, 120.0, "Bucle de Auto-Repair", sublabel="Corrección autónoma sin intervención", badge="REPAIR", icon="sync", font_size=18, frame_id=fid3)
-    c3_15, _ = scene.add_quad_card(x3_5 + 20.0, st3_y + 385.0, st3_w - 40.0, 120.0, "Artefacto .excalidraw", sublabel="100% nativo y editable por el usuario", badge="OUTPUT", icon="laptop", font_size=18, frame_id=fid3)
+    # FLECHAS DEL FLUJO PRINCIPAL
+    scene.add_arrow(p1_x + pipe_w, pipe_y + pipe_h * 0.5, p2_x, pipe_y + pipe_h * 0.5, stroke=PALETTE["INK"], stroke_w=2.0, frame_id=fid3)
+    scene.add_arrow(p2_x + pipe_w, pipe_y + pipe_h * 0.5, p3_x, pipe_y + pipe_h * 0.5, stroke=PALETTE["BLUE_HERO"], stroke_w=2.0, frame_id=fid3)
+    scene.add_arrow(p3_x + pipe_w, pipe_y + pipe_h * 0.5, p4_x, pipe_y + pipe_h * 0.5, stroke=PALETTE["INK"], stroke_w=2.0, frame_id=fid3)
+    scene.add_arrow(p4_x + pipe_w, pipe_y + pipe_h * 0.5, p5_x, pipe_y + pipe_h * 0.5, stroke=PALETTE["GREEN_HERO"], stroke_w=2.5, frame_id=fid3)
 
-    # Conexiones Ortogonales
-    scene.add_arrow(c3_1["x"] + c3_1["width"], c3_1["y"] + c3_1["height"]*0.5, c3_4["x"], c3_4["y"] + c3_4["height"]*0.5, stroke=PALETTE["INK"], stroke_w=1.5, orthogonal=True, frame_id=fid3)
-    scene.add_arrow(c3_6["x"] + c3_6["width"], c3_6["y"] + c3_6["height"]*0.5, c3_7["x"], c3_7["y"] + c3_7["height"]*0.5, stroke=PALETTE["BLUE_HERO"], stroke_w=2.0, label="MAP ARQUETIPO", orthogonal=True, frame_id=fid3)
-    scene.add_arrow(c3_9["x"] + c3_9["width"], c3_9["y"] + c3_9["height"]*0.5, c3_10["x"], c3_10["y"] + c3_10["height"]*0.5, stroke=PALETTE["INK"], stroke_w=1.5, label="CALC GEOMETRÍA", orthogonal=True, frame_id=fid3)
-    scene.add_arrow(c3_12["x"] + c3_12["width"], c3_12["y"] + c3_12["height"]*0.5, c3_13["x"], c3_13["y"] + c3_13["height"]*0.5, stroke=PALETTE["GREEN_HERO"], stroke_w=2.0, label="VALIDATE & PASS", orthogonal=True, frame_id=fid3)
+    # BUCLE SUPERIOR DE AUTO-REPAIR (RECURSIÓN FINITA)
+    repair_x = p4_x - 50.0
+    repair_y = f3_y + 140.0
+    repair_w = pipe_w + 100.0
+    repair_h = 150.0
+    scene.add_scope_container(repair_x, repair_y, repair_w, repair_h, label="BUCLE AUTÓNOMO DE AUTO-REPAIR (MÁX 3 CICLOS)", stroke=PALETTE["CORAL_BORDER"], bg=PALETTE["CORAL_BG"], frame_id=fid3)
+    c_repair, _ = scene.add_quad_card(repair_x + 20.0, repair_y + 40.0, repair_w - 40.0, 95.0,
+                                      "Algoritmo de Corrección Autónoma",
+                                      sublabel="Degrada acentos sobrantes · Reajusta fuentes · Expande containers",
+                                      badge="AUTO-REPAIR", icon="sync", is_hero=True, font_size=18, frame_id=fid3)
 
-    scene.add_legend_footer(f3_x + 60.0, f3_y + 865.0, w3 - 120.0, swatches=[
-        {"label": "Motor Semántico & Extracción", "bg": PALETTE["BLUE_BG"], "stroke": PALETTE["BLUE_HERO"]},
-        {"label": "Validador 6D & Auto-Repair", "bg": PALETTE["GREEN_BG"], "stroke": PALETTE["GREEN_HERO"]},
-        {"label": "Flujo de Síntesis Inteligente", "is_arrow": True, "stroke": PALETTE["BLUE_HERO"]}
+    # Flecha de Error hacia Auto-Repair (Sube desde el validador)
+    scene.add_arrow(p5_x + pipe_w * 0.5, pipe_y, p5_x + pipe_w * 0.5, repair_y + repair_h * 0.5, stroke=PALETTE["CORAL_HERO"], stroke_w=2.0, label="¿Score < 90?", orthogonal=True, frame_id=fid3)
+    scene.add_arrow(p5_x + pipe_w * 0.5, repair_y + repair_h * 0.5, repair_x + repair_w, repair_y + repair_h * 0.5, stroke=PALETTE["CORAL_HERO"], stroke_w=2.0, frame_id=fid3)
+
+    # Flecha de Re-inyección desde Auto-Repair hacia Motor de Layout
+    scene.add_arrow(repair_x, repair_y + repair_h * 0.5, p4_x + pipe_w * 0.5, repair_y + repair_h * 0.5, stroke=PALETTE["CORAL_HERO"], stroke_w=2.0, label="REAPLICAR REGLAS", orthogonal=True, frame_id=fid3)
+    scene.add_arrow(p4_x + pipe_w * 0.5, repair_y + repair_h * 0.5, p4_x + pipe_w * 0.5, pipe_y, stroke=PALETTE["CORAL_HERO"], stroke_w=2.0, frame_id=fid3)
+
+    # SALIDA FINAL INFERIOR (ARTEFACTO NATIVO)
+    out_x = p5_x - 80.0
+    out_y = pipe_y + pipe_h + 50.0
+    out_w = pipe_w + 160.0
+    out_h = 110.0
+    scene.add_quad_card(out_x, out_y, out_w, out_h,
+                        "ARTEFACTO .EXCALIDRAW FINAL",
+                        sublabel="JSON nativo válido · 100% editable por el humano en el canvas",
+                        badge="EDITABLE OUTPUT", icon="key", is_hero=True, font_size=18, frame_id=fid3)
+
+    scene.add_arrow(p5_x + pipe_w * 0.5, pipe_y + pipe_h, p5_x + pipe_w * 0.5, out_y, stroke=PALETTE["GREEN_HERO"], stroke_w=2.5, label="PASS (>=90/100)", orthogonal=True, frame_id=fid3)
+
+    scene.add_legend_footer(f3_x + 60.0, f3_y + 885.0, w3 - 120.0, swatches=[
+        {"label": "Pipeline Principal de Inferencia", "bg": PALETTE["BLUE_BG"], "stroke": PALETTE["BLUE_HERO"]},
+        {"label": "Bucle de Auto-Repair Autónomo", "bg": PALETTE["CORAL_BG"], "stroke": PALETTE["CORAL_HERO"]},
+        {"label": "Artefacto Nativo Aprobado", "bg": PALETTE["GREEN_BG"], "stroke": PALETTE["GREEN_HERO"]}
     ], note="AI doesn't design from scratch · AI completes structured visual systems", frame_id=fid3)
 
     scene.auto_fit_frame(fid3, padding=50.0)
 
     # =========================================================================
-    # FRAME 4: ESTADO DEL PRODUCTO, ROADMAP Y LOS 5 NIVELES DE EVOLUCIÓN
+    # FRAME 4: ARQUETIPO G (ESCALERA 5 NIVELES) + MATRIZ DE HORIZONTES
     # =========================================================================
-    w4, h4 = 2800.0, 960.0
+    w4, h4 = 2800.0, 980.0
     f4_x, f4_y = place(w4, h4)
-    fid4 = scene.add_frame("FRAME 4: SKETION EVOLUTION — ESTADO ACTUAL, ROADMAP & 5 NIVELES", f4_x, f4_y, w4, h4)
+    fid4 = scene.add_frame("FRAME 4: SKETION ROADMAP — ESCALERA DE 5 NIVELES & MATRIZ DE HORIZONTES", f4_x, f4_y, w4, h4)
 
-    scene.add_text(f4_x + 60.0, f4_y + 35.0, "SKETION ROADMAP  ·  PRODUCT HORIZONS & MATURITY LEVELS", font_size=13, font_family=2, color=PALETTE["MUTED"], frame_id=fid4)
-    scene.add_text(f4_x + 60.0, f4_y + 60.0, "Horizontes de Producto: De un Canvas Extendido a la Plataforma de Inteligencia Visual", font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid4)
+    scene.add_text(f4_x + 60.0, f4_y + 35.0, "SKETION ROADMAP  ·  5-LEVEL MATURITY MODEL & HORIZONS", font_size=13, font_family=2, color=PALETTE["MUTED"], frame_id=fid4)
+    scene.add_text(f4_x + 60.0, f4_y + 60.0, "Modelo de Evolución: De Canvas de Dibujo a Plataforma de Inteligencia Visual", font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid4)
 
-    stages_f4 = ["NIVEL 1: CANVAS (DRAW)", "NIVEL 2: WORKSPACE (DOCS)", "NIVEL 3: KNOWLEDGE (CONNECTED)", "NIVEL 4: AI WORKSPACE (ASSIST)", "NIVEL 5: VISUAL INTELLIGENCE"]
-    scene.add_chevron_ribbon(f4_x + 60.0, f4_y + 115.0, w4 - 120.0, h=38.0, stages=stages_f4, bg=PALETTE["DARK_SLATE"], text_color="#FFFFFF", frame_id=fid4)
+    # PARTE SUPERIOR: ESCALERA DE MADUREZ DE 5 NIVELES (ARQUETIPO G / PIRÁMIDE)
+    stair_y = f4_y + 115.0
+    stair_w = (w4 - 120.0 - 4 * 25.0) / 5.0
+    stair_h = 145.0
 
-    col4_w = (w4 - 120.0 - 2 * 45.0) / 3.0
-    col4_y = f4_y + 175.0
-    col4_h = 680.0
+    levels = [
+        {"lvl": "NIVEL 1: CANVAS", "desc": "Dibujo & Bocetado Libre", "badge": "DRAW", "hero": False},
+        {"lvl": "NIVEL 2: WORKSPACE", "desc": "Docs + Notas + Fórmulas + Datos", "badge": "DOCS", "hero": False},
+        {"lvl": "NIVEL 3: KNOWLEDGE", "desc": "Todo Conectado Espacialmente", "badge": "CONNECTED", "hero": False},
+        {"lvl": "NIVEL 4: AI WORKSPACE", "desc": "IA que Estructura sin Reemplazar", "badge": "AI ASSIST", "hero": True},
+        {"lvl": "NIVEL 5: VISUAL PLATFORM", "desc": "Prompt -> Sistema Visual Vivo", "badge": "INTELLIGENCE", "hero": True}
+    ]
 
-    # COLUMNA 1: DISPONIBLE HOY (LIVE)
-    x4_1 = f4_x + 60.0
-    scene.add_scope_container(x4_1, col4_y, col4_w, col4_h, label="🟢 1. DISPONIBLE HOY (LIVE PRODUCTION)", stroke=PALETTE["GREEN_BORDER"], bg=PALETTE["GREEN_BG"], frame_id=fid4)
-    scene.add_quad_card(x4_1 + 25.0, col4_y + 55.0, col4_w - 50.0, 105.0, "Infinite Canvas & Drawing Core", sublabel="Bocetos, formas, conectores y zoom fluido", badge="CANVAS", icon="laptop", font_size=18, frame_id=fid4)
-    scene.add_quad_card(x4_1 + 25.0, col4_y + 175.0, col4_w - 50.0, 105.0, "Local-First Persistence", sublabel="IndexedDB con soporte offline completo", badge="LOCAL", icon="database", is_hero=True, font_size=18, frame_id=fid4)
-    scene.add_quad_card(x4_1 + 25.0, col4_y + 295.0, col4_w - 50.0, 105.0, "PDF Workspace & Text Overlays", sublabel="Importación y anotación espacial", badge="PDFS", icon="file", font_size=18, frame_id=fid4)
-    scene.add_quad_card(x4_1 + 25.0, col4_y + 415.0, col4_w - 50.0, 105.0, "LaTeX Math & KaTeX Nativo", sublabel="Fórmulas matemáticas integradas", badge="MATH", icon="server", font_size=18, frame_id=fid4)
-    scene.add_quad_card(x4_1 + 25.0, col4_y + 535.0, col4_w - 50.0, 105.0, "Study Mode & Flashcards Vivas", sublabel="Active recall ligado al canvas", badge="STUDY", icon="users", is_hero=True, font_size=18, frame_id=fid4)
+    for i, lv in enumerate(levels):
+        lx = f4_x + 60.0 + i * (stair_w + 25.0)
+        scene.add_quad_card(lx, stair_y, stair_w, stair_h, lv["lvl"], sublabel=lv["desc"], badge=lv["badge"], icon="laptop" if i < 3 else "key", is_hero=lv["hero"], font_size=18, frame_id=fid4)
+        if i < 4:
+            scene.add_arrow(lx + stair_w, stair_y + stair_h * 0.5, lx + stair_w + 25.0, stair_y + stair_h * 0.5, stroke=PALETTE["BLUE_HERO"], stroke_w=2.0, frame_id=fid4)
 
-    # COLUMNA 2: EN CONSTRUCCIÓN (BUILDING)
-    x4_2 = x4_1 + col4_w + 45.0
-    scene.add_scope_container(x4_2, col4_y, col4_w, col4_h, label="🟡 2. EN CONSTRUCCIÓN (ROADMAP Q3-Q4)", stroke=PALETTE["BLUE_BORDER"], bg=PALETTE["BLUE_BG"], frame_id=fid4)
-    scene.add_quad_card(x4_2 + 25.0, col4_y + 55.0, col4_w - 50.0, 105.0, "Premium Template Library", sublabel="Plantillas universitarias y de arquitectura", badge="TEMPLATES", icon="container", font_size=18, frame_id=fid4)
-    scene.add_quad_card(x4_2 + 25.0, col4_y + 175.0, col4_w - 50.0, 105.0, "Mermaid Workflows Interactivos", sublabel="Edición bidireccional código <-> visual", badge="MERMAID", icon="server", is_hero=True, font_size=18, frame_id=fid4)
-    scene.add_quad_card(x4_2 + 25.0, col4_y + 295.0, col4_w - 50.0, 105.0, "Google Colab & Code Sandbox", sublabel="Ejecución de snippets en vivo en canvas", badge="CODE", icon="laptop", font_size=18, frame_id=fid4)
-    scene.add_quad_card(x4_2 + 25.0, col4_y + 415.0, col4_w - 50.0, 105.0, "Presenter Mode & PPTX Export", sublabel="De frames a presentaciones ejecutivas", badge="PRESENT", icon="file", font_size=18, frame_id=fid4)
-    scene.add_quad_card(x4_2 + 25.0, col4_y + 535.0, col4_w - 50.0, 105.0, "Spatial Comments & Inbox", sublabel="Comentarios anclados a coordenadas", badge="COLLAB", icon="users", font_size=18, frame_id=fid4)
+    # PARTE INFERIOR: MATRIZ DE 3 HORIZONTES VISUALMENTE CONTRASTADOS
+    hz_y = stair_y + stair_h + 35.0
+    hz_w = (w4 - 120.0 - 2 * 40.0) / 3.0
+    hz_h = 540.0
 
-    # COLUMNA 3: EN INVESTIGACIÓN (R&D / IA)
-    x4_3 = x4_2 + col4_w + 45.0
-    scene.add_scope_container(x4_3, col4_y, col4_w, col4_h, label="🔵 3. EN INVESTIGACIÓN (AI ENGINE & R&D)", stroke=PALETTE["DARK_SLATE"], bg="#FFFFFF", frame_id=fid4)
-    scene.add_quad_card(x4_3 + 25.0, col4_y + 55.0, col4_w - 50.0, 105.0, "AI Skill Engine (Sketion 4.0)", sublabel="Comprensión semántica y auto-repair", badge="AI CORE", icon="key", is_hero=True, font_size=18, frame_id=fid4)
-    scene.add_quad_card(x4_3 + 25.0, col4_y + 175.0, col4_w - 50.0, 105.0, "AI-Assisted PDF Workflows", sublabel="Extracción automática de fórmulas y gráficos", badge="AI DOCS", icon="file", font_size=18, frame_id=fid4)
-    scene.add_quad_card(x4_3 + 25.0, col4_y + 295.0, col4_w - 50.0, 105.0, "Knowledge Graph Automatizado", sublabel="Descubrimiento de conexiones semánticas", badge="GRAPH", icon="database", font_size=18, frame_id=fid4)
-    scene.add_quad_card(x4_3 + 25.0, col4_y + 415.0, col4_w - 50.0, 105.0, "Plugin Ecosystem & SDK", sublabel="Extensiones de terceros sobre el canvas", badge="PLUGINS", icon="server", font_size=18, frame_id=fid4)
-    scene.add_quad_card(x4_3 + 25.0, col4_y + 535.0, col4_w - 50.0, 105.0, "Visual Intelligence Platform", sublabel="Nivel 5: Prompt -> Sistema Visual Vivo", badge="LEVEL 5", icon="monitoring", is_hero=True, font_size=18, frame_id=fid4)
+    # HORIZONTE 1: DISPONIBLE HOY (PRODUCCIÓN LIVE) - VERDE
+    hz1_x = f4_x + 60.0
+    scene.add_scope_container(hz1_x, hz_y, hz_w, hz_h, label="🟢 HORIZONTE 1: DISPONIBLE HOY (LIVE PRODUCTION)", stroke=PALETTE["GREEN_BORDER"], bg=PALETTE["GREEN_BG"], frame_id=fid4)
+    scene.add_quad_card(hz1_x + 25.0, hz_y + 50.0, hz_w - 50.0, 105.0, "Infinite Canvas & Core Tools", sublabel="Bocetos, formas vectoriales, zoom y pan fluido", badge="CANVAS", icon="laptop", font_size=18, frame_id=fid4)
+    scene.add_quad_card(hz1_x + 25.0, hz_y + 170.0, hz_w - 50.0, 105.0, "Local-First Persistence", sublabel="IndexedDB con soporte offline y latencia cero", badge="LOCAL-FIRST", icon="database", is_hero=True, font_size=18, frame_id=fid4)
+    scene.add_quad_card(hz1_x + 25.0, hz_y + 290.0, hz_w - 50.0, 105.0, "PDFs & KaTeX Math Nativo", sublabel="Texto interactivo y fórmulas matemáticas en canvas", badge="CORE ENGINES", icon="server", font_size=18, frame_id=fid4)
+    scene.add_quad_card(hz1_x + 25.0, hz_y + 410.0, hz_w - 50.0, 105.0, "Study Mode & Flashcards Vivas", sublabel="Active recall directamente vinculado a los nodos", badge="STUDY", icon="users", font_size=18, frame_id=fid4)
 
-    scene.add_legend_footer(f4_x + 60.0, f4_y + 865.0, w4 - 120.0, swatches=[
-        {"label": "Disponible Hoy (Producción)", "bg": PALETTE["GREEN_BG"], "stroke": PALETTE["GREEN_HERO"]},
-        {"label": "En Construcción Activa", "bg": PALETTE["BLUE_BG"], "stroke": PALETTE["BLUE_HERO"]},
-        {"label": "Investigación & Plataforma IA", "bg": "#FFFFFF", "stroke": PALETTE["DARK_SLATE"]}
-    ], note="No confundir lo que ya existe con lo que se está construyendo · Honestidad de Producto Radical", frame_id=fid4)
+    # HORIZONTE 2: EN CONSTRUCCIÓN (Q3-Q4) - AZUL
+    hz2_x = hz1_x + hz_w + 40.0
+    scene.add_scope_container(hz2_x, hz_y, hz_w, hz_h, label="🟡 HORIZONTE 2: EN CONSTRUCCIÓN (ROADMAP Q3-Q4)", stroke=PALETTE["BLUE_BORDER"], bg=PALETTE["BLUE_BG"], frame_id=fid4)
+    scene.add_quad_card(hz2_x + 25.0, hz_y + 50.0, hz_w - 50.0, 105.0, "Premium Template Library", sublabel="Plantillas académicas, software y system design", badge="TEMPLATES", icon="container", font_size=18, frame_id=fid4)
+    scene.add_quad_card(hz2_x + 25.0, hz_y + 170.0, hz_w - 50.0, 105.0, "Mermaid Interactivo Bidireccional", sublabel="Edición en vivo de código y representación visual", badge="MERMAID", icon="server", is_hero=True, font_size=18, frame_id=fid4)
+    scene.add_quad_card(hz2_x + 25.0, hz_y + 290.0, hz_w - 50.0, 105.0, "Colab Sandbox & Code Runner", sublabel="Ejecución de snippets de código en el canvas", badge="SANDBOX", icon="laptop", font_size=18, frame_id=fid4)
+    scene.add_quad_card(hz2_x + 25.0, hz_y + 410.0, hz_w - 50.0, 105.0, "Spatial Comments & Inbox", sublabel="Comentarios fijados a coordenadas y bandeja central", badge="COLLAB", icon="users", font_size=18, frame_id=fid4)
+
+    # HORIZONTE 3: INVESTIGACIÓN & R&D - SLATE
+    hz3_x = hz2_x + hz_w + 40.0
+    scene.add_scope_container(hz3_x, hz_y, hz_w, hz_h, label="🔵 HORIZONTE 3: INVESTIGACIÓN & R&D (AI PLATFORM)", stroke=PALETTE["DARK_SLATE"], bg="#FFFFFF", frame_id=fid4)
+    scene.add_quad_card(hz3_x + 25.0, hz_y + 50.0, hz_w - 50.0, 105.0, "AI Skill Engine (Sketion 4.0)", sublabel="Inferencia semántica, layout determinista y auto-repair", badge="AI CORE", icon="key", is_hero=True, font_size=18, frame_id=fid4)
+    scene.add_quad_card(hz3_x + 25.0, hz_y + 170.0, hz_w - 50.0, 105.0, "AI-Assisted PDF Extraction", sublabel="Detección y extracción automática de tablas y fórmulas", badge="AI DOCS", icon="file", font_size=18, frame_id=fid4)
+    scene.add_quad_card(hz3_x + 25.0, hz_y + 290.0, hz_w - 50.0, 105.0, "Knowledge Graph Automatizado", sublabel="Inferencia de relaciones conceptuales en el espacio", badge="GRAPH R&D", icon="database", font_size=18, frame_id=fid4)
+    scene.add_quad_card(hz3_x + 25.0, hz_y + 410.0, hz_w - 50.0, 105.0, "Visual Intelligence Platform", sublabel="Nivel 5: Del prompt a artefactos visuales vivos", badge="LEVEL 5", icon="monitoring", is_hero=True, font_size=18, frame_id=fid4)
+
+    scene.add_legend_footer(f4_x + 60.0, f4_y + 885.0, w4 - 120.0, swatches=[
+        {"label": "Horizonte 1: Producción Live", "bg": PALETTE["GREEN_BG"], "stroke": PALETTE["GREEN_HERO"]},
+        {"label": "Horizonte 2: Construcción Q3-Q4", "bg": PALETTE["BLUE_BG"], "stroke": PALETTE["BLUE_HERO"]},
+        {"label": "Horizonte 3: Investigación IA", "bg": "#FFFFFF", "stroke": PALETTE["DARK_SLATE"]}
+    ], note="No confundir lo disponible hoy con la investigación · Honestidad de Producto Radical", frame_id=fid4)
 
     scene.auto_fit_frame(fid4, padding=50.0)
 
     # Guardar archivo
     out_file = os.path.join(OUT_DIR, "sketion_master_project.excalidraw")
     scene.save(out_file)
-    print(f"\n[+] Tablero Sketion Master Project guardado exitosamente en:\n    {out_file}")
+    print(f"\n[+] Tablero Sketion Master Project (Arquetipos Diversificados) guardado exitosamente en:\n    {out_file}")
 
     # Validaciones
     is_valid, report = validate_scene(out_file)
@@ -306,8 +364,8 @@ def build_sketion_master_project():
 
     fit_score, fit_details = calculate_archetype_fitness(
         problem_domain="SKETION_MASTER_KNOWLEDGE_WORKSPACE",
-        chosen_structures=["DUEL_VS_FRAGMENTATION", "LOCAL_FIRST_STACK_ARCHITECTURE", "STRUCTURED_AI_PIPELINE", "PRODUCT_HORIZONS_ROADMAP"],
-        covered_dimensions=["Identidad & Posicionamiento", "El Problema de Fragmentación", "Arquitectura Local-First", "Sketion Intelligence Engine", "Estado del Producto & Roadmap 5 Niveles"],
+        chosen_structures=["DUEL_AND_RADIAL_HUB", "HORIZONTAL_LAYER_STACK", "FLOW_PIPELINE_WITH_AUTO_REPAIR_LOOP", "MATURITY_STAIR_AND_HORIZONS"],
+        covered_dimensions=["Identidad & Posicionamiento", "Hub Radial de Conocimiento", "Arquitectura Layer Stack", "Pipeline IA con Auto-Repair Loop", "Escalera 5 Niveles y Horizontes"],
         has_physical_space=False,
         has_user_journey=True,
         has_supply_chain=False,

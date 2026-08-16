@@ -120,58 +120,54 @@ def build_seamos_genios_ecosystem():
     scene.auto_fit_frame(fid1, padding=50.0)
 
     # =========================================================================
-    # FRAME 2: DESGLOSE DETALLADO DE LOS 4 PANELES DE ROL
+    # FRAME 2: ARQUETIPO N (MATRIZ 2x2 DE CAPACIDADES POR ROL)
     # =========================================================================
     w2, h2 = 2800.0, 960.0
     f2_x, f2_y = place(w2, h2)
-    fid2 = scene.add_frame("FRAME 2: ARQUITECTURA DETALLADA DE LOS 4 PANELES (/app/*)", f2_x, f2_y, w2, h2)
+    fid2 = scene.add_frame("FRAME 2: ARQUETIPO N — MATRIZ 2x2 DE CAPACIDADES POR ROL (/app/*)", f2_x, f2_y, w2, h2)
 
-    scene.add_text(f2_x + 60.0, f2_y + 35.0, "SEAMOS GENIOS  ·  MATRIZ DE CAPACIDADES POR ROL", font_size=13, font_family=2, color=PALETTE["MUTED"], frame_id=fid2)
-    scene.add_text(f2_x + 60.0, f2_y + 60.0, "Capacidades y Vistas: Estudiante · Padre · Directivo · Administrador", font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid2)
+    scene.add_text(f2_x + 60.0, f2_y + 35.0, "SEAMOS GENIOS  ·  MATRIZ 2x2 DE CAPACIDADES Y VISTAS", font_size=13, font_family=2, color=PALETTE["MUTED"], frame_id=fid2)
+    scene.add_text(f2_x + 60.0, f2_y + 60.0, "Capacidades por Rol: Estudiante · Padre de Familia · Directivo/Docente · Administrador", font_size=30, font_family=2, color=PALETTE["INK"], frame_id=fid2)
 
-    col_w = (w2 - 120.0 - 3 * 35.0) / 4.0
-    col_y = f2_y + 120.0
-    col_h = 770.0
+    # 4 CUADRANTES (MATRIZ 2x2)
+    quad_w = (w2 - 120.0 - 40.0) * 0.5
+    quad_h = 360.0
+    quad_y1 = f2_y + 115.0
+    quad_y2 = quad_y1 + quad_h + 30.0
+    quad_x1 = f2_x + 60.0
+    quad_x2 = quad_x1 + quad_w + 40.0
 
-    # COLUMNA 1: PANEL ESTUDIANTE
-    c1_x = f2_x + 60.0
-    scene.add_scope_container(c1_x, col_y, col_w, col_h, label="1. ESTUDIANTE (/app/student)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
-    scene.add_quad_card(c1_x + 20.0, col_y + 55.0, col_w - 40.0, 95.0, "Dashboard & Racha", sublabel="Progreso · Asistencia Meet · XP", badge="STUDENT", icon="user", frame_id=fid2)
-    scene.add_quad_card(c1_x + 20.0, col_y + 165.0, col_w - 40.0, 95.0, "Calendario & Clases", sublabel="Enlace Meet · Tutor · Material", badge="CLASS", icon="file", frame_id=fid2)
-    scene.add_quad_card(c1_x + 20.0, col_y + 275.0, col_w - 40.0, 95.0, "Grabaciones & Archivo", sublabel="PDF · Videos · Por área y tema", badge="MEDIA", icon="bucket", frame_id=fid2)
-    scene.add_quad_card(c1_x + 20.0, col_y + 385.0, col_w - 40.0, 95.0, "Desafíos Gamificados", sublabel="Quizizz/Kahoot · Retos rápidos", badge="GAME", icon="alert", frame_id=fid2)
-    scene.add_quad_card(c1_x + 20.0, col_y + 495.0, col_w - 40.0, 95.0, "Simulacros ICFES", sublabel="Mini · Completos · Diagnósticos", badge="EXAM", icon="monitoring", is_hero=True, frame_id=fid2)
-    scene.add_quad_card(c1_x + 20.0, col_y + 605.0, col_w - 40.0, 115.0, "Recompensas & XP", sublabel="Spotify · Becas · Ranking escolar", badge="REWARD", icon="key", frame_id=fid2)
+    # CUADRANTE 1 (TOP-LEFT): ESTUDIANTE
+    scene.add_scope_container(quad_x1, quad_y1, quad_w, quad_h, label="1. PANEL ESTUDIANTE (/app/student)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
+    scene.add_quad_card(quad_x1 + 25.0, quad_y1 + 45.0, (quad_w - 70.0)*0.5, 95.0, "Dashboard & Racha", sublabel="Progreso · Asistencia Meet · XP", badge="STUDENT", icon="user", font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x1 + 25.0 + (quad_w - 70.0)*0.5 + 20.0, quad_y1 + 45.0, (quad_w - 70.0)*0.5, 95.0, "Calendario & Clases", sublabel="Enlace Meet · Material", badge="CLASS", icon="file", font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x1 + 25.0, quad_y1 + 150.0, (quad_w - 70.0)*0.5, 95.0, "Grabaciones & Archivo", sublabel="Videos y PDFs por área", badge="MEDIA", icon="container", font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x1 + 25.0 + (quad_w - 70.0)*0.5 + 20.0, quad_y1 + 150.0, (quad_w - 70.0)*0.5, 95.0, "Simulacros ICFES", sublabel="Mini · Completos · Diagnósticos", badge="EXAM", icon="monitoring", is_hero=True, font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x1 + 25.0, quad_y1 + 255.0, quad_w - 50.0, 90.0, "Gamificación & Recompensas", sublabel="Spotify · Becas · Ranking escolar · Nivel", badge="REWARD", icon="key", font_size=18, frame_id=fid2)
 
-    # COLUMNA 2: PANEL PADRE DE FAMILIA
-    c2_x = c1_x + col_w + 35.0
-    scene.add_scope_container(c2_x, col_y, col_w, col_h, label="2. PADRE DE FAMILIA (/app/parent)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
-    scene.add_quad_card(c2_x + 20.0, col_y + 55.0, col_w - 40.0, 105.0, "Dashboard de Resumen", sublabel="Vista ejecutiva del estudiante", badge="PARENT", icon="users", frame_id=fid2)
-    scene.add_quad_card(c2_x + 20.0, col_y + 175.0, col_w - 40.0, 105.0, "Seguimiento Integral", sublabel="Asistencia Meet · Tareas · Racha", badge="TRACK", icon="monitoring", frame_id=fid2)
-    scene.add_quad_card(c2_x + 20.0, col_y + 295.0, col_w - 40.0, 105.0, "Resultados Simplificados", sublabel="Puntajes ICFES claros y gráficos", badge="METRIC", icon="file", frame_id=fid2)
-    scene.add_quad_card(c2_x + 20.0, col_y + 415.0, col_w - 40.0, 105.0, "Calendario & Horarios", sublabel="Próximas clases y eventos", badge="AGENDA", icon="laptop", frame_id=fid2)
-    scene.add_quad_card(c2_x + 20.0, col_y + 535.0, col_w - 40.0, 105.0, "Puntos & Recompensas", sublabel="Consulta de logros del hijo", badge="POINTS", icon="key", frame_id=fid2)
-    scene.add_quad_card(c2_x + 20.0, col_y + 655.0, col_w - 40.0, 85.0, "PQRS Directo", sublabel="Atención y soporte familiar", badge="SUPPORT", icon="sync", frame_id=fid2)
+    # CUADRANTE 2 (TOP-RIGHT): PADRE DE FAMILIA
+    scene.add_scope_container(quad_x2, quad_y1, quad_w, quad_h, label="2. PANEL PADRE DE FAMILIA (/app/parent)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
+    scene.add_quad_card(quad_x2 + 25.0, quad_y1 + 45.0, (quad_w - 70.0)*0.5, 95.0, "Dashboard Resumen", sublabel="Vista ejecutiva del estudiante", badge="PARENT", icon="users", font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x2 + 25.0 + (quad_w - 70.0)*0.5 + 20.0, quad_y1 + 45.0, (quad_w - 70.0)*0.5, 95.0, "Seguimiento en Vivo", sublabel="Asistencia Meet · Tareas", badge="TRACK", icon="monitoring", font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x2 + 25.0, quad_y1 + 150.0, (quad_w - 70.0)*0.5, 95.0, "Resultados Gráficos", sublabel="Puntajes ICFES claros", badge="METRIC", icon="file", font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x2 + 25.0 + (quad_w - 70.0)*0.5 + 20.0, quad_y1 + 150.0, (quad_w - 70.0)*0.5, 95.0, "Puntos & Logros", sublabel="Consulta de premios del hijo", badge="POINTS", icon="key", font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x2 + 25.0, quad_y1 + 255.0, quad_w - 50.0, 90.0, "Canal PQRS Directo", sublabel="Atención y soporte prioritario a familias", badge="SUPPORT", icon="sync", font_size=18, frame_id=fid2)
 
-    # COLUMNA 3: PANEL DIRECTIVO / DOCENTE
-    c3_x = c2_x + col_w + 35.0
-    scene.add_scope_container(c3_x, col_y, col_w, col_h, label="3. DIRECTIVO / DOCENTE (/app/institution)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
-    scene.add_quad_card(c3_x + 20.0, col_y + 55.0, col_w - 40.0, 105.0, "KPIs Institucionales", sublabel="Promedio general · Participación", badge="INSTITUTION", icon="monitoring", frame_id=fid2)
-    scene.add_quad_card(c3_x + 20.0, col_y + 175.0, col_w - 40.0, 105.0, "Analítica de Simulacros", sublabel="Top alumnos · Áreas débiles", badge="ANALYTICS", icon="database", frame_id=fid2)
-    scene.add_quad_card(c3_x + 20.0, col_y + 295.0, col_w - 40.0, 105.0, "Benchmark Nacional", sublabel="Comparativa colegios país / ICFES", badge="BENCHMARK", icon="server", is_hero=True, frame_id=fid2)
-    scene.add_quad_card(c3_x + 20.0, col_y + 415.0, col_w - 40.0, 105.0, "Alertas Tempranas", sublabel="Estudiantes en riesgo académico", badge="ALERT", icon="alert", frame_id=fid2)
-    scene.add_quad_card(c3_x + 20.0, col_y + 535.0, col_w - 40.0, 105.0, "Preguntas Críticas", sublabel="Análisis de preguntas de alto fallo", badge="DIAG", icon="file", frame_id=fid2)
-    scene.add_quad_card(c3_x + 20.0, col_y + 655.0, col_w - 40.0, 85.0, "Asistencia por Grupos", sublabel="Filtro por área y curso", badge="REPORT", icon="users", frame_id=fid2)
+    # CUADRANTE 3 (BOTTOM-LEFT): DIRECTIVO / DOCENTE
+    scene.add_scope_container(quad_x1, quad_y2, quad_w, quad_h, label="3. PANEL DIRECTIVO / DOCENTE (/app/institution)", stroke=PALETTE["RED_BORDER"], bg=PALETTE["RED_BG"], frame_id=fid2)
+    scene.add_quad_card(quad_x1 + 25.0, quad_y2 + 45.0, (quad_w - 70.0)*0.5, 95.0, "KPIs Institucionales", sublabel="Promedio general · Aforo", badge="KPI", icon="monitoring", font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x1 + 25.0 + (quad_w - 70.0)*0.5 + 20.0, quad_y2 + 45.0, (quad_w - 70.0)*0.5, 95.0, "Analítica Simulacros", sublabel="Top alumnos · Áreas débiles", badge="ANALYTICS", icon="database", font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x1 + 25.0, quad_y2 + 150.0, (quad_w - 70.0)*0.5, 95.0, "Benchmark Nacional", sublabel="Comparativa colegios / ICFES", badge="BENCHMARK", icon="server", is_hero=True, font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x1 + 25.0 + (quad_w - 70.0)*0.5 + 20.0, quad_y2 + 150.0, (quad_w - 70.0)*0.5, 95.0, "Alertas Tempranas", sublabel="Estudiantes en riesgo académico", badge="ALERT", icon="alert", font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x1 + 25.0, quad_y2 + 255.0, quad_w - 50.0, 90.0, "Reportes de Asistencia por Curso", sublabel="Filtro automático por tutor y sede", badge="REPORT", icon="file", font_size=18, frame_id=fid2)
 
-    # COLUMNA 4: PANEL ADMINISTRADOR & EXAMBUILDER
-    c4_x = c3_x + col_w + 35.0
-    scene.add_scope_container(c4_x, col_y, col_w, col_h, label="4. ADMINISTRADOR (/app/admin)", stroke=PALETTE["RED_BORDER"], bg=PALETTE["RED_BG"], frame_id=fid2)
-    scene.add_quad_card(c4_x + 20.0, col_y + 55.0, col_w - 40.0, 105.0, "Dashboard Ejecutivo", sublabel="KPIs globales de negocio e ingresos", badge="ADMIN", icon="monitoring", frame_id=fid2)
-    scene.add_quad_card(c4_x + 20.0, col_y + 175.0, col_w - 40.0, 105.0, "EXAMBUILDER IA", sublabel="Banco de preguntas · Generador IA", badge="CORE TOOL", icon="terminal", is_hero=True, frame_id=fid2)
-    scene.add_quad_card(c4_x + 20.0, col_y + 295.0, col_w - 40.0, 105.0, "Constructor de Pruebas", sublabel="Simulacros · Diagnósticos · Plantillas", badge="BUILDER", icon="file", frame_id=fid2)
-    scene.add_quad_card(c4_x + 20.0, col_y + 415.0, col_w - 40.0, 105.0, "Gestión de Usuarios & Colegios", sublabel="CRUD Roles · Alianzas educativas", badge="RBAC", icon="users", frame_id=fid2)
-    scene.add_quad_card(c4_x + 20.0, col_y + 535.0, col_w - 40.0, 105.0, "Módulo de Finanzas", sublabel="Facturación electrónica · Ingresos", badge="FINANCE", icon="lock", frame_id=fid2)
-    scene.add_quad_card(c4_x + 20.0, col_y + 655.0, col_w - 40.0, 85.0, "Liquidación de Tutores", sublabel="Cálculo automático por horas Meet", badge="PAYROLL", icon="sync", frame_id=fid2)
+    # CUADRANTE 4 (BOTTOM-RIGHT): ADMINISTRADOR & FINANZAS
+    scene.add_scope_container(quad_x2, quad_y2, quad_w, quad_h, label="4. PANEL ADMINISTRADOR (/app/admin)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
+    scene.add_quad_card(quad_x2 + 25.0, quad_y2 + 45.0, (quad_w - 70.0)*0.5, 95.0, "Dashboard Ejecutivo", sublabel="Ingresos globales y métricas", badge="ADMIN", icon="monitoring", font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x2 + 25.0 + (quad_w - 70.0)*0.5 + 20.0, quad_y2 + 45.0, (quad_w - 70.0)*0.5, 95.0, "ExamBuilder IA Core", sublabel="Banco de preguntas · Generador", badge="EXAMBUILDER", icon="key", is_hero=True, font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x2 + 25.0, quad_y2 + 150.0, (quad_w - 70.0)*0.5, 95.0, "Gestión de Usuarios RBAC", sublabel="CRUD Roles · Alianzas", badge="RBAC", icon="users", font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x2 + 25.0 + (quad_w - 70.0)*0.5 + 20.0, quad_y2 + 150.0, (quad_w - 70.0)*0.5, 95.0, "Módulo de Finanzas", sublabel="Facturación electrónica", badge="FINANCE", icon="lock", font_size=18, frame_id=fid2)
+    scene.add_quad_card(quad_x2 + 25.0, quad_y2 + 255.0, quad_w - 50.0, 90.0, "Liquidación de Nómina a Tutores", sublabel="Cálculo automático por horas Meet dictadas", badge="PAYROLL", icon="sync", font_size=18, frame_id=fid2)
 
     scene.auto_fit_frame(fid2, padding=50.0)
 

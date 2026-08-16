@@ -2,7 +2,7 @@
 
 <img src="../assets/logo.png" alt="Sketion Official Logo" width="130"/>
 
-# 🎨 Sketion Visual Showcase Gallery (v10.0 GA)
+# Sketion Visual Showcase Gallery (v10.0 GA)
 
 **Catálogo Canónico de los 27 Tipos Visuales de Diagram Design & Arquitectura Editorial.**  
 *Todos los diagramas son generados por el motor de forma 100% autónoma y exportados en formato vectorial web estándar (`.svg`) y editable nativo (`.excalidraw`).*
@@ -11,7 +11,7 @@
 
 ---
 
-## 🏛️ 1. Arquitectura & Sistemas de Información
+## 1. Arquitectura y Sistemas de Información
 
 ### 01. Architecture (Components + Connections)
 > **Propósito:** Diagrama de bloques estructurado en VPC con zonas de red Ingress, Core Hero, Microservicios y Base de Datos ACID.  
@@ -63,7 +63,7 @@
 
 ---
 
-## 🔄 2. Flujo, Procesos & Lógica de Ejecución
+## 2. Flujo, Procesos y Lógica de Ejecución
 
 ### 02. Flowchart (Decision Logic & Branching)
 > **Propósito:** Lógica condicional de negocio con bifurcaciones Sí/No mediante rombos de decisión.  
@@ -115,7 +115,7 @@
 
 ---
 
-## 🗄️ 3. Datos, Almacenamiento & Integración
+## 3. Datos, Almacenamiento e Integración
 
 ### 05. ER / Data Model (Entities + Fields)
 > **Propósito:** Esquema de entidades de base de datos relacional con columnas tipadas, llaves PK/FK y relaciones.  
@@ -127,7 +127,7 @@
 
 ---
 
-### 23. Medallion (Bronze $\rightarrow$ Silver $\rightarrow$ Gold Lakehouse)
+### 23. Medallion (Bronze -> Silver -> Gold Lakehouse)
 > **Propósito:** Arquitectura Lakehouse de ingestión multi-capa con conectores en arco superior.  
 > [Descargar `.excalidraw`](27_types/23_medallion.excalidraw) · [Ver Vectorial `.svg`](27_types/23_medallion.svg)
 
@@ -147,7 +147,7 @@
 
 ---
 
-### 25. DP Integration (Sources $\rightarrow$ Core $\rightarrow$ Consumers)
+### 25. DP Integration (Sources -> Core -> Consumers)
 > **Propósito:** Topología de integración de fuentes de datos hacia el núcleo de procesamiento y consumidores finales.  
 > [Descargar `.excalidraw`](27_types/25_dp_integration.excalidraw) · [Ver Vectorial `.svg`](27_types/25_dp_integration.svg)
 
@@ -167,7 +167,7 @@
 
 ---
 
-## ⭕ 4. Estrategia, Negocio & Jerarquía
+## 4. Estrategia, Negocio y Jerarquía
 
 ### 12. Venn (3-Set Overlap & Intersection Core)
 > **Propósito:** Solapamiento de 3 conjuntos circulares con núcleo central Hero de producto enviable.  
@@ -189,7 +189,7 @@
 
 ---
 
-### 15. Consultant 2×2 (Scenario Matrix with Named Cells)
+### 15. Consultant 2x2 (Scenario Matrix with Named Cells)
 > **Propósito:** Matriz de 4 cuadrantes con celdas nombradas para toma de decisiones y evaluación de riesgo.  
 > [Descargar `.excalidraw`](27_types/15_consultant_2x2.excalidraw) · [Ver Vectorial `.svg`](27_types/15_consultant_2x2.svg)
 
@@ -200,7 +200,7 @@
 ---
 
 ### 08. Quadrant (Two-Axis Positioning)
-> **Propósito:** Posicionamiento en ejes continuos $X \times Y$ (Impacto vs Esfuerzo) con grupos de puntos.  
+> **Propósito:** Posicionamiento en ejes continuos X * Y (Impacto vs Esfuerzo) con grupos de puntos.  
 > [Descargar `.excalidraw`](27_types/08_quadrant.excalidraw) · [Ver Vectorial `.svg`](27_types/08_quadrant.svg)
 
 <p align="center">
@@ -219,7 +219,7 @@
 
 ---
 
-### 10. Tree (Parent $\rightarrow$ Children Hierarchy)
+### 10. Tree (Parent -> Children Hierarchy)
 > **Propósito:** Desglose taxonómico ortogonal ramificado desde el nodo raíz hacia las hojas.  
 > [Descargar `.excalidraw`](27_types/10_tree.excalidraw) · [Ver Vectorial `.svg`](27_types/10_tree.svg)
 
@@ -249,7 +249,7 @@
 
 ---
 
-## 📈 5. Analítica, Métricas & Planificación
+## 5. Analítica, Métricas y Planificación
 
 ### 06. Timeline (Events on an Axis)
 > **Propósito:** Hitos, entregables y fases sobre una línea de tiempo horizontal continua.  
@@ -291,6 +291,6 @@
 
 ---
 
-## 🎨 Primitivas Semánticas Especializadas ([`shapes/`](shapes/))
+## Primitivas Semánticas Especializadas ([`shapes/`](shapes/))
 Muestrario de los 12 componentes visuales aislados:
 * [Cilindro de Base de Datos](shapes/shape_01_database_cylinder.svg) · [Tubería Kafka](shapes/shape_02_streaming_pipe.svg) · [Barrera WAF](shapes/shape_03_security_barrier_waf.svg) · [Pastilla de Actor](shapes/shape_04_actor_pill.svg) · [Rombo de Decisión](shapes/shape_05_decision_diamond.svg) · [Tarjeta Hero](shapes/shape_06_hero_card.svg) · [Tarjeta KPI](shapes/shape_07_kpi_metric_card.svg) · [Paso de Embudo](shapes/shape_08_conversion_funnel_step.svg) · [Control de Acción](shapes/shape_09_action_affordance_button.svg) · [Límite VPC](shapes/shape_10_vpc_container_boundary.svg) · [Callout de Alerta](shapes/shape_11_alert_risk_callout.svg) · [Tarjeta Quad](shapes/shape_12_quad_card_standard.svg).

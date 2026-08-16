@@ -2,7 +2,7 @@
 
 <img src="assets/logo.png" alt="Sketion Official Logo" width="160"/>
 
-# 🚀 Sketion Diagram Design Engine (v10.0 GA)
+# Sketion Diagram Design Engine (v10.0 GA)
 
 **Motor autónomo empresarial de diseño y generación de diagramas de arquitectura de software, infraestructura y sistemas complejos.**  
 *Produce lienzos vectoriales editoriales con cero colisiones, 100% libres de emojis, con reconocimiento automático de marcas y exportables de forma nativa a `.excalidraw` y `.svg`.*
@@ -18,46 +18,46 @@
 
 ---
 
-## 🌟 Muestrario Visual Destacado (Generated SVGs)
+## Muestrario Visual Destacado (Generated SVGs)
 
 <div align="center">
 
-### 🏛️ Arquitectura Cloud & Microservicios (`architecture`)
+### Arquitectura Cloud y Microservicios (`architecture`)
 <p align="center">
   <img src="docs/gallery/27_types/01_architecture.svg" alt="Architecture Cloud Diagram" width="100%"/>
 </p>
 
 ---
 
-### ⭕ Diagrama de Venn de Conjuntos Cruzados (`venn`)
+### Diagrama de Venn de Conjuntos Cruzados (`venn`)
 <p align="center">
   <img src="docs/gallery/27_types/12_venn.svg" alt="Venn Diagram 3 Sets" width="100%"/>
 </p>
 
 ---
 
-### 🗄️ Modelo Relacional de Base de Datos PK/FK (`er_data_model`)
+### Modelo Relacional de Base de Datos PK/FK (`er_data_model`)
 <p align="center">
   <img src="docs/gallery/27_types/05_er_data_model.svg" alt="ER Data Model" width="100%"/>
 </p>
 
 ---
 
-### 🛡️ Matriz de Permisos y Seguridad por Rol (`dp_security_matrix`)
+### Matriz de Permisos y Seguridad por Rol (`dp_security_matrix`)
 <p align="center">
   <img src="docs/gallery/27_types/26_dp_security_matrix.svg" alt="Security Matrix" width="100%"/>
 </p>
 
 ---
 
-### 🕸️ Radar Multidimensional de Capacidades (`radar_spider`)
+### Radar Multidimensional de Capacidades (`radar_spider`)
 <p align="center">
   <img src="docs/gallery/27_types/16_radar_spider.svg" alt="Radar Spider Polygon" width="100%"/>
 </p>
 
 ---
 
-### 📅 Cronograma y Fases con Milestone Gate (`gantt`)
+### Cronograma y Fases con Milestone Gate (`gantt`)
 <p align="center">
   <img src="docs/gallery/27_types/20_gantt.svg" alt="Gantt Timeline Chart" width="100%"/>
 </p>
@@ -66,12 +66,12 @@
 
 ---
 
-## 📖 ¿Qué es Sketion y qué problema resuelve?
+## ¿Qué es Sketion y qué problema resuelve?
 
 Los generadores tradicionales de diagramas (incluyendo los plugins estándar de LLMs) suelen fallar en 4 aspectos críticos:
 1. **Monotonía Rectangular ("Monocultivo Visual"):** Dibujan todas las entidades como rectángulos idénticos. Una base de datos Postgres, una cola Kafka, un firewall y un usuario se ven exactamente iguales.
 2. **Amontonamiento y Colisiones:** Los textos se cortan, las flechas atraviesan etiquetas y los marcos gigantes dejan un 70% de espacio vacío en blanco.
-3. **Uso de Emojis Infantiles:** Utilizan emojis decorativos (`💾`, `🔥`, `🚀`) en lugar de iconografía vectorial técnica y sobria.
+3. **Uso de Emojis Infantiles:** Utilizan emojis decorativos en lugar de iconografía vectorial técnica y sobria.
 4. **Falta de Jerarquía de Información:** No existe distinción entre el componente nuclear (**Hero**) y los servicios auxiliares o metadatos.
 
 **Sketion resuelve esto transformando el proceso en un problema de diseño editorial y compilación geométrica determinista.**
@@ -105,7 +105,7 @@ Los generadores tradicionales de diagramas (incluyendo los plugins estándar de 
 
 ---
 
-## 🏛️ Arquitectura del Sistema (Capas de Inteligencia Certificadas)
+## Arquitectura del Sistema (Capas de Inteligencia Certificadas)
 
 ```text
                      SKETION DIAGRAM DESIGN ENGINE (v10.0 GA)
@@ -137,16 +137,16 @@ Composition   IA   Rendering                     Shapes   Icons   Data Viz   Bra
                                                     Comparative Benchmark vs Excalidraw
                                                           (100% Human Preference)
                                                                      │
-                                                    🔵 PRODUCTION READY SDK & CLI (v10.0)
+                                                      PRODUCTION READY SDK & CLI (v10.0)
 ```
 
 ---
 
-## 🎨 Catálogo de los 27 Tipos Visuales Nativos
+## Catálogo de los 27 Tipos Visuales Nativos
 
 Inspirado en la taxonomía visual de **Diagram Design**, Sketion soporta 27 familias geométricas distintas. Cada tipo posee un motor de renderizado especializado:
 
-👉 [**Acceder a la Galería Visual Completa en SVG (`docs/gallery/README.md`)**](docs/gallery/README.md)
+* [**Acceder a la Galería Visual Completa en SVG (`docs/gallery/README.md`)**](docs/gallery/README.md)
 
 | N° | Tipo Canónico | Estructura Geométrica | Vista Vectorial | Archivo Editable |
 | :---: | :--- | :--- | :---: | :---: |
@@ -159,7 +159,7 @@ Inspirado en la taxonomía visual de **Diagram Design**, Sketion soporta 27 fami
 | **07** | **`swimlane`** | Carriles multi-rol horizontales para handoffs | [07_swimlane.svg](docs/gallery/27_types/07_swimlane.svg) | [`.excalidraw`](docs/gallery/27_types/07_swimlane.excalidraw) |
 | **08** | **`quadrant`** | Plano cartesiano 2x2 (Impacto vs Esfuerzo) | [08_quadrant.svg](docs/gallery/27_types/08_quadrant.svg) | [`.excalidraw`](docs/gallery/27_types/08_quadrant.excalidraw) |
 | **09** | **`nested`** | Cajas anidadas con jerarquía por contención | [09_nested.svg](docs/gallery/27_types/09_nested.svg) | [`.excalidraw`](docs/gallery/27_types/09_nested.excalidraw) |
-| **10** | **`tree`** | Árbol taxonómico ortogonal Padre $\rightarrow$ Hijos | [10_tree.svg](docs/gallery/27_types/10_tree.svg) | [`.excalidraw`](docs/gallery/27_types/10_tree.excalidraw) |
+| **10** | **`tree`** | Árbol taxonómico ortogonal Padre -> Hijos | [10_tree.svg](docs/gallery/27_types/10_tree.svg) | [`.excalidraw`](docs/gallery/27_types/10_tree.excalidraw) |
 | **11** | **`org_chart`** | Organigrama de liderazgo y estructura de equipos | [11_org_chart.svg](docs/gallery/27_types/11_org_chart.svg) | [`.excalidraw`](docs/gallery/27_types/11_org_chart.excalidraw) |
 | **12** | **`venn`** | 3 Círculos intersectados con núcleo Hero central | [12_venn.svg](docs/gallery/27_types/12_venn.svg) | [`.excalidraw`](docs/gallery/27_types/12_venn.excalidraw) |
 | **13** | **`layer_stack`** | Capas de abstracción apiladas con franja Hero | [13_layer_stack.svg](docs/gallery/27_types/13_layer_stack.svg) | [`.excalidraw`](docs/gallery/27_types/13_layer_stack.excalidraw) |
@@ -172,15 +172,15 @@ Inspirado en la taxonomía visual de **Diagram Design**, Sketion soporta 27 fami
 | **20** | **`gantt`** | Calendario de fases y tareas con Milestone Gate | [20_gantt.svg](docs/gallery/27_types/20_gantt.svg) | [`.excalidraw`](docs/gallery/27_types/20_gantt.excalidraw) |
 | **21** | **`scatter_plot`** | Dispersión de puntos con línea de regresión | [21_scatter_plot.svg](docs/gallery/27_types/21_scatter_plot.svg) | [`.excalidraw`](docs/gallery/27_types/21_scatter_plot.excalidraw) |
 | **22** | **`process`** | Flujo secuencial de pasos de extremo a extremo | [22_process.svg](docs/gallery/27_types/22_process.svg) | [`.excalidraw`](docs/gallery/27_types/22_process.excalidraw) |
-| **23** | **`medallion`** | Ingesta Lakehouse (Bronze $\rightarrow$ Silver $\rightarrow$ Gold) | [23_medallion.svg](docs/gallery/27_types/23_medallion.svg) | [`.excalidraw`](docs/gallery/27_types/23_medallion.excalidraw) |
+| **23** | **`medallion`** | Ingesta Lakehouse (Bronze -> Silver -> Gold) | [23_medallion.svg](docs/gallery/27_types/23_medallion.svg) | [`.excalidraw`](docs/gallery/27_types/23_medallion.excalidraw) |
 | **24** | **`data_flow`** | Pipeline de datos con carriles de rol técnico | [24_data_flow.svg](docs/gallery/27_types/24_data_flow.svg) | [`.excalidraw`](docs/gallery/27_types/24_data_flow.excalidraw) |
-| **25** | **`dp_integration`** | Fuentes $\rightarrow$ Núcleo de Plataforma $\rightarrow$ Consumidores | [25_dp_integration.svg](docs/gallery/27_types/25_dp_integration.svg) | [`.excalidraw`](docs/gallery/27_types/25_dp_integration.excalidraw) |
+| **25** | **`dp_integration`** | Fuentes -> Núcleo de Plataforma -> Consumidores | [25_dp_integration.svg](docs/gallery/27_types/25_dp_integration.svg) | [`.excalidraw`](docs/gallery/27_types/25_dp_integration.excalidraw) |
 | **26** | **`dp_security_matrix`** | Matriz de permisos RBAC con chips de acceso | [26_dp_security_matrix.svg](docs/gallery/27_types/26_dp_security_matrix.svg) | [`.excalidraw`](docs/gallery/27_types/26_dp_security_matrix.excalidraw) |
 | **27** | **`value_chain`** | Cadena de valor de Porter con margen de ganancia | [27_value_chain.svg](docs/gallery/27_types/27_value_chain.svg) | [`.excalidraw`](docs/gallery/27_types/27_value_chain.excalidraw) |
 
 ---
 
-## 🧩 Morfología de Componentes Semánticos (12+ Formas)
+## Morfología de Componentes Semánticos (12+ Formas)
 
 Sketion no limita los componentes a cajas estándar; utiliza una rica biblioteca de **formas semánticas especializadas**:
 
@@ -199,7 +199,7 @@ Sketion no limita los componentes a cajas estándar; utiliza una rica biblioteca
 
 ---
 
-## ⚡ Instalación y Uso Rápido
+## Instalación y Uso Rápido
 
 ### Instalación como Paquete de Python
 ```bash
@@ -210,7 +210,7 @@ pip install -e .
 
 ---
 
-## 💻 1. Uso Programático con el SDK de Python
+## 1. Uso Programático con el SDK de Python
 
 ```python
 import sketion
@@ -257,7 +257,7 @@ result.export("fintech_architecture.svg", format="svg")
 
 ---
 
-## 🖥️ 2. Uso desde la Línea de Comandos (CLI 2.0)
+## 2. Uso desde la Línea de Comandos (CLI 2.0)
 
 ```bash
 # Generar un diagrama desde prompt con reporte de explicabilidad:
@@ -281,30 +281,30 @@ python3 sketion_cli.py validate payments.excalidraw
 
 ---
 
-## 🏆 Certificación Cuantitativa & Benchmarks Auditados
+## Certificación Cuantitativa y Benchmarks Auditados
 
 | Dimensión de Calidad | Resultado Auditado | Estado |
 | :--- | :---: | :---: |
-| **Grand Blind Holdout (160 Prompts Ciegos en 8 Dominios)** | **100.0% Pass Rate** (160 / 160 casos) · 6.785 elementos | 🟢 **CERTIFIED** |
-| **Blind Comparative vs Excalidraw Text-to-Diagram** | **100.0% Human Preference Rate (HPR)** (50 / 50 victorias) | 🟢 **CERTIFIED** |
-| **Visual Consistency Score (VCS)** | **97.7 / 100** (Escalas formales de tipografía, spacing y color) | 🟢 **CERTIFIED** |
-| **Tasa de Reparación Manual (RDS)** | **0.00** (100% de Autonomía en Generación — Cero reparaciones) | 🔒 **FROZEN** |
-| **Retención Semántica Global** | **100.0%** (Cero pérdida de entidades ni relaciones) | 🔒 **FROZEN** |
-| **Velocidad de Renderizado** | **0.002s / diagrama** (0.35s para 160 diagramas completos) | 🟢 **OPTIMIZED** |
-| **27 Tipos Visuales Canónicos** | **27 / 27 soportados nativamente en el core** | 🟢 **CERTIFIED** |
-| **Suite de Integración Continua (CI)** | **27 / 27 pruebas aprobadas (100.0% PASS)** en 0.010s | 🔵 **PRODUCTION READY** |
+| **Grand Blind Holdout (160 Prompts Ciegos en 8 Dominios)** | **100.0% Pass Rate** (160 / 160 casos) · 6.785 elementos | **CERTIFIED** |
+| **Blind Comparative vs Excalidraw Text-to-Diagram** | **100.0% Human Preference Rate (HPR)** (50 / 50 victorias) | **CERTIFIED** |
+| **Visual Consistency Score (VCS)** | **97.7 / 100** (Escalas formales de tipografía, spacing y color) | **CERTIFIED** |
+| **Tasa de Reparación Manual (RDS)** | **0.00** (100% de Autonomía en Generación — Cero reparaciones) | **FROZEN** |
+| **Retención Semántica Global** | **100.0%** (Cero pérdida de entidades ni relaciones) | **FROZEN** |
+| **Velocidad de Renderizado** | **0.002s / diagrama** (0.35s para 160 diagramas completos) | **OPTIMIZED** |
+| **27 Tipos Visuales Canónicos** | **27 / 27 soportados nativamente en el core** | **CERTIFIED** |
+| **Suite de Integración Continua (CI)** | **27 / 27 pruebas aprobadas (100.0% PASS)** en 0.010s | **PRODUCTION READY** |
 
 ---
 
-## 📖 Documentación Adicional
+## Documentación Adicional
 
 * [**SKETION_10_GA_CERTIFICATION.md**](SKETION_10_GA_CERTIFICATION.md): Reporte oficial de auditoría cuantitativa, protocolos y certificación de producto.
-* [**ROADMAP.md**](ROADMAP.md): Hoja de ruta estratégica completa y matriz de certificación de módulos (v8.0 ───> v10.5).
+* [**ROADMAP.md**](ROADMAP.md): Hoja de ruta estratégica completa y matriz de certificación de módulos (v8.0 -> v10.5).
 * [**GUIA_DE_USO_UNIVERSAL.md**](GUIA_DE_USO_UNIVERSAL.md): Guía maestra de integración en Antigravity IDE, Cursor, Claude Code y Web LLMs.
 * [**docs/gallery/README.md**](docs/gallery/README.md): Galería visual interactiva con los 27 tipos en formato SVG.
 
 ---
 
-## 📄 Licencia
+## Licencia
 
 MIT License — Desarrollado por el equipo de Sketion.

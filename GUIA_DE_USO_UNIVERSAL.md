@@ -1,9 +1,9 @@
-# 📖 Guía Universal de Uso de Sketion Engine (v10.0 GA)
+# Guía Universal de Uso de Sketion Engine (v10.0 GA)
 ## Manual Maestro Paso a Paso para Integrar y Usar Sketion en Python SDK, CLI, Antigravity, Claude, ChatGPT, Cursor, Windsurf, Terminal y Editores Excalidraw / SVG
 
 ---
 
-## 💰 Matriz de Costos y Modalidades (Planes Gratuitos vs. Planes de Pago)
+## Matriz de Costos y Modalidades (Planes Gratuitos vs. Planes de Pago)
 
 Sketion fue diseñado para ser **100% utilizable sin gastar dinero**, pero también ofrece integraciones avanzadas si cuentas con suscripciones de pago:
 
@@ -18,7 +18,7 @@ Sketion fue diseñado para ser **100% utilizable sin gastar dinero**, pero tambi
 
 ---
 
-## ⚖️ Comparativa de Resultados: ¿Se obtiene el mismo resultado en todos los entornos?
+## Comparativa de Resultados: ¿Se obtiene el mismo resultado en todos los entornos?
 
 **Respuesta directa y honesta:** **No, no son exactamente iguales.** 
 

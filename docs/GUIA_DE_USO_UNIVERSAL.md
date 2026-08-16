@@ -6,14 +6,16 @@
 
 ---
 
-## 📑 Tabla de Contenidos
-1. [¿Qué es Sketion y cómo funciona internamente?](#1-qué-es-sketion-y-cómo-funciona-internamente)
-2. [Cómo funciona y cómo lo usa el Agente de IA aquí (Antigravity IDE)](#2-cómo-funciona-y-cómo-lo-usa-el-agente-de-ia-aquí-antigravity-ide)
-3. [Uso en Claude (Claude Projects, Claude Desktop y Claude Code)](#3-uso-en-claude-claude-projects-claude-desktop-y-claude-code)
-4. [Uso en ChatGPT / OpenAI (Custom GPTs y Prompts Web)](#4-uso-en-chatgpt--openai-custom-gpts-y-prompts-web)
-5. [Uso en Editores de Código (Cursor, Windsurf y VS Code)](#5-uso-en-editores-de-código-cursor-windsurf-y-vs-code)
-6. [Uso desde la Terminal y como Librería Python (CLI / SDK)](#6-uso-desde-la-terminal-y-como-librería-python-cli--sdk)
-7. [Visualización y Edición en Excalidraw, VS Code y Obsidian](#7-visualización-y-edición-en-excalidraw-vs-code-y-obsidian)
-8. [Catálogo Rápido de Comandos y Ejemplos Prácticos](#8-catálogo-rápido-de-comandos-y-ejemplos-prácticos)
+## 💰 Matriz de Costos y Modalidades (Planes Gratuitos vs. Planes de Pago)
 
-*(Para leer el manual completo detallado, consulta [GUIA_DE_USO_UNIVERSAL.md](file:///Users/leonfeliperodriguez/Desktop/Trabajos/Sketion%20SKILL/GUIA_DE_USO_UNIVERSAL.md))*
+| Entorno / Plataforma | Modalidad Gratuita (Free Tier) | Modalidad de Pago (Plus / Pro / Team) |
+| :--- | :--- | :--- |
+| **Terminal / CLI / Python** | **100% GRATIS** (corre localmente en tu máquina, cero costo de API). | No aplica (siempre es libre y abierto). |
+| **VS Code / Cursor / Windsurf** | **100% GRATIS** (ejecuta el motor local en tu workspace sin créditos de IA). | Opcional (usa modelos premium como Claude 3.5 Sonnet o GPT-4o). |
+| **Claude (Anthropic)** | **100% GRATIS** (copiando el System Prompt al inicio del chat libre). | **Claude Pro ($20/mes):** Permite crear *Claude Projects* permanentes. |
+| **ChatGPT (OpenAI)** | **100% GRATIS** (usando *Instrucciones Personalizadas* en tu cuenta). | **ChatGPT Plus ($20/mes):** Permite crear *Custom GPTs* con Code Interpreter. |
+| **Excalidraw Editor** | **100% GRATIS** (en [excalidraw.com](https://excalidraw.com) o extensión de VS Code). | **Excalidraw+:** Solo para colaboración corporativa en la nube. |
+
+---
+
+*(Para leer el manual completo y detallado paso a paso con prompts listos para usar, consulta el documento principal en [GUIA_DE_USO_UNIVERSAL.md](file:///Users/leonfeliperodriguez/Desktop/Trabajos/Sketion%20SKILL/GUIA_DE_USO_UNIVERSAL.md))*

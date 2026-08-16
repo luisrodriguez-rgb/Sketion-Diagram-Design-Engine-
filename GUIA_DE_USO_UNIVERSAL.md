@@ -3,15 +3,29 @@
 
 ---
 
+## 💰 Matriz de Costos y Modalidades (Planes Gratuitos vs. Planes de Pago)
+
+Sketion fue diseñado para ser **100% utilizable sin gastar dinero**, pero también ofrece integraciones avanzadas si cuentas con suscripciones de pago:
+
+| Entorno / Plataforma | Modalidad Gratuita (Free Tier) | Modalidad de Pago (Plus / Pro / Team) |
+| :--- | :--- | :--- |
+| **Terminal / CLI / Python** | **100% GRATIS** (corre localmente en tu máquina, cero costo de API). | No aplica (siempre es libre y abierto). |
+| **VS Code / Cursor / Windsurf** | **100% GRATIS** (ejecuta el motor local en tu workspace sin créditos de IA). | Opcional (usa modelos premium como Claude 3.5 Sonnet o GPT-4o). |
+| **Claude (Anthropic)** | **100% GRATIS** (copiando el System Prompt al inicio del chat libre). | **Claude Pro ($20/mes):** Permite crear *Claude Projects* permanentes. |
+| **ChatGPT (OpenAI)** | **100% GRATIS** (usando *Instrucciones Personalizadas* en tu cuenta). | **ChatGPT Plus ($20/mes):** Permite crear *Custom GPTs* con Code Interpreter. |
+| **Excalidraw Editor** | **100% GRATIS** (en [excalidraw.com](https://excalidraw.com) o extensión de VS Code). | **Excalidraw+:** Solo para colaboración corporativa en la nube. |
+
+---
+
 ## 📑 Tabla de Contenidos
 1. [¿Qué es Sketion y cómo funciona internamente?](#1-qué-es-sketion-y-cómo-funciona-internamente)
 2. [Cómo funciona y cómo lo usa el Agente de IA aquí (Antigravity IDE)](#2-cómo-funciona-y-cómo-lo-usa-el-agente-de-ia-aquí-antigravity-ide)
-3. [Uso en Claude (Claude Projects, Claude Desktop y Claude Code)](#3-uso-en-claude-claude-projects-claude-desktop-y-claude-code)
-4. [Uso en ChatGPT / OpenAI (Custom GPTs y Prompts Web)](#4-uso-en-chatgpt--openai-custom-gpts-y-prompts-web)
+3. [Uso en ChatGPT / OpenAI (Guía para Plan Gratuito y Plan Plus)](#3-uso-en-chatgpt--openai-guía-para-plan-gratuito-y-plan-plus)
+4. [Uso en Claude (Guía para Plan Gratuito y Plan Pro)](#4-uso-en-claude-guía-para-plan-gratuito-y-plan-pro)
 5. [Uso en Editores de Código (Cursor, Windsurf y VS Code)](#5-uso-en-editores-de-código-cursor-windsurf-y-vs-code)
-6. [Uso desde la Terminal y como Librería Python (CLI / SDK)](#6-uso-desde-la-terminal-y-como-librería-python-cli--sdk)
+6. [Uso desde la Terminal y como Librería Python (100% Local y Gratuito)](#6-uso-desde-la-terminal-y-como-librería-python-100-local-y-gratuito)
 7. [Visualización y Edición en Excalidraw, VS Code y Obsidian](#7-visualización-y-edición-en-excalidraw-vs-code-y-obsidian)
-8. [Catálogo Rápido de Comandos y Ejemplos Prácticos](#8-catálogo-rápido-de-comandos-y-ejemplos-prácticos)
+8. [Plantillas de Prompts Listas para Usar](#8-plantillas-de-prompts-listas-para-usar)
 
 ---
 
@@ -108,130 +122,125 @@ En este entorno (**Antigravity IDE**), Sketion funciona como una **Skill Nativa*
 
 ---
 
-## 3. Uso en Claude (Claude Projects, Claude Desktop y Claude Code)
+## 3. Uso en ChatGPT / OpenAI (Guía para Plan Gratuito y Plan Plus)
 
-### A. En Claude Web (Proyectos / Custom Instructions)
-1. Abre tu proyecto en [Claude.ai](https://claude.ai) o ve a **Settings** $\rightarrow$ **Custom Instructions**.
-2. Abre el archivo [`CLAUDE_PROJECT_INSTRUCTIONS.md`](file:///Users/leonfeliperodriguez/Desktop/Trabajos/Sketion%20SKILL/CLAUDE_PROJECT_INSTRUCTIONS.md) incluido en este repositorio.
-3. Copia todo su contenido y pégalo en la sección de **Instrucciones del Proyecto**.
-4. **Cómo pedirle diagramas a Claude:**
-   > *"Diseña un diagrama en formato Excalidraw para una arquitectura de microservicios con Kafka, PostgreSQL y Redis, enfocada en alta concurrencia."*
-5. Claude te responderá directamente con el bloque JSON de Excalidraw. 
-6. Copia ese JSON, guárdalo con extensión `.excalidraw` (ej. `arquitectura.excalidraw`) o pégalo directamente en [excalidraw.com](https://excalidraw.com) usando `Ctrl + V` / `Cmd + V`.
+> [!IMPORTANT]
+> **Aclaración de Pagos:** La creación de *Custom GPTs* propios y la subida de archivos persistentes de conocimiento (*Knowledge*) requieren una suscripción de pago a **ChatGPT Plus ($20/mes)**. Sin embargo, si estás en el **plan gratuito de ChatGPT (Free Tier)**, puedes usar Sketion al 100% siguiendo el **Método A** sin pagar un solo centavo.
 
-### B. En Claude Code (CLI)
-Si usas Claude Code en tu terminal local:
-```bash
-# Agregar la skill de Sketion a Claude Code:
-claude-code --add-skill /ruta/a/Sketion-Diagram-Design-Engine-/skill.md
-```
+### 🆓 Método A: En ChatGPT GRATIS (Free Tier — GPT-4o / GPT-4o mini)
+Hay dos formas de usarlo gratis:
+
+#### Opción 1: Mediante "Instrucciones Personalizadas" (Configuración Permanente)
+1. En [ChatGPT](https://chatgpt.com), haz clic en tu foto de perfil (abajo a la izquierda) $\rightarrow$ **Configuración / Settings** $\rightarrow$ **Personalización / Custom Instructions**.
+2. En la casilla *"¿Cómo te gustaría que responda ChatGPT?"*, pega el siguiente prompt del motor Sketion:
+   ```text
+   Actúa como Sketion Visual Architect (v8.0). Cuando te pida diagramas, flujos o arquitecturas, genera un archivo JSON nativo válido para Excalidraw (versión 2) aplicando:
+   1. Regla del Acento Único: Máximo 1-2 nodos con color coral/rojo (#D93829); el resto en blanco (#FFFFFF) con bordes slate (#CBD5E1).
+   2. Tipografía legible: 15px bold para títulos, 12px para viñetas explicativas.
+   3. Vinculación estricta: Todo elemento de texto dentro de una tarjeta debe tener containerId apuntando al rectángulo, y el rectángulo debe incluirlo en boundElements.
+   4. Cero cajas vacías: Llena armónicamente el espacio interior con viñetas o capas.
+   Entrega el resultado exclusivamente en un bloque de código ```json listo para copiar.
+   ```
+3. Guarda los cambios. A partir de ese momento, **todos tus chats gratuitos de ChatGPT generarán diagramas compatibles con Sketion**.
+
+#### Opción 2: Pegando el Prompt en el Chat
+Si no quieres modificar tus instrucciones generales, simplemente copia el contenido de [`CLAUDE_PROJECT_INSTRUCTIONS.md`](file:///Users/leonfeliperodriguez/Desktop/Trabajos/Sketion%20SKILL/CLAUDE_PROJECT_INSTRUCTIONS.md) y pégalo como primer mensaje en tu chat gratuito.
 
 ---
 
-## 4. Uso en ChatGPT / OpenAI (Custom GPTs y Prompts Web)
+### 💎 Método B: En ChatGPT PLUS / TEAM ($20/mes — Custom GPT Dedicado)
+Si tienes ChatGPT Plus, puedes crear un asistente permanente con procesamiento de código:
+1. Ve a **Explore GPTs** $\rightarrow$ **Create a GPT** $\rightarrow$ Pestaña **Configure**.
+2. **Name:** `Sketion Visual Architect`
+3. **Instructions:** Pega el contenido completo de [`skill.md`](file:///Users/leonfeliperodriguez/Desktop/Trabajos/Sketion%20SKILL/skill.md).
+4. **Capabilities:** Activa *Code Interpreter / Advanced Data Analysis*.
+5. **Knowledge:** Sube los archivos de la carpeta `references/` (`style-guide.md`, `layout-rules.md`, `types-catalog.md`).
 
-### A. Crear un Custom GPT de Sketion
-1. Ve a [ChatGPT](https://chatgpt.com) $\rightarrow$ **Explore GPTs** $\rightarrow$ **Create a GPT**.
-2. En la pestaña **Configure**:
-   * **Name:** `Sketion Visual Architect`
-   * **Description:** `Diseñador editorial de diagramas y arquitecturas en formato nativo Excalidraw.`
-   * **Instructions:** Pega el contenido completo del archivo [`skill.md`](file:///Users/leonfeliperodriguez/Desktop/Trabajos/Sketion%20SKILL/skill.md).
-   * **Capabilities:** Activa *Code Interpreter / Advanced Data Analysis*.
-3. En **Knowledge**, sube los archivos de la carpeta `references/`:
-   * `types-catalog.md`
-   * `style-guide.md`
-   * `layout-rules.md`
-4. **Listo.** Ahora tu Custom GPT generará diagramas respetando la regla del acento único, la densidad 4/10 y los 20 arquetipos de diseño.
+---
+
+## 4. Uso en Claude (Guía para Plan Gratuito y Plan Pro)
+
+> [!IMPORTANT]
+> **Aclaración de Pagos:** La función de *Claude Projects* (proyectos con memoria compartida de archivos) es exclusiva de **Claude Pro / Team ($20/mes)**. Si usas **Claude Free**, puedes usar Sketion de forma 100% gratuita siguiendo el **Método A**.
+
+### 🆓 Método A: En Claude GRATIS (Free Tier en Claude.ai)
+1. Inicia una conversación nueva en [Claude.ai](https://claude.ai).
+2. Adjunta el archivo [`skill.md`](file:///Users/leonfeliperodriguez/Desktop/Trabajos/Sketion%20SKILL/skill.md) o pega el contenido de [`CLAUDE_PROJECT_INSTRUCTIONS.md`](file:///Users/leonfeliperodriguez/Desktop/Trabajos/Sketion%20SKILL/CLAUDE_PROJECT_INSTRUCTIONS.md).
+3. Pídele lo que deseas diseñar:
+   > *"Diseña un diagrama en formato Excalidraw para un sistema de comercio electrónico con pagos Bold, facturación DIAN y módulo de PQRS."*
+4. Claude te devolverá el bloque JSON de Excalidraw. Cópialo y pégalo en [excalidraw.com](https://excalidraw.com) con `Cmd + V` / `Ctrl + V`.
+
+---
+
+### 💎 Método B: En Claude PRO / TEAM (Claude Projects)
+1. Ve a **Projects** $\rightarrow$ **Create Project** $\rightarrow$ Nómbralo `Sketion Architecture`.
+2. En **Project Knowledge**, sube:
+   * `skill.md`
+   * `references/style-guide.md`
+   * `references/layout-rules.md`
+3. En **Set Custom Instructions**, pega el contenido de [`CLAUDE_PROJECT_INSTRUCTIONS.md`](file:///Users/leonfeliperodriguez/Desktop/Trabajos/Sketion%20SKILL/CLAUDE_PROJECT_INSTRUCTIONS.md).
+4. Tendrás un entorno dedicado de diseño gráfico ilimitado.
 
 ---
 
 ## 5. Uso en Editores de Código (Cursor, Windsurf y VS Code)
 
+> **Costo:** 100% Gratuito en la ejecución local del motor.
+
 ### A. En Cursor (`.cursorrules` o `.cursor/rules/`)
-Crea o edita el archivo `.cursorrules` en la raíz de tu proyecto y agrega:
+Crea el archivo `.cursorrules` en tu proyecto:
 ```markdown
 # Sketion Diagram Engine Rules
-Cuando se te pida diseñar, estructurar o exportar diagramas, flujos o arquitecturas:
-1. Utiliza siempre el motor Sketion ubicado en la carpeta del workspace.
+Cuando se te pida diseñar o exportar diagramas, flujos o arquitecturas:
+1. Utiliza siempre el motor Sketion ubicado en el workspace.
 2. Construye escenas mediante `render.excalidraw_builder.ExcalidrawScene`.
-3. Sigue las reglas de diseño editorial de `skill.md` (diversidad de arquetipos, acento único, 0 colisiones).
-4. Ejecuta `validate_scene()` para asegurar una puntuación >= 95/100 antes de entregar el archivo .excalidraw.
+3. Aplica las primitivas `add_stack_layer()`, `add_feature_card()`, `add_quad_card()`.
+4. Ejecuta `validate_scene(auto_repair=True)` para certificar calidad >= 95/100 antes de entregar el archivo .excalidraw.
 ```
 
 ### B. En Windsurf (`.windsurfrules`)
-Agrega la misma instrucción en tu archivo `.windsurfrules` para que Cascade utilice el constructor oficial `ExcalidrawScene` y las primitivas de capas y tarjetas.
+Agrega la misma directiva en `.windsurfrules`. Cascade ejecutará automáticamente los scripts de Python para generar los `.excalidraw`.
 
 ---
 
-## 6. Uso desde la Terminal y como Librería Python (CLI / SDK)
+## 6. Uso desde la Terminal y como Librería Python (100% Local y Gratuito)
 
-### A. Instalación Global del CLI
+Sketion incluye un CLI completo que funciona sin internet y sin gastar créditos de ninguna API:
+
 ```bash
-# Instalación rápida en 1 comando:
+# 1. Instalación en tu terminal:
 curl -fsSL https://raw.githubusercontent.com/luisrodriguez-rgb/Sketion-Diagram-Design-Engine-.git/main/install.sh | bash
-```
 
-### B. Comandos de Terminal (`sketion`)
-```bash
-# 1. Ver catálogo de los 20 arquetipos disponibles:
+# 2. Listar arquetipos disponibles:
 sketion types
 
-# 2. Generar un diagrama automáticamente a partir de un tipo:
+# 3. Generar un diagrama automáticamente:
 sketion generate "Pipeline de Conciliación Bancaria" --type pipeline --output conciliacion.excalidraw --validate
 
-# 3. Validar y auto-reparar cualquier archivo .excalidraw existente:
+# 4. Validar y auto-reparar cualquier archivo existente:
 sketion validate mi_diagrama.excalidraw
-
-# 4. Ejecutar la suite integral de benchmarks:
-sketion benchmark
-```
-
-### C. Uso Programático como SDK en tus propios scripts de Python
-```python
-from render.excalidraw_builder import ExcalidrawScene, place, place_reset
-from validation.validator import validate_scene
-
-# 1. Inicializar escena
-scene = ExcalidrawScene(roughness=0, bg_color="#F8FAFC")
-
-# 2. Crear marco
-fw, fh = 1400.0, 600.0
-frame_id = scene.add_frame("01. Arquitectura de Autenticación OAuth2", 40.0, 40.0, fw, fh)
-
-# 3. Añadir tarjeta estructurada
-scene.add_quad_card(
-    80.0, 120.0, 280.0, 120.0,
-    title="API Gateway",
-    sublabel="Valida y firma tokens JWT.\nRate limiting activo.",
-    badge="GATEWAY",
-    icon="lock",
-    is_hero=True,
-    frame_id=frame_id
-)
-
-# 4. Guardar archivo
-scene.save("oauth2_architecture.excalidraw")
-
-# 5. Validar calidad editorial
-_, report = validate_scene("oauth2_architecture.excalidraw")
-print(f"Puntuación Sketion: {report.sketion_overall_score}/100 [PASS]")
 ```
 
 ---
 
 ## 7. Visualización y Edición en Excalidraw, VS Code y Obsidian
 
-Los archivos `.excalidraw` generados por Sketion son **100% estándar y nativos**, compatibles con cualquier visor de Excalidraw:
+Todos los archivos generados con `.excalidraw` se pueden abrir y editar en:
 
-| Plataforma | Cómo abrir y editar |
-| :--- | :--- |
-| **Navegador Web** | Entra a [excalidraw.com](https://excalidraw.com) $\rightarrow$ Clic en el icono de carpeta superior izquierda $\rightarrow$ **Open / Abrir** $\rightarrow$ Selecciona tu archivo `.excalidraw`. |
-| **VS Code / Cursor** | Instala la extensión oficial **Excalidraw** (`pomdtr.excalidraw-editor`). Al hacer clic en cualquier archivo `.excalidraw`, se abrirá el lienzo interactivo directamente dentro del editor. |
-| **Obsidian** | Instala el plugin **Obsidian-Excalidraw** de Zsolt Viczian. Puedes arrastrar el archivo a tu vault y visualizarlo/editarlo de inmediato. |
+* **[Excalidraw Web (Gratis)](https://excalidraw.com):** Clic en la carpeta superior izquierda $\rightarrow$ **Open / Abrir** $\rightarrow$ Selecciona tu archivo.
+* **VS Code / Cursor (Gratis):** Instala la extensión **Excalidraw** (`pomdtr.excalidraw-editor`). Al abrir cualquier archivo `.excalidraw`, se abrirá como un lienzo visual interactivo.
+* **Obsidian (Gratis):** Instala el plugin comunitario **Obsidian-Excalidraw**.
 
 ---
 
-## 8. Catálogo Rápido de Comandos y Ejemplos Prácticos
+## 8. Plantillas de Prompts Listas para Usar
 
-### Plantilla de Prompt Universal para cualquier IA:
-> *"Usa la Skill de Sketion v8.0 para crear un diagrama en formato `.excalidraw` sobre [TU TEMA]. Requisitos: Aplica el arquetipo visual adecuado entre los 20 disponibles, utiliza la regla del acento único (un solo componente en color coral/rojo), asegúrate de que todos los textos estén centrados y vinculados al contenedor con `containerId`, y valida que no haya colisiones ni solapamientos."*
+### Prompt para Arquitectura de Software
+```text
+Actúa como Sketion Visual Architect. Diseña un diagrama en formato Excalidraw nativo para una arquitectura de microservicios con: API Gateway (Hero en coral), Servicio de Autenticación con Redis, Base de Datos PostgreSQL particionada y Cola Kafka. Aplica el arquetipo Layer Stack, vincula todos los textos con containerId y usa conectores a 90°.
+```
+
+### Prompt para Procesos y Flujos de Negocio (Swimlanes)
+```text
+Actúa como Sketion Visual Architect. Diseña un diagrama de flujo en Excalidraw para un proceso de onboarding de clientes en 4 carriles (Cliente, Pasarela de Pago, Sistema de Facturación, Operaciones). Aplica el arquetipo Swimlanes, utiliza la regla del acento único y asegúrate de que no haya colisiones ni solapamientos entre tarjetas.
+```

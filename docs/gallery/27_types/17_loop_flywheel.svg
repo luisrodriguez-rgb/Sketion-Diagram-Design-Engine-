@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1424.2 570.9" width="1424.2" height="570.9">
+  <defs>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
+      text { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB" />
+    </marker>
+    <marker id="arrowhead-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D93829" />
+    </marker>
+    <marker id="arrowhead-danger" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
+    </marker>
+  </defs>
+  <rect x="-30.0" y="-30.0" width="1424.2" height="570.9" fill="#F8FAFC" />
+  <rect x="10.0" y="10.0" width="1344.2" height="490.9" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">DIAGRAM DESIGN ARCHETYPE · LOOP</text>
+  <rect x="665.0" y="200.0" width="240.0" height="100.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
+  <rect x="677.0" y="210.0" width="59.2" height="20.0" rx="6.0" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.0" />
+  <text x="681.0" y="222.0" fill="#D93829" font-size="10px" font-weight="400">ENGINE</text>
+  <text x="679.0" y="252.0" fill="#0F172A" font-size="14px" font-weight="600">Core Flywheel Engine</text>
+  <text x="679.0" y="272.9" fill="#475569" font-size="12px" font-weight="400">Self-Reinforcing Growth</text>
+  <rect x="675.0" y="40.0" width="220.0" height="80.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="687.0" y="50.0" width="66.4" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="691.0" y="62.0" fill="#475569" font-size="10px" font-weight="400">STATION</text>
+  <text x="689.0" y="92.0" fill="#0F172A" font-size="14px" font-weight="600">1. Freemium Inbound</text>
+  <text x="689.0" y="112.9" fill="#475569" font-size="12px" font-weight="400">Viral Organic Acquisition</text>
+  <rect x="1035.0" y="210.0" width="220.0" height="80.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="1047.0" y="220.0" width="66.4" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="1051.0" y="232.0" fill="#475569" font-size="10px" font-weight="400">STATION</text>
+  <text x="1049.0" y="262.0" fill="#0F172A" font-size="14px" font-weight="600">2. Fast Time-to-Value</text>
+  <text x="1049.0" y="282.9" fill="#475569" font-size="12px" font-weight="400">Interactive Onboarding</text>
+  <rect x="675.0" y="380.0" width="220.0" height="80.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="687.0" y="390.0" width="66.4" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="691.0" y="402.0" fill="#475569" font-size="10px" font-weight="400">STATION</text>
+  <text x="689.0" y="432.0" fill="#0F172A" font-size="14px" font-weight="600">3. Paid Expansion</text>
+  <text x="689.0" y="452.9" fill="#475569" font-size="12px" font-weight="400">Stripe Self-Serve Upgrades</text>
+  <rect x="315.0" y="210.0" width="220.0" height="80.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="327.0" y="220.0" width="66.4" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="331.0" y="232.0" fill="#475569" font-size="10px" font-weight="400">STATION</text>
+  <text x="329.0" y="262.0" fill="#0F172A" font-size="14px" font-weight="600">4. Multi-Seat Advocacy</text>
+  <text x="329.0" y="282.9" fill="#475569" font-size="12px" font-weight="400">Word-of-Mouth Referral</text>
+  <line x1="905.0" y1="110.0" x2="1025.0" y2="200.0" stroke="#D93829" stroke-width="1.8" marker-end="url(#arrowhead-hero)" />
+  <line x1="1025.0" y1="300.0" x2="905.0" y2="390.0" stroke="#D93829" stroke-width="1.8" marker-end="url(#arrowhead-hero)" />
+  <line x1="665.0" y1="390.0" x2="545.0" y2="300.0" stroke="#D93829" stroke-width="1.8" marker-end="url(#arrowhead-hero)" />
+  <line x1="545.0" y1="200.0" x2="665.0" y2="110.0" stroke="#D93829" stroke-width="1.8" marker-end="url(#arrowhead-hero)" />
+</svg>

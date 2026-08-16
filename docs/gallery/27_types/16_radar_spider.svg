@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1144.7 501.4" width="1144.7" height="501.4">
+  <defs>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
+      text { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB" />
+    </marker>
+    <marker id="arrowhead-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D93829" />
+    </marker>
+    <marker id="arrowhead-danger" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
+    </marker>
+  </defs>
+  <rect x="-30.0" y="-30.0" width="1144.7" height="501.4" fill="#F8FAFC" />
+  <rect x="10.0" y="10.0" width="1064.7" height="421.4" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">DIAGRAM DESIGN ARCHETYPE · RADAR / SPIDER</text>
+  <line x1="785.0" y1="203.8" x2="828.9" y2="235.7" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="828.9" y1="235.7" x2="812.2" y2="287.4" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="812.2" y1="287.4" x2="757.8" y2="287.4" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="757.8" y1="287.4" x2="741.1" y2="235.7" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="741.1" y1="235.7" x2="785.0" y2="203.8" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="785.0" y1="157.6" x2="872.9" y2="221.4" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="872.9" y1="221.4" x2="839.3" y2="324.8" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="839.3" y1="324.8" x2="730.7" y2="324.8" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="730.7" y1="324.8" x2="697.1" y2="221.4" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="697.1" y1="221.4" x2="785.0" y2="157.6" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="785.0" y1="110.0" x2="918.1" y2="206.7" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="918.1" y1="206.7" x2="867.3" y2="363.3" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="867.3" y1="363.3" x2="702.7" y2="363.3" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="702.7" y1="363.3" x2="651.9" y2="206.7" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="651.9" y1="206.7" x2="785.0" y2="110.0" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="6,6" />
+  <line x1="785.0" y1="250.0" x2="785.0" y2="110.0" stroke="#94A3B8" stroke-width="1.2" />
+  <text x="755.0" y="93.0" fill="#0F172A" font-size="11px" font-weight="400">LATENCY</text>
+  <line x1="785.0" y1="250.0" x2="918.1" y2="206.7" stroke="#94A3B8" stroke-width="1.2" />
+  <text x="916.7" y="203.6" fill="#0F172A" font-size="11px" font-weight="400">THROUGHPUT</text>
+  <line x1="785.0" y1="250.0" x2="867.3" y2="363.3" stroke="#94A3B8" stroke-width="1.2" />
+  <text x="854.9" y="382.4" fill="#0F172A" font-size="11px" font-weight="400">RESILIENCE</text>
+  <line x1="785.0" y1="250.0" x2="702.7" y2="363.3" stroke="#94A3B8" stroke-width="1.2" />
+  <text x="655.1" y="382.4" fill="#0F172A" font-size="11px" font-weight="400">SECURITY</text>
+  <line x1="785.0" y1="250.0" x2="651.9" y2="206.7" stroke="#94A3B8" stroke-width="1.2" />
+  <text x="593.3" y="203.6" fill="#0F172A" font-size="11px" font-weight="400">SIMPLICITY</text>
+  <line x1="785.0" y1="117.0" x2="904.8" y2="211.1" stroke="#D93829" stroke-width="2.2" />
+  <ellipse cx="785.0" cy="117.0" rx="4.0" ry="4.0" fill="#D93829" stroke="#FFFFFF" stroke-width="1.5" />
+  <line x1="904.8" y1="211.1" x2="854.9" y2="346.3" stroke="#D93829" stroke-width="2.2" />
+  <ellipse cx="904.8" cy="211.1" rx="4.0" ry="4.0" fill="#D93829" stroke="#FFFFFF" stroke-width="1.5" />
+  <line x1="854.9" y1="346.3" x2="704.4" y2="361.0" stroke="#D93829" stroke-width="2.2" />
+  <ellipse cx="854.9" cy="346.3" rx="4.0" ry="4.0" fill="#D93829" stroke="#FFFFFF" stroke-width="1.5" />
+  <line x1="704.4" y1="361.0" x2="678.5" y2="215.4" stroke="#D93829" stroke-width="2.2" />
+  <ellipse cx="704.4" cy="361.0" rx="4.0" ry="4.0" fill="#D93829" stroke="#FFFFFF" stroke-width="1.5" />
+  <line x1="678.5" y1="215.4" x2="785.0" y2="117.0" stroke="#D93829" stroke-width="2.2" />
+  <ellipse cx="678.5" cy="215.4" rx="4.0" ry="4.0" fill="#D93829" stroke="#FFFFFF" stroke-width="1.5" />
+</svg>

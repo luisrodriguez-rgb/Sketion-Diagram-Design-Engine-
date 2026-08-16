@@ -11,6 +11,10 @@ ENV/
 # Excalidraw temporary exports & tests
 *.tmp
 tests/snapshots/*.tmp
+PRUEBAS_V1/
+PRUEBAS_V2/
+PRUEBAS_V3/
+
 
 # OS files
 .DS_Store
@@ -26,3 +30,4 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+evaluacion-critica-v2.md

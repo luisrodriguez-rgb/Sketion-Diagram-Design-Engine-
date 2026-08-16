@@ -1,0 +1,74 @@
+[
+  {
+    "id": "01_ambiguous_process",
+    "archetype_chosen": "D (El Duelo Before/After)",
+    "hard_constraints_met": true,
+    "overall_score": 95,
+    "visual_score": 95,
+    "status": "PASS"
+  },
+  {
+    "id": "02_multi_perspective",
+    "archetype_chosen": "Composicion Multi-Frame (RBAC + Preemption + Estados)",
+    "hard_constraints_met": true,
+    "overall_score": 90,
+    "visual_score": 90,
+    "status": "PASS"
+  },
+  {
+    "id": "03_semantic_vs_visual",
+    "archetype_chosen": "Arquitectura Distribuida + Ledger Partida Doble",
+    "hard_constraints_met": true,
+    "overall_score": 91,
+    "visual_score": 91,
+    "status": "PASS"
+  },
+  {
+    "id": "04_same_information_different_audience",
+    "archetype_chosen": "5 Perfiles de Audiencia Especializados",
+    "hard_constraints_met": true,
+    "overall_score": 89,
+    "visual_score": 89,
+    "status": "PASS"
+  },
+  {
+    "id": "05_extreme_hierarchy",
+    "archetype_chosen": "T (Caja Explotada / Deep Dive Zoom)",
+    "hard_constraints_met": true,
+    "overall_score": 91,
+    "visual_score": 91,
+    "status": "PASS"
+  },
+  {
+    "id": "06_extreme_density",
+    "archetype_chosen": "Elastic Auto-Split en 3 Frames Coordinados",
+    "hard_constraints_met": true,
+    "overall_score": 90,
+    "visual_score": 90,
+    "status": "PASS"
+  },
+  {
+    "id": "07_missing_information",
+    "archetype_chosen": "Pipeline Hibrido Offline/Online + Metricas Estimadas",
+    "hard_constraints_met": true,
+    "overall_score": 92,
+    "visual_score": 92,
+    "status": "PASS"
+  },
+  {
+    "id": "08_conflicting_requirements",
+    "archetype_chosen": "Arquitectura Hibrida de 2 Planos (Off-Chain / On-Chain)",
+    "hard_constraints_met": true,
+    "overall_score": 90,
+    "visual_score": 90,
+    "status": "PASS"
+  },
+  {
+    "id": "09_real_world_messy_input",
+    "archetype_chosen": "Cadena de Valor Estructurada de 5 Capas",
+    "hard_constraints_met": true,
+    "overall_score": 92,
+    "visual_score": 92,
+    "status": "PASS"
+  }
+]

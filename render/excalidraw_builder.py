@@ -239,6 +239,80 @@ class ExcalidrawScene:
         self.elements.append(text_elem)
         return container, text_elem
 
+    def add_stack_layer(self, x: float, y: float, w: float, h: float,
+                        layer_num: str, title: str, doc_count: str,
+                        documents: List[str],
+                        bg: str = "#FFFFFF", stroke: str = "#CBD5E1",
+                        header_bg: str = "#EFF6FF", header_stroke: str = "#93C5FD",
+                        badge_bg: str = "#2563EB", badge_color: str = "#FFFFFF",
+                        frame_id: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Crea una capa arquitectónica estructurada que llena el espacio de forma equilibrada:
+        - Barra de cabecera con Badge de Capa + Título + Conteo de Documentos
+        - Área de cuerpo con lista organizada de documentos/items
+        """
+        container = self.add_rect(x, y, w, h, bg=bg, stroke=stroke, stroke_w=1.5, roundness_type=3, frame_id=frame_id)
+
+        # 1. Barra de cabecera
+        head_h = 36.0
+        self.add_rect(x, y, w, head_h, bg=header_bg, stroke=header_stroke, stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+
+        # Badge
+        badge_w = max(55.0, len(layer_num) * 7.5 + 16.0)
+        self.add_rect(x + 12.0, y + 7.0, badge_w, 22.0, bg=badge_bg, stroke=badge_bg, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 18.0, y + 10.0, layer_num, font_size=11, font_family=2, color=badge_color, frame_id=frame_id)
+
+        # Título de Capa
+        self.add_text(x + 18.0 + badge_w + 8.0, y + 9.0, title.upper(), font_size=13, font_family=2, color="#0F172A", frame_id=frame_id)
+
+        # Conteo a la derecha
+        doc_w = len(doc_count) * 7.2 + 10.0
+        self.add_text(x + w - doc_w - 14.0, y + 10.0, doc_count, font_size=11, font_family=2, color="#64748B", frame_id=frame_id)
+
+        # 2. Contenido del cuerpo (Lista formateada en 1 o 2 columnas o texto continuo balanceado)
+        body_text = "  ·  ".join(documents) if isinstance(documents, list) else str(documents)
+        self.add_text(x + 16.0, y + 46.0, body_text, font_size=12, font_family=2, color="#334155", frame_id=frame_id)
+
+        return container
+
+    def add_feature_card(self, x: float, y: float, w: float, h: float,
+                         title: str, bullets: List[str],
+                         badge: Optional[str] = None, icon: Optional[str] = None,
+                         is_hero: bool = False, bg: str = "#FFFFFF",
+                         stroke: str = "#CBD5E1", frame_id: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Crea una tarjeta de contenido densa y balanceada con título, icono y viñetas explicativas.
+        """
+        final_stroke = "#D93829" if is_hero else stroke
+        final_bg = "#FFF5F2" if is_hero else bg
+        stroke_w = 2.0 if is_hero else 1.5
+
+        container = self.add_rect(x, y, w, h, bg=final_bg, stroke=final_stroke, stroke_w=stroke_w, roundness_type=3, frame_id=frame_id)
+
+        # Badge
+        if badge:
+            b_bg = "#FEE2E2" if is_hero else "#F1F5F9"
+            b_str = "#FCA5A5" if is_hero else "#CBD5E1"
+            b_col = "#D93829" if is_hero else "#475569"
+            bw = max(60.0, len(badge) * 7.2 + 16.0)
+            self.add_rect(x + 14.0, y + 12.0, bw, 20.0, bg=b_bg, stroke=b_str, stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+            self.add_text(x + 18.0, y + 14.0, badge, font_size=10, font_family=2, color=b_col, frame_id=frame_id)
+
+        # Icono
+        if icon:
+            self.add_icon(icon, x + w - 38.0, y + 12.0, size=22.0, color=final_stroke, frame_id=frame_id)
+
+        # Título
+        tit_y = y + 36.0 if badge else y + 16.0
+        self.add_text(x + 16.0, tit_y, title, font_size=15, font_family=2, color="#0F172A", frame_id=frame_id)
+
+        # Bullets
+        bullets_y = tit_y + 24.0
+        bullet_lines = "\n".join([f"• {b}" for b in bullets])
+        self.add_text(x + 16.0, bullets_y, bullet_lines, font_size=12, font_family=2, color="#334155", frame_id=frame_id)
+
+        return container
+
     def add_dual_card(self, x: float, y: float, w: float, h: float,
                       title: str, sublabel: Optional[str] = None,
                       metadata: Optional[str] = None, bg: str = "#FFFFFF",

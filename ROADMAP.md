@@ -1,111 +1,88 @@
-# 🚀 Sketion Diagram Design Engine — Hoja de Ruta Estratégica & Certificación Final de Producto (v8.0 ───> v10.0 GA)
+# 🚀 Sketion Diagram Design Engine — Hoja de Ruta Estratégica & Certificación de Producto (v8.0 ───> v10.5)
 
-Este documento certifica formalmente la culminación exitosa, la auditoría cuantitativa y la **disponibilidad general (GA) de Sketion v10.0** como el motor líder de diseño autónomo de diagramas de arquitectura de software y sistemas complejos.
+**Sketion v10.0 GA — Autonomous Diagram Design Engine for Software Architecture and Complex Systems.**
 
----
-
-## 🏛️ 1. Certificación de la Arquitectura de Inteligencia
-
-```text
-                     SKETION DIAGRAM DESIGN ENGINE (v10.0 GA)
-                                        │
-           ┌────────────────────────────┴────────────────────────────┐
-           │                                                         │
-    INTELLIGENCE CORE (FROZEN)                              DESIGN & VISUAL ENGINE (CERTIFIED)
-           │                                                         │
-  ┌────────┼────────┐                               ┌────────┼───────┼──────────┐
-  │        │        │                               │        │       │          │
-Composition   IA   Rendering                     Shapes   Icons   Data Viz   Brands (46+)
-                                                                     │
-                                                              Design System (v8.5)
-                                                                     │
-                                                        Visual Consistency VCS 97.7 (v8.6)
-                                                                     │
-                                                          Visual Matrix 4x4x4 (v8.4)
-                                                                     │
-                                                       Adaptive Aspect Ratio 16:9 (v9.0)
-                                                                     │
-                                                        Export Intelligence SVG (v9.1)
-                                                                     │
-                                                         Visual Language Engine (v9.2)
-                                                                     │
-                                                         Explainability Engine (v9.3)
-                                                                     │
-                                                      Grand Blind Holdout 160 (v9.5)
-                                                                     │
-                                                    Comparative Benchmark vs Excalidraw
-                                                          (100% Human Preference)
-                                                                     │
-                                                    🔵 PRODUCTION READY SDK & CLI (v10.0)
-```
+Este documento certifica el estado técnico inmutable del Core, la auditoría cuantitativa del Design System y la **hoja de ruta de evaluación humana a gran escala (v10.1 ───> v10.5)**.
 
 ---
 
-## 📊 2. Matriz de Estados y Certificación de Módulos
+## 🏛️ 1. Estado Actual Auditado del Sistema (Baseline)
 
-| Módulo / Capa | Versión | Estado Técnico | Hito de Certificación & Evidencia |
+| Capa / Módulo | Versión | Estado Técnico | Evidencia / Benchmark Cuantitativo |
 | :--- | :---: | :---: | :--- |
 | **Composition Intelligence** | v8.0 | 🔒 **FROZEN** | Congelada con 100% de retención semántica y 0 colisiones. |
 | **Information Architecture (IA)** | v8.0 | 🔒 **FROZEN** | 54 entidades en 4 audiencias certificadas. |
-| **Rendering Intelligence** | v8.0 | 🔒 **FROZEN** | 50 renders continuos con estabilidad del 100% y varianza 0. |
-| **Visual Primitives Engine** | v8.1 | 🔒 **FROZEN** | Primitivas morfológicas (Cilindros, Tuberías Kafka, Barreras WAF, Pastillas). |
+| **Rendering Intelligence** | v8.0 | 🔒 **FROZEN** | 50 renders continuos con estabilidad del 100% y varianza 0.00. |
+| **Visual Primitives Engine** | v8.1 | 🔒 **FROZEN** | Cilindros elípticos, Tuberías Kafka, Barreras WAF, Pastillas. |
 | **Brand & Icon Registry** | v8.2 | 🟢 **CERTIFIED** | 155+ íconos vectoriales puros, 46+ marcas y 0 emojis. |
-| **Visual Composition** | v8.3 | 🟢 **CERTIFIED** | Orquestación autónoma polimórfica y zonas de layout vertical estricto. |
-| **Visual Matrix (4 Arquetipos)** | v8.4 | 🟢 **CERTIFIED** | `LAYERED`, `PIPELINE`, `RADIAL_HUB` (The Brain) y `SPLIT_DUEL` (Score: 98/100). |
+| **Visual Composition Core** | v8.3 | 🟢 **CERTIFIED** | Orquestación autónoma y zonas verticales estrictas anti-colisión. |
+| **Visual Matrix (4 Arquetipos)** | v8.4 | 🟢 **CERTIFIED** | `LAYERED`, `PIPELINE`, `RADIAL_HUB` (The Brain), `SPLIT_DUEL` (Score: 98/100). |
 | **Design System Tokens** | v8.5 | 🟢 **CERTIFIED** | Tokens formales y selector contextual (`design/visual_tokens.py`). |
 | **Visual Consistency Engine** | v8.6 | 🟢 **CERTIFIED** | **Visual Consistency Score (VCS): 97.7 / 100** (`design/consistency.py`). |
 | **Adaptive Aspect Ratio** | v9.0 | 🟢 **CERTIFIED** | Ratios `16:9`, `4:3`, `1:1`, `3:4` con invariancia semántica garantizada. |
-| **Export Intelligence** | v9.1 | 🟢 **CERTIFIED** | Exportadores directos de alta fidelidad a `.svg` y `.excalidraw` (`export/`). |
+| **Export Intelligence** | v9.1 | 🟢 **CERTIFIED** | Exportación de alta fidelidad a `.svg` y `.excalidraw` (`export/`). |
 | **Visual Language Engine** | v9.2 | 🟢 **CERTIFIED** | 4 Dialectos (Technical, Executive, Operations, Security) (`visual_language.py`). |
 | **Explainability Engine** | v9.3 | 🟢 **CERTIFIED** | Trazas explicativas de diseño (`result.explain()`, `explainability.py`). |
 | **Grand Blind Holdout (160 Prompts)** | v9.5 | 🟢 **CERTIFIED** | **100% Pass Rate (160/160), VCS 93.4, RDS 0.00** en 8 dominios (`tests/holdout/`). |
-| **Excalidraw Comparative Benchmark** | v9.6 | 🟢 **CERTIFIED** | **Human Preference Rate (HPR): 100.0% a favor de Sketion** en 50 casos A/B. |
-| **E2E Regression & CI Suite** | v9.8 | 🟢 **CERTIFIED** | 27/27 pruebas unitarias y de integración aprobadas en 0.013s (`tests/`). |
-| **Unified Production SDK & CLI** | v10.0 | 🔵 **PRODUCTION READY** | SDK Python de alto nivel (`import sketion`) y CLI interactivo (`sketion_cli.py`). |
+| **Blind A/B Preference Benchmark** | v9.6 | 🟢 **CERTIFIED** | **100% Human Preference Rate (HPR)** en 50 casos evaluados vs Baseline. |
+| **E2E Regression & CI Suite** | v9.8 | 🟢 **CERTIFIED** | 27 / 27 pruebas aprobadas (100.0% PASS) en 0.014s (`tests/`). |
+| **Production SDK & CLI** | v10.0 | 🔵 **PRODUCTION READY** | SDK Python (`import sketion`), CLI 2.0 y certificación formal ([`SKETION_10_GA_CERTIFICATION.md`](SKETION_10_GA_CERTIFICATION.md)). |
 
 ---
 
-## 🧪 3. Resumen de Evidencia Empírica
+## 🎯 2. Postura Estratégica: Congelamiento de Features y Foco en Evaluación Externa
+
+> [!IMPORTANT]
+> **CONGELAMIENTO DE CAPAS DE INTELIGENCIA (NO FEATURE INFLATION):**  
+> Se suspende la adición indiscriminada de nuevas formas, íconos o módulos internos de inteligencia. El foco exclusivo del proyecto se traslada a **validar si el sistema produce consistentemente mejores representaciones visuales que alternativas del mercado** mediante evaluación humana ciega y análisis riguroso de fallos.
+
+---
+
+## 🗺️ 3. Hoja de Ruta de Validación & Producto (v10.1 ───> v10.5)
 
 ```text
-===================================================================================================================
-🏆 AUDITORÍA GENERAL DE CERTIFICACIÓN SKETION 10.0 GA
-===================================================================================================================
- 1. Grand Blind Holdout Benchmark  : 160 Prompts Ciegos Evaluados · 100.0% Pass Rate · 6.785 elementos vectoriales
- 2. Blind Comparative vs Excalidraw: 100.0% Human Preference Rate (HPR) · +49.0% en precisión de marcas
- 3. Visual Consistency Score (VCS) : 97.7 / 100 [CERTIFIED] · Escalas de tipografía, espaciado y conectores
- 4. Tasa de Reparación Humana (RDS): 0.00 (100% de Autonomía en Generación)
- 5. E2E Continuous Integration (CI): 27 / 27 pruebas aprobadas (100.0% PASS) en 0.013 segundos
- 6. Formatos de Salida Soportados  : .excalidraw nativo colaborativo y .svg vectorial web estándar
-===================================================================================================================
+v10.0 GA (Production SDK & CLI) ───> 🔒 CORE & DESIGN SYSTEM FROZEN
+   ↓
+v10.1: Human Blind Evaluation (200–500 casos con protocolo A/B aleatorizado)
+   ↓
+v10.2: Failure Taxonomy (F01–F12) & Design Advantage Score (DAS)
+   ↓
+v10.3: Benchmark Analytics Dashboard & Trace Visualizer
+   ↓
+v10.4: Extended Multi-Platform Regression Suite
+   ↓
+v10.5: Independent Third-Party Evaluation & Comparative Publication
+   ↓
+v11.0: Next Intelligence Layer (⏸️ EN ESPERA hasta completar v10.5)
 ```
 
 ---
 
-## 💻 4. Guía de Uso del SDK v10.0 GA
+### 🧪 v10.1 — Human Blind Evaluation (200–500 Casos A/B)
+Evaluación a ciegas a gran escala con evaluadores independientes, dominios variados y orden A/B aleatorizado:
+1. *Which diagram better communicates the system?*
+2. *Which diagram has better visual hierarchy?*
+3. *Which diagram is easier to understand and scan?*
+4. *Which diagram better represents relationships and data flows?*
+5. *Which diagram looks more professionally designed?*
+6. *Which diagram would you use in an executive presentation or technical doc?*
+7. **Overall Preference:** Cálculo del **Human Preference Rate (HPR)** y **Design Advantage Score (DAS)**.
 
-```python
-import sketion
+---
 
-# 1. Renderizado autónomo
-result = sketion.render(
-    payload={
-        "title": "Global Fintech Payment Clearinghouse",
-        "layers": [
-            {"name": "1. Perímetro Zero-Trust", "entities": [{"label": "Cloudflare Global WAF", "role": "security"}]},
-            {"name": "2. Core Saga Hero", "entities": [{"label": "Payment Saga Orchestrator", "role": "service", "is_hero": True}]},
-            {"name": "3. Persistencia & Streaming", "entities": [{"label": "Aurora PostgreSQL", "role": "database"}, {"label": "Apache Kafka", "role": "stream"}]}
-        ]
-    },
-    audience="executive",
-    archetype="auto",
-    aspect_ratio="16:9"
-)
+### 🔍 v10.2 — Failure Taxonomy (`F01` ───> `F12`)
+Mapeo sistemático de causa raíz en [`validation/failure_taxonomy.py`](file:///Users/leonfeliperodriguez/Desktop/Trabajos/Sketion%20SKILL/validation/failure_taxonomy.py):
+* `F01` Wrong Archetype · `F02` Incorrect Hierarchy · `F03` Excessive Density
+* `F04` Weak Connector Routing · `F05` Wrong Primitive · `F06` Poor Brand Representation
+* `F07` Text Overflow · `F08` Poor Audience Adaptation · `F09` Excessive Whitespace
+* `F10` Insufficient Context · `F11` Incorrect Grouping · `F12` Aesthetic Preference
 
-# 2. Explicabilidad de diseño
-print(result.explain())
+---
 
-# 3. Exportación multiformato
-result.export("fintech_architecture.excalidraw")
-result.export("fintech_architecture.svg", format="svg")
-```
+### 📊 v10.3 — Benchmark Dashboard & Trace Visualizer
+Plataforma analítica para inspeccionar diagramas, trazas de explicabilidad, correlaciones de VCS y distribución de modos de fallo.
+
+---
+
+### 🌐 v10.5 — Evaluación Externa e Independiente
+Certificación ciega ejecutada por terceros y publicación de resultados comparativos auditables.

@@ -4,7 +4,7 @@ Conecta los Modelos Semánticos y Motores de Layout con el Render de Excalidraw.
 """
 
 from typing import List, Dict, Any, Optional
-from render.excalidraw_builder import ExcalidrawScene, place, rid
+from render.excalidraw_builder import ExcalidrawScene, place, rid, compute_card_dimensions
 from layout.flow import compute_flow_layout, compute_timeline_layout
 from layout.hierarchy import compute_tree_layout, compute_radial_layout
 from layout.grid import compute_matrix_layout, compute_board_layout, compute_dashboard_layout
@@ -73,19 +73,21 @@ def engine_cerebro(scene: ExcalidrawScene, title: str, center_text: str,
 
 def engine_flujo(scene: ExcalidrawScene, title: str,
                  steps: List[Dict[str, Any]], palette: Dict[str, str] = DEFAULT_PALETTE,
-                 wave: bool = False, w: float = 1400, h: float = 450) -> str:
-    """Motor FLUJO: Pasos calculados mediante compute_flow_layout."""
+                 wave: bool = False, w: float = 1400, h: float = 400) -> str:
+    """Motor FLUJO: Pasos calculados mediante compute_flow_layout con auto-fit de marco."""
     fx, fy = place(w, h)
     fid = scene.add_frame(f"FLUJO: {title}", fx, fy, w, h)
     
-    scene.add_text(fx + 30, fy + 30, title.upper(), font_size=20, font_family=2, color=palette["INK"], frame_id=fid)
+    scene.add_text(fx + 35, fy + 30, title.upper(), font_size=20, font_family=2, color=palette["INK"], frame_id=fid)
 
-    step_coords = compute_flow_layout(len(steps), start_x=fx + 50, base_y=fy + 180, wave=wave)
+    step_coords = compute_flow_layout(len(steps), start_x=fx + 40, base_y=fy + 140, wave=wave)
 
     for i, step in enumerate(steps):
         coord = step_coords[i]
         sx, sy = coord["x"], coord["y"]
-        step_w, step_h = coord["w"], coord["h"]
+        
+        # Calcular dimensiones dinámicas
+        step_w, step_h = compute_card_dimensions(step["label"], font_size=13, min_w=190.0)
 
         is_hero = step.get("is_hero", False)
         is_pain = step.get("is_pain", False)
@@ -97,6 +99,9 @@ def engine_flujo(scene: ExcalidrawScene, title: str,
         
         step_num = step.get("step_num", f"0{i+1}")
         scene.add_text(sx, sy - 24, step_num, font_size=12, font_family=3, color=palette["MUTED"], frame_id=fid)
+        
+        coord["w"] = step_w
+        coord["h"] = step_h
 
     for i in range(len(step_coords) - 1):
         x1 = step_coords[i]["x"] + step_coords[i]["w"]
@@ -106,6 +111,7 @@ def engine_flujo(scene: ExcalidrawScene, title: str,
         label = steps[i].get("edge_label", None)
         scene.add_arrow(x1, y1, x2, y2, stroke=palette["INK"], stroke_w=1.5, label=label, orthogonal=True, frame_id=fid)
 
+    scene.auto_fit_frame(fid, padding=50.0)
     return fid
 
 
@@ -114,45 +120,46 @@ def engine_red(scene: ExcalidrawScene, title: str,
                scopes: Optional[List[Dict[str, Any]]] = None,
                palette: Dict[str, str] = DEFAULT_PALETTE,
                w: float = 1200, h: float = 700) -> str:
-    """Motor RED: Arquitectura distribuida con soporte de Scopes y Doble Jerarquía."""
+    """Motor RED: Arquitectura distribuida con soporte de Scopes, Doble Jerarquía y Auto-Fit."""
     fx, fy = place(w, h)
     fid = scene.add_frame(f"ARQUITECTURA: {title}", fx, fy, w, h)
     
-    scene.add_text(fx + 30, fy + 30, title.upper(), font_size=20, font_family=2, color=palette["INK"], frame_id=fid)
+    scene.add_text(fx + 35, fy + 30, title.upper(), font_size=20, font_family=2, color=palette["INK"], frame_id=fid)
 
     # 1. Render de Scopes (Zonas de infraestructura)
     if scopes:
         for scope in scopes:
             sx = fx + scope.get("rel_x", 30)
             sy = fy + scope.get("rel_y", 80)
-            sw = scope.get("w", 400)
+            sw = scope.get("w", 380)
             sh = scope.get("h", 550)
             s_label = scope.get("label", "SCOPE")
             scene.add_scope_container(sx, sy, sw, sh, label=s_label, stroke=palette["RULE"],
                                       bg=palette["PAPER_CONTAINER"], frame_id=fid)
 
-    # 2. Render de Nodos con Doble Jerarquía
+    # 2. Render de Nodos con Doble Jerarquía Dinámica
     node_map = {}
     for node in nodes:
         nx = fx + node.get("rel_x", 50)
         ny = fy + node.get("rel_y", 100)
-        nw = node.get("w", 220)
-        nh = node.get("h", 85)
+        req_w = node.get("w", 240)
+        req_h = node.get("h", 85)
         
         is_hero = node.get("is_hero", False)
         is_pain = node.get("is_pain", False)
         bg = palette["ACCENT_BG"] if is_hero else (palette["PAIN_BG"] if is_pain else palette["PAPER_CARD"])
         stroke = palette["ACCENT"] if is_hero else (palette["PAIN"] if is_pain else palette["INK"])
 
-        scene.add_dual_card(nx, ny, nw, nh,
-                            title=node["label"],
-                            sublabel=node.get("sublabel"),
-                            metadata=node.get("metadata"),
-                            bg=bg, stroke=stroke,
-                            text_color=palette["INK"], frame_id=fid)
-        node_map[node["id"]] = (nx, ny, nw, nh)
+        container, _ = scene.add_dual_card(nx, ny, req_w, req_h,
+                                           title=node["label"],
+                                           sublabel=node.get("sublabel"),
+                                           metadata=node.get("metadata"),
+                                           bg=bg, stroke=stroke,
+                                           text_color=palette["INK"], frame_id=fid)
+        # Guardar las dimensiones reales computadas del contenedor
+        node_map[node["id"]] = (container["x"], container["y"], container["width"], container["height"])
 
-    # 3. Conexiones ortogonales
+    # 3. Conexiones ortogonales con Pastilla Protectora en etiquetas
     for edge in edges:
         from_node = node_map.get(edge["from"])
         to_node = node_map.get(edge["to"])
@@ -160,14 +167,27 @@ def engine_red(scene: ExcalidrawScene, title: str,
             fx1, fy1, fw1, fh1 = from_node
             tx2, ty2, tw2, th2 = to_node
             
-            start_x = fx1 + fw1 if tx2 > fx1 else fx1
-            start_y = fy1 + fh1 * 0.5
-            end_x = tx2 if tx2 > fx1 else tx2 + tw2
-            end_y = ty2 + th2 * 0.5
+            # Anclajes laterales limpios
+            if tx2 >= fx1 + fw1:
+                start_x = fx1 + fw1
+                start_y = fy1 + fh1 * 0.5
+                end_x = tx2
+                end_y = ty2 + th2 * 0.5
+            elif fx1 >= tx2 + tw2:
+                start_x = fx1
+                start_y = fy1 + fh1 * 0.5
+                end_x = tx2 + tw2
+                end_y = ty2 + th2 * 0.5
+            else:
+                start_x = fx1 + fw1 * 0.5
+                start_y = fy1 + fh1
+                end_x = tx2 + tw2 * 0.5
+                end_y = ty2
 
             scene.add_arrow(start_x, start_y, end_x, end_y, stroke=palette["MUTED"],
                             stroke_w=1.5, label=edge.get("label"), orthogonal=True, frame_id=fid)
 
+    scene.auto_fit_frame(fid, padding=60.0)
     return fid
 
 

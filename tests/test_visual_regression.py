@@ -45,7 +45,7 @@ def run_fixture_test(fixture_name: str, render_func):
     print(report.summary())
 
     assert report.is_valid, f"Fixture {fixture_name} falló validación estructural: {report.errors}"
-    assert report.quality_metrics.overall_score >= 85, f"Score insuficiente: {report.quality_metrics.overall_score}"
+    assert report.visual_metrics.overall_score >= 85, f"Score insuficiente: {report.visual_metrics.overall_score}"
     return report
 
 def main():

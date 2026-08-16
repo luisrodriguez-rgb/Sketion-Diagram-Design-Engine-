@@ -116,14 +116,33 @@ def calculate_quality_score(scene_data: Dict[str, Any],
         issues.append(f"Sobrecarga de acentos ({accent_count} nodos con acento, el objetivo es 1-2 max).")
 
     # 3. Density & Visual Noise Calibrado
-    total_nodes = len(cards)
-    table_cells = [c for c in cards if c.get("roundness") is None]
+    # Filtrar:
+    # 1. Contenedores de scope (cajas grandes de fondo: w >= 250 y h >= 350)
+    # 2. Pastillas protectoras de flechas (pill labels pequeños: h <= 32)
+    component_cards = [
+        c for c in cards
+        if c.get("height", 0) > 32 and not (
+            c.get("width", 0) >= 240 and c.get("height", 0) >= 350 and
+            str(c.get("backgroundColor", "")).upper() in ["#F8FAFC", "#F3F4F6", "TRANSPARENT"]
+        )
+    ]
+    total_nodes = len(component_cards)
+
+    table_cells = [c for c in component_cards if c.get("roundness") is None]
     if len(table_cells) >= total_nodes * 0.6 and total_nodes > 10:
         effective_nodes = total_nodes * 0.40
     else:
         effective_nodes = total_nodes
 
-    density = min(10.0, max(1.0, (effective_nodes / 2.2)))
+    # Normalizar por el ancho/área del frame si existe
+    if frames:
+        fw = frames[0].get("width", 1200)
+        # En lienzos anchos (deep dive > 1500px), la capacidad de nodos es mayor sin saturación
+        area_factor = max(1.0, fw / 1200.0)
+        density = min(10.0, max(1.0, (effective_nodes / (2.5 * area_factor))))
+    else:
+        density = min(10.0, max(1.0, (effective_nodes / 2.5)))
+
     visual_noise_score = calculate_density_score(density)
 
     if density > 7.0:

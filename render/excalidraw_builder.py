@@ -1,6 +1,10 @@
 """
-Sketion Excalidraw Builder Core (Render Layer)
-Generador de escenas .excalidraw válidas, compactas, ligeras y con vinculación estricta de elementos.
+Sketion Excalidraw Builder Core (Render Layer) 2.8
+Generador de escenas .excalidraw con:
+- Dimensiones dinámicas de tarjeta (Cero desbordamiento de texto)
+- Pastillas protectoras de fondo para etiquetas de flechas (Cero colisiones con líneas)
+- Auto-Fit de Frames (Cero espacios blancos muertos)
+- Vinculación estricta containerId <-> boundElements
 """
 
 import json
@@ -34,6 +38,37 @@ def place(w: float, h: float) -> Tuple[float, float]:
     _CURSOR["x"] += w + _CURSOR["gap"]
     _CURSOR["row_h"] = max(_CURSOR["row_h"], h)
     return x, y
+
+
+def compute_card_dimensions(title: str, sublabel: Optional[str] = None,
+                            metadata: Optional[str] = None,
+                            font_size: int = 14, min_w: float = 240.0) -> Tuple[float, float]:
+    """
+    Calcula matemáticamente el ancho y alto necesarios para albergar el texto
+    sin desbordamiento ni cortes de palabras.
+    """
+    raw_lines = [title]
+    if sublabel and metadata:
+        raw_lines.append(f"{sublabel} {metadata}")
+    elif sublabel:
+        raw_lines.append(sublabel)
+    elif metadata:
+        raw_lines.append(metadata)
+
+    # Considerar saltos de línea explícitos dentro de cada texto
+    expanded_lines = []
+    for l in raw_lines:
+        expanded_lines.extend(str(l).split("\n"))
+
+    max_chars = max((len(l) for l in expanded_lines), default=10)
+    
+    # 8.8px por caracter para Sans 14px + 45px de padding horizontal
+    w = max(min_w, max_chars * 9.0 + 45.0)
+    
+    # 24px por línea + 40px de padding vertical
+    h = max(85.0, 36.0 + len(expanded_lines) * 22.0)
+    
+    return w, h
 
 
 class ExcalidrawScene:
@@ -87,6 +122,25 @@ class ExcalidrawScene:
         self.elements.append(elem)
         return elem["id"]
 
+    def auto_fit_frame(self, frame_id: str, padding: float = 60.0):
+        """Ajusta automáticamente el ancho y alto del frame según sus elementos contenidos."""
+        frame = next((e for e in self.elements if e.get("id") == frame_id and e.get("type") == "frame"), None)
+        if not frame:
+            return
+
+        children = [e for e in self.elements if e.get("frameId") == frame_id and e.get("type") != "frame"]
+        if not children:
+            return
+
+        fx = frame["x"]
+        fy = frame["y"]
+
+        max_x = max((c["x"] + c.get("width", 0) for c in children), default=fx + 800)
+        max_y = max((c["y"] + c.get("height", 0) for c in children), default=fy + 600)
+
+        frame["width"] = max(400.0, (max_x - fx) + padding)
+        frame["height"] = max(300.0, (max_y - fy) + padding)
+
     def add_rect(self, x: float, y: float, w: float, h: float,
                  bg: str = "transparent", stroke: str = "#0C0C0C",
                  stroke_w: float = 1.5, stroke_style: str = "solid",
@@ -111,11 +165,12 @@ class ExcalidrawScene:
                  font_size: int = 14, font_family: int = 2,
                  color: str = "#0C0C0C", align: str = "left",
                  frame_id: Optional[str] = None) -> Dict[str, Any]:
-        """Crea un texto libre (no vinculado a una caja)."""
+        """Crea un texto libre con ancho calculado generosamente para evitar cortes."""
         lines = text.split("\n")
         line_h = 1.25
-        est_h = len(lines) * font_size * line_h
-        est_w = max(len(l) for l in lines) * (font_size * 0.55) if lines else 50
+        est_h = max(25.0, len(lines) * font_size * line_h)
+        # Factor 0.80 + 35px para evitar truncamientos en la renderización de Excalidraw
+        est_w = max((len(l) for l in lines), default=4) * (font_size * 0.80) + 35.0 if lines else 60.0
 
         elem = self._base_element("text", x, y, est_w, est_h, color, "transparent", frame_id=frame_id)
         elem.update({
@@ -138,10 +193,7 @@ class ExcalidrawScene:
                        font_family: int = 2, align: str = "center",
                        stroke_w: float = 1.5, stroke_style: str = "solid",
                        roundness_type: Optional[int] = 3, frame_id: Optional[str] = None) -> Tuple[Dict[str, Any], Dict[str, Any]]:
-        """
-        Crea una tarjeta rectangular con texto estrictamente vinculado.
-        Garantiza que containerId y boundElements estén perfectamente sincronizados.
-        """
+        """Crea una tarjeta con texto estrictamente vinculado y dimensiones seguras."""
         container = self.add_rect(x, y, w, h, bg=bg, stroke=stroke, stroke_w=stroke_w,
                                   stroke_style=stroke_style, roundness_type=roundness_type,
                                   frame_id=frame_id)
@@ -165,12 +217,62 @@ class ExcalidrawScene:
         self.elements.append(text_elem)
         return container, text_elem
 
+    def add_dual_card(self, x: float, y: float, w: float, h: float,
+                      title: str, sublabel: Optional[str] = None,
+                      metadata: Optional[str] = None, bg: str = "#FFFFFF",
+                      stroke: str = "#0C0C0C", text_color: str = "#0C0C0C",
+                      stroke_w: float = 1.5, stroke_style: str = "solid",
+                      roundness_type: Optional[int] = 3, frame_id: Optional[str] = None) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+        """
+        Crea una tarjeta de Doble Jerarquía:
+        - Ajuste dinámico para impedir cualquier desbordamiento de texto.
+        """
+        # Calcular dimensiones seguras
+        calc_w, calc_h = compute_card_dimensions(title, sublabel, metadata, font_size=14, min_w=w)
+        final_w = max(w, calc_w)
+        final_h = max(h, calc_h)
+
+        container = self.add_rect(x, y, final_w, final_h, bg=bg, stroke=stroke, stroke_w=stroke_w,
+                                  stroke_style=stroke_style, roundness_type=roundness_type,
+                                  frame_id=frame_id)
+        
+        text_id = rid()
+        container["boundElements"].append({"id": text_id, "type": "text"})
+
+        if sublabel and metadata:
+            full_text = f"{title}\n{sublabel} {metadata}"
+        elif sublabel:
+            full_text = f"{title}\n{sublabel}"
+        elif metadata:
+            full_text = f"{title}\n{metadata}"
+        else:
+            full_text = title
+
+        text_elem = self._base_element("text", x, y, final_w, final_h, text_color, "transparent", frame_id=frame_id)
+        text_elem["id"] = text_id
+        text_elem.update({
+            "fontSize": 13,
+            "fontFamily": 2,
+            "text": full_text,
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "containerId": container["id"],
+            "originalText": full_text,
+            "lineHeight": 1.25,
+            "baseline": 13
+        })
+        self.elements.append(text_elem)
+        return container, text_elem
+
     def add_arrow(self, x1: float, y1: float, x2: float, y2: float,
                   stroke: str = "#64748B", stroke_w: float = 1.5,
                   dashed: bool = False, arrowhead: str = "triangle",
                   label: Optional[str] = None, orthogonal: bool = False,
                   frame_id: Optional[str] = None) -> Dict[str, Any]:
-        """Crea una flecha con coordenadas relativas y soporte ortogonal."""
+        """
+        Crea una flecha con soporte ortogonal y Pastilla Protectora (Pill Label)
+        para que el texto jamás choque con la línea de la flecha.
+        """
         dx = x2 - x1
         dy = y2 - y1
         stroke_style = "dashed" if dashed else "solid"
@@ -190,16 +292,43 @@ class ExcalidrawScene:
         self.elements.append(elem)
 
         if label:
-            mid_x = x1 + dx * 0.5
-            mid_y = y1 + dy * 0.5 - 12
-            self.add_text(mid_x, mid_y, label, font_size=11, font_family=3, color=stroke, align="center", frame_id=frame_id)
+            # Pastilla Protectora (Pill Label): Fondo blanco detrás del texto
+            label_len = len(str(label))
+            pill_w = max(70.0, label_len * 7.5 + 16.0)
+            pill_h = 24.0
+
+            # Ubicación en el punto medio del segmento
+            mid_x = x1 + dx * 0.5 - (pill_w * 0.5)
+            mid_y = y1 + dy * 0.5 - (pill_h * 0.5)
+
+            # Fondo protector blanco
+            pill_bg = self.add_rect(mid_x, mid_y, pill_w, pill_h, bg="#FFFFFF",
+                                    stroke="#CBD5E1", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+            
+            # Texto centrado sobre la pastilla
+            pill_text = self._base_element("text", mid_x, mid_y, pill_w, pill_h, stroke, "transparent", frame_id=frame_id)
+            pill_text_id = rid()
+            pill_bg["boundElements"].append({"id": pill_text_id, "type": "text"})
+            pill_text["id"] = pill_text_id
+            pill_text.update({
+                "fontSize": 11,
+                "fontFamily": 3,  # Cascadia Mono
+                "text": str(label),
+                "textAlign": "center",
+                "verticalAlign": "middle",
+                "containerId": pill_bg["id"],
+                "originalText": str(label),
+                "lineHeight": 1.2,
+                "baseline": 11
+            })
+            self.elements.append(pill_text)
 
         return elem
 
     def add_line(self, x1: float, y1: float, x2: float, y2: float,
                  stroke: str = "#E2E8F0", stroke_w: float = 1.5,
                  dashed: bool = False, frame_id: Optional[str] = None) -> Dict[str, Any]:
-        """Crea una línea divisoria o eje."""
+        """Crea una línea divisoria o eje continuo."""
         dx = x2 - x1
         dy = y2 - y1
         stroke_style = "dashed" if dashed else "solid"
@@ -217,89 +346,13 @@ class ExcalidrawScene:
         self.elements.append(elem)
         return elem
 
-    def add_sticky_label(self, x: float, y: float, text: str,
-                         bg: str = "#FEF08A", stroke: str = "#0C0C0C",
-                         font_size: int = 15, angle_deg: float = -2.0,
-                         frame_id: Optional[str] = None) -> Tuple[Dict[str, Any], Dict[str, Any]]:
-        """Crea una etiqueta tipo Post-It rotada sutilmente (-2 a 2 grados)."""
-        w = max(220.0, len(text) * font_size * 0.6)
-        h = 55.0
-        angle_rad = math.radians(angle_deg)
-        
-        container = self._base_element("rectangle", x, y, w, h, stroke, bg, 1.5, "solid",
-                                       frame_id, angle_rad, {"type": 1})
-        self.elements.append(container)
-
-        text_id = rid()
-        container["boundElements"].append({"id": text_id, "type": "text"})
-
-        text_elem = self._base_element("text", x, y, w, h, stroke, "transparent", frame_id=frame_id, angle=angle_rad)
-        text_elem["id"] = text_id
-        text_elem.update({
-            "fontSize": font_size,
-            "fontFamily": 2,
-            "text": text,
-            "textAlign": "center",
-            "verticalAlign": "middle",
-            "containerId": container["id"],
-            "originalText": text,
-            "lineHeight": 1.25,
-            "baseline": font_size
-        })
-        self.elements.append(text_elem)
-        return container, text_elem
-
-    def add_dual_card(self, x: float, y: float, w: float, h: float,
-                      title: str, sublabel: Optional[str] = None,
-                      metadata: Optional[str] = None, bg: str = "#FFFFFF",
-                      stroke: str = "#0C0C0C", text_color: str = "#0C0C0C",
-                      stroke_w: float = 1.5, stroke_style: str = "solid",
-                      roundness_type: Optional[int] = 3, frame_id: Optional[str] = None) -> Tuple[Dict[str, Any], Dict[str, Any]]:
-        """
-        Crea una tarjeta de Doble Jerarquía:
-        - Título principal en Sans bold (fontFamily: 2)
-        - Subetiqueta técnica / rol en Cascadia mono (fontFamily: 3)
-        """
-        container = self.add_rect(x, y, w, h, bg=bg, stroke=stroke, stroke_w=stroke_w,
-                                  stroke_style=stroke_style, roundness_type=roundness_type,
-                                  frame_id=frame_id)
-        
-        text_id = rid()
-        container["boundElements"].append({"id": text_id, "type": "text"})
-
-        # Ensamblar texto estructurado
-        if sublabel and metadata:
-            full_text = f"{title}\n{sublabel} {metadata}"
-        elif sublabel:
-            full_text = f"{title}\n{sublabel}"
-        elif metadata:
-            full_text = f"{title}\n{metadata}"
-        else:
-            full_text = title
-
-        text_elem = self._base_element("text", x, y, w, h, text_color, "transparent", frame_id=frame_id)
-        text_elem["id"] = text_id
-        text_elem.update({
-            "fontSize": 14,
-            "fontFamily": 2,
-            "text": full_text,
-            "textAlign": "center",
-            "verticalAlign": "middle",
-            "containerId": container["id"],
-            "originalText": full_text,
-            "lineHeight": 1.25,
-            "baseline": 14
-        })
-        self.elements.append(text_elem)
-        return container, text_elem
-
     def add_scope_container(self, x: float, y: float, w: float, h: float,
                             label: str, stroke: str = "#CBD5E1",
                             bg: str = "#F8FAFC", frame_id: Optional[str] = None) -> Dict[str, Any]:
-        """Crea un contenedor de ámbito (Scope Boundary) con etiqueta superior izquierda mono."""
+        """Crea un contenedor de ámbito (Scope Boundary) con etiqueta superior izquierda amplia."""
         container = self.add_rect(x, y, w, h, bg=bg, stroke=stroke, stroke_w=1.0,
                                   stroke_style="solid", roundness_type=3, frame_id=frame_id)
-        # Etiqueta mono en la esquina superior izquierda
+        # Etiqueta mono en la esquina superior izquierda sin recortes
         self.add_text(x + 16, y + 12, label.upper(), font_size=11, font_family=3,
                       color="#64748B", align="left", frame_id=frame_id)
         return container
@@ -309,7 +362,7 @@ class ExcalidrawScene:
                  text_color: str = "#FFFFFF", frame_id: Optional[str] = None):
         """Crea un chip de KPI/Dashboard con número gigante arriba y etiqueta chica abajo."""
         card = self.add_rect(x, y, w, h, bg=bg, stroke=bg, roundness_type=3, frame_id=frame_id)
-        self.add_text(x + 20, y + 15, number, font_size=42, font_family=2, color=text_color, frame_id=frame_id)
+        self.add_text(x + 20, y + 15, number, font_size=38, font_family=2, color=text_color, frame_id=frame_id)
         self.add_text(x + 22, y + h - 35, label, font_size=13, font_family=2, color=text_color, frame_id=frame_id)
         return card
 

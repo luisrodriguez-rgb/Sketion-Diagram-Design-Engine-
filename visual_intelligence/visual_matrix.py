@@ -152,43 +152,53 @@ class VisualMatrixEngine:
         usable_w = w - (padding_x * 2.0)
 
         cx = fx + (w * 0.5)
-        cy = fy + 260.0
-        radius = 230.0
+        cy = fy + 330.0
 
-        # Hub Central Hero
-        hw, hh = 280.0, 130.0
+        # Dimensiones del Hub Central Hero
+        hw, hh = 280.0, 120.0
         hub_spec = VisualCompositionEngine.analyze_entity(hub_data)
         VisualCompositionEngine.render_entity_node(scene, cx - (hw * 0.5), cy - (hh * 0.5), hw, hh, hub_spec, frame_id=fid)
 
-        # Satélites Orbitando 360°
+        # Radio elíptico seguro (calculado matemáticamente para evitar cualquier solapamiento)
+        # Rx considera el ancho del hub (280) + ancho de satélite (230) + margen de aire (90px)
+        rx_orbit = 380.0
+        # Ry considera el alto del hub (120) + alto de satélite (100) + margen de aire (70px)
+        ry_orbit = 210.0
+
         sat_cnt = len(satellites)
         if sat_cnt > 0:
             angle_step = (2 * math.pi) / sat_cnt
             for i, sat in enumerate(satellites):
+                # Desfase angular para distribuir armónicamente en 360 grados
                 angle = i * angle_step - (math.pi / 2.0)
-                sx = cx + radius * math.cos(angle)
-                sy = cy + radius * math.sin(angle)
-                sw, sh = 210.0, 95.0
+                sx = cx + rx_orbit * math.cos(angle)
+                sy = cy + ry_orbit * math.sin(angle)
+                sw, sh = 230.0, 100.0
                 spx = sx - (sw * 0.5)
                 spy = sy - (sh * 0.5)
 
                 sat_spec = VisualCompositionEngine.analyze_entity(sat)
                 VisualCompositionEngine.render_entity_node(scene, spx, spy, sw, sh, sat_spec, frame_id=fid)
 
-                # Flecha radial bidireccional / sincronización
+                # Cálculo de puntos de anclaje periféricos exactos (Ray-Box intersection limpio)
+                hub_edge_x = cx + math.copysign(min(hw * 0.5, abs((hh * 0.5) / max(0.001, math.tan(angle)))), math.cos(angle)) if abs(math.cos(angle)) > 0.3 else cx
+                hub_edge_y = cy + math.copysign(min(hh * 0.5, abs((hw * 0.5) * math.tan(angle))), math.sin(angle)) if abs(math.sin(angle)) > 0.3 else cy
+
+                sat_edge_x = sx - math.copysign(min(sw * 0.5, abs((sh * 0.5) / max(0.001, math.tan(angle)))), math.cos(angle)) if abs(math.cos(angle)) > 0.3 else sx
+                sat_edge_y = sy - math.copysign(min(sh * 0.5, abs((sw * 0.5) * math.tan(angle))), math.sin(angle)) if abs(math.sin(angle)) > 0.3 else sy
+
+                # Conector radial sin atravesar los bloques de texto
                 scene.add_arrow(
-                    cx + (hw * 0.45 * math.cos(angle)),
-                    cy + (hh * 0.45 * math.sin(angle)),
-                    spx + (sw * 0.5) - (sw * 0.45 * math.cos(angle)),
-                    spy + (sh * 0.5) - (sh * 0.45 * math.sin(angle)),
+                    hub_edge_x, hub_edge_y,
+                    sat_edge_x, sat_edge_y,
                     stroke="#94A3B8", stroke_w=1.2, dashed=True, frame_id=fid
                 )
 
-        footer_y = cy + radius + 80.0
+        footer_y = cy + ry_orbit + 80.0
         scene.add_legend_footer(fx + padding_x, footer_y, usable_w, swatches=[
             {"label": "Hub Central Transaccional", "bg": "#FFF5F2", "stroke": "#D93829"},
             {"label": "Satélites Especializados / Adaptadores", "bg": "#EFF6FF", "stroke": "#2563EB"}
-        ], note="Radial Hub & Spoke: Topología en estrella desacoplada con orquestación centralizada.", frame_id=fid)
+        ], note="Radial Hub & Spoke: Topología en estrella elíptica desacoplada sin colisiones.", frame_id=fid)
 
     @classmethod
     def _render_split_duel(cls, scene: ExcalidrawScene, fid: str, fx: float, fy: float, w: float, payload: Dict[str, Any]):

@@ -750,29 +750,31 @@ class ExcalidrawScene:
         final_stroke = "#D93829" if is_hero else stroke
         final_bg = "#FFF5F2" if is_hero else bg
         stroke_w = 2.0 if is_hero else 1.5
+        effective_h = max(h, 115.0)
 
         # 1. Cuerpo del cilindro
-        container = self.add_rect(x, y + 10.0, w, h - 20.0, bg=final_bg, stroke=final_stroke, stroke_w=stroke_w, roundness_type=3, frame_id=frame_id)
+        container = self.add_rect(x, y + 10.0, w, effective_h - 20.0, bg=final_bg, stroke=final_stroke, stroke_w=stroke_w, roundness_type=3, frame_id=frame_id)
 
         # 2. Tapa elíptica superior
         self.add_ellipse(x, y, w, 20.0, bg=final_bg, stroke=final_stroke, stroke_w=stroke_w, frame_id=frame_id)
 
-        # 3. Líneas de ranura de disco en la base inferior (para no interferir con el texto)
-        self.add_line(x + 10.0, y + h - 24.0, x + w - 10.0, y + h - 24.0, stroke=final_stroke, stroke_w=1.0, dashed=True, frame_id=frame_id)
+        # 3. Líneas de ranura de disco en la base inferior (solo si hay suficiente altura)
+        if effective_h >= 125.0:
+            self.add_line(x + 10.0, y + effective_h - 16.0, x + w - 10.0, y + effective_h - 16.0, stroke=final_stroke, stroke_w=1.0, dashed=True, frame_id=frame_id)
 
         # 4. Badge & Icono en cabecera
         bw = max(60.0, len(badge) * 7.2 + 16.0)
         b_bg = "#FEE2E2" if is_hero else "#DBEAFE"
         b_str = "#FCA5A5" if is_hero else "#93C5FD"
         b_col = "#D93829" if is_hero else "#1D4ED8"
-        self.add_rect(x + 14.0, y + 22.0, bw, 20.0, bg=b_bg, stroke=b_str, stroke_w=1.0, roundness_type=3, frame_id=frame_id)
-        self.add_text(x + 18.0, y + 24.0, badge, font_size=10, font_family=2, color=b_col, frame_id=frame_id)
-        self.add_icon("database", x + w - 36.0, y + 22.0, size=20.0, color=final_stroke, frame_id=frame_id)
+        self.add_rect(x + 14.0, y + 20.0, bw, 20.0, bg=b_bg, stroke=b_str, stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 18.0, y + 22.0, badge, font_size=10, font_family=2, color=b_col, frame_id=frame_id)
+        self.add_icon("database", x + w - 36.0, y + 20.0, size=20.0, color=final_stroke, frame_id=frame_id)
 
         # 5. Título y Subtítulo en zona central despejada
-        self.add_text(x + 14.0, y + 48.0, title, font_size=14, font_family=2, color="#0F172A", frame_id=frame_id)
+        self.add_text(x + 14.0, y + 46.0, title, font_size=14, font_family=2, color="#0F172A", frame_id=frame_id)
         if sublabel:
-            self.add_text(x + 14.0, y + 70.0, sublabel, font_size=11, font_family=2, color="#475569", frame_id=frame_id)
+            self.add_text(x + 14.0, y + 68.0, sublabel, font_size=11, font_family=2, color="#475569", frame_id=frame_id)
 
         return container
 

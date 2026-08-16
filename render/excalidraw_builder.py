@@ -88,6 +88,22 @@ class ExcalidrawScene:
                       roundness: Optional[Dict[str, Any]] = None, opacity: int = 100,
                       stroke_w: Optional[float] = None) -> Dict[str, Any]:
         final_stroke_w = stroke_w if stroke_w is not None else stroke_width
+
+        # Auto-conversión y protección de coordenadas relativas a frame
+        if frame_id and elem_type != "frame":
+            frame = next((e for e in self.elements if e.get("id") == frame_id and e.get("type") == "frame"), None)
+            if frame:
+                fx = float(frame.get("x", 0.0))
+                fy = float(frame.get("y", 0.0))
+                fw = float(frame.get("width", 1000.0))
+                fh = float(frame.get("height", 800.0))
+
+                # Si las coordenadas recibidas son relativas al marco (e.g. y < fy - 30 y dentro de fh), convertir a absolutas
+                if y < fy - 30.0 and (0.0 <= y <= fh):
+                    y = fy + y
+                if x < fx - 30.0 and (0.0 <= x <= fw):
+                    x = fx + x
+
         return {
             "type": elem_type,
             "version": 1,
@@ -691,7 +707,9 @@ class ExcalidrawScene:
                 cur_x += len(label) * 7.5 + 25.0
                 
         if note:
-            self.add_text(x + w - len(note) * 7.2, y + 1.0, note, font_size=11, font_family=2, color="#64748B", frame_id=frame_id)
+            note_lines = note.split("\n")
+            note_w = max((len(l) for l in note_lines), default=4) * (11 * 0.80) + 35.0
+            self.add_text(x + w - note_w, y + 1.0, note, font_size=11, font_family=2, color="#64748B", frame_id=frame_id)
 
     def to_dict(self) -> Dict[str, Any]:
         """Genera el diccionario del archivo .excalidraw completo."""

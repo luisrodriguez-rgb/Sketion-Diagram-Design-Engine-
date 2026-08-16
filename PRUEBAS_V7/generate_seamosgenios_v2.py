@@ -42,11 +42,11 @@ PALETTE = {
 
 
 def build_seamosgenios_v2_board():
-    # Disposición vertical estricta: marcos de 2800px apilados verticalmente
-    place_reset(max_row_w=3000, gap=150)
+    # Disposición vertical estricta: marcos de 2950px apilados verticalmente
+    place_reset(max_row_w=3200, gap=150)
     scene = ExcalidrawScene(roughness=0, bg_color=PALETTE["CANVAS"])
 
-    fw = 2800.0
+    fw = 2950.0
     fh = 1000.0
 
     # ═══════════════════════════════════════════════════════════════════════════

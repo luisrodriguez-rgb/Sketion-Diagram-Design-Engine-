@@ -100,13 +100,14 @@ def calculate_quality_score(scene_data: Dict[str, Any],
                     issues.append(f"Contenedor {cid} no tiene vinculado el texto {t['id']}.")
 
     # 2. Hierarchy & Accents
-    # Excluir contenedores de scope grandes del conteo de acentos de tarjetas
+    # Excluir contenedores de scope grandes (w>=240 & h>=320) y micro-swatches de leyenda (w<=32 & h<=22)
     accent_count = 0
     for e in cards:
         w_c = e.get("width", 0)
         h_c = e.get("height", 0)
-        if w_c >= 240 and h_c >= 320:
-            continue  # Es un contenedor de scope
+        # Excluir contenedores de scope (grandes), badges de tarjeta (h<=22) y swatches de leyenda
+        if (w_c >= 240 and h_c >= 320) or h_c <= 22 or (w_c <= 35 and h_c <= 25):
+            continue
             
         bg = str(e.get("backgroundColor", "")).upper()
         stroke = str(e.get("strokeColor", "")).upper()

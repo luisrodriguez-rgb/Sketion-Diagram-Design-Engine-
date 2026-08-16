@@ -674,7 +674,7 @@ class ExcalidrawScene:
                 cur_x += len(label) * 7.5 + 25.0
                 
         if note:
-            self.add_text(x + w - len(note) * 7.2, y + 1.0, note, font_size=11, font_family=1, color="#64748B", frame_id=frame_id)
+            self.add_text(x + w - len(note) * 7.2, y + 1.0, note, font_size=11, font_family=2, color="#64748B", frame_id=frame_id)
 
     def to_dict(self) -> Dict[str, Any]:
         """Genera el diccionario del archivo .excalidraw completo."""

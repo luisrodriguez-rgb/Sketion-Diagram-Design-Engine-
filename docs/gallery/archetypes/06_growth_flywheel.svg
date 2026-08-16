@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40.0 -40.0 1675.0 771.0" width="1675.0" height="771.0">
+  <defs>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
+      text { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB" />
+    </marker>
+    <marker id="arrowhead-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D93829" />
+    </marker>
+    <marker id="arrowhead-danger" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
+    </marker>
+  </defs>
+  <rect x="-40.0" y="-40.0" width="1675.0" height="771.0" fill="#F8FAFC" />
+  <rect x="0.0" y="0.0" width="1595.0" height="691.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <text x="50.0" y="42.0" fill="#64748B" font-size="12px" font-weight="400">SKETION VISUAL MATRIX · ARQUETIPO RADIAL_HUB</text>
+  <text x="50.0" y="74.0" fill="#0F172A" font-size="22px" font-weight="600">06. Flywheel de Crecimiento de Producto</text>
+  <rect x="660.0" y="270.0" width="280.0" height="120.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
+  <rect x="674.0" y="282.0" width="60.0" height="20.0" rx="6.0" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.0" />
+  <text x="678.0" y="294.0" fill="#D93829" font-size="10px" font-weight="400">TECH</text>
+  <text x="676.0" y="321.0" fill="#0F172A" font-size="15px" font-weight="600">Core Product Experience</text>
+  <text x="676.0" y="342.0" fill="#334155" font-size="12px" font-weight="400">• High-Value Feature Platform</text>
+  <rect x="685.0" y="70.0" width="230.0" height="100.0" rx="6.0" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5" />
+  <ellipse cx="715.0" cy="98.0" rx="18.0" ry="18.0" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.2" />
+  <text x="743.0" y="96.0" fill="#0F172A" font-size="14px" font-weight="600">Freemium User Acquisition</text>
+  <text x="743.0" y="110.0" fill="#64748B" font-size="10px" font-weight="400">VIRAL INBOUND TRAFFIC</text>
+  <line x1="800.0" y1="270.0" x2="800.0" y2="170.0" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,6" marker-end="url(#arrowhead)" />
+  <rect x="1046.4" y="215.1" width="230.0" height="100.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="1058.4" y="225.1" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="1062.4" y="237.1" fill="#475569" font-size="10px" font-weight="400">TECH</text>
+  <text x="1060.4" y="267.1" fill="#0F172A" font-size="14px" font-weight="600">Time-To-Value Activation</text>
+  <text x="1060.4" y="288.0" fill="#475569" font-size="12px" font-weight="400">Guided Onboarding Flow</text>
+  <line x1="940.0" y1="284.5" x2="1046.4" y2="302.5" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,6" marker-end="url(#arrowhead)" />
+  <rect x="908.4" y="449.9" width="230.0" height="100.0" rx="6.0" fill="#EEF2FF" stroke="#635BFF" stroke-width="1.5" />
+  <rect x="920.4" y="459.9" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="924.4" y="471.9" fill="#475569" font-size="10px" font-weight="400">TECH</text>
+  <text x="922.4" y="501.9" fill="#0F172A" font-size="14px" font-weight="600">Feature Paywall Upgrade</text>
+  <text x="922.4" y="522.8" fill="#475569" font-size="12px" font-weight="400">Stripe Self-Serve Billing</text>
+  <line x1="843.6" y1="390.0" x2="987.0" y2="449.9" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,6" marker-end="url(#arrowhead)" />
+  <rect x="461.6" y="449.9" width="230.0" height="100.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="473.6" y="459.9" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="477.6" y="471.9" fill="#475569" font-size="10px" font-weight="400">TECH</text>
+  <text x="475.6" y="501.9" fill="#0F172A" font-size="14px" font-weight="600">Usage Expansion Engine</text>
+  <text x="475.6" y="522.8" fill="#475569" font-size="12px" font-weight="400">Multi-Seat Collaboration</text>
+  <line x1="660.0" y1="390.0" x2="691.6" y2="449.9" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,6" marker-end="url(#arrowhead)" />
+  <rect x="323.6" y="215.1" width="230.0" height="100.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="335.6" y="225.1" width="73.6" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="339.6" y="237.1" fill="#475569" font-size="10px" font-weight="400">● ACTIVE</text>
+  <text x="337.6" y="267.1" fill="#0F172A" font-size="14px" font-weight="600">Advocacy &amp; Referral Loop</text>
+  <text x="337.6" y="288.0" fill="#475569" font-size="12px" font-weight="400">Net Promoter Engine</text>
+  <line x1="660.0" y1="284.5" x2="553.6" y2="302.5" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,6" marker-end="url(#arrowhead)" />
+  <text x="50.0" y="631.0" fill="#64748B" font-size="11px" font-weight="400">LEGEND</text>
+  <rect x="120.0" y="620.0" width="24.0" height="14.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.5" />
+  <text x="150.0" y="632.0" fill="#334155" font-size="11px" font-weight="400">Hub Central Transaccional</text>
+  <rect x="362.5" y="620.0" width="24.0" height="14.0" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <text x="392.5" y="632.0" fill="#334155" font-size="11px" font-weight="400">Satélites Especializados / Adaptadores</text>
+  <text x="828.6" y="632.0" fill="#64748B" font-size="11px" font-weight="400">Radial Hub &amp; Spoke: Topología en estrella elíptica desacoplada sin colisiones.</text>
+</svg>

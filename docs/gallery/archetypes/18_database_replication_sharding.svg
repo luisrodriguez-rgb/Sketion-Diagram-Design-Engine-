@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40.0 -40.0 1675.0 771.0" width="1675.0" height="771.0">
+  <defs>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
+      text { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB" />
+    </marker>
+    <marker id="arrowhead-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D93829" />
+    </marker>
+    <marker id="arrowhead-danger" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
+    </marker>
+  </defs>
+  <rect x="-40.0" y="-40.0" width="1675.0" height="771.0" fill="#F8FAFC" />
+  <rect x="0.0" y="0.0" width="1595.0" height="691.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <text x="50.0" y="42.0" fill="#64748B" font-size="12px" font-weight="400">SKETION VISUAL MATRIX · ARQUETIPO RADIAL_HUB</text>
+  <text x="50.0" y="74.0" fill="#0F172A" font-size="22px" font-weight="600">18. Replicación y Sharding de Bases de Datos</text>
+  <rect x="660.0" y="280.0" width="280.0" height="100.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
+  <ellipse cx="800.0" cy="280.0" rx="140.0" ry="10.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
+  <rect x="674.0" y="290.0" width="60.0" height="20.0" rx="6.0" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.0" />
+  <text x="678.0" y="302.0" fill="#D93829" font-size="10px" font-weight="400">TECH</text>
+  <text x="674.0" y="330.0" fill="#0F172A" font-size="14px" font-weight="600">Primary Database Master (Read/Write)</text>
+  <text x="674.0" y="349.0" fill="#475569" font-size="11px" font-weight="400">SERIALIZABLE ACID Transactions</text>
+  <rect x="685.0" y="80.0" width="230.0" height="95.0" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <ellipse cx="800.0" cy="80.0" rx="115.0" ry="10.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <rect x="699.0" y="90.0" width="60.0" height="20.0" rx="6.0" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.0" />
+  <text x="703.0" y="102.0" fill="#1D4ED8" font-size="10px" font-weight="400">TECH</text>
+  <text x="699.0" y="130.0" fill="#0F172A" font-size="14px" font-weight="600">Read Replica 1 (Reporting)</text>
+  <text x="699.0" y="149.0" fill="#475569" font-size="11px" font-weight="400">Async WAL Replication</text>
+  <line x1="800.0" y1="270.0" x2="800.0" y2="170.0" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,6" marker-end="url(#arrowhead)" />
+  <rect x="1046.4" y="225.1" width="230.0" height="95.0" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <ellipse cx="1161.4" cy="225.1" rx="115.0" ry="10.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <rect x="1060.4" y="235.1" width="60.0" height="20.0" rx="6.0" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.0" />
+  <text x="1064.4" y="247.1" fill="#1D4ED8" font-size="10px" font-weight="400">TECH</text>
+  <text x="1060.4" y="275.1" fill="#0F172A" font-size="14px" font-weight="600">Read Replica 2 (Analytics)</text>
+  <text x="1060.4" y="294.1" fill="#475569" font-size="11px" font-weight="400">Async WAL Replication</text>
+  <line x1="940.0" y1="284.5" x2="1046.4" y2="302.5" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,6" marker-end="url(#arrowhead)" />
+  <rect x="908.4" y="449.9" width="230.0" height="100.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="920.4" y="459.9" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="924.4" y="471.9" fill="#475569" font-size="10px" font-weight="400">TECH</text>
+  <text x="922.4" y="501.9" fill="#0F172A" font-size="14px" font-weight="600">PgBouncer Connection Pool</text>
+  <text x="922.4" y="522.8" fill="#475569" font-size="12px" font-weight="400">Pooler Proxy</text>
+  <line x1="843.6" y1="390.0" x2="987.0" y2="449.9" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,6" marker-end="url(#arrowhead)" />
+  <rect x="461.6" y="459.9" width="230.0" height="95.0" rx="6.0" fill="#FFF5F2" stroke="#DC382D" stroke-width="1.5" />
+  <ellipse cx="576.6" cy="459.9" rx="115.0" ry="10.0" fill="#FFF5F2" stroke="#DC382D" stroke-width="1.5" />
+  <rect x="475.6" y="469.9" width="60.0" height="20.0" rx="6.0" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.0" />
+  <text x="479.6" y="481.9" fill="#1D4ED8" font-size="10px" font-weight="400">TECH</text>
+  <text x="475.6" y="509.9" fill="#0F172A" font-size="14px" font-weight="600">Redis Query Cache</text>
+  <text x="475.6" y="528.9" fill="#475569" font-size="11px" font-weight="400">TTL 60s Cache</text>
+  <line x1="660.0" y1="390.0" x2="691.6" y2="449.9" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,6" marker-end="url(#arrowhead)" />
+  <rect x="323.6" y="225.1" width="230.0" height="95.0" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <ellipse cx="438.6" cy="225.1" rx="115.0" ry="10.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <rect x="337.6" y="235.1" width="60.0" height="20.0" rx="6.0" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.0" />
+  <text x="341.6" y="247.1" fill="#1D4ED8" font-size="10px" font-weight="400">TECH</text>
+  <text x="337.6" y="275.1" fill="#0F172A" font-size="14px" font-weight="600">Backup S3 WORM Store</text>
+  <text x="337.6" y="294.1" fill="#475569" font-size="11px" font-weight="400">Continuous Archiving</text>
+  <line x1="660.0" y1="284.5" x2="553.6" y2="302.5" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,6" marker-end="url(#arrowhead)" />
+  <text x="50.0" y="631.0" fill="#64748B" font-size="11px" font-weight="400">LEGEND</text>
+  <rect x="120.0" y="620.0" width="24.0" height="14.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.5" />
+  <text x="150.0" y="632.0" fill="#334155" font-size="11px" font-weight="400">Hub Central Transaccional</text>
+  <rect x="362.5" y="620.0" width="24.0" height="14.0" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <text x="392.5" y="632.0" fill="#334155" font-size="11px" font-weight="400">Satélites Especializados / Adaptadores</text>
+  <text x="828.6" y="632.0" fill="#64748B" font-size="11px" font-weight="400">Radial Hub &amp; Spoke: Topología en estrella elíptica desacoplada sin colisiones.</text>
+</svg>

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40.0 -40.0 1675.0 871.0" width="1675.0" height="871.0">
+  <defs>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
+      text { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB" />
+    </marker>
+    <marker id="arrowhead-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D93829" />
+    </marker>
+    <marker id="arrowhead-danger" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
+    </marker>
+  </defs>
+  <rect x="-40.0" y="-40.0" width="1675.0" height="871.0" fill="#F8FAFC" />
+  <rect x="0.0" y="0.0" width="1595.0" height="791.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <text x="50.0" y="42.0" fill="#64748B" font-size="12px" font-weight="400">SKETION VISUAL MATRIX · ARQUETIPO LAYERED</text>
+  <text x="50.0" y="74.0" fill="#0F172A" font-size="22px" font-weight="600">04. Lakehouse Medallion: Ingesta a Analytics</text>
+  <rect x="50.0" y="95.0" width="1500.0" height="28.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="64.0" y="113.0" fill="#334155" font-size="11px" font-weight="400">1. INGESTA RAW (BRONZE TIER)</text>
+  <rect x="50.0" y="133.0" width="740.0" height="135.0" rx="6.0" fill="#F8FAFC" stroke="#231F20" stroke-width="1.8" />
+  <rect x="62.0" y="143.0" width="70.0" height="20.0" rx="6.0" fill="#E0E7FF" stroke="#C7D2FE" stroke-width="1.0" />
+  <text x="66.0" y="155.0" fill="#3730A3" font-size="10px" font-weight="400">TECH</text>
+  <text x="146.0" y="157.0" fill="#0F172A" font-size="12px" font-weight="400">KAFKA INGEST STREAM</text>
+  <rect x="65.0" y="171.0" width="231.3" height="87.0" rx="6.0" fill="#FFFFFF" stroke="#231F20" stroke-width="1.0" />
+  <text x="73.0" y="218.5" fill="#1E293B" font-size="11px" font-weight="400">▸ event.created</text>
+  <rect x="304.3" y="171.0" width="231.3" height="87.0" rx="6.0" fill="#FFFFFF" stroke="#231F20" stroke-width="1.0" />
+  <text x="312.3" y="218.5" fill="#1E293B" font-size="11px" font-weight="400">▸ event.processed</text>
+  <rect x="543.7" y="171.0" width="231.3" height="87.0" rx="6.0" fill="#FFFFFF" stroke="#231F20" stroke-width="1.0" />
+  <text x="551.7" y="218.5" fill="#1E293B" font-size="11px" font-weight="400">▸ event.settled</text>
+  <rect x="810.0" y="143.0" width="740.0" height="115.0" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <ellipse cx="1180.0" cy="143.0" rx="370.0" ry="10.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <line x1="820.0" y1="252.0" x2="1540.0" y2="252.0" stroke="#2563EB" stroke-width="1.0" stroke-dasharray="6,6" />
+  <rect x="824.0" y="153.0" width="60.0" height="20.0" rx="6.0" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.0" />
+  <text x="828.0" y="165.0" fill="#1D4ED8" font-size="10px" font-weight="400">TECH</text>
+  <text x="824.0" y="193.0" fill="#0F172A" font-size="14px" font-weight="600">Raw S3 Landing Bucket</text>
+  <rect x="50.0" y="300.0" width="1500.0" height="28.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="64.0" y="318.0" fill="#334155" font-size="11px" font-weight="400">2. ENRIQUECIMIENTO &amp; LIMPIEZA (SILVER TIER)</text>
+  <rect x="50.0" y="338.0" width="740.0" height="135.0" rx="6.0" fill="#FFF7ED" stroke="#E25A1C" stroke-width="1.5" />
+  <rect x="62.0" y="348.0" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="66.0" y="360.0" fill="#475569" font-size="10px" font-weight="400">TECH</text>
+  <text x="64.0" y="391.0" fill="#0F172A" font-size="15px" font-weight="600">Apache Spark Batch ETL</text>
+  <rect x="810.0" y="348.0" width="740.0" height="115.0" rx="6.0" fill="#F8FAFC" stroke="#000000" stroke-width="1.5" />
+  <ellipse cx="1180.0" cy="348.0" rx="370.0" ry="10.0" fill="#F8FAFC" stroke="#000000" stroke-width="1.5" />
+  <line x1="820.0" y1="457.0" x2="1540.0" y2="457.0" stroke="#000000" stroke-width="1.0" stroke-dasharray="6,6" />
+  <rect x="824.0" y="358.0" width="60.0" height="20.0" rx="6.0" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.0" />
+  <text x="828.0" y="370.0" fill="#1D4ED8" font-size="10px" font-weight="400">TECH</text>
+  <text x="824.0" y="398.0" fill="#0F172A" font-size="14px" font-weight="600">Apache Iceberg Delta Table</text>
+  <rect x="50.0" y="505.0" width="1500.0" height="28.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="64.0" y="523.0" fill="#334155" font-size="11px" font-weight="400">3. AGREGACIONES DE NEGOCIO (GOLD TIER)</text>
+  <rect x="50.0" y="553.0" width="740.0" height="115.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
+  <ellipse cx="420.0" cy="553.0" rx="370.0" ry="10.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
+  <line x1="60.0" y1="662.0" x2="780.0" y2="662.0" stroke="#D93829" stroke-width="1.0" stroke-dasharray="6,6" />
+  <rect x="64.0" y="563.0" width="60.0" height="20.0" rx="6.0" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.0" />
+  <text x="68.0" y="575.0" fill="#D93829" font-size="10px" font-weight="400">TECH</text>
+  <text x="64.0" y="603.0" fill="#0F172A" font-size="14px" font-weight="600">ClickHouse Realtime OLAP</text>
+  <rect x="810.0" y="543.0" width="740.0" height="135.0" rx="6.0" fill="#FFF7ED" stroke="#F46800" stroke-width="1.5" />
+  <rect x="822.0" y="553.0" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="826.0" y="565.0" fill="#475569" font-size="10px" font-weight="400">TECH</text>
+  <text x="824.0" y="596.0" fill="#0F172A" font-size="15px" font-weight="600">Superset BI Dashboards</text>
+  <text x="50.0" y="731.0" fill="#64748B" font-size="11px" font-weight="400">LEGEND</text>
+  <rect x="120.0" y="720.0" width="24.0" height="14.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.5" />
+  <text x="150.0" y="732.0" fill="#334155" font-size="11px" font-weight="400">Componente Core Hero</text>
+  <rect x="325.0" y="720.0" width="24.0" height="14.0" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <text x="355.0" y="732.0" fill="#334155" font-size="11px" font-weight="400">Infraestructura &amp; Servicios</text>
+  <text x="811.0" y="732.0" fill="#64748B" font-size="11px" font-weight="400">Layered Architecture: Estratificación por capas funcionales y persistencia ACID.</text>
+</svg>

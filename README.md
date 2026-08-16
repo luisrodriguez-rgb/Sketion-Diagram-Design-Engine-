@@ -156,9 +156,20 @@ python3 sketion_cli.py validate payments.excalidraw
 
 ---
 
+## 🖼️ Galería Visual de Demostración (20 Arquetipos + 12 Formas en SVG)
+
+Accede al catálogo completo con vistas previas vectoriales listas para usar:  
+👉 [**Ver Galería Completa de Demostración (`docs/gallery/README.md`)**](docs/gallery/README.md)
+
+* **20 Arquetipos Narrativos de Negocio:** Hub Radial (El Cerebro), Duelo (Legacy vs Target), Pipeline con Bucle, Lakehouse Medallion, Cadena de Valor, Flywheel PLG, Escalera de Madurez, Swimlanes, Embudo de Conversión, Matriz SLA, etc. en formato `.svg` y `.excalidraw`.
+* **12+ Formas Semánticas Especializadas:** Cilindros de Base de Datos, Tuberías Kafka, Barreras WAF Zero-Trust, Pastillas de Actores, Rombos de Decisión, Tarjetas Hero y KPIs.
+
+---
+
 ## 📖 Documentación Adicional
 
-* [**ROADMAP.md**](ROADMAP.md): Hoja de ruta estratégica completa y matriz de certificación de módulos (v8.0 ───> v10.0 GA).
+* [**SKETION_10_GA_CERTIFICATION.md**](SKETION_10_GA_CERTIFICATION.md): Reporte oficial de auditoría cuantitativa, benchmarks y certificación de producto.
+* [**ROADMAP.md**](ROADMAP.md): Hoja de ruta estratégica completa y matriz de certificación de módulos (v8.0 ───> v10.5).
 * [**GUIA_DE_USO_UNIVERSAL.md**](GUIA_DE_USO_UNIVERSAL.md): Guía maestra de integración en Antigravity IDE, Cursor, Claude Code y Web LLMs.
 
 ---

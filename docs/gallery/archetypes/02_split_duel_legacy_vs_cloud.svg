@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40.0 -40.0 1744.8 596.0" width="1744.8" height="596.0">
+  <defs>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
+      text { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB" />
+    </marker>
+    <marker id="arrowhead-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D93829" />
+    </marker>
+    <marker id="arrowhead-danger" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
+    </marker>
+  </defs>
+  <rect x="-40.0" y="-40.0" width="1744.8" height="596.0" fill="#F8FAFC" />
+  <rect x="0.0" y="0.0" width="1664.8" height="516.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <text x="50.0" y="42.0" fill="#64748B" font-size="12px" font-weight="400">SKETION VISUAL MATRIX · ARQUETIPO SPLIT_DUEL</text>
+  <text x="50.0" y="74.0" fill="#0F172A" font-size="22px" font-weight="600">02. El Duelo: Modernización de Monolito a Cloud-Native</text>
+  <rect x="50.0" y="100.0" width="730.0" height="320.0" rx="6.0" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="50.0" y="100.0" width="730.0" height="36.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="66.0" y="123.0" fill="#991B1B" font-size="13px" font-weight="400">[LEGACY] ANTES (LEGACY) — Arquitectura Monolítica Legacy (2020)</text>
+  <text x="66.0" y="164.0" fill="#475569" font-size="12px" font-weight="400">✗  Monolito PHP/MySQL con acoplamiento severo</text>
+  <text x="66.0" y="190.0" fill="#475569" font-size="12px" font-weight="400">✗  Bloqueos de tabla globales en alta concurrencia</text>
+  <text x="66.0" y="216.0" fill="#475569" font-size="12px" font-weight="400">✗  Ventanas de mantenimiento con 2h de downtime</text>
+  <text x="66.0" y="242.0" fill="#475569" font-size="12px" font-weight="400">✗  Cero trazabilidad distribuida ante caídas de pasarela</text>
+  <rect x="820.0" y="100.0" width="730.0" height="320.0" rx="6.0" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2.0" />
+  <rect x="820.0" y="100.0" width="730.0" height="36.0" rx="6.0" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1.0" />
+  <text x="836.0" y="123.0" fill="#166534" font-size="13px" font-weight="400">[TARGET] DESPUÉS (TARGET HERO) — Cloud-Native Event-Driven Target (2026)</text>
+  <text x="836.0" y="164.0" fill="#15803D" font-size="12px" font-weight="400">✓  Microservicios autónomos en Kubernetes EKS</text>
+  <text x="836.0" y="190.0" fill="#15803D" font-size="12px" font-weight="400">✓  Persistencia ACID en Aurora PostgreSQL + Cache Redis</text>
+  <text x="836.0" y="216.0" fill="#15803D" font-size="12px" font-weight="400">✓  Despliegues continuos con Canary y Zero-Downtime</text>
+  <text x="836.0" y="242.0" fill="#15803D" font-size="12px" font-weight="400">✓  Resiliencia activa con Circuit Breaker multi-proveedor</text>
+  <ellipse cx="800.0" cy="260.0" rx="15.0" ry="15.0" fill="#0F172A" stroke="#0F172A" stroke-width="1.0" />
+  <text x="792.0" y="263.0" fill="#FFFFFF" font-size="10px" font-weight="400">VS</text>
+  <text x="50.0" y="456.0" fill="#64748B" font-size="11px" font-weight="400">LEGEND</text>
+  <rect x="120.0" y="445.0" width="24.0" height="14.0" rx="6.0" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+  <text x="150.0" y="457.0" fill="#334155" font-size="11px" font-weight="400">Fricción / Deuda Técnica Legacy</text>
+  <rect x="407.5" y="445.0" width="24.0" height="14.0" rx="6.0" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.5" />
+  <text x="437.5" y="457.0" fill="#334155" font-size="11px" font-weight="400">Arquitectura Target Hero Optimizada</text>
+  <text x="802.2" y="457.0" fill="#64748B" font-size="11px" font-weight="400">Split Duel (VS): Análisis comparativo de migración y mitigación de deuda técnica.</text>
+</svg>

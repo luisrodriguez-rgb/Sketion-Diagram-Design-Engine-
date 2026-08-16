@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 552.2 330.0" width="552.2" height="330.0">
+  <defs>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
+      text { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB" />
+    </marker>
+    <marker id="arrowhead-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D93829" />
+    </marker>
+    <marker id="arrowhead-danger" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
+    </marker>
+  </defs>
+  <rect x="-30.0" y="-30.0" width="552.2" height="330.0" fill="#FFFFFF" />
+  <rect x="10.0" y="10.0" width="472.2" height="250.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <text x="30.0" y="51.0" fill="#64748B" font-size="11px" font-weight="400">SKETION VISUAL PRIMITIVE · DATABASE_CYLINDER</text>
+  <rect x="50.0" y="80.0" width="260.0" height="110.0" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <ellipse cx="180.0" cy="80.0" rx="130.0" ry="10.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <line x1="60.0" y1="184.0" x2="300.0" y2="184.0" stroke="#2563EB" stroke-width="1.0" stroke-dasharray="6,6" />
+  <rect x="64.0" y="90.0" width="66.4" height="20.0" rx="6.0" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.0" />
+  <text x="68.0" y="102.0" fill="#1D4ED8" font-size="10px" font-weight="400">ACID DB</text>
+  <text x="64.0" y="130.0" fill="#0F172A" font-size="14px" font-weight="600">Aurora PostgreSQL</text>
+  <text x="64.0" y="149.0" fill="#475569" font-size="11px" font-weight="400">ACID Persistent Ledger</text>
+</svg>

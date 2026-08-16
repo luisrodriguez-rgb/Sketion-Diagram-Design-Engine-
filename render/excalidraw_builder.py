@@ -588,6 +588,14 @@ class ExcalidrawScene:
         self.elements.append(elem)
         return elem
 
+    def add_diamond(self, x: float, y: float, w: float, h: float,
+                    bg: str = "#FFFFFF", stroke: str = "#0F172A",
+                    stroke_w: float = 1.5, frame_id: Optional[str] = None) -> Dict[str, Any]:
+        """Crea un nodo con forma de rombo para decisiones y bifurcaciones condicionales."""
+        elem = self._base_element("diamond", x, y, w, h, stroke, bg, stroke_w=stroke_w, frame_id=frame_id)
+        self.elements.append(elem)
+        return elem
+
     def add_card_with_icon(self, x: float, y: float, w: float, h: float,
                            title: str, sublabel: Optional[str] = None,
                            icon: str = "server", bg: str = "#FFFFFF",

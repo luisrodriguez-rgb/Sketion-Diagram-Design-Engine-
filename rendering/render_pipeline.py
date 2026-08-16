@@ -1,7 +1,9 @@
 """
-Sketion 7.0 — Native Excalidraw Render Pipeline
+Sketion 8.0 — Native Excalidraw Render Pipeline
 Pipeline integral que transforma cualquier intención semántica o JSON estructurado
 en un archivo nativo .excalidraw utilizando:
+- ExcalidrawScene (motor oficial de renderizado con vinculación containerId <-> boundElements,
+  tipografía precisa, baseline, lineHeight y autoResize para garantizar visibilidad al 100%)
 - AnchorGeometry (corte exacto de rayos en el perímetro de cada forma)
 - OrthogonalRouter (conectores a 90° con evitación de colisiones)
 - AdaptiveMultiFrame (partición inteligente de marcos)
@@ -10,23 +12,18 @@ en un archivo nativo .excalidraw utilizando:
 """
 
 import json
-import uuid
 from typing import List, Dict, Any, Tuple, Optional
-from rendering.anchor_geometry import Point, ShapeBounds, AnchorGeometryEngine
-from rendering.orthogonal_router import OrthogonalRouterEngine, RoutedPath
-from rendering.adaptive_multi_frame import AdaptiveMultiFrameEngine, FramePartitionDecision
+from rendering.anchor_geometry import ShapeBounds
+from rendering.orthogonal_router import OrthogonalRouterEngine
+from rendering.adaptive_multi_frame import AdaptiveMultiFrameEngine
 from rendering.render_fidelity import RenderFidelityEngine, RenderFidelityAudit
-from composition.narrative_model import NarrativeModelEngine, NarrativeModel
-from composition.oracle_judge import OracleCompositionJudge, OracleDecision
-from semantic.text_decomposer import SemanticTextDecomposer, DecomposedBlock
+from composition.oracle_judge import OracleCompositionJudge
+from semantic.text_decomposer import SemanticTextDecomposer
+from render.excalidraw_builder import ExcalidrawScene
 
 
 class SketionRenderPipeline:
-    """Pipeline de renderizado físico nativo Excalidraw de Sketion 7.0."""
-
-    @classmethod
-    def _gen_id(cls, prefix: str = "el") -> str:
-        return f"{prefix}_{uuid.uuid4().hex[:8]}"
+    """Pipeline de renderizado físico nativo Excalidraw de Sketion 8.0."""
 
     @classmethod
     def render_from_structured_spec(cls, spec: Dict[str, Any], output_path: Optional[str] = None) -> Tuple[Dict[str, Any], RenderFidelityAudit]:
@@ -41,46 +38,26 @@ class SketionRenderPipeline:
         # 2. Decisión de partición de marcos
         partition = AdaptiveMultiFrameEngine.evaluate_partition(len(steps), narrative.intent)
 
-        elements = []
-        bounds_map = {}
-        card_width = 240.0
-        card_height = 110.0
-        gap_x = 70.0
+        # 3. Inicializar ExcalidrawScene con motor tipográfico nativo
+        scene = ExcalidrawScene(roughness=0, bg_color="#FFFFFF")
+
+        card_width = 260.0
+        card_height = 115.0
+        gap_x = 75.0
         start_x = 80.0
-        start_y = 120.0
+        start_y = 125.0
 
         # Marco contenedor
-        frame_w = max(1100.0, start_x * 2 + len(steps) * (card_width + gap_x))
-        frame_h = 420.0
-        frame_id = cls._gen_id("frame")
-        
-        elements.append({
-            "id": frame_id,
-            "type": "frame",
-            "x": 40.0,
-            "y": 40.0,
-            "width": frame_w,
-            "height": frame_h,
-            "name": f"01. {title}",
-            "strokeColor": "#CED4DA",
-            "backgroundColor": "#F8F9FA"
-        })
+        frame_w = max(1150.0, start_x * 2 + len(steps) * (card_width + gap_x))
+        frame_h = 440.0
+        frame_id = scene.add_frame(f"01. {title}", 40.0, 40.0, frame_w, frame_h)
 
-        # Título del diagrama
-        elements.append({
-            "id": cls._gen_id("title"),
-            "type": "text",
-            "x": start_x,
-            "y": 65.0,
-            "text": f"PROCESO: {title.upper()}",
-            "fontSize": 20,
-            "fontFamily": 1,
-            "textAlign": "left",
-            "strokeColor": "#1E1E1E",
-            "frameId": frame_id
-        })
+        # Título del diagrama (Tipografía 20px Bold, legible)
+        scene.add_text(start_x, 65.0, f"PROCESO: {title.upper()}", font_size=20, font_family=2, color="#0F172A", frame_id=frame_id)
 
-        # Renderizar nodos (Tarjetas estructuradas)
+        bounds_map = {}
+
+        # 4. Renderizar nodos (Tarjetas estructuradas con containerId y boundElements)
         for idx, step in enumerate(steps):
             cx = start_x + idx * (card_width + gap_x)
             cy = start_y
@@ -91,76 +68,27 @@ class SketionRenderPipeline:
             # Descomposición semántica del texto
             dec = SemanticTextDecomposer.decompose(raw_label, is_pain_or_hero=("hero" if is_hero else None))
 
-            stroke_c = "#D93829" if is_hero else "#212529"
-            bg_c = "#FFF5F5" if is_hero else "#FFFFFF"
-            node_id = cls._gen_id("card")
-
-            # Rectángulo contenedor
-            elements.append({
-                "id": node_id,
-                "type": "rectangle",
-                "x": cx,
-                "y": cy,
-                "width": card_width,
-                "height": card_height,
-                "strokeColor": stroke_c,
-                "backgroundColor": bg_c,
-                "fillStyle": "solid",
-                "strokeWidth": 2.0 if is_hero else 1.0,
-                "roughness": 0,
-                "roundness": {"type": 3},
-                "frameId": frame_id
-            })
-
-            # Badge / Step Pill
             badge_text = f"PASO {step_num}" if not is_hero else f"PASO {step_num} · CORE"
-            elements.append({
-                "id": cls._gen_id("badge"),
-                "type": "text",
-                "x": cx + 14.0,
-                "y": cy + 14.0,
-                "text": badge_text,
-                "fontSize": 12,
-                "fontFamily": 1,
-                "textAlign": "left",
-                "strokeColor": stroke_c,
-                "frameId": frame_id
-            })
+            icon_name = "key" if is_hero else ("server" if idx % 2 == 1 else "laptop")
 
-            # Título principal del paso
-            display_title = dec.title if len(dec.title) <= 28 else dec.title[:25] + "..."
-            elements.append({
-                "id": cls._gen_id("label"),
-                "type": "text",
-                "x": cx + 14.0,
-                "y": cy + 38.0,
-                "text": display_title,
-                "fontSize": 16,
-                "fontFamily": 1,
-                "textAlign": "left",
-                "strokeColor": "#1E1E1E",
-                "frameId": frame_id
-            })
-
-            # Subtítulo explicativo
-            if dec.subtitle:
-                sub_disp = dec.subtitle if len(dec.subtitle) <= 32 else dec.subtitle[:29] + "..."
-                elements.append({
-                    "id": cls._gen_id("sub"),
-                    "type": "text",
-                    "x": cx + 14.0,
-                    "y": cy + 68.0,
-                    "text": sub_disp,
-                    "fontSize": 12,
-                    "fontFamily": 1,
-                    "textAlign": "left",
-                    "strokeColor": "#495057",
-                    "frameId": frame_id
-                })
+            # Crear tarjeta de 4 esquinas totalmente vinculada y con texto visible
+            scene.add_quad_card(
+                cx, cy, card_width, card_height,
+                title=dec.title,
+                sublabel=dec.subtitle,
+                badge=badge_text,
+                icon=icon_name,
+                bg="#FFF5F2" if is_hero else "#FFFFFF",
+                stroke="#E03A2F" if is_hero else "#212529",
+                text_color="#0F172A",
+                font_size=15,
+                is_hero=is_hero,
+                frame_id=frame_id
+            )
 
             bounds_map[idx] = ShapeBounds(cx, cy, card_width, card_height, "rectangle")
 
-        # Renderizar conectores ortogonales con AnchorGeometry
+        # 5. Renderizar conectores ortogonales con AnchorGeometry
         for idx in range(len(steps) - 1):
             source_b = bounds_map[idx]
             target_b = bounds_map[idx + 1]
@@ -168,49 +96,20 @@ class SketionRenderPipeline:
 
             # Enrutamiento ortogonal libre de colisiones
             routed = OrthogonalRouterEngine.route_connector(source_b, target_b)
-            arrow_id = cls._gen_id("arrow")
 
-            elements.append({
-                "id": arrow_id,
-                "type": "arrow",
-                "x": routed.start_point[0],
-                "y": routed.start_point[1],
-                "points": routed.intermediate_points,
-                "strokeColor": "#212529",
-                "strokeWidth": 1.5,
-                "roughness": 0,
-                "startArrowhead": None,
-                "endArrowhead": "arrow",
-                "frameId": frame_id
-            })
+            scene.add_arrow(
+                routed.start_point[0], routed.start_point[1],
+                routed.end_point[0], routed.end_point[1],
+                stroke="#212529",
+                stroke_w=1.5,
+                arrowhead="triangle",
+                label=edge_lbl if edge_lbl else None,
+                frame_id=frame_id
+            )
 
-            # Etiqueta de la flecha
-            if edge_lbl:
-                elements.append({
-                    "id": cls._gen_id("edge_txt"),
-                    "type": "text",
-                    "x": routed.label_position[0] - 20.0,
-                    "y": routed.label_position[1],
-                    "text": edge_lbl,
-                    "fontSize": 12,
-                    "fontFamily": 1,
-                    "textAlign": "center",
-                    "strokeColor": "#495057",
-                    "frameId": frame_id
-                })
+        scene_data = scene.to_dict()
 
-        scene_data = {
-            "type": "excalidraw",
-            "version": 2,
-            "source": "https://sketion.engine.v7",
-            "elements": elements,
-            "appState": {
-                "viewBackgroundColor": "#FFFFFF",
-                "gridSize": 20
-            }
-        }
-
-        # Auditar fidelidad de renderizado
+        # 6. Auditar fidelidad de renderizado
         fidelity_audit = RenderFidelityEngine.audit_scene(scene_data, narrative)
 
         if output_path:

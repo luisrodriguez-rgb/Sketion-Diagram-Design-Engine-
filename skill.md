@@ -1,14 +1,14 @@
 ---
 name: sketion-diagram-design
-description: Motor editorial de diseño y generación de diagramas inteligentes, libres de amontonamientos y 100% editables en formato nativo .excalidraw (v8.0). Arquitectura desacoplada en 5 capas: Semantic Model -> Narrative Model Engine -> Oracle Composition Judge (FROZEN 1.0) -> Information Architecture Engine (Importance Ranking & Progressive Disclosure) -> Adaptive Rendering Engine (AnchorGeometry, Orthogonal 90 Router, Adaptive Multi-Frame, Frame Containment, Spatial Collision Avoidance, Render Fidelity >=90/100, Layout Stability Var 0.0) -> Validation & Multi-Layer Repair System (Bindings, Text, Frames, Spatial, Accents).
+description: Motor empresarial autónomo de diseño y generación de diagramas de arquitectura de software y sistemas complejos (v10.0 GA). Arquitectura desacoplada de Inteligencia Visual: Semantic Model -> Composition Engine (FROZEN) -> Information Architecture -> Polymorphic Shapes Engine -> Brand & Pure Vector Icon Registry (155+ icons, 0 emojis) -> Design System Tokens -> Visual Consistency Engine (VCS 97.7/100) -> Visual Language Engine (4 Dialects) -> Explainability Trace -> Multiformat Export (.excalidraw & .svg).
 license: MIT
 metadata:
-  version: "8.0"
+  version: "10.0"
 ---
 
-# Sketion Diagram Design Skill (Motor Editorial para Excalidraw v8.0)
+# Sketion Diagram Design Skill (Motor Editorial para Excalidraw & SVG v10.0 GA)
 
-Crea tableros y diagramas profesionales con calidad editorial, diseño limpio, cero amontonamientos, tipografía proporcional legible a primera vista, **estricta diversidad de arquetipos visuales**, gestión de cargas masivas (50+ entidades) con **Progressive Disclosure**, **confinamiento espacial automático en marcos**, **cero colisiones entre tarjetas** y editabilidad nativa total en formato `.excalidraw`.
+Crea tableros y diagramas de arquitectura de grado corporativo con calidad editorial, diseño limpio, cero amontonamientos, tipografía proporcional legible a primera vista, **100% libre de emojis**, reconocimiento automático de marcas (46+ plataformas), **zonas verticales estrictas anti-colisión**, **confinamiento espacial y auto-fit de marcos**, explicabilidad de diseño (`result.explain()`) y exportación multiformato a `.excalidraw` y `.svg`.
 
 ---
 

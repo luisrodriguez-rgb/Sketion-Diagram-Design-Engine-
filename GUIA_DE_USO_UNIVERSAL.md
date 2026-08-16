@@ -1,5 +1,5 @@
-# 📖 Guía Universal de Uso de Sketion Engine (v8.0)
-## Manual Maestro Paso a Paso para Integrar y Usar Sketion en Antigravity, Claude, ChatGPT, Cursor, Windsurf, Terminal y Editores Excalidraw
+# 📖 Guía Universal de Uso de Sketion Engine (v10.0 GA)
+## Manual Maestro Paso a Paso para Integrar y Usar Sketion en Python SDK, CLI, Antigravity, Claude, ChatGPT, Cursor, Windsurf, Terminal y Editores Excalidraw / SVG
 
 ---
 
@@ -9,11 +9,12 @@ Sketion fue diseñado para ser **100% utilizable sin gastar dinero**, pero tambi
 
 | Entorno / Plataforma | Modalidad Gratuita (Free Tier) | Modalidad de Pago (Plus / Pro / Team) |
 | :--- | :--- | :--- |
-| **Terminal / CLI / Python** | **100% GRATIS** (corre localmente en tu máquina, cero costo de API). | No aplica (siempre es libre y abierto). |
+| **Python SDK (`import sketion`)** | **100% GRATIS** (ejecución autónoma local con Explainability y exportación SVG/Excalidraw). | No aplica (siempre es libre y abierto). |
+| **Terminal / CLI (`sketion_cli.py`)** | **100% GRATIS** (corre localmente en tu máquina, cero costo de API o tokens). | No aplica (cero costo de ejecución). |
 | **VS Code / Cursor / Windsurf** | **100% GRATIS** (ejecuta el motor local en tu workspace sin créditos de IA). | Opcional (usa modelos premium como Claude 3.5 Sonnet o GPT-4o). |
 | **Claude (Anthropic)** | **100% GRATIS** (copiando el System Prompt al inicio del chat libre). | **Claude Pro ($20/mes):** Permite crear *Claude Projects* permanentes. |
 | **ChatGPT (OpenAI)** | **100% GRATIS** (usando *Instrucciones Personalizadas* en tu cuenta). | **ChatGPT Plus ($20/mes):** Permite crear *Custom GPTs* con Code Interpreter. |
-| **Excalidraw Editor** | **100% GRATIS** (en [excalidraw.com](https://excalidraw.com) o extensión de VS Code). | **Excalidraw+:** Solo para colaboración corporativa en la nube. |
+| **Excalidraw & Visores Web SVG** | **100% GRATIS** (en [excalidraw.com](https://excalidraw.com), navegadores web o extensión de VS Code). | **Excalidraw+:** Solo para colaboración corporativa en la nube. |
 
 ---
 

@@ -2,8 +2,8 @@ from setuptools import setup, find_packages
 
 setup(
     name="sketion",
-    version="3.4.0",
-    description="Motor Editorial de Diagramas de Negocio y Arquitectura para Excalidraw (.excalidraw)",
+    version="10.0.0",
+    description="Motor Autónomo Empresarial de Diseño y Generación de Diagramas de Arquitectura (Excalidraw & SVG)",
     author="Luis Rodriguez",
     url="https://github.com/luisrodriguez-rgb/Sketion-Diagram-Design-Engine-",
     packages=find_packages(),
@@ -18,5 +18,6 @@ setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Topic :: Multimedia :: Graphics :: Presentation",
+        "Topic :: Software Development :: Documentation",
     ],
 )

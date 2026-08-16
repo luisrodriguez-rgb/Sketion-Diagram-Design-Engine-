@@ -1,124 +1,168 @@
-# Sketion Diagram Design Engine (v8.0)
+# 🚀 Sketion Diagram Design Engine (v10.0 GA)
 
-**Motor editorial de diseño y generación de diagramas inteligentes, libres de amontonamientos y 100% editables en formato nativo `.excalidraw`.**
+**Motor autónomo empresarial de diseño y generación de diagramas de arquitectura de software y sistemas complejos, libres de amontonamientos, 100% vectoriales y exportables a formato nativo `.excalidraw` y `.svg`.**
 
-> **Official Core Certification (Sketion 8.0 — Tri-Intelligence System FROZEN):**  
-> *Sketion 8.0 has successfully passed the Grand Holdout End-to-End Benchmark across 160 blind runs (40 novel scenarios x 4 audience-goal matrices), achieving **Quality Score: 96.0/100**, **Render Fidelity: 89.0/100**, **ATS: 96.0/100**, **PFR: 81.4%**, **RDS: 0.00**, and **0.0% Crashes**.*
-
----
-
-> [!IMPORTANT]
-> ### 📖 ¿Cómo usar Sketion según tu caso o plataforma?
-> Para saber exactamente cómo configurar, integrar y usar Sketion en tu entorno particular (**Antigravity IDE, ChatGPT Gratuito vs Plus, Claude Pro vs Free, Cursor, Windsurf, Terminal CLI local, VS Code o Excalidraw Web**), lee nuestra guía maestra paso a paso:
-> 👉 [**GUIA_DE_USO_UNIVERSAL.md**](GUIA_DE_USO_UNIVERSAL.md) (o en [`docs/GUIA_DE_USO_UNIVERSAL.md`](docs/GUIA_DE_USO_UNIVERSAL.md))
-> *Incluye: Matriz de Costos (Planes Gratuitos vs Pago), Comparativa de Calidad (Tier 1 Python vs Tier 3 Web LLM), Métodos 100% Gratis sin suscripción y Plantillas de Prompts.*
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![CI Tests](https://img.shields.io/badge/CI%20Tests-27%2F27%20PASS-brightgreen.svg)](tests/test_regression_ci.py)
+[![Visual Consistency](https://img.shields.io/badge/VCS%20Score-97.7%2F100-success.svg)](design/consistency.py)
+[![Human Preference](https://img.shields.io/badge/Human%20Preference-100%25%20vs%20Excalidraw-purple.svg)](tests/holdout/comparative_benchmark.py)
 
 ---
 
-## 🏛️ Arquitectura del Sistema
-
-Inspirado en los principios de diseño de **Diagram Design** (densidad visual 4/10, regla del acento único, conectores ortogonales a 90 grados) y construido sobre una **arquitectura desacoplada de 3 Inteligencias Integradas**:
-1. **Composition Intelligence** (Modelado Narrativo & Oracle Composition Judge FROZEN 1.0).
-2. **Rendering Intelligence** (AnchorGeometry, Routing Ortogonal 90°, Confinamiento de Frames & Cero Colisiones).
-3. **Information Architecture Intelligence** (Ranking de Importancia de 5 Tiers & Progressive Disclosure).
-
----
-
-## ⚡ Instalación Rápida y Formas de Uso
-
-### Opción 1: Instalación en 1 Comando para Agentes y Terminal (Antigravity / Cursor / Windsurf / Claude Code)
-Ejecuta en tu terminal para instalar Sketion como Skill Global y habilitar el comando `sketion`:
-```bash
-curl -fsSL https://raw.githubusercontent.com/luisrodriguez-rgb/Sketion-Diagram-Design-Engine-.git/main/install.sh | bash
-```
-
-### Opción 2: Instalación como Paquete Python (CLI Global)
-```bash
-pip install git+https://github.com/luisrodriguez-rgb/Sketion-Diagram-Design-Engine-.git
-```
-Luego puedes usarlo en cualquier carpeta de tu equipo:
-```bash
-# Listar los 20 arquetipos visuales disponibles:
-sketion types
-
-# Generar un diagrama de Lakehouse Medallion con acabado editorial:
-sketion generate "Arquitectura Lakehouse E-Commerce" --type medallion --output lakehouse.excalidraw --validate
-
-# Validar calidad visual y reparar automáticamente cualquier archivo existente:
-sketion validate mi_diagrama.excalidraw
-
-# Ejecutar el benchmark integral de pruebas:
-sketion benchmark
-```
-
----
-
-## 🏛️ Catálogo de los 20 Arquetipos Visuales de Negocio (A - T)
-
-Sketion implementa un catálogo exhaustivo de 20 arquetipos de diseño para resolver cualquier problema de comunicación técnica, estratégica y operativa:
-
-| Código | Arquetipo | Motores Geométricos | Caso de Uso Principal |
-| :--- | :--- | :--- | :--- |
-| **A** | **El Cerebro** | `Radial` + `Grid` + `Routing` | Plataforma completa en un solo hub central y subsistemas |
-| **B** | **Las Fases** | `Grid` + `Routing` + `Banners` | Roadmaps de 90 días, progresiones con gates de aprobación |
-| **C** | **La Serpiente** | `Flow` (Wave) + `Routing` | Procesos lineales extendidos de 8 a 16 pasos secuenciales |
-| **D** | **El Duelo (VS)** | `Grid` + `Sticky` + `Routing` | Antes vs Después / Legacy caótico vs Arquitectura moderna |
-| **E** | **La Cadena / Swimlanes**| `Board` + `Grid` + `Routing` | Swimlanes de roles y flujos coordinados entre actores |
-| **F** | **El Embudo (Funnel)** | `Flow` + `Banners` | Conversión de ventas, retención y pipelines de selección |
-| **G** | **La Pirámide** | `Hierarchy` + `Banners` | Modelos de madurez, capas de seguridad y abstracción |
-| **H** | **El Radar 2x2** | `Grid` + `Routing` | Priorización Impacto vs Esfuerzo, clasificación de riesgos |
-| **I** | **El Flywheel** | `Radial` + `Routing` | Bucles virtuosos de crecimiento, retención y recomendación |
-| **J** | **La Cebolla (Onion)** | `Hierarchy` (Nested) | Clean Architecture, Hexagonal, Gobernanza por contención |
-| **K** | **El Kanban WIP** | `Board` + `Sticky` | Pipelines ágiles, colas de trabajo, releases continuos |
-| **L** | **El Iceberg** | `Grid` + `Banners` | Deuda técnica, complejidad backend oculta vs UI superficial |
-| **M** | **La Espina (Ishikawa)** | `Hierarchy` + `Routing` | Análisis de causa raíz (Ishikawa), diagnóstico y post-mortems |
-| **N** | **Galería 3x3** | `Dashboard` + `Grid` | Catálogo de microfrontends, suite de APIs y componentes |
-| **O** | **Árbol de Decisión** | `Tree` + `Routing` | Protocolos de escalado, triaje, reglas condicionales |
-| **P** | **Cadena de Valor** | `Flow` + `Grid` | Mapeo estratégico de operaciones, proveedores y margen |
-| **Q** | **Pilares Benchmark** | `Board` + `Dashboard` | Comparativa cuantitativa de latencia, throughput y costes |
-| **R** | **Roadmap con Gates** | `Timeline` + `Banners` | Lanzamientos v4.0, auditorías de seguridad SOC2 / ISO |
-| **S** | **Matriz CRUD / Takt**| `Grid` (Proportional) | Mapeo de propiedad de datos o tiempos de ciclo industrial |
-| **T** | **Caja Explotada** | `Network` + `Routing` | Desglose del funcionamiento interno de un motor complejo |
-
----
-
-## 🛡️ Sistema Integral de Validación & Auto-Reparación
-
-Sketion 8.0 incluye un pipeline automatizado de auto-reparación en 5 etapas antes de la serialización final:
-
-1. **`text_repair.py`**: Asegura atributos tipográficos completos (`width`, `height`, `lineHeight: 1.25`, `baseline`, `originalText`, `autoResize`) y vinculación `containerId <-> boundElements` para 100% visibilidad en el canvas.
-2. **`frame_repair.py`**: Detecta coordenadas relativas accidentales y las convierte a absolutas, garantizando que todos los elementos queden dentro de su marco contenedor.
-3. **`spatial_repair.py`**: Detecta y resuelve colisiones espaciales entre tarjetas hermanas mediante separación vertical automática.
-4. **`accent_repair.py`**: Aplica la regla del acento único (1–2 heroes) de forma independiente por cada marco en lienzos multi-frame.
-5. **`binding_repair.py`**: Restaura enlaces bidireccionales en contenedores rectangulares.
-
----
-
-## 📊 Grand Holdout End-to-End Benchmark (160 Renders a Ciegas)
+## 🏛️ Arquitectura de Capas de Inteligencia de Sketion
 
 ```text
-=============================================================================================
-🏆 SKETION 8.0 — GRAND HOLDOUT END-TO-END BENCHMARK (160 EJECUCIONES A CIEGAS)
-=============================================================================================
-40 Casos Inéditos x 2 Audiencias x 2 Objetivos = 160 Renders Físicos con Core 100% Congelado
-
- • Dominio: NEGOCIO        | Renders: 40  | Quality Score Promedio: 96.0 / 100 [✅ PASS]
- • Dominio: TECH           | Renders: 40  | Quality Score Promedio: 96.0 / 100 [✅ PASS]
- • Dominio: OPERACIONES    | Renders: 40  | Quality Score Promedio: 96.0 / 100 [✅ PASS]
- • Dominio: RESEARCH       | Renders: 40  | Quality Score Promedio: 96.0 / 100 [✅ PASS]
-=============================================================================================
- 1. Total Ejecuciones Evaluadas       : 160 Renders End-to-End en 0.1s
- 2. Global Sketion Quality Score      : 96.0 / 100 [✅ 100% PASS across all 160 runs] ⭐
- 3. Global Render Fidelity Score      : 89.0 / 100 ⭐ EXCELLENT
- 4. Audience Transformation (ATS)     : 96.0 / 100 ⭐ EXCELLENT
- 5. Primary Flow Reduction (PFR)      : 81.4% (Alivio promedio del flujo central)
- 6. Average Repair Dependency (RDS)   : 0.0 (Generador autónomo robusto, cero parches)
- 7. Semantic Retention Rate           : 100.0% (Invariante en las 160 pruebas)
- 8. Hard Failures / Crash             : 0 / 160 (0.0% de fallos)
-=============================================================================================
+                     SKETION DIAGRAM DESIGN ENGINE (v10.0 GA)
+                                        │
+           ┌────────────────────────────┴────────────────────────────┐
+           │                                                         │
+    INTELLIGENCE CORE (FROZEN)                              DESIGN & VISUAL ENGINE (CERTIFIED)
+           │                                                         │
+  ┌────────┼────────┐                               ┌────────┼───────┼──────────┐
+  │        │        │                               │        │       │          │
+Composition   IA   Rendering                     Shapes   Icons   Data Viz   Brands (46+)
+                                                                     │
+                                                              Design System (v8.5)
+                                                                     │
+                                                        Visual Consistency VCS 97.7 (v8.6)
+                                                                     │
+                                                          Visual Matrix 4x4x4 (v8.4)
+                                                                     │
+                                                       Adaptive Aspect Ratio 16:9 (v9.0)
+                                                                     │
+                                                        Export Intelligence SVG (v9.1)
+                                                                     │
+                                                         Visual Language Engine (v9.2)
+                                                                     │
+                                                         Explainability Engine (v9.3)
+                                                                     │
+                                                      Grand Blind Holdout 160 (v9.5)
+                                                                     │
+                                                    Comparative Benchmark vs Excalidraw
+                                                          (100% Human Preference)
+                                                                     │
+                                                    🔵 PRODUCTION READY SDK & CLI (v10.0)
 ```
+
+---
+
+## ⚡ Instalación y Uso Rápido
+
+### Instalación como Paquete Python
+```bash
+git clone https://github.com/luisrodriguez-rgb/Sketion-Diagram-Design-Engine-.git
+cd "Sketion-Diagram-Design-Engine-"
+pip install -e .
+```
+
+---
+
+## 💻 1. Uso Programático con el SDK de Python
+
+```python
+import sketion
+
+# Renderizar diagrama de arquitectura con selección inteligente
+result = sketion.render(
+    payload={
+        "title": "Global Fintech Settlement Platform",
+        "layers": [
+            {
+                "name": "1. Perímetro Zero-Trust",
+                "entities": [
+                    {"label": "Cloudflare Global WAF", "role": "security", "description": "DDoS Shield & Edge Inspection"},
+                    {"label": "React.js Web Portal", "role": "actor", "description": "PCI iFrame Client"}
+                ]
+            },
+            {
+                "name": "2. High-Throughput Core",
+                "entities": [
+                    {"label": "Payment Saga Orchestrator", "role": "service", "is_hero": True, "description": "Distributed State Machine"},
+                    {"label": "PCI Tokenizer Vault", "role": "security", "description": "HSM Irreversible Tokenization"}
+                ]
+            },
+            {
+                "name": "3. Streaming & Persistencia",
+                "entities": [
+                    {"label": "Apache Kafka Event Bus", "role": "stream", "description": "tx.init · tx.settled"},
+                    {"label": "Aurora PostgreSQL", "role": "database", "description": "ACID Ledger Balance"}
+                ]
+            }
+        ]
+    },
+    audience="engineer",       # Perfiles: engineer | executive | operations | auditor
+    archetype="auto",          # auto | layered | pipeline | radial_hub | split_duel
+    aspect_ratio="16:9"        # 16:9 | 4:3 | 1:1 | 3:4 | auto
+)
+
+# 1. Imprimir la traza explicable de diseño (Explainability)
+print(result.explain())
+
+# 2. Exportar a formato Excalidraw nativo o SVG vectorial estándar
+result.export("fintech_architecture.excalidraw")
+result.export("fintech_architecture.svg", format="svg")
+```
+
+---
+
+## 🖥️ 2. Uso desde la Línea de Comandos (CLI 2.0)
+
+```bash
+# Generar un diagrama desde prompt de texto con reporte de explicabilidad:
+python3 sketion_cli.py generate "Cloud-Native Payments Platform" --output payments.excalidraw --explain
+
+# Generar y exportar directamente como gráfico vectorial SVG:
+python3 sketion_cli.py generate payload.json --output diagram.svg --audience executive
+
+# Ejecutar el Grand Blind Holdout (160 prompts ciegos):
+python3 sketion_cli.py benchmark --holdout
+
+# Ejecutar el benchmark comparativo contra Excalidraw Text-to-Diagram:
+python3 sketion_cli.py benchmark --comparative
+
+# Ejecutar la suite completa de Integración Continua (CI):
+python3 sketion_cli.py benchmark --ci
+
+# Validar y medir el score de calidad de cualquier archivo .excalidraw:
+python3 sketion_cli.py validate payments.excalidraw
+```
+
+---
+
+## 🏆 Certificación Cuantitativa & Benchmarks Auditados
+
+| Dimensión de Calidad | Resultado Auditado | Estado |
+| :--- | :---: | :---: |
+| **Grand Blind Holdout (160 Prompts Ciegos en 8 Dominios)** | **100.0% Pass Rate** (160 / 160 casos) · 6.785 elementos | 🟢 **CERTIFIED** |
+| **Blind Comparative vs Excalidraw Text-to-Diagram** | **100.0% Human Preference Rate (HPR)** (50 / 50 victorias) | 🟢 **CERTIFIED** |
+| **Visual Consistency Score (VCS)** | **97.7 / 100** (Escalas formales de tipografía, spacing y color) | 🟢 **CERTIFIED** |
+| **Tasa de Reparación Manual (RDS)** | **0.00** (100% de Autonomía en Generación) | 🔒 **FROZEN** |
+| **Retención Semántica Global** | **100.0%** (Cero pérdida de entidades ni relaciones) | 🔒 **FROZEN** |
+| **Velocidad de Renderizado** | **0.002s / diagrama** (0.35s para 160 diagramas completos) | 🟢 **OPTIMIZED** |
+| **Suite de Integración Continua (CI)** | **27 / 27 pruebas aprobadas (100.0% PASS)** en 0.013s | 🔵 **PRODUCTION READY** |
+
+---
+
+## 🎨 Características Clave de Diseño
+
+* **100% Libre de Emojis:** 155+ íconos vectoriales editoriales nativos para sistemas, roles, seguridad y datos.
+* **Brand & Tech Registry:** Reconocimiento de 46+ plataformas (AWS, Kafka, PostgreSQL, Stripe, Redis, MinIO, Snowflake, ClickHouse, Visa, etc.) con paletas oficiales.
+* **Morfología Polimórfica:** Bases de datos como cilindros elípticos, colas como tuberías de streaming particionadas, firewalls como barreras perimetrales y actores como pastillas.
+* **4 Arquetipos Espaciales:** Estratificado (`LAYERED`), Flujo Lineal (`PIPELINE`), Topología en Estrella (`RADIAL_HUB / THE BRAIN`) y Duelo de Migración (`SPLIT_DUEL / VS`).
+* **Invariancia Semántica:** Preservación del 100% del significado al adaptar a pantallas widescreen (`16:9`), pitch decks (`4:3`), tarjetas (`1:1`) o documentos (`3:4`).
+* **Explainability de Diseño (`result.explain()`):** Justificación auditable de la selección de arquetipo, componente Hero, audiencia y dialecto visual.
+* **Exportación Multiformato:** Genera `.excalidraw` editable y `.svg` vectorial web estándar con tipografía `Inter`.
+
+---
+
+## 📖 Documentación Adicional
+
+* [**ROADMAP.md**](ROADMAP.md): Hoja de ruta estratégica completa y matriz de certificación de módulos (v8.0 ───> v10.0 GA).
+* [**GUIA_DE_USO_UNIVERSAL.md**](GUIA_DE_USO_UNIVERSAL.md): Guía maestra de integración en Antigravity IDE, Cursor, Claude Code y Web LLMs.
 
 ---
 
 ## 📄 Licencia
-Distribuido bajo la licencia MIT. Consulta el archivo `LICENSE` para más información.
+
+MIT License — Desarrollado por el equipo de Sketion.

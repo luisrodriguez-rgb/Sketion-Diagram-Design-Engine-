@@ -607,18 +607,17 @@ class ExcalidrawScene:
                       icon: Optional[str] = None,
                       pills: Optional[List[str]] = None,
                       bg: str = "#FFFFFF", stroke: str = "#0C0C0C",
-                      text_color: str = "#0C0C0C", font_size: Optional[int] = None,
+                      text_color: str = "#0F172A", font_size: Optional[int] = None,
                       is_hero: bool = False,
                       frame_id: Optional[str] = None) -> Tuple[Dict[str, Any], Dict[str, Any]]:
         """
-        Crea la Tarjeta Editorial de 4 Esquinas (Diagram Design Quad-Corner Card):
-        - Top-Left: Mini-badge de rol (EXT, STORE, ORCH, VIRT, etc.)
-        - Top-Right: Icono vectorial monocromático (postgres, redis, minio, etc.)
-        - Centro: Título legible en 18-20px Bold + Subtítulo con metadata técnica (CDC · SQL · API)
-        - Bottom: Mini-pills de tipo de dato o estado (DB, LS, FL, TB)
+        Crea la Tarjeta Editorial con Zonas de Disposición Vertical Estrictas:
+        - Zona de Cabecera (Y+10 a Y+32): Badge a la izquierda + Icono a la derecha.
+        - Zona de Título (Y+38): Título bold limpio sin colisión de badge.
+        - Zona de Subtítulo (Y+62+): Subtítulo explicativo en 12px apilado con holgura.
         """
         card_bg = "#FFF5F2" if is_hero else bg
-        card_stroke = "#E03A2F" if is_hero else stroke
+        card_stroke = "#D93829" if is_hero else stroke
         card_stroke_w = 2.0 if is_hero else 1.5
         
         container = self.add_rect(x, y, w, h, bg=card_bg, stroke=card_stroke,
@@ -626,55 +625,35 @@ class ExcalidrawScene:
         
         # 1. Top-Left Badge
         if badge:
-            badge_font = 11 if w < 400.0 else 12
-            bw = max(42.0, len(badge) * 8.0 + 16.0)
-            badge_bg = "#FFEFEF" if is_hero else "#F1F5F9"
-            badge_stroke = "#F05A5A" if is_hero else "#CBD5E1"
-            badge_text_col = "#E03A2F" if is_hero else "#475569"
-            self.add_rect(x + 14.0, y + 12.0, bw, 22.0, bg=badge_bg, stroke=badge_stroke,
+            badge_font = 10
+            bw = max(45.0, len(badge) * 7.2 + 16.0)
+            badge_bg = "#FEE2E2" if is_hero else "#F1F5F9"
+            badge_stroke = "#FCA5A5" if is_hero else "#CBD5E1"
+            badge_text_col = "#D93829" if is_hero else "#475569"
+            self.add_rect(x + 12.0, y + 10.0, bw, 20.0, bg=badge_bg, stroke=badge_stroke,
                           stroke_w=1.0, roundness_type=3, frame_id=frame_id)
-            self.add_text(x + 14.0 + (bw - len(badge) * 7.0) * 0.5, y + 15.0, badge,
+            self.add_text(x + 16.0, y + 12.0, badge,
                           font_size=badge_font, font_family=2, color=badge_text_col, frame_id=frame_id)
 
-        # 2. Top-Right Icon (Proportional Scale)
+        # 2. Top-Right Icon
         if icon:
-            icon_size = 28.0 if w >= 320.0 else 24.0
-            icon_col = "#E03A2F" if is_hero else card_stroke
-            self.add_icon(icon, x + w - icon_size - 14.0, y + 11.0, size=icon_size, color=icon_col, frame_id=frame_id)
+            icon_size = 22.0
+            icon_col = "#D93829" if is_hero else card_stroke
+            self.add_icon(icon, x + w - icon_size - 14.0, y + 10.0, size=icon_size, color=icon_col, frame_id=frame_id)
 
-        # 3. Center Content (Title + Subtitle) con Tamaño Proporcional
-        if font_size is None:
-            if w >= 400.0 or h >= 120.0:
-                font_size = 20
-            elif w >= 260.0 or h >= 95.0:
-                font_size = 18
-            else:
-                font_size = 16
+        # 3. Zonas de Contenido Vertical Estricto (Sin Montajes)
+        tit_fs = font_size if font_size is not None else (14 if w < 320.0 else 15)
+        body_y = y + 38.0 if (badge or icon) else y + 16.0
 
-        text_id = rid()
-        container["boundElements"].append({"id": text_id, "type": "text"})
-        
-        full_text = f"{title}\n{sublabel}" if sublabel else title
-        lines = full_text.split('\n')
-        text_h = len(lines) * font_size * 1.35
-        text_y = y + max(0.0, (h - text_h) * 0.5)
+        # Título
+        title_elem = self.add_text(x + 14.0, body_y, title, font_size=tit_fs, font_family=2, color=text_color, frame_id=frame_id)
 
-        text_elem = self._base_element("text", x, text_y, w, text_h,
-                                       text_color, "transparent", frame_id=frame_id)
-        text_elem["id"] = text_id
-        text_elem.update({
-            "fontSize": font_size,
-            "fontFamily": 2,
-            "text": full_text,
-            "textAlign": "center",
-            "verticalAlign": "middle",
-            "containerId": container["id"],
-            "originalText": full_text,
-            "lineHeight": 1.25,
-            "baseline": font_size,
-            "autoResize": True
-        })
-        self.elements.append(text_elem)
+        # Subtítulo (Calculado debajo del título con holgura segura)
+        if sublabel:
+            tit_lines = title.split('\n')
+            tit_h = len(tit_lines) * tit_fs * 1.35
+            sub_y = body_y + tit_h + 4.0
+            self.add_text(x + 14.0, sub_y, sublabel, font_size=12, font_family=2, color="#475569", frame_id=frame_id)
 
         # 4. Bottom Data Pills (Optional)
         if pills:
@@ -689,7 +668,7 @@ class ExcalidrawScene:
                 self.add_rect(x + w - pw2 - 14.0, y + h - 24.0, pw2, 16.0, bg="#E2E8F0", stroke="#94A3B8", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
                 self.add_text(x + w - pw2 - 10.0, y + h - 23.0, p2, font_size=10, font_family=2, color="#334155", frame_id=frame_id)
 
-        return container, text_elem
+        return container, title_elem
 
     def add_chevron_ribbon(self, x: float, y: float, w: float, h: float = 38.0,
                            stages: Optional[List[str]] = None,
@@ -752,12 +731,12 @@ class ExcalidrawScene:
             
             # Círculo numerado
             self.add_ellipse(cx - 12.0, y, 24.0, 24.0, bg=bg, stroke=stroke, stroke_w=1.5, frame_id=frame_id)
-            self.add_text(cx - 4.0, y + 4.0, str(i + 1), font_size=11, font_family=2, color=tcol, frame_id=frame_id)
-            
-            # Etiqueta de paso debajo
-            lbl_w = len(stxt) * 7.0
-            self.add_text(cx - lbl_w * 0.5, y + 28.0, stxt.upper(),
-                          font_size=10, font_family=2, color="#E03A2F" if is_hero else "#64748B", frame_id=frame_id)
+            is_first = (i == 0)
+            is_last = (i == stage_count - 1)
+            self.add_rect(sx, y, stage_w, h, bg=bg, stroke="#334155", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+            lbl_w = len(sname) * 7.5
+            self.add_text(sx + (stage_w - lbl_w) * 0.5, y + (h - 14.0) * 0.5, sname,
+                          font_size=12, font_family=2, color=text_color, frame_id=frame_id)
 
     def add_database_cylinder(self, x: float, y: float, w: float, h: float,
                                title: str, sublabel: Optional[str] = None,
@@ -765,8 +744,8 @@ class ExcalidrawScene:
                                bg: str = "#EFF6FF", stroke: str = "#2563EB",
                                frame_id: Optional[str] = None) -> Dict[str, Any]:
         """
-        Crea una primitiva morfológica de Cilindro / Base de Datos con tapas elípticas y discos internos.
-        Rompe el monopolio de tarjetas rectangulares planas.
+        Crea una primitiva morfológica de Cilindro / Base de Datos con tapas elípticas y discos inferiores limpios.
+        Rompe el monopolio de tarjetas rectangulares planas sin colisiones de texto.
         """
         final_stroke = "#D93829" if is_hero else stroke
         final_bg = "#FFF5F2" if is_hero else bg
@@ -776,24 +755,24 @@ class ExcalidrawScene:
         container = self.add_rect(x, y + 10.0, w, h - 20.0, bg=final_bg, stroke=final_stroke, stroke_w=stroke_w, roundness_type=3, frame_id=frame_id)
 
         # 2. Tapa elíptica superior
-        self.add_ellipse(x, y, w, 22.0, bg=final_bg, stroke=final_stroke, stroke_w=stroke_w, frame_id=frame_id)
+        self.add_ellipse(x, y, w, 20.0, bg=final_bg, stroke=final_stroke, stroke_w=stroke_w, frame_id=frame_id)
 
-        # 3. Líneas de ranura de disco interno
-        self.add_line(x + 10.0, y + (h * 0.45), x + w - 10.0, y + (h * 0.45), stroke=final_stroke, stroke_w=1.0, dashed=True, frame_id=frame_id)
+        # 3. Líneas de ranura de disco en la base inferior (para no interferir con el texto)
+        self.add_line(x + 10.0, y + h - 24.0, x + w - 10.0, y + h - 24.0, stroke=final_stroke, stroke_w=1.0, dashed=True, frame_id=frame_id)
 
-        # 4. Badge & Icono
-        bw = max(65.0, len(badge) * 7.2 + 16.0)
+        # 4. Badge & Icono en cabecera
+        bw = max(60.0, len(badge) * 7.2 + 16.0)
         b_bg = "#FEE2E2" if is_hero else "#DBEAFE"
         b_str = "#FCA5A5" if is_hero else "#93C5FD"
         b_col = "#D93829" if is_hero else "#1D4ED8"
-        self.add_rect(x + 14.0, y + 26.0, bw, 20.0, bg=b_bg, stroke=b_str, stroke_w=1.0, roundness_type=3, frame_id=frame_id)
-        self.add_text(x + 18.0, y + 28.0, badge, font_size=10, font_family=2, color=b_col, frame_id=frame_id)
-        self.add_icon("database", x + w - 36.0, y + 26.0, size=20.0, color=final_stroke, frame_id=frame_id)
+        self.add_rect(x + 14.0, y + 22.0, bw, 20.0, bg=b_bg, stroke=b_str, stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 18.0, y + 24.0, badge, font_size=10, font_family=2, color=b_col, frame_id=frame_id)
+        self.add_icon("database", x + w - 36.0, y + 22.0, size=20.0, color=final_stroke, frame_id=frame_id)
 
-        # 5. Título y Subtítulo
-        self.add_text(x + 16.0, y + 52.0, title, font_size=14, font_family=2, color="#0F172A", frame_id=frame_id)
+        # 5. Título y Subtítulo en zona central despejada
+        self.add_text(x + 14.0, y + 48.0, title, font_size=14, font_family=2, color="#0F172A", frame_id=frame_id)
         if sublabel:
-            self.add_text(x + 16.0, y + 74.0, sublabel, font_size=12, font_family=2, color="#475569", frame_id=frame_id)
+            self.add_text(x + 14.0, y + 70.0, sublabel, font_size=11, font_family=2, color="#475569", frame_id=frame_id)
 
         return container
 
@@ -815,7 +794,7 @@ class ExcalidrawScene:
         bw = max(70.0, len(badge) * 7.2 + 16.0)
         self.add_rect(x + 12.0, y + 10.0, bw, 20.0, bg="#E0E7FF", stroke="#C7D2FE", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
         self.add_text(x + 16.0, y + 12.0, badge, font_size=10, font_family=2, color="#3730A3", frame_id=frame_id)
-        self.add_text(x + 16.0 + bw + 10.0, y + 10.0, title.upper(), font_size=13, font_family=2, color="#0F172A", frame_id=frame_id)
+        self.add_text(x + 16.0 + bw + 10.0, y + 12.0, title.upper(), font_size=12, font_family=2, color="#0F172A", frame_id=frame_id)
         self.add_icon("terminal", x + w - 34.0, y + 10.0, size=18.0, color=final_stroke, frame_id=frame_id)
 
         # Slots de partición horizontal
@@ -945,7 +924,7 @@ class ExcalidrawScene:
                           swatches: Optional[List[Dict[str, Any]]] = None,
                           note: Optional[str] = None,
                           frame_id: Optional[str] = None):
-        """Crea el bloque inferior de leyenda estructurada y filosofía editorial."""
+        """Crea el bloque inferior de leyenda estructurada y filosofía editorial con envoltura segura."""
         self.add_text(x, y, "LEGEND", font_size=11, font_family=2, color="#64748B", frame_id=frame_id)
         
         cur_x = x + 70.0
@@ -970,7 +949,11 @@ class ExcalidrawScene:
         if note:
             note_lines = note.split("\n")
             note_w = max((len(l) for l in note_lines), default=4) * (11 * 0.80) + 35.0
-            self.add_text(x + w - note_w, y + 1.0, note, font_size=11, font_family=2, color="#64748B", frame_id=frame_id)
+            # Si no cabe a la derecha de los swatches, ubicarlo en la siguiente línea
+            if cur_x + note_w > x + w - 20.0:
+                self.add_text(x, y + 24.0, note, font_size=11, font_family=2, color="#64748B", frame_id=frame_id)
+            else:
+                self.add_text(x + w - note_w, y + 1.0, note, font_size=11, font_family=2, color="#64748B", frame_id=frame_id)
 
     def to_dict(self) -> Dict[str, Any]:
         """Genera el diccionario del archivo .excalidraw completo."""

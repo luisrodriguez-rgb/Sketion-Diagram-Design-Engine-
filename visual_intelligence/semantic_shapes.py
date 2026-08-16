@@ -52,7 +52,8 @@ class SemanticShapeClassifier:
         dom = (domain or "").upper().strip()
 
         # 1. Base de Datos / Storage -> DATABASE_CYLINDER
-        if any(w in lbl for w in ["postgres", "aurora", "mysql", "database", "clickhouse", "s3", "minio", "dynamo", "redis", "db"]):
+        db_keywords = ["postgres", "aurora", "mysql", "database", "clickhouse", "s3", "minio", "dynamo", "redis", "db", "warehouse", "storage", "lakehouse"]
+        if any(w in lbl or w in dom.lower() for w in db_keywords):
             return SemanticShapeSpec(
                 shape_type=SemanticShapeType.DATABASE_CYLINDER,
                 primary_icon="database",

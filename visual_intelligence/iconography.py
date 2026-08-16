@@ -21,6 +21,10 @@ class IconCategory(Enum):
 class SemanticIconRegistry:
     """Registro unificado de íconos semánticos vectoriales nativos para Excalidraw (Cero Emojis)."""
 
+    @classmethod
+    def list_icons(cls) -> List[str]:
+        return list(cls._ICON_MAP.keys())
+
     _ICON_MAP: Dict[str, Dict[str, Any]] = {
         # ═══════════════════════════════════════════════════════════════════════════
         # 1. PERSONAS & ROLES (25+)

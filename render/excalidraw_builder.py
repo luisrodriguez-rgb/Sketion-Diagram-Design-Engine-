@@ -193,7 +193,7 @@ class ExcalidrawScene:
                        font_family: int = 2, align: str = "center",
                        stroke_w: float = 1.5, stroke_style: str = "solid",
                        roundness_type: Optional[int] = 3, frame_id: Optional[str] = None) -> Tuple[Dict[str, Any], Dict[str, Any]]:
-        """Crea una tarjeta con texto estrictamente vinculado y dimensiones seguras."""
+        """Crea una tarjeta con texto perfectamente centrado vertical y horizontalmente."""
         container = self.add_rect(x, y, w, h, bg=bg, stroke=stroke, stroke_w=stroke_w,
                                   stroke_style=stroke_style, roundness_type=roundness_type,
                                   frame_id=frame_id)
@@ -201,18 +201,23 @@ class ExcalidrawScene:
         text_id = rid()
         container["boundElements"].append({"id": text_id, "type": "text"})
 
-        text_elem = self._base_element("text", x, y, w, h, text_color, "transparent", frame_id=frame_id)
+        lines = str(text).split('\n')
+        text_h = len(lines) * font_size * 1.35
+        text_y = y + max(0.0, (h - text_h) * 0.5)
+
+        text_elem = self._base_element("text", x, text_y, w, text_h, text_color, "transparent", frame_id=frame_id)
         text_elem["id"] = text_id
         text_elem.update({
             "fontSize": font_size,
             "fontFamily": font_family,
-            "text": text,
+            "text": str(text),
             "textAlign": align,
             "verticalAlign": "middle",
             "containerId": container["id"],
-            "originalText": text,
+            "originalText": str(text),
             "lineHeight": 1.25,
-            "baseline": font_size
+            "baseline": font_size,
+            "autoResize": True
         })
         self.elements.append(text_elem)
         return container, text_elem
@@ -224,11 +229,11 @@ class ExcalidrawScene:
                       stroke_w: float = 1.5, stroke_style: str = "solid",
                       roundness_type: Optional[int] = 3, frame_id: Optional[str] = None) -> Tuple[Dict[str, Any], Dict[str, Any]]:
         """
-        Crea una tarjeta de Doble Jerarquía:
+        Crea una tarjeta de Doble Jerarquía con texto centrado:
         - Ajuste dinámico para impedir cualquier desbordamiento de texto.
         """
         # Calcular dimensiones seguras
-        calc_w, calc_h = compute_card_dimensions(title, sublabel, metadata, font_size=14, min_w=w)
+        calc_w, calc_h = compute_card_dimensions(title, sublabel, metadata, font_size=13, min_w=w)
         final_w = max(w, calc_w)
         final_h = max(h, calc_h)
 
@@ -248,7 +253,11 @@ class ExcalidrawScene:
         else:
             full_text = title
 
-        text_elem = self._base_element("text", x, y, final_w, final_h, text_color, "transparent", frame_id=frame_id)
+        lines = full_text.split('\n')
+        text_h = len(lines) * 13 * 1.35
+        text_y = y + max(0.0, (final_h - text_h) * 0.5)
+
+        text_elem = self._base_element("text", x, text_y, final_w, text_h, text_color, "transparent", frame_id=frame_id)
         text_elem["id"] = text_id
         text_elem.update({
             "fontSize": 13,
@@ -259,7 +268,8 @@ class ExcalidrawScene:
             "containerId": container["id"],
             "originalText": full_text,
             "lineHeight": 1.25,
-            "baseline": 13
+            "baseline": 13,
+            "autoResize": True
         })
         self.elements.append(text_elem)
         return container, text_elem
@@ -309,6 +319,10 @@ class ExcalidrawScene:
                 # Flecha vertical larga: colocar cerca del inicio para evitar tapar nodo intermedio
                 mid_x = x1 - (pill_w * 0.5)
                 mid_y = y1 + 35.0 - (pill_h * 0.5)
+            elif dx > 350:
+                # Flecha larga que salta scopes: colocar cerca del origen para no ensuciar el scope intermedio
+                mid_x = x1 + 55.0 - (pill_w * 0.5)
+                mid_y = y1 - 14.0 - (pill_h * 0.5)
             else:
                 mid_x = x1 + dx * 0.5 - (pill_w * 0.5)
                 mid_y = y1 + dy * 0.5 - (pill_h * 0.5)
@@ -368,6 +382,90 @@ class ExcalidrawScene:
         self.add_text(x + 16, y + 12, label.upper(), font_size=11, font_family=3,
                       color="#64748B", align="left", frame_id=frame_id)
         return container
+
+    def add_sticky_note(self, x: float, y: float, w: float, h: float,
+                        text: str, bg: str = "#FFE95C", stroke: str = "#0C0C0C",
+                        text_color: str = "#0C0C0C", font_size: int = 14,
+                        angle_deg: float = 1.5, frame_id: Optional[str] = None) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+        """Crea un post-it / sticky con micro-rotación orgánica."""
+        angle_rad = angle_deg * (3.14159265 / 180.0)
+        container = self.add_rect(x, y, w, h, bg=bg, stroke=stroke, stroke_w=1.0, roundness_type=None, frame_id=frame_id)
+        container["angle"] = angle_rad
+        
+        text_id = rid()
+        container["boundElements"].append({"id": text_id, "type": "text"})
+
+        lines = str(text).split('\n')
+        text_h = len(lines) * font_size * 1.35
+        text_y = y + max(0.0, (h - text_h) * 0.5)
+
+        text_elem = self._base_element("text", x, text_y, w, text_h, text_color, "transparent", frame_id=frame_id)
+        text_elem["id"] = text_id
+        text_elem["angle"] = angle_rad
+        text_elem.update({
+            "fontSize": font_size,
+            "fontFamily": 2,
+            "text": str(text),
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "containerId": container["id"],
+            "originalText": str(text),
+            "lineHeight": 1.25,
+            "baseline": font_size,
+            "autoResize": True
+        })
+        self.elements.append(text_elem)
+        return container, text_elem
+
+    def add_capture_slot(self, x: float, y: float, w: float, h: float,
+                         label: str = "Captura de Pantalla / Evidencia",
+                         bg: str = "#EDEDED", stroke: str = "#F05A5A",
+                         frame_id: Optional[str] = None) -> Dict[str, Any]:
+        """Crea un slot de captura con marco rojo discontinuo estilo Miro."""
+        box = self.add_rect(x, y, w, h, bg=bg, stroke=stroke, stroke_w=1.5, stroke_style="dashed", roundness_type=3, frame_id=frame_id)
+        # Texto central
+        self.add_text(x + 20, y + h * 0.5 - 10, f"📷 {label}", font_size=13, font_family=2, color="#666666", frame_id=frame_id)
+        return box
+
+    def add_banner(self, x: float, y: float, w: float, h: float, text: str,
+                   bg: str = "#F5BEC0", text_color: str = "#0C0C0C", font_size: int = 16,
+                   frame_id: Optional[str] = None) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+        """Crea un banner horizontal de cierre / punchline."""
+        box = self.add_rect(x, y, w, h, bg=bg, stroke=bg, roundness_type=3, frame_id=frame_id)
+        text_id = rid()
+        box["boundElements"].append({"id": text_id, "type": "text"})
+        
+        lines = str(text).split('\n')
+        text_h = len(lines) * font_size * 1.35
+        text_y = y + max(0.0, (h - text_h) * 0.5)
+        
+        text_elem = self._base_element("text", x, text_y, w, text_h, text_color, "transparent", frame_id=frame_id)
+        text_elem["id"] = text_id
+        text_elem.update({
+            "fontSize": font_size,
+            "fontFamily": 2,
+            "text": str(text),
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "containerId": box["id"],
+            "originalText": str(text),
+            "lineHeight": 1.25,
+            "baseline": font_size,
+            "autoResize": True
+        })
+        self.elements.append(text_elem)
+        return box, text_elem
+
+    def add_metric_pill(self, x: float, y: float, label: str, value: str,
+                        bg: str = "#0C0C0C", text_color: str = "#FFFFFF",
+                        frame_id: Optional[str] = None) -> Dict[str, Any]:
+        """Crea una pastilla de métrica compacta para cabeceras."""
+        w = max(110.0, (len(label) + len(value)) * 7.5 + 30.0)
+        h = 36.0
+        pill = self.add_rect(x, y, w, h, bg=bg, stroke=bg, roundness_type=3, frame_id=frame_id)
+        full_txt = f"{label}: {value}"
+        self.add_text(x + 10, y + 9, full_txt, font_size=12, font_family=2, color=text_color, frame_id=frame_id)
+        return pill
 
     def add_chip(self, x: float, y: float, w: float, h: float,
                  number: str, label: str, bg: str = "#0F172A",

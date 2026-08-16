@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#EDEDED; }
+  a { color:#E03A2F; text-decoration:none; }
+  a:hover { color:#111; }
+</style>
+</helmet>
+
+<div style="width:3600px; background:#F4F4F4; padding:70px 70px 110px; box-sizing:border-box; font-family:Archivo, sans-serif; color:#111;">
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:10px;">
+    <div style="display:flex; align-items:baseline; gap:26px;">
+      <div style="font-family:'Archivo Black',sans-serif; font-size:110px; line-height:.94; letter-spacing:-3.5px;">TU NEGOCIO ENTERO DENTRO DE</div>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Claude_AI_logo.svg?width=900" alt="Claude" style="width:420px; display:block; transform:translateY(6px);">
+    </div>
+    <div style="font-family:'Archivo Black',sans-serif; font-size:52px; letter-spacing:-1.5px; color:#E03A2F;">un solo cerebro, cuatro salidas, cero herramientas nuevas</div>
+    <div style="display:flex; align-items:center; gap:14px; margin-top:16px;">
+      <div style="background:#0C0C0C; color:#fff; padding:10px 18px; display:flex; align-items:center; gap:10px;"><span style="font-size:12px; color:#9a9a9a; letter-spacing:1.2px;">CONTEXTO CARGADO</span><span style="font-family:'Archivo Black',sans-serif; font-size:24px;">1 vez</span></div>
+      <div style="background:#0C0C0C; color:#fff; padding:10px 18px; display:flex; align-items:center; gap:10px;"><span style="font-size:12px; color:#9a9a9a; letter-spacing:1.2px;">DEPARTAMENTOS</span><span style="font-family:'Archivo Black',sans-serif; font-size:24px;">4</span></div>
+      <div style="background:#0C0C0C; color:#fff; padding:10px 18px; display:flex; align-items:center; gap:10px; border:2px solid #E03A2F;"><span style="font-size:12px; color:#9a9a9a; letter-spacing:1.2px;">HORAS/SEMANA QUE RECUPERAS</span><span style="font-family:'Archivo Black',sans-serif; font-size:24px;">18</span></div>
+      <div style="background:#0C0C0C; color:#fff; padding:10px 18px; display:flex; align-items:center; gap:10px;"><span style="font-size:12px; color:#9a9a9a; letter-spacing:1.2px;">COSTE</span><span style="font-family:'Archivo Black',sans-serif; font-size:24px;">la cuenta Pro</span></div>
+    </div>
+  </div>
+
+  <div style="height:1.5px; background:#C9C9C9; margin:44px 0 34px;"></div>
+
+  <div style="display:flex; gap:40px; align-items:flex-start;">
+
+    <div style="width:600px; flex:none; display:flex; flex-direction:column; gap:16px; padding-top:60px;">
+      <div style="background:#FFE95C; align-self:flex-start; padding:5px 12px; font-size:14px; font-weight:700; letter-spacing:.6px;">LO QUE LE METES AL CEREBRO</div>
+      <div style="border:1.5px solid #bdbdbd; background:#fff; padding:12px 14px; font-size:15px; font-weight:600;"><b>Tu oferta</b> · precio, promesa, a quién sí y a quién no</div>
+      <div style="border:1.5px solid #bdbdbd; background:#fff; padding:12px 14px; font-size:15px; font-weight:600;"><b>20 llamadas</b> · transcripciones con las palabras de tus clientes</div>
+      <div style="border:1.5px solid #bdbdbd; background:#fff; padding:12px 14px; font-size:15px; font-weight:600;"><b>Tus 30 mejores piezas</b> · las que funcionaron y por qué</div>
+      <div style="border:1.5px solid #bdbdbd; background:#fff; padding:12px 14px; font-size:15px; font-weight:600;"><b>Tu forma de escribir</b> · 10 textos tuyos, sin retocar</div>
+      <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:12px 14px; font-size:15px; font-weight:600;"><b>Lo que NO eres</b> · el tono que odias, las promesas que no haces</div>
+      <svg width="600" height="80" viewBox="0 0 600 80"><path d="M60 10 C260 10, 380 40, 560 44" fill="none" stroke="#9c9c9c" stroke-width="1.5" stroke-dasharray="6 5"></path><polygon points="580,44 556,34 558,54" fill="#9c9c9c"></polygon><text x="120" y="70" font-family="Archivo" font-size="15" font-weight="700" fill="#E03A2F">una tarde de trabajo, una sola vez</text></svg>
+      <div style="background:#F5BEC0; padding:14px 18px; font-size:17px; font-weight:700;">el 90% de la gente le pide cosas a Claude sin haberle contado nunca a qué se dedica.</div>
+      <div style="border:1.5px solid #F05A5A; padding:16px 18px; display:flex; flex-direction:column; gap:8px;">
+        <div style="font-size:13px; font-weight:700; color:#666; letter-spacing:1px;">CALIDAD DE LA RESPUESTA</div>
+        <div style="display:flex; align-items:flex-end; gap:18px; height:130px;">
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:5px; height:100%;">
+            <div style="font-family:'Archivo Black',sans-serif; font-size:16px;">3/10</div>
+            <div style="width:100%; height:32px; background:#c9c9c9;"></div>
+            <div style="font-size:12px; font-weight:700; text-align:center;">sin contexto</div>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:5px; height:100%;">
+            <div style="font-family:'Archivo Black',sans-serif; font-size:16px;">6/10</div>
+            <div style="width:100%; height:62px; background:#0C0C0C;"></div>
+            <div style="font-size:12px; font-weight:700; text-align:center;">con un prompt largo</div>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:5px; height:100%;">
+            <div style="font-family:'Archivo Black',sans-serif; font-size:16px; color:#E03A2F;">9/10</div>
+            <div style="width:100%; height:100px; background:#E03A2F;"></div>
+            <div style="font-size:12px; font-weight:700; text-align:center;">con el cerebro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1; min-width:0; display:flex; flex-direction:column; align-items:center;">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+        <div style="background:#E03A2F; color:#fff; font-size:13px; font-weight:700; padding:4px 12px; letter-spacing:1px;">EL CEREBRO</div>
+        <div style="width:250px; height:250px; border-radius:50%; background:#0C0C0C; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Claude_AI_symbol.svg?width=300" alt="Claude" style="width:96px; display:block;">
+          <div style="font-family:'Archivo Black',sans-serif; font-size:26px; color:#fff;">CLAUDE.md</div>
+          <div style="font-size:13px; color:#9a9a9a;">todo tu negocio, en 4K tokens</div>
+        </div>
+      </div>
+
+      <svg width="2280" height="180" viewBox="0 0 2280 180">
+        <path d="M1140 0 C1140 70, 500 60, 285 140" fill="none" stroke="#9c9c9c" stroke-width="1.5" stroke-dasharray="6 5"></path>
+        <path d="M1140 0 C1140 70, 950 80, 855 140" fill="none" stroke="#9c9c9c" stroke-width="1.5" stroke-dasharray="6 5"></path>
+        <path d="M1140 0 C1140 70, 1330 80, 1425 140" fill="none" stroke="#9c9c9c" stroke-width="1.5" stroke-dasharray="6 5"></path>
+        <path d="M1140 0 C1140 70, 1780 60, 1995 140" fill="none" stroke="#9c9c9c" stroke-width="1.5" stroke-dasharray="6 5"></path>
+        <polygon points="285,158 276,140 294,140" fill="#9c9c9c"></polygon>
+        <polygon points="855,158 846,140 864,140" fill="#9c9c9c"></polygon>
+        <polygon points="1425,158 1416,140 1434,140" fill="#9c9c9c"></polygon>
+        <polygon points="1995,158 1986,140 2004,140" fill="#9c9c9c"></polygon>
+        <text x="1160" y="46" font-family="Archivo" font-size="16" font-weight="700" fill="#E03A2F">el mismo contexto, cuatro trabajos distintos</text>
+      </svg>
+
+      <div style="display:flex; gap:40px; align-self:stretch; margin-top:-8px;">
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:12px;">
+          <div style="width:96px; height:96px; border-radius:50%; background:#D97757; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;">
+            <div style="font-size:26px;">▶</div>
+            <div style="font-size:12px; font-weight:700;">CONTENIDO</div>
+          </div>
+          <div style="width:100%; display:flex; flex-direction:column; gap:8px;">
+            <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">30 ideas al mes con tu ángulo, no genéricas</div>
+            <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">guion completo con hook, cuerpo y CTA</div>
+            <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">5 variantes del mismo reel para trial</div>
+            <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:9px 11px; font-size:14px; font-weight:600;">y el board para grabar detrás</div>
+          </div>
+          <div style="background:#0C0C0C; color:#fff; padding:8px 14px; font-family:'Archivo Black',sans-serif; font-size:18px;">6 h → 40 min</div>
+        </div>
+
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:12px;">
+          <div style="width:96px; height:96px; border-radius:50%; background:#D97757; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;">
+            <div style="font-size:26px;">$</div>
+            <div style="font-size:12px; font-weight:700;">OFERTA</div>
+          </div>
+          <div style="width:100%; display:flex; flex-direction:column; gap:8px;">
+            <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">reescribe la promesa con las palabras del cliente</div>
+            <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">detecta a quién le estás vendiendo mal</div>
+            <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">monta la escalera de garantías</div>
+            <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:9px 11px; font-size:14px; font-weight:600;">y te dice qué NO deberías ofrecer</div>
+          </div>
+          <div style="background:#0C0C0C; color:#fff; padding:8px 14px; font-family:'Archivo Black',sans-serif; font-size:18px;">+22% cierre</div>
+        </div>
+
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:12px;">
+          <div style="width:96px; height:96px; border-radius:50%; background:#D97757; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;">
+            <div style="font-size:26px;">◍</div>
+            <div style="font-size:12px; font-weight:700;">COMUNIDAD</div>
+          </div>
+          <div style="width:100%; display:flex; flex-direction:column; gap:8px;">
+            <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">responde dudas con TU criterio, no con el suyo</div>
+            <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">saca los dolores repetidos de las llamadas</div>
+            <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">convierte cada duda en un recurso</div>
+            <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:9px 11px; font-size:14px; font-weight:600;">y avisa de quién se te está yendo</div>
+          </div>
+          <div style="background:#0C0C0C; color:#fff; padding:8px 14px; font-family:'Archivo Black',sans-serif; font-size:18px;">churn −31%</div>
+        </div>
+
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:12px;">
+          <div style="width:96px; height:96px; border-radius:50%; background:#0C0C0C; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;">
+            <div style="font-size:26px;">✆</div>
+            <div style="font-size:12px; font-weight:700;">VENTAS</div>
+          </div>
+          <div style="width:100%; display:flex; flex-direction:column; gap:8px;">
+            <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">analiza cada llamada y pone nota al closer</div>
+            <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">la objeción que se repite 19 veces al mes</div>
+            <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">el guion de rebatida, con tus palabras</div>
+            <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:9px 11px; font-size:14px; font-weight:600;">y el informe del mes, solo</div>
+          </div>
+          <div style="background:#0C0C0C; color:#fff; padding:8px 14px; font-family:'Archivo Black',sans-serif; font-size:18px;">nota 5,8 → 8,1</div>
+        </div>
+      </div>
+
+      <svg width="2280" height="100" viewBox="0 0 2280 100" style="margin-top:14px;">
+        <path d="M285 4 L285 46 L1140 46 M855 4 L855 46 M1425 4 L1425 46 M1995 4 L1995 46 L1140 46 M1140 46 L1140 84" fill="none" stroke="#111" stroke-width="1.6"></path>
+        <polygon points="1140,92 1133,76 1147,76" fill="#111"></polygon>
+        <text x="1160" y="36" font-family="Archivo" font-size="15" font-weight="700" fill="#111">todo lo que aprende en una rama alimenta a las otras tres</text>
+      </svg>
+
+      <div style="align-self:stretch; background:#F5BEC0; padding:18px 24px; text-align:center;">
+        <div style="font-family:'Archivo Black',sans-serif; font-size:30px;">no son cuatro herramientas. es un empleado que ya sabe cómo funcionas.</div>
+      </div>
+    </div>
+
+    <div style="width:600px; flex:none; display:flex; flex-direction:column; gap:16px; padding-top:60px;">
+      <div style="background:#FFE95C; align-self:flex-start; padding:5px 12px; font-size:14px; font-weight:700; letter-spacing:.6px;">CÓMO SE MONTA EN UNA TARDE</div>
+      <div style="display:flex; gap:10px; align-items:flex-start;"><div style="width:26px; height:26px; background:#111; color:#fff; font-size:14px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none;">1</div><div style="font-size:15px; font-weight:600;">Carpeta <b>cerebro</b> en el escritorio y Claude Code abierto dentro.</div></div>
+      <div style="display:flex; gap:10px; align-items:flex-start;"><div style="width:26px; height:26px; background:#111; color:#fff; font-size:14px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none;">2</div><div style="font-size:15px; font-weight:600;">Sueltas dentro los 5 materiales de la izquierda. Tal cual, sin ordenar.</div></div>
+      <div style="display:flex; gap:10px; align-items:flex-start;"><div style="width:26px; height:26px; background:#111; color:#fff; font-size:14px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none;">3</div><div style="font-size:15px; font-weight:600;">Le pides que escriba el <b>CLAUDE.md</b>: quién eres, a quién sirves, cómo hablas, qué no haces.</div></div>
+      <div style="display:flex; gap:10px; align-items:flex-start;"><div style="width:26px; height:26px; background:#E03A2F; color:#fff; font-size:14px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none;">4</div><div style="font-size:15px; font-weight:600;">Una subcarpeta por rama. Cada nueva petición cae en la suya.</div></div>
+      <div style="background:#F5BEC0; padding:14px 18px;">
+        <div style="font-family:'Courier Prime',monospace; font-size:14px; line-height:1.5;">"Lee todo lo que hay en esta carpeta y escríbeme un CLAUDE.md que te sirva de contexto permanente: qué vendo, a quién, con qué palabras hablo, qué promesas no hago nunca y qué decisiones tomo yo y no tú. Pregúntame lo que te falte antes de escribirlo."</div>
+      </div>
+      <div style="border:1.5px solid #F05A5A; padding:14px 16px; font-size:15px; font-weight:700;">A partir de aquí no vuelves a explicarle tu negocio a nadie. Ni a Claude, ni a un empleado nuevo.</div>
+      <div style="border:1.5px solid #bdbdbd; background:#fff; padding:14px 16px;">
+        <div style="font-size:13px; font-weight:700; color:#666; letter-spacing:1px;">HORAS/SEMANA POR RAMA, ANTES → DESPUÉS</div>
+        <div style="display:flex; flex-direction:column; gap:9px; margin-top:10px;">
+          <div style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600;"><div style="width:100px;">Contenido</div><div style="flex:1; height:14px; background:#EDEDED;"><div style="width:76%; height:100%; background:#0C0C0C;"></div></div><div style="width:86px; text-align:right;">12 h → 3 h</div></div>
+          <div style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600;"><div style="width:100px;">Oferta</div><div style="flex:1; height:14px; background:#EDEDED;"><div style="width:40%; height:100%; background:#0C0C0C;"></div></div><div style="width:86px; text-align:right;">4 h → 1 h</div></div>
+          <div style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600;"><div style="width:100px;">Comunidad</div><div style="flex:1; height:14px; background:#EDEDED;"><div style="width:58%; height:100%; background:#0C0C0C;"></div></div><div style="width:86px; text-align:right;">8 h → 2 h</div></div>
+          <div style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600;"><div style="width:100px;">Ventas</div><div style="flex:1; height:14px; background:#EDEDED;"><div style="width:66%; height:100%; background:#E03A2F;"></div></div><div style="width:86px; text-align:right;">9 h → 0 h</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:1.5px; background:#C9C9C9; margin:46px 0 34px;"></div>
+
+  <div style="display:flex; gap:40px; align-items:stretch;">
+    <sc-if value="{{ mostrarCapturas }}" hint-placeholder-val="{{ true }}">
+    <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:12px;">
+      <div style="background:#FFE95C; align-self:flex-start; padding:5px 12px; font-size:14px; font-weight:700;">CADENA DE PRUEBA</div>
+      <div style="display:flex; gap:12px; align-items:center;">
+        <div style="flex:1; min-width:0;">
+          <div style="border:1.5px solid #F05A5A; padding:5px;"><image-slot id="cer-1" style="width:100%; height:260px;" shape="rect" placeholder="Captura · la carpeta cerebro y el CLAUDE.md"></image-slot></div>
+          <div style="font-size:13px; font-weight:700; margin-top:6px;">1 · el contexto, escrito una vez</div>
+        </div>
+        <svg width="56" height="40" viewBox="0 0 56 40" style="flex:none;"><path d="M2 20 L34 20" stroke="#E03A2F" stroke-width="2.5"></path><polygon points="52,20 32,12 32,28" fill="#E03A2F"></polygon></svg>
+        <div style="flex:1; min-width:0;">
+          <div style="border:1.5px solid #F05A5A; padding:5px;"><image-slot id="cer-2" style="width:100%; height:260px;" shape="rect" placeholder="Captura · una petición de la rama Contenido"></image-slot></div>
+          <div style="font-size:13px; font-weight:700; margin-top:6px;">2 · pides sin explicar nada</div>
+        </div>
+        <svg width="56" height="40" viewBox="0 0 56 40" style="flex:none;"><path d="M2 20 L34 20" stroke="#E03A2F" stroke-width="2.5"></path><polygon points="52,20 32,12 32,28" fill="#E03A2F"></polygon></svg>
+        <div style="flex:1; min-width:0;">
+          <div style="border:1.5px solid #F05A5A; padding:5px;"><image-slot id="cer-3" style="width:100%; height:260px;" shape="rect" placeholder="Captura · la respuesta con tu tono"></image-slot></div>
+          <div style="font-size:13px; font-weight:700; margin-top:6px;">3 · sale con tus palabras</div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <div style="width:1100px; flex:none; border:1.5px solid #F05A5A; padding:22px; display:flex; flex-direction:column; gap:14px;">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div style="font-family:'Archivo Black',sans-serif; font-size:28px;">LLÉVATE EL CEREBRO MONTADO</div>
+        <div style="background:#FFE95C; padding:4px 10px; font-size:13px; font-weight:700;">LEAD MAGNET</div>
+      </div>
+      <div style="display:flex; gap:18px; align-items:flex-start;">
+        <div style="flex:1; display:flex; flex-direction:column; gap:9px;">
+          <div style="border:1.5px solid #bdbdbd; background:#fff; padding:10px 12px; font-size:15px; font-weight:600;"><b>La plantilla de CLAUDE.md</b> · con los huecos que tienes que rellenar</div>
+          <div style="border:1.5px solid #bdbdbd; background:#fff; padding:10px 12px; font-size:15px; font-weight:600;"><b>Los 4 prompts</b> · uno por rama, listos para pegar</div>
+          <div style="border:1.5px solid #bdbdbd; background:#fff; padding:10px 12px; font-size:15px; font-weight:600;"><b>La checklist</b> · qué material subir y en qué orden</div>
+          <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:10px 12px; font-size:15px; font-weight:600;">La palabra es <span style="background:#FFE95C; padding:2px 8px;">calimero</span></div>
+        </div>
+        <sc-if value="{{ mostrarCapturas }}" hint-placeholder-val="{{ true }}">
+        <div style="width:400px; flex:none; border:1.5px solid #F05A5A; padding:5px;"><image-slot id="cer-lead" style="width:100%; height:230px;" shape="rect" placeholder="Captura · la plantilla que regalas"></image-slot></div>
+        </sc-if>
+      </div>
+      <div style="background:#fff; border:1.5px solid #bdbdbd; padding:14px 16px; display:flex; gap:14px; align-items:center;">
+        <div style="font-size:40px; line-height:.5; color:#E03A2F; font-family:'Archivo Black',sans-serif;">“</div>
+        <div style="flex:1;">
+          <div style="font-size:16px; font-weight:600;">Dejé de escribir prompts de tres párrafos. Ahora escribo cuatro palabras y sale con mi tono, porque ya sabe a qué me dedico.</div>
+          <div style="display:flex; align-items:center; gap:10px; margin-top:10px;">
+            <image-slot id="cer-avatar" style="width:56px; height:56px;" shape="circle" placeholder="foto"></image-slot>
+            <div><div style="font-weight:700; font-size:15px;">Marcos R.</div><div style="font-size:13px; color:#666;">infoproductor · 60k/mes</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mostrarCapturas&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estructura&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { mostrarCapturas: this.props.mostrarCapturas ?? true };
+  }
+}
+</script>
+</body>
+</html>

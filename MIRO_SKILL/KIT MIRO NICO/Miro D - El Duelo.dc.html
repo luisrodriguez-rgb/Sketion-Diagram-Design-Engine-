@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#EDEDED; }
+  a { color:#E03A2F; text-decoration:none; }
+  a:hover { color:#111; }
+</style>
+</helmet>
+
+<div style="width:3600px; background:#F4F4F4; padding:70px 70px 110px; box-sizing:border-box; font-family:Archivo, sans-serif; color:#111;">
+
+  <div style="display:flex; align-items:stretch; gap:0;">
+    <div style="flex:1; padding-right:40px; text-align:right;">
+      <div style="font-size:15px; font-weight:700; letter-spacing:3px; color:#8b8b8b;">LA SEMANA DEL QUE</div>
+      <div style="font-family:'Archivo Black',sans-serif; font-size:110px; line-height:.92; letter-spacing:-3px; color:#666;">IMPROVISA</div>
+    </div>
+    <div style="width:340px; flex:none; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Claude_AI_symbol.svg?width=300" alt="Claude" style="width:74px; display:block;">
+      <div style="font-family:'Archivo Black',sans-serif; font-size:52px; line-height:1;">VS</div>
+      <div style="font-size:14px; font-weight:700; letter-spacing:2px; color:#8b8b8b; text-align:center;">MISMO NICHO<br>MISMAS HORAS</div>
+    </div>
+    <div style="flex:1; padding-left:40px;">
+      <div style="font-size:15px; font-weight:700; letter-spacing:3px; color:#8b8b8b;">LA SEMANA DEL QUE TIENE</div>
+      <div style="font-family:'Archivo Black',sans-serif; font-size:110px; line-height:.92; letter-spacing:-3px; color:#E03A2F;">SISTEMA</div>
+    </div>
+  </div>
+
+  <div style="display:flex; align-items:center; justify-content:center; gap:20px; margin-top:26px;">
+    <div style="height:1.5px; background:#C9C9C9; flex:1;"></div>
+    <div style="background:#0C0C0C; color:#fff; padding:10px 20px; font-size:17px; font-weight:700;">los dos publican. los dos venden. solo uno puede repetirlo el mes que viene.</div>
+    <div style="height:1.5px; background:#C9C9C9; flex:1;"></div>
+  </div>
+
+  <div style="position:relative; display:grid; grid-template-columns:1fr 340px 1fr; column-gap:40px; row-gap:14px; align-items:stretch; margin-top:40px;">
+    <div style="position:absolute; top:0; bottom:0; left:50%; width:3px; background:#111; transform:translateX(-50%);"></div>
+    <div style="background:#EDEDED; border:1.5px solid #bdbdbd; padding:12px 16px; text-align:right; font-size:14px; font-weight:700; letter-spacing:1px; color:#666;">LO QUE PASA A LA IZQUIERDA</div>
+    <div style="background:#0C0C0C; color:#fff; padding:12px 10px; font-size:15px; font-weight:700; text-align:center; display:flex; align-items:center; justify-content:center;">EL MISMO PROBLEMA</div>
+    <div style="background:#FDEFEF; border:1.5px solid #F05A5A; padding:12px 16px; font-size:14px; font-weight:700; letter-spacing:1px; color:#E03A2F;">LO QUE PASA A LA DERECHA</div>
+    <div style="border:1.5px solid #bdbdbd; background:#fff; padding:14px 16px; text-align:right; display:flex; flex-direction:column; justify-content:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:22px; color:#666;">"¿de qué hablo hoy?"</div><div style="font-size:15px; font-weight:600; color:#555;">40 min mirando el móvil antes de escribir una línea</div></div>
+    <div style="background:#FFE95C; padding:12px 10px; font-size:16px; font-weight:700; text-align:center; display:flex; align-items:center; justify-content:center;">DE QUÉ HABLO</div>
+    <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:14px 16px; display:flex; flex-direction:column; justify-content:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:22px;">30 ideas decididas el día 1</div><div style="font-size:15px; font-weight:600; color:#555;">sacadas de los dolores que dijeron sus clientes en llamada</div></div>
+    <div style="border:1.5px solid #bdbdbd; background:#fff; padding:14px 16px; text-align:right; display:flex; flex-direction:column; justify-content:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:22px; color:#666;">grabo cuando me apetece</div><div style="font-size:15px; font-weight:600; color:#555;">tres días seguidos y luego dos semanas sin aparecer</div></div>
+    <div style="background:#FFE95C; padding:12px 10px; font-size:16px; font-weight:700; text-align:center; display:flex; align-items:center; justify-content:center;">CUÁNDO GRABO</div>
+    <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:14px 16px; display:flex; flex-direction:column; justify-content:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:22px;">una tarde al mes, todo</div><div style="font-size:15px; font-weight:600; color:#555;">y el calendario publica solo mientras él vende</div></div>
+    <div style="border:1.5px solid #bdbdbd; background:#fff; padding:14px 16px; text-align:right; display:flex; flex-direction:column; justify-content:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:22px; color:#666;">la llamada se queda en Fathom</div><div style="font-size:15px; font-weight:600; color:#555;">nadie la escucha, nadie aprende nada de ella</div></div>
+    <div style="background:#FFE95C; padding:12px 10px; font-size:16px; font-weight:700; text-align:center; display:flex; align-items:center; justify-content:center;">LAS LLAMADAS</div>
+    <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:14px 16px; display:flex; flex-direction:column; justify-content:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:22px;">cada llamada vuelve como informe</div><div style="font-size:15px; font-weight:600; color:#555;">con la objeción, el error y la nota, en el móvil, en 5 min</div></div>
+    <div style="border:1.5px solid #bdbdbd; background:#fff; padding:14px 16px; text-align:right; display:flex; flex-direction:column; justify-content:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:22px; color:#666;">le explico a la IA quién soy</div><div style="font-size:15px; font-weight:600; color:#555;">otra vez, en cada chat, con un prompt de tres párrafos</div></div>
+    <div style="background:#FFE95C; padding:12px 10px; font-size:16px; font-weight:700; text-align:center; display:flex; align-items:center; justify-content:center;">EL CONTEXTO</div>
+    <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:14px 16px; display:flex; flex-direction:column; justify-content:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:22px;">el contexto está escrito una vez</div><div style="font-size:15px; font-weight:600; color:#555;">pide en cuatro palabras y sale con su tono</div></div>
+    <div style="border:1.5px solid #bdbdbd; background:#fff; padding:14px 16px; text-align:right; display:flex; flex-direction:column; justify-content:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:22px; color:#666;">bajo el precio para cerrar</div><div style="font-size:15px; font-weight:600; color:#555;">y el cliente que entra barato se va en dos meses</div></div>
+    <div style="background:#FFE95C; padding:12px 10px; font-size:16px; font-weight:700; text-align:center; display:flex; align-items:center; justify-content:center;">EL PRECIO</div>
+    <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:14px 16px; display:flex; flex-direction:column; justify-content:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:22px;">sube el valor, no baja el precio</div><div style="font-size:15px; font-weight:600; color:#555;">porque sabe qué objeción se repite 19 veces al mes</div></div>
+    <div style="border:1.5px solid #bdbdbd; background:#fff; padding:14px 16px; text-align:right; display:flex; flex-direction:column; justify-content:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:22px; color:#666;">"este mes ha ido mejor"</div><div style="font-size:15px; font-weight:600; color:#555;">sin saber por qué, así que no lo puede repetir</div></div>
+    <div style="background:#FFE95C; padding:12px 10px; font-size:16px; font-weight:700; text-align:center; display:flex; align-items:center; justify-content:center;">EL BALANCE</div>
+    <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:14px 16px; display:flex; flex-direction:column; justify-content:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:22px;">"ha ido mejor por esto"</div><div style="font-size:15px; font-weight:600; color:#555;">informe mensual agregado: sabe qué repetir y qué cortar</div></div>
+    <div style="border:1.5px solid #bdbdbd; background:#fff; padding:16px; text-align:right;">
+      <div style="font-size:13px; font-weight:700; color:#666; letter-spacing:1px;">SU SEMANA</div>
+      <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-top:10px;">
+        <div style="text-align:center; font-size:12px; font-weight:700;">L</div><div style="text-align:center; font-size:12px; font-weight:700;">M</div><div style="text-align:center; font-size:12px; font-weight:700;">X</div><div style="text-align:center; font-size:12px; font-weight:700;">J</div><div style="text-align:center; font-size:12px; font-weight:700;">V</div><div style="text-align:center; font-size:12px; font-weight:700;">S</div><div style="text-align:center; font-size:12px; font-weight:700;">D</div>
+        <div style="height:40px; background:#c9c9c9;"></div><div style="height:40px; background:#EDEDED; border:1.5px dashed #bdbdbd;"></div><div style="height:40px; background:#c9c9c9;"></div><div style="height:40px; background:#EDEDED; border:1.5px dashed #bdbdbd;"></div><div style="height:40px; background:#EDEDED; border:1.5px dashed #bdbdbd;"></div><div style="height:40px; background:#EDEDED; border:1.5px dashed #bdbdbd;"></div><div style="height:40px; background:#EDEDED; border:1.5px dashed #bdbdbd;"></div>
+      </div>
+      <div style="font-size:14px; font-weight:600; color:#555; margin-top:10px;">2 piezas publicadas · 5 días en blanco</div>
+    </div>
+    <div style="background:#0C0C0C; color:#fff; padding:12px 10px; font-size:15px; font-weight:700; text-align:center; display:flex; align-items:center; justify-content:center;">LA SEMANA</div>
+    <div style="border:1.5px solid #F05A5A; background:#fff; padding:16px; text-align:left;">
+      <div style="font-size:13px; font-weight:700; color:#666; letter-spacing:1px;">SU SEMANA</div>
+      <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-top:10px;">
+        <div style="text-align:center; font-size:12px; font-weight:700;">L</div><div style="text-align:center; font-size:12px; font-weight:700;">M</div><div style="text-align:center; font-size:12px; font-weight:700;">X</div><div style="text-align:center; font-size:12px; font-weight:700;">J</div><div style="text-align:center; font-size:12px; font-weight:700;">V</div><div style="text-align:center; font-size:12px; font-weight:700;">S</div><div style="text-align:center; font-size:12px; font-weight:700;">D</div>
+        <div style="height:40px; background:#F5BEC0;"></div><div style="height:40px; background:#F5BEC0;"></div><div style="height:40px; background:#F5BEC0;"></div><div style="height:40px; background:#F5BEC0;"></div><div style="height:40px; background:#F5BEC0;"></div><div style="height:40px; background:#E03A2F;"></div><div style="height:40px; background:#F5BEC0;"></div>
+      </div>
+      <div style="font-size:14px; font-weight:600; color:#555; margin-top:10px;">7 piezas publicadas · 0 días en blanco · 0 decisiones</div>
+    </div>
+    <div style="display:flex; gap:12px; justify-content:flex-end; align-items:center;"><div style="border:1.5px solid #bdbdbd; background:#fff; padding:12px 16px;"><div style="font-size:12px; font-weight:700; color:#666;">HORAS/SEMANA</div><div style="font-family:'Archivo Black',sans-serif; font-size:30px; color:#666;">31 h</div></div><div style="border:1.5px solid #bdbdbd; background:#fff; padding:12px 16px;"><div style="font-size:12px; font-weight:700; color:#666;">PIEZAS/MES</div><div style="font-family:'Archivo Black',sans-serif; font-size:30px; color:#666;">9</div></div><div style="border:1.5px solid #bdbdbd; background:#fff; padding:12px 16px;"><div style="font-size:12px; font-weight:700; color:#666;">CIERRE</div><div style="font-family:'Archivo Black',sans-serif; font-size:30px; color:#666;">14%</div></div></div>
+    <div style="background:#0C0C0C; color:#fff; padding:12px 10px; font-size:15px; font-weight:700; text-align:center; display:flex; align-items:center; justify-content:center;">EL MARCADOR</div>
+    <div style="display:flex; gap:12px; align-items:center;"><div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:12px 16px;"><div style="font-size:12px; font-weight:700; color:#666;">HORAS/SEMANA</div><div style="font-family:'Archivo Black',sans-serif; font-size:30px; color:#E03A2F;">13 h</div></div><div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:12px 16px;"><div style="font-size:12px; font-weight:700; color:#666;">PIEZAS/MES</div><div style="font-family:'Archivo Black',sans-serif; font-size:30px; color:#E03A2F;">30</div></div><div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:12px 16px;"><div style="font-size:12px; font-weight:700; color:#666;">CIERRE</div><div style="font-family:'Archivo Black',sans-serif; font-size:30px; color:#E03A2F;">31%</div></div></div>
+  </div>
+
+  <div style="height:1.5px; background:#C9C9C9; margin:44px 0 34px;"></div>
+
+  <div style="display:flex; gap:40px; align-items:stretch;">
+    <div style="width:1500px; flex:none; border:1.5px solid #F05A5A; padding:24px; display:flex; flex-direction:column; gap:16px;">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div style="font-family:'Archivo Black',sans-serif; font-size:32px;">LA ÚNICA DIFERENCIA REAL</div>
+        <div style="background:#FFE95C; padding:4px 10px; font-size:13px; font-weight:700;">NO ES TRABAJAR MÁS</div>
+      </div>
+      <div style="display:flex; gap:18px; align-items:flex-end; height:280px;">
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:8px; height:100%;">
+          <div style="font-family:'Archivo Black',sans-serif; font-size:22px; color:#666;">124</div>
+          <div style="width:100%; height:210px; background:#c9c9c9;"></div>
+          <div style="font-size:14px; font-weight:700; text-align:center;">decisiones al mes<br>improvisando</div>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:8px; height:100%;">
+          <div style="font-family:'Archivo Black',sans-serif; font-size:22px; color:#E03A2F;">6</div>
+          <div style="width:100%; height:14px; background:#E03A2F;"></div>
+          <div style="font-size:14px; font-weight:700; text-align:center;">decisiones al mes<br>con sistema</div>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:8px; height:100%;">
+          <div style="font-family:'Archivo Black',sans-serif; font-size:22px;">18 h</div>
+          <div style="width:100%; height:120px; background:#0C0C0C;"></div>
+          <div style="font-size:14px; font-weight:700; text-align:center;">lo que recupera<br>a la semana</div>
+        </div>
+      </div>
+      <div style="background:#F5BEC0; padding:14px 18px; font-size:18px; font-weight:700;">el que improvisa no tiene menos talento: tiene que decidirlo todo cada día.</div>
+    </div>
+
+    <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:16px;">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div style="background:#FFE95C; padding:5px 12px; font-size:14px; font-weight:700;">CÓMO SE CAMBIA DE LADO</div>
+        <div style="font-size:15px; font-weight:600; color:#555;">cuatro cosas, en este orden, y ya estás a la derecha</div>
+      </div>
+      <div style="display:flex; gap:12px;">
+        <div style="flex:1; border:1.5px solid #bdbdbd; background:#fff; padding:14px;">
+          <div style="width:30px; height:30px; background:#111; color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center;">1</div>
+          <div style="font-family:'Archivo Black',sans-serif; font-size:19px; margin-top:8px;">Escribe el contexto</div>
+          <div style="font-size:14px; font-weight:600; color:#555;">un CLAUDE.md con quién eres y qué no haces</div>
+        </div>
+        <div style="flex:1; border:1.5px solid #bdbdbd; background:#fff; padding:14px;">
+          <div style="width:30px; height:30px; background:#111; color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center;">2</div>
+          <div style="font-family:'Archivo Black',sans-serif; font-size:19px; margin-top:8px;">Decide el mes el día 1</div>
+          <div style="font-size:14px; font-weight:600; color:#555;">30 ideas de una tacada, no una al día</div>
+        </div>
+        <div style="flex:1; border:1.5px solid #bdbdbd; background:#fff; padding:14px;">
+          <div style="width:30px; height:30px; background:#111; color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center;">3</div>
+          <div style="font-family:'Archivo Black',sans-serif; font-size:19px; margin-top:8px;">Automatiza las llamadas</div>
+          <div style="font-size:14px; font-weight:600; color:#555;">que vuelvan como informe al móvil</div>
+        </div>
+        <div style="flex:1; border:1.5px solid #F05A5A; background:#FDEFEF; padding:14px;">
+          <div style="width:30px; height:30px; background:#E03A2F; color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center;">4</div>
+          <div style="font-family:'Archivo Black',sans-serif; font-size:19px; margin-top:8px;">Mide una vez al mes</div>
+          <div style="font-size:14px; font-weight:600; color:#555;">y cambia una sola cosa, no cinco</div>
+        </div>
+      </div>
+
+      <sc-if value="{{ mostrarCapturas }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; gap:12px; align-items:center; flex:1;">
+        <div style="flex:1; min-width:0;">
+          <div style="border:1.5px solid #bdbdbd; padding:5px; background:#fff;"><image-slot id="duel-antes" style="width:100%; height:240px;" shape="rect" placeholder="Captura · el ANTES (calendario vacío, notas sueltas)"></image-slot></div>
+          <div style="font-size:13px; font-weight:700; margin-top:6px; color:#666;">ANTES</div>
+        </div>
+        <svg width="60" height="40" viewBox="0 0 60 40" style="flex:none;"><path d="M2 20 L38 20" stroke="#E03A2F" stroke-width="3"></path><polygon points="56,20 36,11 36,29" fill="#E03A2F"></polygon></svg>
+        <div style="flex:1; min-width:0;">
+          <div style="border:1.5px solid #F05A5A; padding:5px; background:#fff;"><image-slot id="duel-despues" style="width:100%; height:240px;" shape="rect" placeholder="Captura · el DESPUÉS (calendario lleno, informes)"></image-slot></div>
+          <div style="font-size:13px; font-weight:700; margin-top:6px; color:#E03A2F;">DESPUÉS</div>
+        </div>
+      </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:40px; align-items:stretch; margin-top:34px;">
+    <div style="flex:1; border:1.5px solid #F05A5A; padding:22px; display:flex; gap:22px; align-items:flex-start;">
+      <div style="flex:1; display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div style="font-family:'Archivo Black',sans-serif; font-size:28px;">PÁSATE DE LADO ESTA SEMANA</div>
+          <div style="background:#FFE95C; padding:4px 10px; font-size:13px; font-weight:700;">LEAD MAGNET</div>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <div style="flex:1; border:1.5px solid #bdbdbd; background:#fff; padding:10px 12px; font-size:14px; font-weight:600;"><b>La plantilla de contexto</b></div>
+          <div style="flex:1; border:1.5px solid #bdbdbd; background:#fff; padding:10px 12px; font-size:14px; font-weight:600;"><b>El prompt de las 30 ideas</b></div>
+          <div style="flex:1; border:1.5px solid #bdbdbd; background:#fff; padding:10px 12px; font-size:14px; font-weight:600;"><b>El sistema de llamadas</b></div>
+          <div style="flex:1; border:1.5px solid #F05A5A; background:#FDEFEF; padding:10px 12px; font-size:14px; font-weight:600;">La palabra es <span style="background:#FFE95C; padding:2px 6px;">calimero</span></div>
+        </div>
+        <div style="background:#fff; border:1.5px solid #bdbdbd; padding:14px 16px; display:flex; gap:14px; align-items:center;">
+          <div style="font-size:40px; line-height:.5; color:#E03A2F; font-family:'Archivo Black',sans-serif;">“</div>
+          <div style="flex:1;">
+            <div style="font-size:16px; font-weight:600;">Estaba en la columna de la izquierda y no lo sabía. Cambié el orden, no la cantidad de trabajo, y en un mes publiqué más que en el trimestre anterior.</div>
+            <div style="display:flex; align-items:center; gap:10px; margin-top:10px;">
+              <image-slot id="duel-avatar" style="width:56px; height:56px;" shape="circle" placeholder="foto"></image-slot>
+              <div><div style="font-weight:700; font-size:15px;">Nacho B.</div><div style="font-size:13px; color:#666;">infoproductor · 25k/mes</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <sc-if value="{{ mostrarCapturas }}" hint-placeholder-val="{{ true }}">
+      <div style="width:420px; flex:none; border:1.5px solid #F05A5A; padding:5px;"><image-slot id="duel-lead" style="width:100%; height:250px;" shape="rect" placeholder="Captura · el pack que regalas"></image-slot></div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mostrarCapturas&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estructura&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { mostrarCapturas: this.props.mostrarCapturas ?? true };
+  }
+}
+</script>
+</body>
+</html>

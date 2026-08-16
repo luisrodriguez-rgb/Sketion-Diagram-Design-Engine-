@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#EDEDED; }
+  a { color:#E03A2F; text-decoration:none; }
+  a:hover { color:#111; }
+</style>
+</helmet>
+
+<div style="width:3600px; background:#F4F4F4; padding:70px 70px 110px; box-sizing:border-box; font-family:Archivo, sans-serif; color:#111;">
+
+  <div style="display:flex; align-items:flex-end; gap:44px;">
+    <div>
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:12px;">
+        <div style="background:#0C0C0C; color:#fff; font-size:14px; font-weight:700; letter-spacing:2px; padding:6px 14px;">PROCESO · 5 PASOS</div>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Claude_AI_logo.svg?width=900" alt="Claude" style="width:190px; display:block;">
+      </div>
+      <div style="font-family:'Archivo Black',sans-serif; font-size:108px; line-height:.92; letter-spacing:-3px;">30 REELS EN 30 DÍAS<br>SIN SENTARTE A PENSAR</div>
+      <div style="font-family:'Archivo Black',sans-serif; font-size:48px; letter-spacing:-1.2px; color:#E03A2F; margin-top:12px;">una sola tarde al mes, cinco pasos, y el calendario lleno</div>
+    </div>
+
+    <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:12px; padding-bottom:8px;">
+      <div style="background:#F5BEC0; padding:14px 18px; font-size:19px; font-weight:700; line-height:1.3;">El problema nunca fue grabar. Era decidir cada mañana de qué hablar.</div>
+      <div style="border:1.5px solid #bdbdbd; background:#fff; padding:12px 14px;">
+        <div style="font-size:12px; font-weight:700; color:#666; letter-spacing:1px;">DECISIONES QUE TOMAS AL MES</div>
+        <div style="display:flex; align-items:flex-end; gap:14px; height:96px; margin-top:8px;">
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:4px; height:100%;">
+            <div style="font-family:'Archivo Black',sans-serif; font-size:16px;">30</div>
+            <div style="width:100%; height:66px; background:#0C0C0C;"></div>
+            <div style="font-size:11px; font-weight:700;">antes</div>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:4px; height:100%;">
+            <div style="font-family:'Archivo Black',sans-serif; font-size:16px; color:#E03A2F;">1</div>
+            <div style="width:100%; height:8px; background:#E03A2F;"></div>
+            <div style="font-size:11px; font-weight:700;">ahora</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:1180px; flex:none; display:flex; flex-direction:column; gap:14px;">
+      <div style="font-size:13px; font-weight:700; color:#666; letter-spacing:1.4px;">EL MES ENTERO, PUBLICADO</div>
+      <div style="display:grid; grid-template-columns:repeat(15,1fr); gap:6px;">
+        <div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#E03A2F;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#E03A2F;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div>
+        <div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#E03A2F;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#E03A2F;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div><div style="height:34px; background:#0C0C0C;"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; font-size:14px; font-weight:700;"><span><span style="color:#E03A2F;">■</span> los 4 que se salieron de madre</span><span style="color:#666;">·</span><span>1,2 M de views en el mes*</span></div>
+      <div style="display:flex; gap:12px;">
+        <div style="flex:1; background:#0C0C0C; color:#fff; padding:12px 16px;"><div style="font-size:12px; color:#9a9a9a;">TIEMPO TOTAL</div><div style="font-family:'Archivo Black',sans-serif; font-size:26px;">4 h/mes</div></div>
+        <div style="flex:1; background:#0C0C0C; color:#fff; padding:12px 16px;"><div style="font-size:12px; color:#9a9a9a;">POR REEL</div><div style="font-family:'Archivo Black',sans-serif; font-size:26px;">8 min</div></div>
+        <div style="flex:1; background:#0C0C0C; color:#fff; padding:12px 16px; border:2px solid #E03A2F;"><div style="font-size:12px; color:#9a9a9a;">DÍAS EN BLANCO</div><div style="font-family:'Archivo Black',sans-serif; font-size:26px;">0</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:3px; background:#111; margin:40px 0 20px;"></div>
+
+  <div style="display:flex; align-items:center; gap:18px; margin-bottom:8px;">
+    <div style="background:#FFE95C; padding:5px 14px; font-size:14px; font-weight:700; letter-spacing:.6px;">EL RECORRIDO · SIGUE LA LÍNEA</div>
+    <div style="font-size:16px; font-weight:600; color:#555;">cada paso sale del anterior; si te saltas uno, el siguiente te cuesta el triple.</div>
+  </div>
+
+  <div style="position:relative; height:1180px;">
+    <svg width="3460" height="1180" viewBox="0 0 3460 1180" style="position:absolute; inset:0;">
+      <path d="M346 300 C560 120, 830 120, 1038 660" fill="none" stroke="#9c9c9c" stroke-width="2" stroke-dasharray="8 6"></path>
+      <path d="M1038 760 C1250 1000, 1520 480, 1730 300" fill="none" stroke="#9c9c9c" stroke-width="2" stroke-dasharray="8 6"></path>
+      <path d="M1730 360 C1940 560, 2210 340, 2422 660" fill="none" stroke="#9c9c9c" stroke-width="2" stroke-dasharray="8 6"></path>
+      <path d="M2422 760 C2640 1000, 2900 480, 3114 300" fill="none" stroke="#9c9c9c" stroke-width="2" stroke-dasharray="8 6"></path>
+      <polygon points="1038,676 1026,650 1050,650" fill="#9c9c9c"></polygon>
+      <polygon points="1730,286 1718,312 1742,312" fill="#9c9c9c"></polygon>
+      <polygon points="2422,676 2410,650 2434,650" fill="#9c9c9c"></polygon>
+      <polygon points="3114,286 3102,312 3126,312" fill="#9c9c9c"></polygon>
+      <text x="640" y="196" font-family="Archivo" font-size="17" font-weight="700" fill="#E03A2F">30 ideas → 30 hooks</text>
+      <text x="1300" y="700" font-family="Archivo" font-size="17" font-weight="700" fill="#E03A2F">el guion ya trae el plano</text>
+      <text x="2020" y="452" font-family="Archivo" font-size="17" font-weight="700" fill="#E03A2F">todo en una sola tarde</text>
+      <text x="2690" y="700" font-family="Archivo" font-size="17" font-weight="700" fill="#E03A2F">gana el que aguanta 3 s</text>
+    </svg>
+
+    <div style="position:absolute; left:36px; top:236px; width:620px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+      <div style="width:120px; height:120px; border-radius:50%; background:#0C0C0C; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <div style="font-family:'Archivo Black',sans-serif; font-size:44px; line-height:1;">1</div>
+        <div style="font-size:12px; font-weight:700; letter-spacing:1px;">IDEAS</div>
+      </div>
+      <div style="background:#FFE95C; padding:4px 12px; font-size:13px; font-weight:700;">DOMINGO · 45 MIN</div>
+      <div style="width:100%; display:flex; flex-direction:column; gap:8px;">
+        <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">Claude lee tus 20 mejores piezas y saca el patrón</div>
+        <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">30 ideas atadas a un solo mensaje de marca</div>
+        <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">cada idea nace de un dolor dicho en una llamada</div>
+        <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:9px 11px; font-size:14px; font-weight:600;">se descartan las que no llevan a tu oferta</div>
+      </div>
+      <div style="width:100%; border:1.5px solid #bdbdbd; background:#fff; padding:10px 12px;">
+        <div style="font-size:12px; font-weight:700; color:#666; letter-spacing:1px;">DE DÓNDE SALEN</div>
+        <div style="display:flex; flex-direction:column; gap:6px; margin-top:8px;">
+          <div style="display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600;"><div style="width:96px;">llamadas</div><div style="flex:1; height:12px; background:#EDEDED;"><div style="width:64%; height:100%; background:#0C0C0C;"></div></div><div>19</div></div>
+          <div style="display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600;"><div style="width:96px;">comentarios</div><div style="flex:1; height:12px; background:#EDEDED;"><div style="width:26%; height:100%; background:#0C0C0C;"></div></div><div>8</div></div>
+          <div style="display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600;"><div style="width:96px;">tu cabeza</div><div style="flex:1; height:12px; background:#EDEDED;"><div style="width:10%; height:100%; background:#E03A2F;"></div></div><div>3</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:absolute; left:728px; top:696px; width:620px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+      <div style="width:120px; height:120px; border-radius:50%; background:#0C0C0C; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <div style="font-family:'Archivo Black',sans-serif; font-size:44px; line-height:1;">2</div>
+        <div style="font-size:12px; font-weight:700; letter-spacing:1px;">GUION</div>
+      </div>
+      <div style="background:#FFE95C; padding:4px 12px; font-size:13px; font-weight:700;">MISMA TARDE · 1 H</div>
+      <div style="width:100%; display:flex; flex-direction:column; gap:8px;">
+        <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">hook en 3 segundos, cuerpo en 4 frases, CTA</div>
+        <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">escrito con tus muletillas, no con las de la IA</div>
+        <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:9px 11px; font-size:14px; font-weight:600;">si no cabe en 40 segundos, se parte en dos</div>
+      </div>
+      <div style="width:100%; background:#F5BEC0; padding:12px 14px; font-family:'Courier Prime',monospace; font-size:14px; font-weight:700;">"dame 3 hooks distintos para esta idea y márcame cuál es el más agresivo"</div>
+      <div style="width:100%; border:1.5px solid #bdbdbd; background:#fff; padding:10px 12px; display:flex; gap:10px; align-items:center;">
+        <div style="font-family:'Archivo Black',sans-serif; font-size:30px;">8 min</div>
+        <div style="font-size:13px; font-weight:600; color:#555;">de idea a guion cerrado, listo para grabar</div>
+      </div>
+    </div>
+
+    <div style="position:absolute; left:1420px; top:236px; width:620px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+      <div style="width:120px; height:120px; border-radius:50%; background:#0C0C0C; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <div style="font-family:'Archivo Black',sans-serif; font-size:44px; line-height:1;">3</div>
+        <div style="font-size:12px; font-weight:700; letter-spacing:1px;">GRABAS</div>
+      </div>
+      <div style="background:#FFE95C; padding:4px 12px; font-size:13px; font-weight:700;">UNA TARDE AL MES · 2 H</div>
+      <div style="width:100%; display:flex; flex-direction:column; gap:8px;">
+        <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">misma camiseta, mismo sitio, seguido</div>
+        <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">el board detrás hace de guion y de decorado</div>
+        <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">una toma por reel: si sale mal, siguiente</div>
+        <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:9px 11px; font-size:14px; font-weight:600;">prohibido repetir más de dos veces</div>
+      </div>
+      <sc-if value="{{ mostrarCapturas }}" hint-placeholder-val="{{ true }}">
+      <div style="width:100%; border:1.5px solid #F05A5A; padding:5px;"><image-slot id="ser-graba" style="width:100%; height:210px;" shape="rect" placeholder="Captura · el set de grabación con el board detrás"></image-slot></div>
+      </sc-if>
+    </div>
+
+    <div style="position:absolute; left:2112px; top:696px; width:620px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+      <div style="width:120px; height:120px; border-radius:50%; background:#0C0C0C; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <div style="font-family:'Archivo Black',sans-serif; font-size:44px; line-height:1;">4</div>
+        <div style="font-size:12px; font-weight:700; letter-spacing:1px;">PUBLICAS</div>
+      </div>
+      <div style="background:#FFE95C; padding:4px 12px; font-size:13px; font-weight:700;">EN AUTOMÁTICO · 0 MIN/DÍA</div>
+      <div style="width:100%; display:flex; flex-direction:column; gap:8px;">
+        <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">1 reel al día a la misma hora</div>
+        <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">copy y tapa generados con el guion</div>
+        <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:9px 11px; font-size:14px; font-weight:600;">no publicas nada que no puedas repetir 30 veces</div>
+      </div>
+      <div style="width:100%; border:1.5px solid #bdbdbd; background:#fff; padding:10px 12px;">
+        <div style="font-size:12px; font-weight:700; color:#666; letter-spacing:1px;">CONSTANCIA vs VIRALIDAD</div>
+        <svg width="100%" height="90" viewBox="0 0 560 90" preserveAspectRatio="none" style="margin-top:6px;">
+          <polyline points="10,80 100,74 190,66 280,56 370,44 460,30 550,16" fill="none" stroke="#0C0C0C" stroke-width="4"></polyline>
+          <polyline points="10,84 100,20 190,84 280,84 370,60 460,84 550,84" fill="none" stroke="#E03A2F" stroke-width="4" stroke-dasharray="8 6"></polyline>
+        </svg>
+        <div style="font-size:13px; font-weight:600; color:#555;">la línea negra es la que paga las facturas</div>
+      </div>
+    </div>
+
+    <div style="position:absolute; left:2804px; top:236px; width:620px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+      <div style="width:120px; height:120px; border-radius:50%; background:#E03A2F; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <div style="font-family:'Archivo Black',sans-serif; font-size:44px; line-height:1;">5</div>
+        <div style="font-size:12px; font-weight:700; letter-spacing:1px;">TRIAL</div>
+      </div>
+      <div style="background:#FFE95C; padding:4px 12px; font-size:13px; font-weight:700;">EL PASO QUE NADIE DA</div>
+      <div style="width:100%; display:flex; flex-direction:column; gap:8px;">
+        <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">5 versiones del mismo guion, solo cambia el hook</div>
+        <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">salen como trial, sin ensuciar el feed</div>
+        <div style="border:1.5px solid #bdbdbd; background:#fff; padding:9px 11px; font-size:14px; font-weight:600;">el que gana pasa al perfil principal</div>
+        <div style="border:1.5px solid #F05A5A; background:#FDEFEF; padding:9px 11px; font-size:14px; font-weight:600;">y su hook se convierte en plantilla del mes</div>
+      </div>
+      <div style="width:100%; display:flex; gap:8px;">
+        <div style="flex:1; border:1.5px solid #bdbdbd; background:#fff; padding:8px; text-align:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:19px;">4 K</div><div style="font-size:11px; font-weight:700; color:#666;">v1</div></div>
+        <div style="flex:1; border:1.5px solid #bdbdbd; background:#fff; padding:8px; text-align:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:19px;">11 K</div><div style="font-size:11px; font-weight:700; color:#666;">v2</div></div>
+        <div style="flex:1; border:1.5px solid #F05A5A; background:#FDEFEF; padding:8px; text-align:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:19px; color:#E03A2F;">86 K</div><div style="font-size:11px; font-weight:700; color:#666;">v3 ✓</div></div>
+        <div style="flex:1; border:1.5px solid #bdbdbd; background:#fff; padding:8px; text-align:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:19px;">7 K</div><div style="font-size:11px; font-weight:700; color:#666;">v4</div></div>
+        <div style="flex:1; border:1.5px solid #bdbdbd; background:#fff; padding:8px; text-align:center;"><div style="font-family:'Archivo Black',sans-serif; font-size:19px;">2 K</div><div style="font-size:11px; font-weight:700; color:#666;">v5</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:1.5px; background:#C9C9C9; margin:0 0 34px;"></div>
+
+  <div style="display:flex; gap:40px; align-items:stretch;">
+    <div style="width:1300px; flex:none; border:1.5px solid #F05A5A; padding:22px; display:flex; flex-direction:column; gap:14px;">
+      <div style="font-family:'Archivo Black',sans-serif; font-size:30px;">LO QUE SE ROMPE SI TE SALTAS UN PASO</div>
+      <div style="height:1.5px; background:#D8D8D8;"></div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; gap:12px; align-items:center;"><div style="width:34px; height:34px; background:#0C0C0C; color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none;">1</div><div style="font-size:15px; font-weight:600;">Sin ideas en bloque → cada día decides de qué hablar. Ahí muere la constancia.</div></div>
+        <div style="display:flex; gap:12px; align-items:center;"><div style="width:34px; height:34px; background:#0C0C0C; color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none;">2</div><div style="font-size:15px; font-weight:600;">Sin guion → grabas cinco tomas y odias el proceso.</div></div>
+        <div style="display:flex; gap:12px; align-items:center;"><div style="width:34px; height:34px; background:#0C0C0C; color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none;">3</div><div style="font-size:15px; font-weight:600;">Sin tarde de grabación → publicas 4 días y desapareces 10.</div></div>
+        <div style="display:flex; gap:12px; align-items:center;"><div style="width:34px; height:34px; background:#E03A2F; color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none;">5</div><div style="font-size:15px; font-weight:600;">Sin trial → publicas a ciegas y no aprendes qué hook funciona.</div></div>
+      </div>
+      <div style="background:#F5BEC0; padding:12px 16px; font-size:16px; font-weight:700;">el sistema no es grabar más: es no volver a tomar decisiones a diario.</div>
+    </div>
+
+    <sc-if value="{{ mostrarCapturas }}" hint-placeholder-val="{{ true }}">
+    <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:12px;">
+      <div style="background:#FFE95C; align-self:flex-start; padding:5px 12px; font-size:14px; font-weight:700;">CADENA DE PRUEBA</div>
+      <div style="display:flex; gap:12px; align-items:center;">
+        <div style="flex:1; min-width:0;">
+          <div style="border:1.5px solid #F05A5A; padding:5px;"><image-slot id="ser-1" style="width:100%; height:240px;" shape="rect" placeholder="Captura · las 30 ideas generadas"></image-slot></div>
+          <div style="font-size:13px; font-weight:700; margin-top:6px;">las 30 ideas del mes</div>
+        </div>
+        <svg width="50" height="36" viewBox="0 0 50 36" style="flex:none;"><path d="M2 18 L30 18" stroke="#E03A2F" stroke-width="2.5"></path><polygon points="46,18 28,11 28,25" fill="#E03A2F"></polygon></svg>
+        <div style="flex:1; min-width:0;">
+          <div style="border:1.5px solid #F05A5A; padding:5px;"><image-slot id="ser-2" style="width:100%; height:240px;" shape="rect" placeholder="Captura · el calendario lleno"></image-slot></div>
+          <div style="font-size:13px; font-weight:700; margin-top:6px;">el calendario programado</div>
+        </div>
+        <svg width="50" height="36" viewBox="0 0 50 36" style="flex:none;"><path d="M2 18 L30 18" stroke="#E03A2F" stroke-width="2.5"></path><polygon points="46,18 28,11 28,25" fill="#E03A2F"></polygon></svg>
+        <div style="flex:1; min-width:0;">
+          <div style="border:1.5px solid #F05A5A; padding:5px;"><image-slot id="ser-3" style="width:100%; height:240px;" shape="rect" placeholder="Captura · las métricas del trial ganador"></image-slot></div>
+          <div style="font-size:13px; font-weight:700; margin-top:6px;">el trial que se salió</div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+  </div>
+
+  <div style="display:flex; gap:40px; align-items:stretch; margin-top:34px;">
+    <div style="flex:1; border:1.5px solid #F05A5A; padding:22px; display:flex; gap:22px; align-items:flex-start;">
+      <div style="flex:1; display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div style="font-family:'Archivo Black',sans-serif; font-size:28px;">LLÉVATE EL SISTEMA DE 5 PASOS</div>
+          <div style="background:#FFE95C; padding:4px 10px; font-size:13px; font-weight:700;">LEAD MAGNET</div>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <div style="flex:1; border:1.5px solid #bdbdbd; background:#fff; padding:10px 12px; font-size:14px; font-weight:600;"><b>El prompt de las 30 ideas</b></div>
+          <div style="flex:1; border:1.5px solid #bdbdbd; background:#fff; padding:10px 12px; font-size:14px; font-weight:600;"><b>La plantilla de guion</b> hook · cuerpo · CTA</div>
+          <div style="flex:1; border:1.5px solid #bdbdbd; background:#fff; padding:10px 12px; font-size:14px; font-weight:600;"><b>El generador de 5 hooks</b> para trial</div>
+          <div style="flex:1; border:1.5px solid #F05A5A; background:#FDEFEF; padding:10px 12px; font-size:14px; font-weight:600;">La palabra es <span style="background:#FFE95C; padding:2px 6px;">calimero</span></div>
+        </div>
+        <div style="background:#fff; border:1.5px solid #bdbdbd; padding:14px 16px; display:flex; gap:14px; align-items:center;">
+          <div style="font-size:40px; line-height:.5; color:#E03A2F; font-family:'Archivo Black',sans-serif;">“</div>
+          <div style="flex:1;">
+            <div style="font-size:16px; font-weight:600;">Grabo una tarde al mes y me olvido. Antes publicaba tres días seguidos y desaparecía dos semanas.</div>
+            <div style="display:flex; align-items:center; gap:10px; margin-top:10px;">
+              <image-slot id="ser-avatar" style="width:56px; height:56px;" shape="circle" placeholder="foto"></image-slot>
+              <div><div style="font-weight:700; font-size:15px;">Dani T.</div><div style="font-size:13px; color:#666;">creador · 48k seguidores</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <sc-if value="{{ mostrarCapturas }}" hint-placeholder-val="{{ true }}">
+      <div style="width:420px; flex:none; border:1.5px solid #F05A5A; padding:5px;"><image-slot id="ser-lead" style="width:100%; height:250px;" shape="rect" placeholder="Captura · el pack de plantillas"></image-slot></div>
+      </sc-if>
+    </div>
+  </div>
+
+  <div style="font-size:13px; font-weight:600; color:#8b8b8b; margin-top:20px;">* cifras de un mes concreto; cambian según cuenta y nicho.</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mostrarCapturas&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estructura&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { mostrarCapturas: this.props.mostrarCapturas ?? true };
+  }
+}
+</script>
+</body>
+</html>

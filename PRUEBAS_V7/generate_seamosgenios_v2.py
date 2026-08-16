@@ -42,7 +42,7 @@ PALETTE = {
 
 
 def build_seamosgenios_v2_board():
-    # Disposición vertical garantizada (max_row_w = 3000 con frames de ancho 2800)
+    # Disposición vertical estricta: marcos de 2800px apilados verticalmente
     place_reset(max_row_w=3000, gap=150)
     scene = ExcalidrawScene(roughness=0, bg_color=PALETTE["CANVAS"])
 
@@ -59,11 +59,11 @@ def build_seamosgenios_v2_board():
     scene.add_text(f1_x + 60.0, f1_y + 60.0, "Ecosistema Jurídico Integral: Constitución, Ley 1581, Protección de Menores y las 5 Capas Maestras", font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid1)
 
     sc_h = 760.0
+    sc1_y = f1_y + 120.0
 
     # Scope 1: Identidad & Fundamento Constitucional
     sc1_w = 820.0
     sc1_x = f1_x + 60.0
-    sc1_y = f1_y + 120.0
     scene.add_scope_container(sc1_x, sc1_y, sc1_w, sc_h, label="1. IDENTIDAD, OBJETO & MARCO NORMATIVO COLOMBIANO", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid1)
 
     scene.add_quad_card(sc1_x + 30.0, sc1_y + 50.0, sc1_w - 60.0, 130.0,
@@ -205,17 +205,17 @@ def build_seamosgenios_v2_board():
             scene.add_arrow(cx + card_step_w, cy + 70.0, cx + card_step_w + 18.0, cy + 70.0, stroke=PALETTE["BLUE_HERO"], stroke_w=2.0, frame_id=fid2)
 
     # Bottom-Left Scope: Protocolo NNA & Cuenta de Padres
-    bot_y = f2_y + 380.0
-    bot_h = 510.0
+    bot2_y = f2_y + 380.0
+    bot2_h = 510.0
     nna_w = 880.0
-    scene.add_scope_container(f2_x + 60.0, bot_y, nna_w, bot_h, label="2. PROTOCOLO REFORZADO DE MENORES (NNA) & CUENTA DE PADRES", stroke=PALETTE["CORAL_BORDER"], bg="#FFFFFF", frame_id=fid2)
+    scene.add_scope_container(f2_x + 60.0, bot2_y, nna_w, bot2_h, label="2. PROTOCOLO REFORZADO DE MENORES (NNA) & CUENTA DE PADRES", stroke=PALETTE["CORAL_BORDER"], bg="#FFFFFF", frame_id=fid2)
 
-    scene.add_quad_card(f2_x + 90.0, bot_y + 50.0, nna_w - 60.0, 140.0,
+    scene.add_quad_card(f2_x + 90.0, bot2_y + 50.0, nna_w - 60.0, 140.0,
                         "Flujo de Autorización para Menores (Ley 1098 / SIC)",
                         sublabel="• Detección automática en registro: si edad < 18 años, el formulario exige datos del representante legal.\n• Firma digital exclusiva del padre/madre/tutor: Prohibido que el menor firme por sí mismo.\n• Derecho a ser escuchado: El menor recibe información sobre el tratamiento en lenguaje adaptado a su edad.",
                         badge="ESTÁNDAR REFORZADO", icon="shield", is_hero=True, font_size=15, frame_id=fid2)
 
-    scene.add_bound_card(f2_x + 90.0, bot_y + 205.0, nna_w - 60.0, 140.0,
+    scene.add_bound_card(f2_x + 90.0, bot2_y + 205.0, nna_w - 60.0, 140.0,
                          "SECCIÓN INDEPENDIENTE DE PADRES (PERMISOS RESTRINGIDOS):\n\n"
                          "• El padre NO utiliza la contraseña del estudiante: cuenta con perfil propio autenticado.\n"
                          "• Visualización exclusiva: Avance académico, asistencia a clases, puntajes y alertas.\n"
@@ -224,7 +224,7 @@ def build_seamosgenios_v2_board():
                          bg=PALETTE["BLUE_BG"], stroke=PALETTE["BLUE_BORDER"], text_color=PALETTE["INK"],
                          font_size=12, align="left", roundness_type=3, frame_id=fid2)
 
-    scene.add_bound_card(f2_x + 90.0, bot_y + 360.0, nna_w - 60.0, 115.0,
+    scene.add_bound_card(f2_x + 90.0, bot2_y + 360.0, nna_w - 60.0, 115.0,
                          "SEGURIDAD DE MENORES EN ENTORNOS DIGITALES (WHATSAPP / CHAT):\n"
                          "• Canales oficiales moderados: Prohibido el contacto privado no supervisado tutor-menor.\n"
                          "• Protocolo estricto contra acoso, suplantación o divulgación no autorizada de notas.\n"
@@ -235,24 +235,24 @@ def build_seamosgenios_v2_board():
     # Bottom-Center Scope: Grabaciones & Gemini AI
     rec_w = 880.0
     rec_x = f2_x + 60.0 + nna_w + 30.0
-    scene.add_scope_container(rec_x, bot_y, rec_w, bot_h, label="3. MATRIZ DE TRATAMIENTO: GRABACIONES & IA (GEMINI)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
+    scene.add_scope_container(rec_x, bot2_y, rec_w, bot2_h, label="3. MATRIZ DE TRATAMIENTO: GRABACIONES & IA (GEMINI)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
 
-    scene.add_quad_card(rec_x + 30.0, bot_y + 50.0, (rec_w - 75.0) * 0.5, 145.0,
+    scene.add_quad_card(rec_x + 30.0, bot2_y + 50.0, (rec_w - 75.0) * 0.5, 145.0,
                         "Sesión Meet en Vivo",
                         sublabel="Aviso en pantalla obligatorio.\nVideo, audio, micrófono y chat.\nRegistro de asistencia y preguntas.",
                         badge="CAPTURA MEET", icon="laptop", font_size=15, frame_id=fid2)
 
-    scene.add_quad_card(rec_x + 30.0 + (rec_w - 75.0) * 0.5 + 15.0, bot_y + 50.0, (rec_w - 75.0) * 0.5, 145.0,
+    scene.add_quad_card(rec_x + 30.0 + (rec_w - 75.0) * 0.5 + 15.0, bot2_y + 50.0, (rec_w - 75.0) * 0.5, 145.0,
                         "Procesamiento Gemini",
                         sublabel="Storage seguro en Google Drive.\nTranscripción pedagógica con IA.\nGeneración de resúmenes de estudio.",
                         badge="IA GEMINI & DRIVE", icon="server", font_size=15, frame_id=fid2)
 
-    scene.add_quad_card(rec_x + 30.0, bot_y + 210.0, rec_w - 60.0, 130.0,
+    scene.add_quad_card(rec_x + 30.0, bot2_y + 210.0, rec_w - 60.0, 130.0,
                         "Regla de Oro: Grabación Académica vs Difusión en YouTube",
                         sublabel="• Grabación Académica: Uso exclusivo para consulta interna de estudiantes matriculados.\n• Publicación en YouTube / Redes: REQUIERE autorización independiente y expresa de imagen y voz.\n• Prohibido publicar grabaciones donde aparezcan menores de edad sin consentimiento específico.",
                         badge="SEGREGACIÓN NARRATIVA", icon="shield", is_hero=True, font_size=16, frame_id=fid2)
 
-    scene.add_bound_card(rec_x + 30.0, bot_y + 355.0, rec_w - 60.0, 125.0,
+    scene.add_bound_card(rec_x + 30.0, bot2_y + 355.0, rec_w - 60.0, 125.0,
                          "AVISO OBLIGATORIO ANTES DE INGRESAR A CADA CLASE (MEET):\n\n"
                          "\"Esta sesión será grabada. Tu participación mediante cámara, micrófono o chat formará parte del registro académico.\n"
                          "Las grabaciones se utilizan exclusivamente para fines pedagógicos y de refuerzo dentro de la plataforma.\"",
@@ -262,7 +262,7 @@ def build_seamosgenios_v2_board():
     # Bottom-Right Scope: Proveedores Tecnológicos (Encargados)
     prov_w = fw - 120.0 - nna_w - rec_w - 60.0
     prov_x = rec_x + rec_w + 30.0
-    scene.add_scope_container(prov_x, bot_y, prov_w, bot_h, label="4. MATRIZ DE PROVEEDORES (ENCARGADOS)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
+    scene.add_scope_container(prov_x, bot2_y, prov_w, bot2_h, label="4. MATRIZ DE PROVEEDORES (ENCARGADOS)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
 
     providers = [
         ("GOOGLE LLC", "Meet/Drive/Gemini", "Audio, video, chat y transcripción", "EE.UU. (Cláusulas Tipo)", "CLOUD TECH", "server"),
@@ -273,7 +273,7 @@ def build_seamosgenios_v2_board():
     ]
 
     for p_i, (p_tit, p_serv, p_data, p_loc, p_badge, p_icon) in enumerate(providers):
-        py = bot_y + 50.0 + p_i * 88.0
+        py = bot2_y + 50.0 + p_i * 88.0
         scene.add_quad_card(prov_x + 25.0, py, prov_w - 50.0, 78.0, f"{p_tit} ({p_serv})", sublabel=f"{p_data} · {p_loc}", badge=p_badge, icon=p_icon, font_size=13, frame_id=fid2)
 
     scene.add_legend_footer(f2_x + 60.0, f2_y + 925.0, fw - 120.0, swatches=[
@@ -292,26 +292,28 @@ def build_seamosgenios_v2_board():
     scene.add_text(f3_x + 60.0, f3_y + 35.0, "CONSUMER RIGHTS  ·  ROLE-BASED ACCESS CONTROL & HABEAS DATA", font_size=13, font_family=2, color=PALETTE["MUTED"], frame_id=fid3)
     scene.add_text(f3_x + 60.0, f3_y + 60.0, "Régimen de Comercio Electrónico (Ley 1480 & 2439), Retracto, PQRS Hábeas Data y Matriz RBAC", font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid3)
 
+    sc3_y = f3_y + 120.0
+
     # Scope 1: Comercio Electrónico (Ley 1480 & Ley 2439 de 2024)
     ecom_w = 820.0
-    scene.add_scope_container(f3_x + 60.0, sc1_y, ecom_w, sc_h, label="1. COMERCIO ELECTRÓNICO, RETRACTO & REVERSIÓN (LEY 1480/2439)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
+    scene.add_scope_container(f3_x + 60.0, sc3_y, ecom_w, sc_h, label="1. COMERCIO ELECTRÓNICO, RETRACTO & REVERSIÓN (LEY 1480/2439)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
 
-    scene.add_quad_card(f3_x + 30.0, sc1_y + 50.0, ecom_w - 60.0, 130.0,
+    scene.add_quad_card(f3_x + 30.0, sc3_y + 50.0, ecom_w - 60.0, 130.0,
                         "Compra Online & Perfeccionamiento",
                         sublabel="Aceptación explícita de Términos y Condiciones en checkout Bold.\nEmisión obligatoria de Factura Electrónica vía Factus.\nActivación automática de credenciales y comprobante al correo.",
                         badge="CHECKOUT BOLD", icon="lock", font_size=16, frame_id=fid3)
 
-    scene.add_quad_card(f3_x + 30.0, sc1_y + 200.0, ecom_w - 60.0, 150.0,
+    scene.add_quad_card(f3_x + 30.0, sc3_y + 200.0, ecom_w - 60.0, 150.0,
                         "Derecho de Retracto Legal (SIC & Ley 2439)",
                         sublabel="• Término legal: 5 días hábiles siguientes a la compra.\n• PROHIBICIÓN ABSOLUTA de cláusulas de 'no hay devoluciones'.\n• Evaluación jurídica: Si el servicio comenzó con acuerdo del usuario o hubo consumo.\n• Canal formal de radicación con respuesta dentro de los términos legales.",
                         badge="RETRACTO LEY 1480", icon="alert", is_hero=True, font_size=16, frame_id=fid3)
 
-    scene.add_quad_card(f3_x + 30.0, sc1_y + 370.0, ecom_w - 60.0, 130.0,
+    scene.add_quad_card(f3_x + 30.0, sc3_y + 370.0, ecom_w - 60.0, 130.0,
                         "Reversión de Pagos & Reembolsos",
                         sublabel="Aplica ante: Fraude electrónico, operación no solicitada o servicio no prestado.\nProcedimiento coordinado entre SEAMOSGENIOS, pasarela Bold y banco emisor.\nTiempos de respuesta estrictos conforme a la reglamentación de la SIC.",
                         badge="REVERSIÓN PAGO", icon="file", font_size=16, frame_id=fid3)
 
-    scene.add_bound_card(f3_x + 30.0, sc1_y + 520.0, ecom_w - 60.0, 215.0,
+    scene.add_bound_card(f3_x + 30.0, sc3_y + 520.0, ecom_w - 60.0, 215.0,
                          "CLÁUSULA DE RESULTADOS ICFES (SIN GARANTÍAS ILÍCITAS):\n\n"
                          "• SEAMOSGENIOS ofrece preparación pedagógica y entrenamiento de alto nivel.\n"
                          "• El puntaje final depende del esfuerzo y estudio individual del alumno.\n"
@@ -323,7 +325,7 @@ def build_seamosgenios_v2_board():
     # Scope 2: Módulo Integral de PQRS & Hábeas Data
     pqrs_w = 860.0
     pqrs_x = f3_x + 60.0 + ecom_w + 35.0
-    scene.add_scope_container(pqrs_x, sc1_y, pqrs_w, sc_h, label="2. MÓDULO CENTRALIZADO DE PQRS & HÁBEAS DATA (LEY 1581)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
+    scene.add_scope_container(pqrs_x, sc3_y, pqrs_w, sc_h, label="2. MÓDULO CENTRALIZADO DE PQRS & HÁBEAS DATA (LEY 1581)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
 
     pqrs_items = [
         ("PROTECCIÓN DE DATOS", "Conocer, actualizar, rectificar y suprimir", "HABEAS DATA", "lock"),
@@ -337,10 +339,10 @@ def build_seamosgenios_v2_board():
     pw = (pqrs_w - 75.0) * 0.5
     for idx, (p_tit, p_sub, p_badge, p_icon) in enumerate(pqrs_items):
         px = pqrs_x + 25.0 + (idx % 2) * (pw + 25.0)
-        py = sc1_y + 50.0 + (idx // 2) * 160.0
+        py = sc3_y + 50.0 + (idx // 2) * 160.0
         scene.add_quad_card(px, py, pw, 135.0, p_tit, sublabel=p_sub, badge=p_badge, icon=p_icon, font_size=16, frame_id=fid3)
 
-    scene.add_bound_card(pqrs_x + 25.0, sc1_y + 550.0, pqrs_w - 50.0, 185.0,
+    scene.add_bound_card(pqrs_x + 25.0, sc3_y + 550.0, pqrs_w - 50.0, 185.0,
                          "FLUJO HÁBEAS DATA Y TIEMPOS LEGALES DE RESPUESTA:\n\n"
                          "Solicitud ──► Radicación Única ──► Identificación ──► Clasificación ──► Validación ──► Respuesta\n\n"
                          "• Peticiones de información y consultas: 10 días hábiles (prorrogables 5 días).\n"
@@ -352,9 +354,9 @@ def build_seamosgenios_v2_board():
     # Scope 3: Seguridad RBAC & Marketing (Ley 2300/2023)
     sec_w = 930.0
     sec_x = pqrs_x + pqrs_w + 35.0
-    scene.add_scope_container(sec_x, sc1_y, sec_w, sc_h, label="3. MATRIZ RBAC (LEAST PRIVILEGE) & MARKETING (LEY 2300)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
+    scene.add_scope_container(sec_x, sc3_y, sec_w, sc_h, label="3. MATRIZ RBAC (LEAST PRIVILEGE) & MARKETING (LEY 2300)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
 
-    scene.add_sticky_note(sec_x + 25.0, sc1_y + 50.0, sec_w - 50.0, 175.0,
+    scene.add_sticky_note(sec_x + 25.0, sc3_y + 50.0, sec_w - 50.0, 175.0,
                           "MATRIZ DE PERMISOS POR ROL (LEAST PRIVILEGE):\n\n"
                           "• Tutores: Solo acceden a estudiantes asignados y notas. CERO datos financieros ni teléfonos de padres.\n"
                           "• Padres: Solo consultan avance y asistencia de sus propios hijos (CERO acceso a terceros).\n"
@@ -362,7 +364,7 @@ def build_seamosgenios_v2_board():
                           "• Administradores: Acceso restringido por 2FA a finanzas, facturación y contratos.",
                           font_size=13, angle_deg=1.0, frame_id=fid3)
 
-    scene.add_bound_card(sec_x + 25.0, sc1_y + 250.0, sec_w - 50.0, 230.0,
+    scene.add_bound_card(sec_x + 25.0, sc3_y + 250.0, sec_w - 50.0, 230.0,
                          "RÉGIMEN DE COMUNICACIONES COMERCIALES Y MARKETING (LEY 2300 DE 2023):\n\n"
                          "• Separación estricta: Comunicaciones del servicio (clases, notas) vs Marketing (promociones).\n"
                          "• Preferencias por canal registradas en base de datos: Email, WhatsApp, SMS, Llamadas.\n"
@@ -371,7 +373,7 @@ def build_seamosgenios_v2_board():
                          bg=PALETTE["GREEN_BG"], stroke=PALETTE["GREEN_BORDER"], text_color=PALETTE["INK"],
                          font_size=12, align="left", roundness_type=3, frame_id=fid3)
 
-    scene.add_bound_card(sec_x + 25.0, sc1_y + 500.0, sec_w - 50.0, 235.0,
+    scene.add_bound_card(sec_x + 25.0, sc3_y + 500.0, sec_w - 50.0, 235.0,
                          "RÉGIMEN DE PROPIEDAD INTELECTUAL & BANCO DE PREGUNTAS:\n\n"
                          "• Activos protegidos: Banco de preguntas ICFES, simulacros, guías, PDFs, videos, plataforma.\n"
                          "• Prohibición expresa de copia, redistribución, reventa o extracción masiva (scraping).\n"
@@ -396,11 +398,13 @@ def build_seamosgenios_v2_board():
     scene.add_text(f4_x + 60.0, f4_y + 35.0, "FORENSIC AUDIT  ·  SECURITY INCIDENTS & 6-PHASE IMPLEMENTATION ROADMAP", font_size=13, font_family=2, color=PALETTE["MUTED"], frame_id=fid4)
     scene.add_text(f4_x + 60.0, f4_y + 60.0, "Evidencia Digital Inmutable (consent_id), Protocolo de Incidentes, Retención y Roadmap en 6 Fases", font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid4)
 
+    sc4_y = f4_y + 120.0
+
     # Scope 1: Auditoría Forense & RNBD
     aud_w = 820.0
-    scene.add_scope_container(f4_x + 60.0, sc1_y, aud_w, sc_h, label="1. REGISTRO MAESTRO DE CONSENTIMIENTOS & AUDITORÍA FORENSE", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid4)
+    scene.add_scope_container(f4_x + 60.0, sc4_y, aud_w, sc_h, label="1. REGISTRO MAESTRO DE CONSENTIMIENTOS & AUDITORÍA FORENSE", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid4)
 
-    scene.add_bound_card(f4_x + 30.0, sc1_y + 50.0, aud_w - 60.0, 260.0,
+    scene.add_bound_card(f4_x + 30.0, sc4_y + 50.0, aud_w - 60.0, 260.0,
                          "ESTRUCTURA DE EVIDENCIA DIGITAL INMUTABLE (LOG FORENSE):\n\n"
                          "Cada consentimiento genera un registro inmutable con la siguiente estructura:\n"
                          "• consent_id: UUID v4 único e irrepetible\n"
@@ -414,7 +418,7 @@ def build_seamosgenios_v2_board():
                          bg=PALETTE["GREEN_BG"], stroke=PALETTE["GREEN_BORDER"], text_color=PALETTE["INK"],
                          font_size=12, align="left", roundness_type=3, frame_id=fid4)
 
-    scene.add_bound_card(f4_x + 30.0, sc1_y + 330.0, aud_w - 60.0, 200.0,
+    scene.add_bound_card(f4_x + 30.0, sc4_y + 330.0, aud_w - 60.0, 200.0,
                          "REGISTRO NACIONAL DE BASES DE DATOS (RNBD / SIC):\n\n"
                          "• Dec. 90/2018: Sujetos obligados: Activos totales > 100.000 UVT o entidades públicas.\n"
                          "• Regla Clave: No estar obligado al RNBD NO exime de cumplir la Ley 1581.\n"
@@ -423,7 +427,7 @@ def build_seamosgenios_v2_board():
                          bg=PALETTE["BLUE_BG"], stroke=PALETTE["BLUE_BORDER"], text_color=PALETTE["INK"],
                          font_size=12, align="left", roundness_type=3, frame_id=fid4)
 
-    scene.add_bound_card(f4_x + 30.0, sc1_y + 550.0, aud_w - 60.0, 185.0,
+    scene.add_bound_card(f4_x + 30.0, sc4_y + 550.0, aud_w - 60.0, 185.0,
                          "MATRIZ DE RETENCIÓN Y SUPRESIÓN PERIÓDICA:\n\n"
                          "• Cuentas y notas: Durante la relación contractual + 5 años.\n"
                          "• Facturación y pagos: 10 años conforme a la obligación fiscal DIAN.\n"
@@ -435,7 +439,7 @@ def build_seamosgenios_v2_board():
     # Scope 2: Protocolo de Incidentes de Seguridad
     inc_w = 860.0
     inc_x = f4_x + 60.0 + aud_w + 35.0
-    scene.add_scope_container(inc_x, sc1_y, inc_w, sc_h, label="2. PROTOCOLO DE GESTIÓN DE INCIDENTES DE SEGURIDAD (8 FASES)", stroke=PALETTE["CORAL_BORDER"], bg="#FFFFFF", frame_id=fid4)
+    scene.add_scope_container(inc_x, sc4_y, inc_w, sc_h, label="2. PROTOCOLO DE GESTIÓN DE INCIDENTES DE SEGURIDAD (8 FASES)", stroke=PALETTE["CORAL_BORDER"], bg="#FFFFFF", frame_id=fid4)
 
     inc_phases = [
         ("01. DETECTAR", "Alerta de acceso no autorizado o fuga", "DETECCIÓN", "alert"),
@@ -451,10 +455,10 @@ def build_seamosgenios_v2_board():
     iw = (inc_w - 75.0) * 0.5
     for idx, (i_tit, i_sub, i_badge, i_icon) in enumerate(inc_phases):
         ix = inc_x + 25.0 + (idx % 2) * (iw + 25.0)
-        iy = sc1_y + 50.0 + (idx // 2) * 160.0
+        iy = sc4_y + 50.0 + (idx // 2) * 160.0
         scene.add_quad_card(ix, iy, iw, 135.0, i_tit, sublabel=i_sub, badge=i_badge, icon=i_icon, font_size=16, frame_id=fid4)
 
-    scene.add_bound_card(inc_x + 25.0, sc1_y + 550.0, inc_w - 50.0, 185.0,
+    scene.add_bound_card(inc_x + 25.0, sc4_y + 550.0, inc_w - 50.0, 185.0,
                          "CASOS CRÍTICOS DE INCIDENTE EN SEAMOSGENIOS:\n\n"
                          "✖ Cuenta de tutor comprometida o descarga indebida de base de estudiantes.\n"
                          "✖ Grabación con menores publicada en YouTube sin consentimiento específico.\n"
@@ -466,7 +470,7 @@ def build_seamosgenios_v2_board():
     # Scope 3: Hoja de Ruta en 6 Fases
     road_w = 930.0
     road_x = inc_x + inc_w + 35.0
-    scene.add_scope_container(road_x, sc1_y, road_w, sc_h, label="3. HOJA DE RUTA DE IMPLEMENTACIÓN EN 6 FASES", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid4)
+    scene.add_scope_container(road_x, sc4_y, road_w, sc_h, label="3. HOJA DE RUTA DE IMPLEMENTACIÓN EN 6 FASES", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid4)
 
     road_phases = [
         ("FASE 1 · BASE LEGAL", "Política de Datos, Términos, Aviso de Privacidad y Flujo de Menores.", PALETTE["BLUE_BG"], PALETTE["BLUE_BORDER"]),
@@ -478,7 +482,7 @@ def build_seamosgenios_v2_board():
     ]
 
     for r_idx, (r_tit, r_desc, r_bg, r_stroke) in enumerate(road_phases):
-        ry = sc1_y + 50.0 + r_idx * 115.0
+        ry = sc4_y + 50.0 + r_idx * 115.0
         scene.add_bound_card(road_x + 25.0, ry, road_w - 50.0, 100.0,
                              f"{r_tit}\n{r_desc}",
                              bg=r_bg, stroke=r_stroke, text_color=PALETTE["INK"],

@@ -36,6 +36,15 @@ from .visual_classifier import (
     VisualClassifierEngine
 )
 
+from .brand_registry import (
+    BrandSpec,
+    BrandRegistry
+)
+from .visual_composition import (
+    VisualEntitySpec,
+    VisualCompositionEngine
+)
+
 __all__ = [
     "SemanticIconRegistry",
     "IconCategory",
@@ -55,5 +64,9 @@ __all__ = [
     "FunnelStepSpec",
     "LightDataVizEngine",
     "VisualComponentSpec",
-    "VisualClassifierEngine"
+    "VisualClassifierEngine",
+    "BrandSpec",
+    "BrandRegistry",
+    "VisualEntitySpec",
+    "VisualCompositionEngine"
 ]

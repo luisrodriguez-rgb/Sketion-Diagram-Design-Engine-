@@ -754,6 +754,188 @@ class ExcalidrawScene:
             self.add_text(cx - lbl_w * 0.5, y + 28.0, stxt.upper(),
                           font_size=10, font_family=2, color="#E03A2F" if is_hero else "#64748B", frame_id=frame_id)
 
+    def add_database_cylinder(self, x: float, y: float, w: float, h: float,
+                               title: str, sublabel: Optional[str] = None,
+                               badge: str = "DATABASE", is_hero: bool = False,
+                               bg: str = "#EFF6FF", stroke: str = "#2563EB",
+                               frame_id: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Crea una primitiva morfológica de Cilindro / Base de Datos con tapas elípticas y discos internos.
+        Rompe el monopolio de tarjetas rectangulares planas.
+        """
+        final_stroke = "#D93829" if is_hero else stroke
+        final_bg = "#FFF5F2" if is_hero else bg
+        stroke_w = 2.0 if is_hero else 1.5
+
+        # 1. Cuerpo del cilindro
+        container = self.add_rect(x, y + 10.0, w, h - 20.0, bg=final_bg, stroke=final_stroke, stroke_w=stroke_w, roundness_type=3, frame_id=frame_id)
+
+        # 2. Tapa elíptica superior
+        self.add_ellipse(x, y, w, 22.0, bg=final_bg, stroke=final_stroke, stroke_w=stroke_w, frame_id=frame_id)
+
+        # 3. Líneas de ranura de disco interno
+        self.add_line(x + 10.0, y + (h * 0.45), x + w - 10.0, y + (h * 0.45), stroke=final_stroke, stroke_w=1.0, dashed=True, frame_id=frame_id)
+
+        # 4. Badge & Icono
+        bw = max(65.0, len(badge) * 7.2 + 16.0)
+        b_bg = "#FEE2E2" if is_hero else "#DBEAFE"
+        b_str = "#FCA5A5" if is_hero else "#93C5FD"
+        b_col = "#D93829" if is_hero else "#1D4ED8"
+        self.add_rect(x + 14.0, y + 26.0, bw, 20.0, bg=b_bg, stroke=b_str, stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 18.0, y + 28.0, badge, font_size=10, font_family=2, color=b_col, frame_id=frame_id)
+        self.add_icon("database", x + w - 36.0, y + 26.0, size=20.0, color=final_stroke, frame_id=frame_id)
+
+        # 5. Título y Subtítulo
+        self.add_text(x + 16.0, y + 52.0, title, font_size=14, font_family=2, color="#0F172A", frame_id=frame_id)
+        if sublabel:
+            self.add_text(x + 16.0, y + 74.0, sublabel, font_size=12, font_family=2, color="#475569", frame_id=frame_id)
+
+        return container
+
+    def add_streaming_pipe(self, x: float, y: float, w: float, h: float,
+                           title: str, topics: List[str],
+                           badge: str = "STREAMING", is_hero: bool = False,
+                           bg: str = "#EEF2FF", stroke: str = "#4F46E5",
+                           frame_id: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Crea una primitiva morfológica de Tubería / Cola / Bus de Eventos segmentado (Kafka/RabbitMQ/Flink).
+        """
+        final_stroke = "#D93829" if is_hero else stroke
+        final_bg = "#FFF5F2" if is_hero else bg
+
+        # Contenedor cápsula
+        container = self.add_rect(x, y, w, h, bg=final_bg, stroke=final_stroke, stroke_w=1.8, roundness_type=3, frame_id=frame_id)
+
+        # Cabecera de Stream
+        bw = max(70.0, len(badge) * 7.2 + 16.0)
+        self.add_rect(x + 12.0, y + 10.0, bw, 20.0, bg="#E0E7FF", stroke="#C7D2FE", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 16.0, y + 12.0, badge, font_size=10, font_family=2, color="#3730A3", frame_id=frame_id)
+        self.add_text(x + 16.0 + bw + 10.0, y + 10.0, title.upper(), font_size=13, font_family=2, color="#0F172A", frame_id=frame_id)
+        self.add_icon("terminal", x + w - 34.0, y + 10.0, size=18.0, color=final_stroke, frame_id=frame_id)
+
+        # Slots de partición horizontal
+        slot_cnt = len(topics)
+        slot_w = (w - 30.0 - (slot_cnt - 1) * 8.0) / max(1, slot_cnt)
+        for i, top in enumerate(topics):
+            sx = x + 15.0 + i * (slot_w + 8.0)
+            sy = y + 38.0
+            sh = h - 48.0
+            self.add_rect(sx, sy, slot_w, sh, bg="#FFFFFF", stroke=final_stroke, stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+            self.add_text(sx + 8.0, sy + (sh * 0.5) - 7.0, f"▸ {top}", font_size=11, font_family=3, color="#1E293B", frame_id=frame_id)
+
+        return container
+
+    def add_security_barrier(self, x: float, y: float, w: float, h: float,
+                             title: str, rules: List[str],
+                             badge: str = "WAF / FIREWALL",
+                             frame_id: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Crea una barrera perimetral de seguridad Zero-Trust con franja de almenas.
+        """
+        container = self.add_rect(x, y, w, h, bg="#F8FAFC", stroke="#64748B", stroke_w=1.5, stroke_style="dashed", roundness_type=3, frame_id=frame_id)
+        
+        # Barra superior con escudo
+        self.add_rect(x, y, w, 32.0, bg="#F1F5F9", stroke="#CBD5E1", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        self.add_icon("shield", x + 12.0, y + 6.0, size=20.0, color="#0F172A", frame_id=frame_id)
+        self.add_text(x + 38.0, y + 8.0, f"🔒 {title.upper()} ({badge})", font_size=12, font_family=2, color="#0F172A", frame_id=frame_id)
+
+        # Reglas
+        for r_i, rule in enumerate(rules):
+            self.add_text(x + 16.0, y + 42.0 + r_i * 22.0, f"🛡️ {rule}", font_size=11, font_family=2, color="#334155", frame_id=frame_id)
+
+        return container
+
+    def add_actor_node(self, x: float, y: float, w: float, h: float,
+                       name: str, role: str, icon: str = "user",
+                       is_hero: bool = False, frame_id: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Crea un nodo de Actor / Usuario en pastilla compacta con avatar integrado.
+        """
+        final_bg = "#FFF5F2" if is_hero else "#FFFFFF"
+        final_stroke = "#D93829" if is_hero else "#94A3B8"
+
+        container = self.add_rect(x, y, w, h, bg=final_bg, stroke=final_stroke, stroke_w=1.5, roundness_type=3, frame_id=frame_id)
+
+        # Avatar circular
+        self.add_ellipse(x + 12.0, y + 10.0, 36.0, 36.0, bg="#F1F5F9", stroke=final_stroke, stroke_w=1.2, frame_id=frame_id)
+        self.add_icon(icon, x + 20.0, y + 18.0, size=20.0, color=final_stroke, frame_id=frame_id)
+
+        # Texto
+        self.add_text(x + 58.0, y + 12.0, name, font_size=14, font_family=2, color="#0F172A", frame_id=frame_id)
+        self.add_text(x + 58.0, y + 30.0, role.upper(), font_size=10, font_family=3, color="#64748B", frame_id=frame_id)
+
+        return container
+
+    def add_radial_cluster(self, cx: float, cy: float, radius: float,
+                           hub_title: str, satellites: List[Dict[str, Any]],
+                           badge: str = "CORE HUB", is_hero: bool = True,
+                           frame_id: Optional[str] = None):
+        """
+        Genera una topología radial real (Arquetipo A / El Cerebro) con Hub central y satélites orbitando.
+        """
+        # 1. Hub Central
+        hw, hh = 240.0, 110.0
+        hx = cx - (hw * 0.5)
+        hy = cy - (hh * 0.5)
+        hub_elem = self.add_quad_card(hx, hy, hw, hh, hub_title, sublabel="Núcleo Central", badge=badge, is_hero=is_hero, font_size=15, frame_id=frame_id)
+
+        # 2. Satélites orbitando
+        sat_count = len(satellites)
+        if sat_count == 0:
+            return
+
+        angle_step = (2 * math.pi) / sat_count
+        for i, sat in enumerate(satellites):
+            angle = i * angle_step - (math.pi / 2.0)
+            sx = cx + radius * math.cos(angle)
+            sy = cy + radius * math.sin(angle)
+            sw, sh = 200.0, 85.0
+            spx = sx - (sw * 0.5)
+            spy = sy - (sh * 0.5)
+
+            # Tarjeta de satélite
+            s_tit = sat.get("title", f"Satellite {i+1}")
+            s_sub = sat.get("sublabel", "")
+            s_badge = sat.get("badge", f"SAT {i+1}")
+            s_icon = sat.get("icon", "server")
+            self.add_quad_card(spx, spy, sw, sh, s_tit, sublabel=s_sub, badge=s_badge, icon=s_icon, font_size=13, frame_id=frame_id)
+
+            # Flecha radial bidireccional / ortogonal
+            self.add_arrow(cx + (hw * 0.5 * math.cos(angle)),
+                           cy + (hh * 0.5 * math.sin(angle)),
+                           spx + (sw * 0.5) - (sw * 0.5 * math.cos(angle)),
+                           spy + (sh * 0.5) - (sh * 0.5 * math.sin(angle)),
+                           stroke="#94A3B8", stroke_w=1.2, dashed=True, frame_id=frame_id)
+
+    def add_split_duel(self, x: float, y: float, w: float, h: float,
+                       left_title: str, left_items: List[str],
+                       right_title: str, right_items: List[str],
+                       left_label: str = "ANTES (LEGACY)", right_label: str = "DESPUÉS (TARGET)",
+                       frame_id: Optional[str] = None):
+        """
+        Genera un Duelo Comparativo (Arquetipo D / El Duelo VS) con paneles contrastados.
+        """
+        col_w = (w - 40.0) * 0.5
+
+        # Columna Izquierda (Legacy / Fricción)
+        self.add_rect(x, y, col_w, h, bg="#F8FAFC", stroke="#CBD5E1", stroke_w=1.5, roundness_type=3, frame_id=frame_id)
+        self.add_rect(x, y, col_w, 36.0, bg="#F1F5F9", stroke="#CBD5E1", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 16.0, y + 10.0, f"🔴 {left_label.upper()} — {left_title}", font_size=13, font_family=2, color="#991B1B", frame_id=frame_id)
+        for i, item in enumerate(left_items):
+            self.add_text(x + 16.0, y + 52.0 + i * 26.0, f"✗  {item}", font_size=12, font_family=2, color="#475569", frame_id=frame_id)
+
+        # Columna Derecha (Target / Solución Hero)
+        rx = x + col_w + 40.0
+        self.add_rect(rx, y, col_w, h, bg="#F0FDF4", stroke="#86EFAC", stroke_w=2.0, roundness_type=3, frame_id=frame_id)
+        self.add_rect(rx, y, col_w, 36.0, bg="#DCFCE7", stroke="#86EFAC", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        self.add_text(rx + 16.0, y + 10.0, f"🟢 {right_label.upper()} — {right_title}", font_size=13, font_family=2, color="#166534", frame_id=frame_id)
+        for j, ritem in enumerate(right_items):
+            self.add_text(rx + 16.0, y + 52.0 + j * 26.0, f"✓  {ritem}", font_size=12, font_family=2, color="#15803D", frame_id=frame_id)
+
+        # Conector central VS
+        self.add_ellipse(x + col_w + 5.0, y + (h * 0.5) - 15.0, 30.0, 30.0, bg="#0F172A", stroke="#0F172A", stroke_w=1.0, frame_id=frame_id)
+        self.add_text(x + col_w + 12.0, y + (h * 0.5) - 7.0, "VS", font_size=10, font_family=3, color="#FFFFFF", frame_id=frame_id)
+
     def add_legend_footer(self, x: float, y: float, w: float,
                           swatches: Optional[List[Dict[str, Any]]] = None,
                           note: Optional[str] = None,

@@ -139,8 +139,8 @@ class ExcalidrawScene:
         self.elements.append(elem)
         return elem["id"]
 
-    def auto_fit_frame(self, frame_id: str, padding: float = 60.0):
-        """Ajusta automáticamente el ancho y alto del frame según sus elementos contenidos."""
+    def auto_fit_frame(self, frame_id: str, padding: float = 40.0):
+        """Ajusta automáticamente el ancho y alto del frame según sus elementos contenidos de forma ceñida."""
         frame = next((e for e in self.elements if e.get("id") == frame_id and e.get("type") == "frame"), None)
         if not frame:
             return
@@ -152,11 +152,16 @@ class ExcalidrawScene:
         fx = frame["x"]
         fy = frame["y"]
 
-        max_x = max((c["x"] + c.get("width", 0) for c in children), default=fx + 800)
-        max_y = max((c["y"] + c.get("height", 0) for c in children), default=fy + 600)
+        max_x = max((c["x"] + float(c.get("width", 0.0)) for c in children), default=fx + 600.0)
+        max_y = max((c["y"] + float(c.get("height", 0.0)) for c in children), default=fy + 400.0)
 
         frame["width"] = max(400.0, (max_x - fx) + padding)
-        frame["height"] = max(300.0, (max_y - fy) + padding)
+        frame["height"] = max(250.0, (max_y - fy) + padding)
+
+    def auto_fit_all_frames(self, padding: float = 40.0):
+        """Ajusta dinámicamente todos los frames del canvas para erradicar espacios vacíos sobrantes."""
+        for f in [e for e in self.elements if e.get("type") == "frame"]:
+            self.auto_fit_frame(f["id"], padding=padding)
 
     def add_rect(self, x: float, y: float, w: float, h: float,
                  bg: str = "transparent", stroke: str = "#0C0C0C",
@@ -837,11 +842,11 @@ class ExcalidrawScene:
         # Barra superior con escudo
         self.add_rect(x, y, w, 32.0, bg="#F1F5F9", stroke="#CBD5E1", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
         self.add_icon("shield", x + 12.0, y + 6.0, size=20.0, color="#0F172A", frame_id=frame_id)
-        self.add_text(x + 38.0, y + 8.0, f"🔒 {title.upper()} ({badge})", font_size=12, font_family=2, color="#0F172A", frame_id=frame_id)
+        self.add_text(x + 38.0, y + 8.0, f"{title.upper()} ({badge})", font_size=12, font_family=2, color="#0F172A", frame_id=frame_id)
 
         # Reglas
         for r_i, rule in enumerate(rules):
-            self.add_text(x + 16.0, y + 42.0 + r_i * 22.0, f"🛡️ {rule}", font_size=11, font_family=2, color="#334155", frame_id=frame_id)
+            self.add_text(x + 16.0, y + 42.0 + r_i * 22.0, f"• {rule}", font_size=11, font_family=2, color="#334155", frame_id=frame_id)
 
         return container
 
@@ -920,7 +925,7 @@ class ExcalidrawScene:
         # Columna Izquierda (Legacy / Fricción)
         self.add_rect(x, y, col_w, h, bg="#F8FAFC", stroke="#CBD5E1", stroke_w=1.5, roundness_type=3, frame_id=frame_id)
         self.add_rect(x, y, col_w, 36.0, bg="#F1F5F9", stroke="#CBD5E1", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
-        self.add_text(x + 16.0, y + 10.0, f"🔴 {left_label.upper()} — {left_title}", font_size=13, font_family=2, color="#991B1B", frame_id=frame_id)
+        self.add_text(x + 16.0, y + 10.0, f"[LEGACY] {left_label.upper()} — {left_title}", font_size=13, font_family=2, color="#991B1B", frame_id=frame_id)
         for i, item in enumerate(left_items):
             self.add_text(x + 16.0, y + 52.0 + i * 26.0, f"✗  {item}", font_size=12, font_family=2, color="#475569", frame_id=frame_id)
 
@@ -928,7 +933,7 @@ class ExcalidrawScene:
         rx = x + col_w + 40.0
         self.add_rect(rx, y, col_w, h, bg="#F0FDF4", stroke="#86EFAC", stroke_w=2.0, roundness_type=3, frame_id=frame_id)
         self.add_rect(rx, y, col_w, 36.0, bg="#DCFCE7", stroke="#86EFAC", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
-        self.add_text(rx + 16.0, y + 10.0, f"🟢 {right_label.upper()} — {right_title}", font_size=13, font_family=2, color="#166534", frame_id=frame_id)
+        self.add_text(rx + 16.0, y + 10.0, f"[TARGET] {right_label.upper()} — {right_title}", font_size=13, font_family=2, color="#166534", frame_id=frame_id)
         for j, ritem in enumerate(right_items):
             self.add_text(rx + 16.0, y + 52.0 + j * 26.0, f"✓  {ritem}", font_size=12, font_family=2, color="#15803D", frame_id=frame_id)
 

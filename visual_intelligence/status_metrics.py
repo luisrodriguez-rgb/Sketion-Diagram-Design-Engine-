@@ -1,12 +1,13 @@
 """
-Sketion Intelligent Badges & Status Metrics Engine (v8.1)
+Sketion Intelligent Badges & Status Metrics Engine (v8.2 - Pure Vector)
 Genera badges y pastillas semánticas enriquecidas:
 - METRIC: 99.999% SLA, <35ms P99, 25k TPS
-- STATE: ● ACTIVE, ● PENDING, ⚠ DEGRADED, 🔴 FAILED
+- STATE: ● ACTIVE, ● PENDING, DEGRADED, FAILED
 - COMPLIANCE: PCI-DSS, SOC 2, ISO 27001
 - RISK: CRITICAL, HIGH RISK, LOW RISK
 - ENVIRONMENT: PRODUCTION, STAGING, EU-WEST-1
 - AFFORDANCE: [GET] /payments, [Authorize], [Capture]
+100% LIBRE DE EMOJIS: Utiliza exclusivamente símbolos vectoriales y tipografía monospaced.
 """
 
 from enum import Enum
@@ -31,30 +32,30 @@ class SemanticBadge:
     bg_color: str
     stroke_color: str
     text_color: str
-    icon_glyph: Optional[str] = None
+    symbol_prefix: Optional[str] = None
 
 
 class StatusBadgeEngine:
-    """Motor de generación de insignias inteligentes según función semántica."""
+    """Motor de generación de insignias inteligentes según función semántica (Cero Emojis)."""
 
     _PALETTES = {
-        BadgeType.METRIC: {"bg": "#EFF6FF", "stroke": "#93C5FD", "text": "#1D4ED8", "glyph": "⚡"},
+        BadgeType.METRIC: {"bg": "#EFF6FF", "stroke": "#93C5FD", "text": "#1D4ED8", "prefix": "METRIC"},
         BadgeType.STATE: {
-            "ACTIVE": {"bg": "#F0FDF4", "stroke": "#86EFAC", "text": "#15803D", "glyph": "●"},
-            "PENDING": {"bg": "#FEF3C7", "stroke": "#FCD34D", "text": "#B45309", "glyph": "⏳"},
-            "DEGRADED": {"bg": "#FFFBEB", "stroke": "#FDE68A", "text": "#D97706", "glyph": "⚠"},
-            "FAILED": {"bg": "#FFF5F2", "stroke": "#FCA5A5", "text": "#D93829", "glyph": "🔴"}
+            "ACTIVE": {"bg": "#F0FDF4", "stroke": "#86EFAC", "text": "#15803D", "prefix": "● ACTIVE"},
+            "PENDING": {"bg": "#FEF3C7", "stroke": "#FCD34D", "text": "#B45309", "prefix": "● PENDING"},
+            "DEGRADED": {"bg": "#FFFBEB", "stroke": "#FDE68A", "text": "#D97706", "prefix": "● DEGRADED"},
+            "FAILED": {"bg": "#FFF5F2", "stroke": "#FCA5A5", "text": "#D93829", "prefix": "● FAILED"}
         },
-        BadgeType.COMPLIANCE: {"bg": "#F8FAFC", "stroke": "#CBD5E1", "text": "#334155", "glyph": "🔒"},
+        BadgeType.COMPLIANCE: {"bg": "#F8FAFC", "stroke": "#CBD5E1", "text": "#334155", "prefix": "COMPLIANCE"},
         BadgeType.RISK: {
-            "CRITICAL": {"bg": "#FEF2F2", "stroke": "#F87171", "text": "#DC2626", "glyph": "🔥"},
-            "HIGH": {"bg": "#FFF5F2", "stroke": "#FCA5A5", "text": "#D93829", "glyph": "⚠️"},
-            "MEDIUM": {"bg": "#FEF3C7", "stroke": "#FCD34D", "text": "#D97706", "glyph": "⚡"},
-            "LOW": {"bg": "#F0FDF4", "stroke": "#86EFAC", "text": "#16A34A", "glyph": "✓"}
+            "CRITICAL": {"bg": "#FEF2F2", "stroke": "#F87171", "text": "#DC2626", "prefix": "CRITICAL"},
+            "HIGH": {"bg": "#FFF5F2", "stroke": "#FCA5A5", "text": "#D93829", "prefix": "HIGH RISK"},
+            "MEDIUM": {"bg": "#FEF3C7", "stroke": "#FCD34D", "text": "#D97706", "prefix": "MEDIUM RISK"},
+            "LOW": {"bg": "#F0FDF4", "stroke": "#86EFAC", "text": "#16A34A", "prefix": "LOW RISK"}
         },
-        BadgeType.ENVIRONMENT: {"bg": "#EEF2FF", "stroke": "#C7D2FE", "text": "#4338CA", "glyph": "🌐"},
-        BadgeType.TECH: {"bg": "#F1F5F9", "stroke": "#94A3B8", "text": "#0F172A", "glyph": "⚙️"},
-        BadgeType.AFFORDANCE: {"bg": "#0F172A", "stroke": "#0F172A", "text": "#FFFFFF", "glyph": "▸"}
+        BadgeType.ENVIRONMENT: {"bg": "#EEF2FF", "stroke": "#C7D2FE", "text": "#4338CA", "prefix": "ENV"},
+        BadgeType.TECH: {"bg": "#F1F5F9", "stroke": "#94A3B8", "text": "#0F172A", "prefix": "TECH"},
+        BadgeType.AFFORDANCE: {"bg": "#0F172A", "stroke": "#0F172A", "text": "#FFFFFF", "prefix": "ACTION"}
     }
 
     @classmethod
@@ -103,7 +104,7 @@ class StatusBadgeEngine:
             bg_color=palette["bg"],
             stroke_color=palette["stroke"],
             text_color=palette["text"],
-            icon_glyph=palette.get("glyph")
+            symbol_prefix=palette.get("prefix")
         )
 
 

@@ -1,0 +1,27 @@
+{
+  "title": "Arquitectura de Microservicios con Zonas",
+  "semantic_type": "architecture",
+  "detail_level": "balanced",
+  "output_preset": "docs",
+  "engine": "red",
+  "scopes": [
+    { "id": "edge", "label": "EDGE LAYER", "role": "entrypoint", "rel_x": 30, "rel_y": 80, "w": 280, "h": 500 },
+    { "id": "core", "label": "CORE SERVICES", "role": "internal", "rel_x": 340, "rel_y": 80, "w": 380, "h": 500 },
+    { "id": "data", "label": "DATA PLATFORM", "role": "storage", "rel_x": 750, "rel_y": 80, "w": 380, "h": 500 }
+  ],
+  "nodes": [
+    { "id": "client", "label": "Web App", "sublabel": "Next.js 14", "metadata": ":3000", "role": "entrypoint", "rel_x": 50, "rel_y": 140, "scope_id": "edge" },
+    { "id": "mobile", "label": "Mobile App", "sublabel": "Flutter Client", "metadata": "iOS/Android", "role": "entrypoint", "rel_x": 50, "rel_y": 280, "scope_id": "edge" },
+    { "id": "gateway", "label": "API Gateway", "sublabel": "FastAPI Core", "metadata": ":8000", "role": "core", "is_hero": true, "rel_x": 380, "rel_y": 210, "scope_id": "core" },
+    { "id": "auth", "label": "Auth Service", "sublabel": "JWT & Sessions", "metadata": ":8081", "role": "core", "rel_x": 380, "rel_y": 360, "scope_id": "core" },
+    { "id": "db", "label": "PostgreSQL Primary", "sublabel": "Orders & Users", "metadata": ":5432", "role": "storage", "rel_x": 790, "rel_y": 140, "scope_id": "data" },
+    { "id": "cache", "label": "Redis Cache", "sublabel": "Cluster Pool", "metadata": ":6379", "role": "storage", "rel_x": 790, "rel_y": 280, "scope_id": "data" }
+  ],
+  "edges": [
+    { "from": "client", "to": "gateway", "label": "HTTPS" },
+    { "from": "mobile", "to": "gateway", "label": "HTTPS" },
+    { "from": "gateway", "to": "auth", "label": "Verify" },
+    { "from": "gateway", "to": "db", "label": "SQL" },
+    { "from": "gateway", "to": "cache", "label": "In-memory" }
+  ]
+}

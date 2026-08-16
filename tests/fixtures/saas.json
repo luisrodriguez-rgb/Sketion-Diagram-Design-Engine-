@@ -1,0 +1,12 @@
+{
+  "title": "Métricas SaaS y KPIs",
+  "semantic_type": "dashboard",
+  "detail_level": "simple",
+  "engine": "dashboard",
+  "metrics": [
+    { "number": "$48.5K", "label": "MRR Recurrente", "is_accent": true },
+    { "number": "1,420", "label": "Usuarios Activos", "is_accent": false },
+    { "number": "99.98%", "label": "Uptime Global", "is_accent": false },
+    { "number": "<120ms", "label": "Latencia P95", "is_accent": false }
+  ]
+}

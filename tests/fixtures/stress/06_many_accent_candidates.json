@@ -1,0 +1,19 @@
+{
+  "title": "Prueba de Sobrecarga de Acentos Focales",
+  "semantic_type": "architecture",
+  "detail_level": "balanced",
+  "engine": "red",
+  "nodes": [
+    { "id": "n1", "label": "Servicio Alpha", "is_hero": true, "rel_x": 50, "rel_y": 140 },
+    { "id": "n2", "label": "Servicio Beta", "is_hero": true, "rel_x": 50, "rel_y": 280 },
+    { "id": "n3", "label": "Servicio Gamma", "is_hero": true, "rel_x": 350, "rel_y": 140 },
+    { "id": "n4", "label": "Servicio Delta", "is_hero": true, "rel_x": 350, "rel_y": 280 },
+    { "id": "n5", "label": "Servicio Epsilon", "is_hero": true, "rel_x": 650, "rel_y": 200 }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n3", "label": "Sync" },
+    { "from": "n2", "to": "n4", "label": "Sync" },
+    { "from": "n3", "to": "n5", "label": "Pipeline" },
+    { "from": "n4", "to": "n5", "label": "Pipeline" }
+  ]
+}

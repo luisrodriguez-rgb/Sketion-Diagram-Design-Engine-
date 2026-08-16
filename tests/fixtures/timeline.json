@@ -1,0 +1,12 @@
+{
+  "title": "Roadmap de Lanzamiento v2.5",
+  "semantic_type": "timeline",
+  "detail_level": "balanced",
+  "engine": "timeline",
+  "milestones": [
+    { "date": "Q1 2026", "title": "Base .excalidraw\nFormato & Binding" },
+    { "date": "Q2 2026", "title": "Sistema Editorial\n27 Tipos Semánticos" },
+    { "date": "Q3 2026", "title": "Quality Score (0-100)\nSelf-Correction Loop" },
+    { "date": "Q4 2026", "title": "Sketion Studio\nWorkspace Visual" }
+  ]
+}

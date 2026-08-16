@@ -1,0 +1,13 @@
+{
+  "title": "Flujo de Autenticación OAuth2",
+  "semantic_type": "sequence",
+  "detail_level": "balanced",
+  "engine": "flujo",
+  "steps": [
+    { "step_num": "01", "label": "Usuario ingresa credenciales", "is_hero": false },
+    { "step_num": "02", "label": "Frontend envía POST /auth/login", "is_hero": false, "edge_label": "HTTPS" },
+    { "step_num": "03", "label": "API Gateway valida y firma JWT", "is_hero": true, "edge_label": "Verify" },
+    { "step_num": "04", "label": "Redis almacena token de sesión", "is_hero": false, "edge_label": "Cache SET" },
+    { "step_num": "05", "label": "Retorno de Token al Cliente", "is_hero": false }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Matriz de Permisos por Rol",
+  "semantic_type": "security_matrix",
+  "detail_level": "balanced",
+  "engine": "matriz",
+  "headers": ["Recurso", "Admin", "Developer", "Viewer", "API Bot"],
+  "rows": [
+    { "values": ["Repositorios", "FULL (CRUD)", "READ/WRITE", "READ ONLY", "READ ONLY"], "hero_col_idx": 1 },
+    { "values": ["Variables de Entorno", "MANAGE", "READ", "DENIED", "READ (Scoped)"], "hero_col_idx": 1 },
+    { "values": ["Deploy a Producción", "APPROVE/DEPLOY", "TRIGGER PR", "DENIED", "AUTO DEPLOY"], "hero_col_idx": 1 }
+  ]
+}

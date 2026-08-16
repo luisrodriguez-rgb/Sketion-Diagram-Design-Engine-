@@ -1,0 +1,13 @@
+{
+  "title": "Proceso con Nombres Técnicos Extensos",
+  "semantic_type": "sequence",
+  "detail_level": "balanced",
+  "output_preset": "docs",
+  "engine": "flujo",
+  "steps": [
+    { "step_num": "01", "label": "OAuth 2.0 Authorization Code Grant Request Initiated", "is_hero": false },
+    { "step_num": "02", "label": "Enterprise Single Sign-On Identity Provider Validation", "is_hero": true, "edge_label": "SAML/OIDC" },
+    { "step_num": "03", "label": "Decentralized Token Exchange and Cryptographic Verification", "is_hero": false, "edge_label": "RS256" },
+    { "step_num": "04", "label": "Resource Server Access Token Granting and Session Dispatch", "is_hero": false }
+  ]
+}

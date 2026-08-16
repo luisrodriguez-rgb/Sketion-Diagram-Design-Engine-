@@ -1,0 +1,36 @@
+{
+  "title": "Arquitectura Densa de Alta Disponibilidad",
+  "semantic_type": "architecture",
+  "detail_level": "detailed",
+  "output_preset": "deep_dive",
+  "engine": "red",
+  "scopes": [
+    { "id": "edge", "label": "EDGE & INGRESS", "rel_x": 30, "rel_y": 80, "w": 260, "h": 580 },
+    { "id": "core", "label": "CORE MICROSERVICES", "rel_x": 320, "rel_y": 80, "w": 520, "h": 580 },
+    { "id": "data", "label": "STORAGE & EVENT BUS", "rel_x": 870, "rel_y": 80, "w": 300, "h": 580 }
+  ],
+  "nodes": [
+    { "id": "waf", "label": "Cloud WAF", "sublabel": "DDoS Shield", "metadata": ":443", "rel_x": 50, "rel_y": 140 },
+    { "id": "cdn", "label": "CDN Edge", "sublabel": "Static Assets", "metadata": "Anycast", "rel_x": 50, "rel_y": 280 },
+    { "id": "dns", "label": "Route 53", "sublabel": "DNS Geo-routing", "metadata": "DNS", "rel_x": 50, "rel_y": 420 },
+    { "id": "gateway", "label": "API Gateway", "sublabel": "Rate Limit & Auth", "metadata": ":8000", "role": "core", "is_hero": true, "rel_x": 350, "rel_y": 140 },
+    { "id": "auth", "label": "Auth Service", "sublabel": "OAuth2 / OIDC", "metadata": ":8081", "rel_x": 350, "rel_y": 280 },
+    { "id": "billing", "label": "Payment Service", "sublabel": "Stripe Sync", "metadata": ":8082", "rel_x": 350, "rel_y": 420 },
+    { "id": "orders", "label": "Orders Worker", "sublabel": "Saga Pattern", "metadata": ":8083", "rel_x": 600, "rel_y": 200 },
+    { "id": "inventory", "label": "Inventory API", "sublabel": "Stock Matrix", "metadata": ":8084", "rel_x": 600, "rel_y": 360 },
+    { "id": "kafka", "label": "Kafka Event Bus", "sublabel": "Order Events", "metadata": ":9092", "rel_x": 900, "rel_y": 140 },
+    { "id": "postgres", "label": "PostgreSQL Cluster", "sublabel": "Primary/Replica", "metadata": ":5432", "rel_x": 900, "rel_y": 280 },
+    { "id": "redis", "label": "Redis Cache", "sublabel": "Leaderboard", "metadata": ":6379", "rel_x": 900, "rel_y": 420 }
+  ],
+  "edges": [
+    { "from": "waf", "to": "gateway", "label": "HTTPS" },
+    { "from": "cdn", "to": "gateway", "label": "Origin" },
+    { "from": "gateway", "to": "auth", "label": "Verify" },
+    { "from": "gateway", "to": "billing", "label": "Charge" },
+    { "from": "gateway", "to": "orders", "label": "Queue" },
+    { "from": "orders", "to": "inventory", "label": "Reserve" },
+    { "from": "orders", "to": "kafka", "label": "Emit" },
+    { "from": "orders", "to": "postgres", "label": "SQL" },
+    { "from": "auth", "to": "redis", "label": "Session" }
+  ]
+}

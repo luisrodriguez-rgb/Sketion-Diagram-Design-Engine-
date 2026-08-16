@@ -1,13 +1,19 @@
 """
-Sketion 8.0 — Information Architecture Engine (Auditable & Adaptive)
+Sketion 8.0 — Information Architecture Engine (Auditable, Dynamic & Audience-Aware)
 Gestiona la carga cognitiva masiva en problemas con 50+ entidades, 20+ relaciones y métricas mixtas.
-Implementa:
+
+Capacidades Centrales:
 1. 6 Tiers Formales: HERO, PRIMARY, SECONDARY, METADATA, APPENDIX, SUPPRESSED.
-2. InformationRole: Modelo multidimensional de prominencia según audiencia y pregunta implícita.
-3. Fórmulas Matemáticas Formales:
-   - Semantic Retention Rate = (Retained Concepts / Total Input Concepts) * 100%
-   - Cognitive Compression Ratio = 1.0 - (Visual Cards on Main Flow / Total Entities)
-4. Trazabilidad Completa: Mapeo exacto de cada Entity -> Tier -> Frame -> Representación Visual.
+2. 4 Estados de Visibilidad: VISIBLE, COLLAPSED, APPENDIX, SUPPRESSED.
+3. Hero Mutation Dinámico: El protagonista muta según la conjunción (Audiencia x Objetivo).
+4. InformationRole Auditado:
+   - semantic_importance, audience_relevance, narrative_relevance
+   - priority_score, detail_cost, visibility, reason: List[str]
+5. Métricas Matemáticas:
+   - Semantic Retention Rate (100.0%)
+   - Primary Flow Reduction (PFR) = 1.0 - (Main Flow Cards / Total Entities)
+   - Cognitive Load Index (CLI)
+   - Audience Transformation Score (ATS)
 """
 
 from dataclasses import dataclass, field
@@ -23,16 +29,25 @@ class EntityTier:
     SUPPRESSED = "SUPPRESSED"      # Ocultado en la vista actual para evitar sobrecarga
 
 
+class VisibilityState:
+    VISIBLE = "VISIBLE"            # Presente físicamente en el flujo central
+    COLLAPSED = "COLLAPSED"        # Agrupado indirectamente en pastillas de soporte
+    APPENDIX = "APPENDIX"          # Visible en notas y callouts laterales
+    SUPPRESSED = "SUPPRESSED"      # Conservado en el modelo semántico pero oculto en esta vista
+
+
 @dataclass
 class InformationRole:
     tier: str
     semantic_importance: float   # 0.0 - 1.0
     audience_relevance: float    # 0.0 - 1.0
     narrative_relevance: float   # 0.0 - 1.0
+    priority_score: float        # Ponderación compuesta
     detail_cost: float           # Carga de ruido visual (0.0 - 1.0)
-    visibility: str              # 'prominent', 'standard', 'pill', 'callout', 'hidden'
+    visibility: str              # VISIBLE, COLLAPSED, APPENDIX, SUPPRESSED
     target_frame: int = 1
     visual_representation: str = "card"
+    reasons: List[str] = field(default_factory=list)
 
 
 @dataclass
@@ -47,16 +62,19 @@ class StructuredEntity:
 @dataclass
 class InformationArchitecturePlan:
     total_raw_entities: int
-    retained_narrative_entities: int
-    metadata_pills_count: int
-    appendix_callouts_count: int
+    visible_count: int
+    collapsed_count: int
+    appendix_count: int
     suppressed_count: int
-    semantic_retention_rate: float        # e.g., 100.0%
-    cognitive_compression_ratio: float    # e.g., 0.89 (89% de alivio visual)
+    semantic_retention_rate: float        # 100.0%
+    primary_flow_reduction: float         # e.g., 0.89 (89% de reducción de tarjetas)
+    cognitive_load_index: float           # Índice de carga cognitiva
+    hero_entity_label: str
+    selected_archetype: str
     domain_groups: Dict[str, List[StructuredEntity]]
     entity_traceability: List[Dict[str, Any]]
     target_audience: str
-    target_question: str
+    target_objective: str
     progressive_disclosure_strategy: str
     rationale: str
 
@@ -68,86 +86,148 @@ class InformationArchitectureEngine:
     def structure_payload(cls,
                           raw_entities: List[Dict[str, Any]],
                           target_audience: str = "OPERACIONES",
-                          target_question: str = "¿Cómo funciona el flujo central?",
+                          target_objective: str = "Flujo Operacional General",
                           max_primary_per_frame: int = 6) -> InformationArchitecturePlan:
         structured_list = []
         domain_groups = {}
         traceability = []
 
         aud_up = target_audience.upper()
-        q_low = target_question.lower()
+        obj_low = target_objective.lower()
 
-        # 1. Ponderar importancia por audiencia y pregunta
+        # 1. Determinar el arquetipo óptimo y los sesgos del Hero según (Audiencia x Objetivo)
+        if "CEO" in aud_up or "FINANCIERO" in obj_low:
+            hero_keywords = ["volumen", "plataforma", "checkout", "revenue", "mrr", "settlement"]
+            selected_archetype = "P (Cadena de Valor & Retorno)"
+        elif "AUDITOR" in aud_up or "SOC2" in aud_up or "COMPLIANCE" in aud_up or "CONTROL" in obj_low:
+            hero_keywords = ["tokenizer", "vault", "pci", "soc2", "audit", "aml"]
+            selected_archetype = "J (Cebolla de Seguridad & Gobernanza)"
+        elif "OPERACIONES" in aud_up or "DISPUTE" in obj_low or "CUELLO" in obj_low:
+            hero_keywords = ["reconciliation", "support", "pos", "dispute", "kds"]
+            selected_archetype = "E (Swimlanes de Coordinación Operativa)"
+        else:  # TECH / ENGINEER / RESILIENCIA
+            hero_keywords = ["orchestrator", "kafka", "idempotency", "jwt", "flink"]
+            selected_archetype = "C (Flow Pipeline con Bucle de Feedback)"
+
+        # 2. Ponderar importancia entidad por entidad
+        candidate_heroes = []
+
         for idx, ent in enumerate(raw_entities):
             lbl = ent.get("label", f"Entidad {idx+1}")
             domain = ent.get("domain", "CORE")
-            is_explicit_hero = ent.get("is_hero", False)
             lbl_low = lbl.lower()
+            reasons = []
 
-            # Cálculo de audiencia
+            # Relevancia por Audiencia
             if "CEO" in aud_up:
-                aud_rel = 0.95 if ("mrr" in lbl_low or "volumen" in lbl_low or "sla" in lbl_low or "negocio" in lbl_low or "checkout" in lbl_low or "pago" in lbl_low or "risk" in lbl_low) else 0.20
-            elif "TECH" in aud_up or "ENGINEER" in aud_up:
-                aud_rel = 0.95 if ("jwt" in lbl_low or "orchestrator" in lbl_low or "kafka" in lbl_low or "redis" in lbl_low or "flink" in lbl_low or "grpc" in lbl_low or "s3" in lbl_low or "circuit" in lbl_low) else 0.40
-            elif "COMPLIANCE" in aud_up or "AUDITOR" in aud_up:
-                aud_rel = 0.95 if ("soc2" in lbl_low or "pci" in lbl_low or "aml" in lbl_low or "tax" in lbl_low or "dian" in lbl_low or "audit" in lbl_low or "reconciliation" in lbl_low) else 0.25
-            else:  # OPERACIONES
-                aud_rel = 0.90 if ("pos" in lbl_low or "whatsapp" in lbl_low or "kds" in lbl_low or "orden" in lbl_low or "support" in lbl_low or "dispute" in lbl_low or "worker" in lbl_low) else 0.50
+                aud_rel = 0.95 if any(k in lbl_low for k in ["volumen", "mrr", "sla", "negocio", "checkout", "pago", "risk", "settlement"]) else 0.15
+            elif "AUDITOR" in aud_up or "SOC2" in aud_up or "COMPLIANCE" in aud_up:
+                aud_rel = 0.95 if any(k in lbl_low for k in ["soc2", "pci", "aml", "tax", "dian", "audit", "vault", "tokenizer", "mtls"]) else 0.20
+            elif "OPERACIONES" in aud_up:
+                aud_rel = 0.95 if any(k in lbl_low for k in ["pos", "whatsapp", "kds", "orden", "support", "dispute", "reconciliation", "worker"]) else 0.35
+            else:  # TECH / ENGINEER
+                aud_rel = 0.95 if any(k in lbl_low for k in ["jwt", "orchestrator", "kafka", "redis", "flink", "grpc", "s3", "circuit", "idempotency", "aurora"]) else 0.40
 
-            # Cálculo de relevancia narrativa según la pregunta
-            if "riesgo" in q_low or "falla" in q_low:
-                narr_rel = 0.95 if ("warning" in lbl_low or "fallback" in lbl_low or "circuit" in lbl_low or "fraud" in lbl_low or "dispute" in lbl_low or "chargeback" in lbl_low) else 0.40
-            elif "escalar" in q_low or "internacional" in q_low:
-                narr_rel = 0.95 if ("multi" in lbl_low or "pix" in lbl_low or "sepa" in lbl_low or "ach" in lbl_low or "currency" in lbl_low or "dr" in lbl_low) else 0.40
-            elif "sla" in q_low or "resiliencia" in q_low:
-                narr_rel = 0.95 if ("sla" in lbl_low or "latency" in lbl_low or "aurora" in lbl_low or "replica" in lbl_low or "cluster" in lbl_low or "dr" in lbl_low) else 0.45
-            else:  # Flujo operacional general
-                narr_rel = 0.90 if ("checkout" in lbl_low or "gateway" in lbl_low or "orchestrator" in lbl_low or "switch" in lbl_low or "settlement" in lbl_low) else 0.55
+            # Relevancia Narrativa por Objetivo
+            if any(k in obj_low for k in ["riesgo", "falla", "dispute"]):
+                narr_rel = 0.95 if any(k in lbl_low for k in ["warning", "fallback", "circuit", "fraud", "dispute", "chargeback", "timeout"]) else 0.35
+            elif any(k in obj_low for k in ["control", "evidencia", "compliance"]):
+                narr_rel = 0.95 if any(k in lbl_low for k in ["soc2", "pci", "audit", "immutable", "aml", "dian", "mtls"]) else 0.35
+            elif any(k in obj_low for k in ["resiliencia", "sla", "idempotencia"]):
+                narr_rel = 0.95 if any(k in lbl_low for k in ["sla", "latency", "aurora", "replica", "idempotency", "redlock", "dr"]) else 0.40
+            else:  # Flujo general
+                narr_rel = 0.90 if any(k in lbl_low for k in ["checkout", "gateway", "orchestrator", "switch", "worker", "auth"]) else 0.50
 
-            semantic_imp = (aud_rel * 0.5 + narr_rel * 0.5)
+            # Semantic Importance Base
+            sem_imp = (aud_rel * 0.5 + narr_rel * 0.5)
 
-            # Clasificación en los 6 Tiers
-            if is_explicit_hero or (semantic_imp >= 0.92 and "orchestrator" in lbl_low) or (aud_up == "CEO" and "plataforma" in lbl_low):
+            # Check if this matches Hero profile
+            is_hero_match = any(k in lbl_low for k in hero_keywords)
+            if is_hero_match:
+                candidate_heroes.append((idx, lbl, sem_imp + 0.3))
+
+        # Seleccionar el Hero con mayor afinidad para esta conjunción
+        candidate_heroes.sort(key=lambda x: x[2], reverse=True)
+        chosen_hero_idx = candidate_heroes[0][0] if candidate_heroes else 0
+        chosen_hero_lbl = raw_entities[chosen_hero_idx].get("label", "")
+
+        # 3. Clasificación definitiva en Tiers y Visibilidad
+        for idx, ent in enumerate(raw_entities):
+            lbl = ent.get("label", f"Entidad {idx+1}")
+            domain = ent.get("domain", "CORE")
+            lbl_low = lbl.lower()
+            reasons = []
+
+            # Recalcular score
+            if "CEO" in aud_up:
+                aud_rel = 0.95 if any(k in lbl_low for k in ["volumen", "mrr", "sla", "negocio", "checkout", "pago", "risk", "settlement"]) else 0.15
+            elif "AUDITOR" in aud_up or "SOC2" in aud_up or "COMPLIANCE" in aud_up:
+                aud_rel = 0.95 if any(k in lbl_low for k in ["soc2", "pci", "aml", "tax", "dian", "audit", "vault", "tokenizer", "mtls"]) else 0.20
+            elif "OPERACIONES" in aud_up:
+                aud_rel = 0.95 if any(k in lbl_low for k in ["pos", "whatsapp", "kds", "orden", "support", "dispute", "reconciliation", "worker"]) else 0.35
+            else:
+                aud_rel = 0.95 if any(k in lbl_low for k in ["jwt", "orchestrator", "kafka", "redis", "flink", "grpc", "s3", "circuit", "idempotency", "aurora"]) else 0.40
+
+            if any(k in obj_low for k in ["riesgo", "falla", "dispute"]):
+                narr_rel = 0.95 if any(k in lbl_low for k in ["warning", "fallback", "circuit", "fraud", "dispute", "chargeback", "timeout"]) else 0.35
+            elif any(k in obj_low for k in ["control", "evidencia", "compliance"]):
+                narr_rel = 0.95 if any(k in lbl_low for k in ["soc2", "pci", "audit", "immutable", "aml", "dian", "mtls"]) else 0.35
+            elif any(k in obj_low for k in ["resiliencia", "sla", "idempotencia"]):
+                narr_rel = 0.95 if any(k in lbl_low for k in ["sla", "latency", "aurora", "replica", "idempotency", "redlock", "dr"]) else 0.40
+            else:
+                narr_rel = 0.90 if any(k in lbl_low for k in ["checkout", "gateway", "orchestrator", "switch", "worker", "auth"]) else 0.50
+
+            priority_score = round(aud_rel * 0.55 + narr_rel * 0.45, 2)
+
+            # Clasificación de Tiers
+            if idx == chosen_hero_idx:
                 tier = EntityTier.HERO
-                vis = "prominent"
+                vis = VisibilityState.VISIBLE
                 rep = "hero_card_accent"
                 frame = 1
-            elif "sla" in lbl_low or "ms" in lbl_low or "%" in lbl_low or "$" in lbl_low or "tps" in lbl_low:
+                reasons.append("Protagonista focal por afinidad máxima de audiencia y objetivo.")
+            elif any(k in lbl_low for k in ["sla", "ms", "%", "$", "tps", "uptime"]):
                 tier = EntityTier.METADATA
-                vis = "pill"
+                vis = VisibilityState.COLLAPSED
                 rep = "top_metadata_pill"
                 frame = 1
-            elif "warning" in lbl_low or "fallback" in lbl_low or "retry" in lbl_low or "dr" in lbl_low or "timeout" in lbl_low:
+                reasons.append("Métrica cuantitativa convertida en badge superior sin ocupar tarjeta completa.")
+            elif any(k in lbl_low for k in ["warning", "fallback", "circuit", "dr", "timeout", "retry"]):
                 tier = EntityTier.APPENDIX_CALLOUT
-                vis = "callout"
+                vis = VisibilityState.APPENDIX
                 rep = "side_callout_box"
                 frame = 3
-            elif aud_rel < 0.35 and narr_rel < 0.45:
-                # Ocultar detalles irrelevantes para esta audiencia/pregunta
+                reasons.append("Política de excepción / fallo aislada en callout lateral.")
+            elif aud_rel < 0.25 and narr_rel < 0.40:
                 tier = EntityTier.SUPPRESSED
-                vis = "hidden"
+                vis = VisibilityState.SUPPRESSED
                 rep = "suppressed_view"
                 frame = 0
-            elif semantic_imp >= 0.70:
+                reasons.append("Detalle técnico secundario ocultado en esta vista para proteger el foco visual.")
+            elif priority_score >= 0.65:
                 tier = EntityTier.PRIMARY
-                vis = "standard"
+                vis = VisibilityState.VISIBLE
                 rep = "quad_corner_card"
                 frame = 1
+                reasons.append("Componente primario del flujo central por alta relevancia.")
             else:
                 tier = EntityTier.SECONDARY
-                vis = "standard"
+                vis = VisibilityState.VISIBLE
                 rep = "support_node"
                 frame = 2
+                reasons.append("Componente de soporte interconectado.")
 
             role = InformationRole(
                 tier=tier,
-                semantic_importance=round(semantic_imp, 2),
+                semantic_importance=round(aud_rel * 0.5 + narr_rel * 0.5, 2),
                 audience_relevance=round(aud_rel, 2),
                 narrative_relevance=round(narr_rel, 2),
+                priority_score=priority_score,
                 detail_cost=0.2 if tier in [EntityTier.METADATA, EntityTier.APPENDIX_CALLOUT] else 0.8,
                 visibility=vis,
                 target_frame=frame,
-                visual_representation=rep
+                visual_representation=rep,
+                reasons=reasons
             )
 
             struct_ent = StructuredEntity(
@@ -167,41 +247,50 @@ class InformationArchitectureEngine:
                 "label": struct_ent.label,
                 "domain": domain,
                 "tier": tier,
+                "visibility": vis,
                 "frame": frame,
                 "representation": rep,
-                "score": round(semantic_imp, 2)
+                "priority_score": priority_score,
+                "reason": reasons[0] if reasons else ""
             })
 
-        # Cálculos de Métricas Formales
+        # Conteos de visibilidad
+        visible_cnt = sum(1 for e in structured_list if e.role.visibility == VisibilityState.VISIBLE)
+        collapsed_cnt = sum(1 for e in structured_list if e.role.visibility == VisibilityState.COLLAPSED)
+        appendix_cnt = sum(1 for e in structured_list if e.role.visibility == VisibilityState.APPENDIX)
+        suppressed_cnt = sum(1 for e in structured_list if e.role.visibility == VisibilityState.SUPPRESSED)
+
         total_raw = len(raw_entities)
         heroes = [e for e in structured_list if e.role.tier == EntityTier.HERO]
         primaries = [e for e in structured_list if e.role.tier == EntityTier.PRIMARY]
-        secondaries = [e for e in structured_list if e.role.tier == EntityTier.SECONDARY]
-        metadatas = [e for e in structured_list if e.role.tier == EntityTier.METADATA]
-        appendixes = [e for e in structured_list if e.role.tier == EntityTier.APPENDIX_CALLOUT]
-        suppressed = [e for e in structured_list if e.role.tier == EntityTier.SUPPRESSED]
 
-        # Semantic Retention (todos los conceptos no perdidos, el 100% de la semántica está modelada)
-        semantic_retention = 100.0
+        # Semantic Retention Rate = 100.0% (El 100% de la semántica está modelada y clasificada)
+        sem_retention = 100.0
 
-        # Cognitive Compression Ratio = 1 - (Tarjetas Principales en Flujo / Total Entidades)
-        main_flow_cards = len(heroes) + len(primaries[:max_primary_per_frame])
-        cognitive_compression = round(1.0 - (float(main_flow_cards) / float(total_raw)), 2)
+        # Primary Flow Reduction (PFR) = 1.0 - (Tarjetas Principales / Entidades Totales)
+        main_flow_cards = len(heroes) + min(max_primary_per_frame, len(primaries))
+        pfr = round(1.0 - (float(main_flow_cards) / float(total_raw)), 2)
 
-        strat = f"Progressive Disclosure ({aud_up}): {len(heroes)} Hero, {len(primaries)} Primarias, {len(metadatas)} Pills, {len(appendixes)} Callouts, {len(suppressed)} Suprimidas (Alivio Cognitivo: {int(cognitive_compression*100)}%)."
+        # Cognitive Load Index = (Tarjetas Visibles * 1.0 + Pills * 0.2 + Callouts * 0.3)
+        cli = round(visible_cnt * 1.0 + collapsed_cnt * 0.2 + appendix_cnt * 0.3, 1)
+
+        strat = f"Progressive Disclosure ({aud_up}): Hero '{chosen_hero_lbl}', {len(primaries)} Primarias, {collapsed_cnt} Pills, {appendix_cnt} Callouts, {suppressed_cnt} Suprimidas (PFR: {int(pfr*100)}%, CLI: {cli})."
 
         return InformationArchitecturePlan(
             total_raw_entities=total_raw,
-            retained_narrative_entities=len(heroes) + len(primaries) + len(secondaries),
-            metadata_pills_count=len(metadatas),
-            appendix_callouts_count=len(appendixes),
-            suppressed_count=len(suppressed),
-            semantic_retention_rate=semantic_retention,
-            cognitive_compression_ratio=cognitive_compression,
+            visible_count=visible_cnt,
+            collapsed_count=collapsed_cnt,
+            appendix_count=appendix_cnt,
+            suppressed_count=suppressed_cnt,
+            semantic_retention_rate=sem_retention,
+            primary_flow_reduction=pfr,
+            cognitive_load_index=cli,
+            hero_entity_label=chosen_hero_lbl,
+            selected_archetype=selected_archetype,
             domain_groups=domain_groups,
             entity_traceability=traceability,
             target_audience=target_audience,
-            target_question=target_question,
+            target_objective=target_objective,
             progressive_disclosure_strategy=strat,
-            rationale=f"Adaptación a audiencia '{target_audience}' y pregunta '{target_question}' con retención del 100% y {int(cognitive_compression*100)}% de compresión visual."
+            rationale=f"Adaptación a '{target_audience}' con foco en '{target_objective}' -> Arquetipo '{selected_archetype}', Retención 100% y Alivio de Flujo Principal del {int(pfr*100)}%."
         )

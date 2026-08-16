@@ -1,0 +1,438 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://sketion.engine.v7",
+  "elements": [
+    {
+      "id": "frame_34b6347e",
+      "type": "frame",
+      "x": 40.0,
+      "y": 40.0,
+      "width": 2020.0,
+      "height": 420.0,
+      "name": "01. Senior Cloud Engineer - Alta Concurrencia & Resiliencia",
+      "strokeColor": "#CED4DA",
+      "backgroundColor": "#F8F9FA"
+    },
+    {
+      "id": "title_0c19a5da",
+      "type": "text",
+      "x": 80.0,
+      "y": 65.0,
+      "text": "PROCESO: SENIOR CLOUD ENGINEER - ALTA CONCURRENCIA & RESILIENCIA",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "card_a65800c6",
+      "type": "rectangle",
+      "x": 80.0,
+      "y": 120.0,
+      "width": 240.0,
+      "height": 110.0,
+      "strokeColor": "#212529",
+      "backgroundColor": "#FFFFFF",
+      "fillStyle": "solid",
+      "strokeWidth": 1.0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      },
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "badge_9286d4ad",
+      "type": "text",
+      "x": 94.0,
+      "y": 134.0,
+      "text": "PASO 01",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#212529",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "label_20484ee5",
+      "type": "text",
+      "x": 94.0,
+      "y": 158.0,
+      "text": "Route53 Latency DNS",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "card_586c97e2",
+      "type": "rectangle",
+      "x": 390.0,
+      "y": 120.0,
+      "width": 240.0,
+      "height": 110.0,
+      "strokeColor": "#212529",
+      "backgroundColor": "#FFFFFF",
+      "fillStyle": "solid",
+      "strokeWidth": 1.0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      },
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "badge_8a057541",
+      "type": "text",
+      "x": 404.0,
+      "y": 134.0,
+      "text": "PASO 02",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#212529",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "label_60824005",
+      "type": "text",
+      "x": 404.0,
+      "y": 158.0,
+      "text": "Auth JWT Session Manager",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "card_a0ecb95c",
+      "type": "rectangle",
+      "x": 700.0,
+      "y": 120.0,
+      "width": 240.0,
+      "height": 110.0,
+      "strokeColor": "#212529",
+      "backgroundColor": "#FFFFFF",
+      "fillStyle": "solid",
+      "strokeWidth": 1.0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      },
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "badge_41b3765b",
+      "type": "text",
+      "x": 714.0,
+      "y": 134.0,
+      "text": "PASO 03",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#212529",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "label_f0f7d694",
+      "type": "text",
+      "x": 714.0,
+      "y": 158.0,
+      "text": "Redis Cluster Token Cache",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "card_72adef86",
+      "type": "rectangle",
+      "x": 1010.0,
+      "y": 120.0,
+      "width": 240.0,
+      "height": 110.0,
+      "strokeColor": "#212529",
+      "backgroundColor": "#FFFFFF",
+      "fillStyle": "solid",
+      "strokeWidth": 1.0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      },
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "badge_b6b0c4d2",
+      "type": "text",
+      "x": 1024.0,
+      "y": 134.0,
+      "text": "PASO 04",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#212529",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "label_4d45a703",
+      "type": "text",
+      "x": 1024.0,
+      "y": 158.0,
+      "text": "Payment Orchestrator Core",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "card_608edcd7",
+      "type": "rectangle",
+      "x": 1320.0,
+      "y": 120.0,
+      "width": 240.0,
+      "height": 110.0,
+      "strokeColor": "#D93829",
+      "backgroundColor": "#FFF5F5",
+      "fillStyle": "solid",
+      "strokeWidth": 2.0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      },
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "badge_c5b0cc00",
+      "type": "text",
+      "x": 1334.0,
+      "y": 134.0,
+      "text": "PASO 05 · CORE",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#D93829",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "label_ba03c7e5",
+      "type": "text",
+      "x": 1334.0,
+      "y": 158.0,
+      "text": "Idempotency Key Verifier",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "card_51f2c148",
+      "type": "rectangle",
+      "x": 1630.0,
+      "y": 120.0,
+      "width": 240.0,
+      "height": 110.0,
+      "strokeColor": "#212529",
+      "backgroundColor": "#FFFFFF",
+      "fillStyle": "solid",
+      "strokeWidth": 1.0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      },
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "badge_da5b1e5e",
+      "type": "text",
+      "x": 1644.0,
+      "y": 134.0,
+      "text": "PASO 06",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#212529",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "label_573c6dcb",
+      "type": "text",
+      "x": 1644.0,
+      "y": 158.0,
+      "text": "PostgreSQL Aurora Primary DB",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "arrow_ec84483c",
+      "type": "arrow",
+      "x": 320.0,
+      "y": 175.0,
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          70.0,
+          0.0
+        ]
+      ],
+      "strokeColor": "#212529",
+      "strokeWidth": 1.5,
+      "roughness": 0,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "arrow_e1be9349",
+      "type": "arrow",
+      "x": 630.0,
+      "y": 175.0,
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          70.0,
+          0.0
+        ]
+      ],
+      "strokeColor": "#212529",
+      "strokeWidth": 1.5,
+      "roughness": 0,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "edge_txt_4fe8136d",
+      "type": "text",
+      "x": 645.0,
+      "y": 157.0,
+      "text": "Sync",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#495057",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "arrow_7490fe2e",
+      "type": "arrow",
+      "x": 940.0,
+      "y": 175.0,
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          70.0,
+          0.0
+        ]
+      ],
+      "strokeColor": "#212529",
+      "strokeWidth": 1.5,
+      "roughness": 0,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "edge_txt_19e95ac0",
+      "type": "text",
+      "x": 955.0,
+      "y": 157.0,
+      "text": "Sync",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#495057",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "arrow_a1128a59",
+      "type": "arrow",
+      "x": 1250.0,
+      "y": 175.0,
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          70.0,
+          0.0
+        ]
+      ],
+      "strokeColor": "#212529",
+      "strokeWidth": 1.5,
+      "roughness": 0,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "edge_txt_b094a8c9",
+      "type": "text",
+      "x": 1265.0,
+      "y": 157.0,
+      "text": "Sync",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#495057",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "arrow_8e14a2cb",
+      "type": "arrow",
+      "x": 1560.0,
+      "y": 175.0,
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          70.0,
+          0.0
+        ]
+      ],
+      "strokeColor": "#212529",
+      "strokeWidth": 1.5,
+      "roughness": 0,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "frameId": "frame_34b6347e"
+    },
+    {
+      "id": "edge_txt_d45271f0",
+      "type": "text",
+      "x": 1575.0,
+      "y": 157.0,
+      "text": "Sync",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#495057",
+      "frameId": "frame_34b6347e"
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#FFFFFF",
+    "gridSize": 20
+  }
+}

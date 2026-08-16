@@ -1,0 +1,438 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://sketion.engine.v7",
+  "elements": [
+    {
+      "id": "frame_ee904330",
+      "type": "frame",
+      "x": 40.0,
+      "y": 40.0,
+      "width": 2020.0,
+      "height": 420.0,
+      "name": "01. Auditor de Riesgo & SOC2 - Control, Bóvedas & Evidencia",
+      "strokeColor": "#CED4DA",
+      "backgroundColor": "#F8F9FA"
+    },
+    {
+      "id": "title_3f5df64b",
+      "type": "text",
+      "x": 80.0,
+      "y": 65.0,
+      "text": "PROCESO: AUDITOR DE RIESGO & SOC2 - CONTROL, BÓVEDAS & EVIDENCIA",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "card_f8381d58",
+      "type": "rectangle",
+      "x": 80.0,
+      "y": 120.0,
+      "width": 240.0,
+      "height": 110.0,
+      "strokeColor": "#212529",
+      "backgroundColor": "#FFFFFF",
+      "fillStyle": "solid",
+      "strokeWidth": 1.0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      },
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "badge_6d064f57",
+      "type": "text",
+      "x": 94.0,
+      "y": 134.0,
+      "text": "PASO 01",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#212529",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "label_c304a20f",
+      "type": "text",
+      "x": 94.0,
+      "y": 158.0,
+      "text": "mTLS Mutual Authentication",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "card_f5375065",
+      "type": "rectangle",
+      "x": 390.0,
+      "y": 120.0,
+      "width": 240.0,
+      "height": 110.0,
+      "strokeColor": "#D93829",
+      "backgroundColor": "#FFF5F5",
+      "fillStyle": "solid",
+      "strokeWidth": 2.0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      },
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "badge_7251d4d1",
+      "type": "text",
+      "x": 404.0,
+      "y": 134.0,
+      "text": "PASO 02 · CORE",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#D93829",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "label_bbf1232a",
+      "type": "text",
+      "x": 404.0,
+      "y": 158.0,
+      "text": "PCI-DSS Tokenizer Vault",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "card_74aa00e5",
+      "type": "rectangle",
+      "x": 700.0,
+      "y": 120.0,
+      "width": 240.0,
+      "height": 110.0,
+      "strokeColor": "#212529",
+      "backgroundColor": "#FFFFFF",
+      "fillStyle": "solid",
+      "strokeWidth": 1.0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      },
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "badge_c59757d3",
+      "type": "text",
+      "x": 714.0,
+      "y": 134.0,
+      "text": "PASO 03",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#212529",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "label_951a7c7d",
+      "type": "text",
+      "x": 714.0,
+      "y": 158.0,
+      "text": "MinIO S3 Immutable Audit ...",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "card_fc614129",
+      "type": "rectangle",
+      "x": 1010.0,
+      "y": 120.0,
+      "width": 240.0,
+      "height": 110.0,
+      "strokeColor": "#212529",
+      "backgroundColor": "#FFFFFF",
+      "fillStyle": "solid",
+      "strokeWidth": 1.0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      },
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "badge_c526609e",
+      "type": "text",
+      "x": 1024.0,
+      "y": 134.0,
+      "text": "PASO 04",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#212529",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "label_bfecb019",
+      "type": "text",
+      "x": 1024.0,
+      "y": 158.0,
+      "text": "AML Anti-Money Laundering...",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "card_6318de02",
+      "type": "rectangle",
+      "x": 1320.0,
+      "y": 120.0,
+      "width": 240.0,
+      "height": 110.0,
+      "strokeColor": "#212529",
+      "backgroundColor": "#FFFFFF",
+      "fillStyle": "solid",
+      "strokeWidth": 1.0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      },
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "badge_bd460f1b",
+      "type": "text",
+      "x": 1334.0,
+      "y": 134.0,
+      "text": "PASO 05",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#212529",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "label_770b2e9b",
+      "type": "text",
+      "x": 1334.0,
+      "y": 158.0,
+      "text": "SOC2 Audit Trail Collector",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "card_7ae8b7aa",
+      "type": "rectangle",
+      "x": 1630.0,
+      "y": 120.0,
+      "width": 240.0,
+      "height": 110.0,
+      "strokeColor": "#212529",
+      "backgroundColor": "#FFFFFF",
+      "fillStyle": "solid",
+      "strokeWidth": 1.0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      },
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "badge_5ea18495",
+      "type": "text",
+      "x": 1644.0,
+      "y": 134.0,
+      "text": "PASO 06",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#212529",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "label_5d73067e",
+      "type": "text",
+      "x": 1644.0,
+      "y": 158.0,
+      "text": "DIAN Electronic Tax Reporter",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "strokeColor": "#1E1E1E",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "arrow_68dd0d6e",
+      "type": "arrow",
+      "x": 320.0,
+      "y": 175.0,
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          70.0,
+          0.0
+        ]
+      ],
+      "strokeColor": "#212529",
+      "strokeWidth": 1.5,
+      "roughness": 0,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "arrow_fdb596e0",
+      "type": "arrow",
+      "x": 630.0,
+      "y": 175.0,
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          70.0,
+          0.0
+        ]
+      ],
+      "strokeColor": "#212529",
+      "strokeWidth": 1.5,
+      "roughness": 0,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "edge_txt_2cf162e2",
+      "type": "text",
+      "x": 645.0,
+      "y": 157.0,
+      "text": "Sync",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#495057",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "arrow_b69e6b63",
+      "type": "arrow",
+      "x": 940.0,
+      "y": 175.0,
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          70.0,
+          0.0
+        ]
+      ],
+      "strokeColor": "#212529",
+      "strokeWidth": 1.5,
+      "roughness": 0,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "edge_txt_cdf9045b",
+      "type": "text",
+      "x": 955.0,
+      "y": 157.0,
+      "text": "Sync",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#495057",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "arrow_444b6c97",
+      "type": "arrow",
+      "x": 1250.0,
+      "y": 175.0,
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          70.0,
+          0.0
+        ]
+      ],
+      "strokeColor": "#212529",
+      "strokeWidth": 1.5,
+      "roughness": 0,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "edge_txt_eed0433d",
+      "type": "text",
+      "x": 1265.0,
+      "y": 157.0,
+      "text": "Sync",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#495057",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "arrow_af525b26",
+      "type": "arrow",
+      "x": 1560.0,
+      "y": 175.0,
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          70.0,
+          0.0
+        ]
+      ],
+      "strokeColor": "#212529",
+      "strokeWidth": 1.5,
+      "roughness": 0,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "frameId": "frame_ee904330"
+    },
+    {
+      "id": "edge_txt_a357b15e",
+      "type": "text",
+      "x": 1575.0,
+      "y": 157.0,
+      "text": "Sync",
+      "fontSize": 12,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#495057",
+      "frameId": "frame_ee904330"
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#FFFFFF",
+    "gridSize": 20
+  }
+}

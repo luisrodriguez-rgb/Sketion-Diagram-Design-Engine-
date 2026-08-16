@@ -1,435 +1,360 @@
 """
-Generador Maestro del Marco Legal y Operativo de SEAMOSGENIOS S.A.S.
-Genera PRUEBAS_V7/seamosgenios_marco_legal.excalidraw siguiendo los principios de
-Diagram Design, Sketion 8.0 y la regla Anti-Monocultivo.
+Sketion 8.0 — Generador Oficial del Marco Maestro Legal: SEAMOSGENIOS S.A.S.
+Genera PRUEBAS_V7/seamosgenios_marco_legal.excalidraw con la arquitectura oficial ExcalidrawScene:
+- Frame 1: Identidad, Matriz de 8 Roles y los 14 Documentos Maestros (Hub & Grid)
+- Frame 2: Protocolo Reforzado Menores (NNA), Grabaciones Gemini AI & Proveedores (Pipeline & Swimlanes)
+- Frame 3: Comercio Electrónico (Ley 1480), PQRS, Matriz RBAC & Log de Evidencia (Layer Stack)
 """
 
-import json
-import uuid
 import os
 import sys
+import json
 
 workspace_dir = "/Users/leonfeliperodriguez/Desktop/Trabajos/Sketion SKILL"
 sys.path.insert(0, workspace_dir)
 
+from render.excalidraw_builder import ExcalidrawScene, place_reset, place
 from validation.validator import validate_scene
-from rendering.anchor_geometry import ShapeBounds, AnchorGeometryEngine
-from rendering.orthogonal_router import OrthogonalRouterEngine
+
+OUT_DIR = os.path.join(workspace_dir, "PRUEBAS_V7")
+os.makedirs(OUT_DIR, exist_ok=True)
+
+PALETTE = {
+    "CANVAS": "#F8FAFC",
+    "CARD": "#FFFFFF",
+    "CARD_BORDER": "#CBD5E1",
+    "INK": "#0F172A",
+    "MUTED": "#64748B",
+    "BLUE_HERO": "#2563EB",
+    "BLUE_BG": "#EFF6FF",
+    "BLUE_BORDER": "#93C5FD",
+    "GREEN_HERO": "#059669",
+    "GREEN_BG": "#F0FDF4",
+    "GREEN_BORDER": "#86EFAC",
+    "CORAL_HERO": "#D93829",
+    "CORAL_BG": "#FFF5F2",
+    "CORAL_BORDER": "#FCA5A5",
+    "DARK_SLATE": "#1E293B",
+    "STICKY": "#FFE95C"
+}
 
 
-def gen_id(prefix="el"):
-    return f"{prefix}_{uuid.uuid4().hex[:8]}"
+def build_seamosgenios_legal_board():
+    place_reset(max_row_w=9500, gap=200)
+    scene = ExcalidrawScene(roughness=0, bg_color=PALETTE["CANVAS"])
 
-
-def make_text(text, x, y, size=14, font=1, color="#1E1E1E", align="left", frame_id=None):
-    return {
-        "id": gen_id("txt"),
-        "type": "text",
-        "x": x,
-        "y": y,
-        "text": text,
-        "fontSize": size,
-        "fontFamily": font,
-        "textAlign": align,
-        "verticalAlign": "top",
-        "strokeColor": color,
-        "backgroundColor": "transparent",
-        "fillStyle": "solid",
-        "strokeWidth": 1,
-        "strokeStyle": "solid",
-        "roughness": 0,
-        "opacity": 100,
-        "frameId": frame_id
-    }
-
-
-def make_card(x, y, w, h, stroke="#212529", bg="#FFFFFF", stroke_w=1.0, frame_id=None):
-    return {
-        "id": gen_id("card"),
-        "type": "rectangle",
-        "x": x,
-        "y": y,
-        "width": w,
-        "height": h,
-        "strokeColor": stroke,
-        "backgroundColor": bg,
-        "fillStyle": "solid",
-        "strokeWidth": stroke_w,
-        "strokeStyle": "solid",
-        "roughness": 0,
-        "opacity": 100,
-        "roundness": {"type": 3},
-        "frameId": frame_id
-    }
-
-
-def make_arrow(start_pt, end_pt, points=None, color="#212529", stroke_w=1.5, dashed=False, frame_id=None):
-    pts = points if points else [[0.0, 0.0], [end_pt[0] - start_pt[0], end_pt[1] - start_pt[1]]]
-    return {
-        "id": gen_id("arr"),
-        "type": "arrow",
-        "x": start_pt[0],
-        "y": start_pt[1],
-        "points": pts,
-        "strokeColor": color,
-        "backgroundColor": "transparent",
-        "fillStyle": "solid",
-        "strokeWidth": stroke_w,
-        "strokeStyle": "dashed" if dashed else "solid",
-        "roughness": 0,
-        "opacity": 100,
-        "startArrowhead": None,
-        "endArrowhead": "arrow",
-        "frameId": frame_id
-    }
-
-
-def build_seamosgenios_scene():
-    elements = []
-
-    # Dimensiones generales del tablero multi-marco
-    frame_w = 1250.0
-    frame_h = 1000.0
-    gap_frames = 100.0
+    fw = 2650.0
+    fh = 1020.0
 
     # ═══════════════════════════════════════════════════════════════════════════
-    # MARCO 1: IDENTIDAD, ACTORES & ARQUITECTURA DOCUMENTAL (Hub & Grid)
+    # FRAME 1: IDENTIDAD, MATRIZ DE ROLES & ARQUITECTURA DOCUMENTAL (Hub & Grid)
     # ═══════════════════════════════════════════════════════════════════════════
-    f1_x = 50.0
-    f1_y = 50.0
-    f1_id = gen_id("f1")
+    f1_x, f1_y = place(fw, fh)
+    fid1 = scene.add_frame("FRAME 1: SEAMOSGENIOS S.A.S. — IDENTIDAD, ROLES & ARQUITECTURA DOCUMENTAL", f1_x, f1_y, fw, fh)
 
-    # Contenedor Marco 1
-    elements.append({
-        "id": f1_id,
-        "type": "frame",
-        "x": f1_x,
-        "y": f1_y,
-        "width": frame_w,
-        "height": frame_h,
-        "name": "01. IDENTIDAD, ACTORES & ARQUITECTURA DOCUMENTAL",
-        "strokeColor": "#CED4DA",
-        "backgroundColor": "#F8F9FA"
-    })
+    scene.add_text(f1_x + 60.0, f1_y + 35.0, "SEAMOSGENIOS S.A.S.  ·  MARCO MAESTRO LEGAL & GOBERNANZA v1.0", font_size=13, font_family=2, color=PALETTE["MUTED"], frame_id=fid1)
+    scene.add_text(f1_x + 60.0, f1_y + 60.0, "Ecosistema Jurídico Integral: Protección de Datos (Ley 1581), Roles y 14 Documentos Maestros", font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid1)
 
-    # Header Frame 1
-    elements.append(make_text("SEAMOSGENIOS S.A.S. · MARCO MAESTRO LEGAL v1.0", f1_x + 40, f1_y + 30, size=24, color="#1E1E1E", frame_id=f1_id))
-    elements.append(make_text("NIT: 902080201 · Domicilio: Cali, Colombia · Régimen Ley 1581/2012 & SIC", f1_x + 40, f1_y + 65, size=13, font=3, color="#495057", frame_id=f1_id))
+    # Contenedor 1: Identidad del Responsable
+    sc1_w = 780.0
+    sc_h = 790.0
+    sc1_x = f1_x + 60.0
+    sc1_y = f1_y + 120.0
+    scene.add_scope_container(sc1_x, sc1_y, sc1_w, sc_h, label="1. IDENTIDAD & RESPONSABLE DEL TRATAMIENTO", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid1)
 
-    # Sección A: Tarjeta Central de Identidad & Responsable (Hero)
-    c_hero = make_card(f1_x + 40, f1_y + 110, 360, 160, stroke="#D93829", bg="#FFF5F5", stroke_w=2.0, frame_id=f1_id)
-    elements.append(c_hero)
-    elements.append(make_text("RESPONSABLE DEL TRATAMIENTO", f1_x + 55, f1_y + 125, size=11, font=3, color="#D93829", frame_id=f1_id))
-    elements.append(make_text("SEAMOSGENIOS S.A.S.", f1_x + 55, f1_y + 145, size=18, color="#1E1E1E", frame_id=f1_id))
-    elements.append(make_text("• Correo Oficial: seamosgenios@adpmh.com\n• Sede: Carrera 121 #25-65, Cali\n• Objeto: PreICFES Virtual, Simulacros & B2B\n• Canal PQRS Datos: Implementación Web", f1_x + 55, f1_y + 175, size=13, color="#495057", frame_id=f1_id))
+    scene.add_quad_card(sc1_x + 30.0, sc1_y + 50.0, sc1_w - 60.0, 130.0,
+                        "SEAMOSGENIOS S.A.S.",
+                        sublabel="NIT 902080201 · Carrera 121 #25-65, Cali, Valle del Cauca, Colombia\nCorreo Oficial: seamosgenios@adpmh.com · Objeto: PreICFES Virtual & B2B",
+                        badge="RESPONSABLE", icon="lock", is_hero=True, font_size=18, frame_id=fid1)
 
-    # Sección B: Matriz de Roles y Actores (8 Perfiles)
-    elements.append(make_text("MATRIZ DE ACTORES & ROLES DIFERENCIADOS (8 PERFILES)", f1_x + 430, f1_y + 110, size=15, color="#1E1E1E", frame_id=f1_id))
-    
+    scene.add_sticky_note(sc1_x + 30.0, sc1_y + 200.0, sc1_w - 60.0, 160.0,
+                          "REGLA DE ORO DE PRIVACIDAD (LEY 1581 / SIC):\n"
+                          "• La autorización debe ser previa, expresa, informada y demostrable.\n"
+                          "• PROHIBIDO empaquetar todas las autorizaciones en una sola casilla.\n"
+                          "• Cada finalidad sensible (menores, imagen, marketing) requiere su propio consentimiento independiente.",
+                          font_size=14, angle_deg=-1.0, frame_id=fid1)
+
+    scene.add_bound_card(sc1_x + 30.0, sc1_y + 385.0, sc1_w - 60.0, 155.0,
+                         "CANAL CENTRALIZADO DE HÁBEAS DATA & PQRS:\n"
+                         "• Correo de atención: seamosgenios@adpmh.com\n"
+                         "• Formulario autenticado en plataforma web con radicado automático.\n"
+                         "• Términos legales de respuesta: 15 días hábiles conforme al régimen SIC.\n"
+                         "• Registro de historial y trazabilidad inmutable por cada solicitud.",
+                         bg=PALETTE["BLUE_BG"], stroke=PALETTE["BLUE_BORDER"], text_color=PALETTE["INK"],
+                         font_size=13, roundness_type=3, frame_id=fid1)
+
+    scene.add_bound_card(sc1_x + 30.0, sc1_y + 565.0, sc1_w - 60.0, 185.0,
+                         "PRINCIPIO DE MINIMIZACIÓN & NECESIDAD:\n"
+                         "• No recolectar un dato solo porque técnicamente sea posible.\n"
+                         "• Datos solicitados: Nombre, documento, fecha nacimiento, colegio, puntajes.\n"
+                         "• Datos sensibles excluidos: CERO biometría, CERO religión, CERO política.\n"
+                         "• Datos de salud: Solo si existe necesidad indispensable reportada.",
+                         bg="#F8FAFC", stroke=PALETTE["CARD_BORDER"], text_color=PALETTE["INK"],
+                         font_size=13, roundness_type=3, frame_id=fid1)
+
+    # Contenedor 2: Matriz de 8 Roles
+    sc2_w = 800.0
+    sc2_x = sc1_x + sc1_w + 35.0
+    scene.add_scope_container(sc2_x, sc1_y, sc2_w, sc_h, label="2. MATRIZ DE ACTORES & ROLES (8 PERFILES DIFERENCIADOS)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid1)
+
     roles = [
-        ("COMPRADOR", "Quien contrata y paga"),
-        ("ESTUDIANTE", "Receptor del servicio"),
-        ("REPRESENTANTE", "Padre/Madre de menor"),
-        ("ACUDIENTE", "Gestor autorizado"),
-        ("COLEGIO B2B", "Cliente institucional"),
-        ("TUTOR", "Prestador de servicios"),
-        ("USUARIO", "Titular de la cuenta"),
-        ("TITULAR", "Dueño de los datos")
+        ("COMPRADOR", "Quien contrata y paga el servicio", "BUYER", "card"),
+        ("ESTUDIANTE", "Receptor del servicio académico PreICFES", "STUDENT", "user"),
+        ("REPRESENTANTE", "Padre/Madre de estudiante menor de edad", "PARENT", "users"),
+        ("ACUDIENTE", "Persona autorizada para trámites y seguimiento", "GUARDIAN", "shield"),
+        ("COLEGIO B2B", "Institución educativa cliente con cohorte", "B2B INST", "database"),
+        ("TUTOR", "Prestador de servicios docentes y mentoría", "TUTOR", "terminal"),
+        ("USUARIO", "Persona titular que opera la cuenta LMS", "ACCOUNT", "laptop"),
+        ("TITULAR", "Persona natural dueña de los datos personales", "DATA OWNER", "key")
     ]
-    
-    for i, (r_tit, r_sub) in enumerate(roles):
-        rx = f1_x + 430 + (i % 2) * 380
-        ry = f1_y + 140 + (i // 2) * 55
-        c_r = make_card(rx, ry, 360, 45, stroke="#CED4DA", bg="#FFFFFF", frame_id=f1_id)
-        elements.append(c_r)
-        elements.append(make_text(f"ROLE: {r_tit}", rx + 12, ry + 8, size=11, font=3, color="#1971C2", frame_id=f1_id))
-        elements.append(make_text(r_sub, rx + 12, ry + 24, size=12, color="#495057", frame_id=f1_id))
 
-    # Sección C: Ecosistema de los 14 Documentos Maestros (Jerarquía)
-    elements.append(make_text("ARQUITECTURA DE LOS 14 DOCUMENTOS MAESTROS INDEPENDIENTES", f1_x + 40, f1_y + 390, size=16, color="#1E1E1E", frame_id=f1_id))
-    elements.append(make_text("Regla de Oro: Prohibido empaquetar todas las autorizaciones en un solo checkbox.", f1_x + 40, f1_y + 415, size=13, font=3, color="#D93829", frame_id=f1_id))
+    rw = (sc2_w - 75.0) * 0.5
+    for idx, (r_tit, r_sub, r_badge, r_icon) in enumerate(roles):
+        rx = sc2_x + 25.0 + (idx % 2) * (rw + 25.0)
+        ry = sc1_y + 50.0 + (idx // 2) * 165.0
+        scene.add_quad_card(rx, ry, rw, 140.0, r_tit, sublabel=r_sub, badge=r_badge, icon=r_icon, font_size=16, frame_id=fid1)
 
-    # 3 Columnas de Documentos
-    # Col 1: Núcleo Legal
-    c_nuc = make_card(f1_x + 40, f1_y + 450, 360, 500, stroke="#212529", bg="#FFFFFF", frame_id=f1_id)
-    elements.append(c_nuc)
-    elements.append(make_text("PILAR I · NÚCLEO CONTRACTUAL", f1_x + 55, f1_y + 465, size=12, font=3, color="#212529", frame_id=f1_id))
-    elements.append(make_text("01. Política de Tratamiento de Datos", f1_x + 55, f1_y + 495, size=14, color="#1E1E1E", frame_id=f1_id))
-    elements.append(make_text("• Qué datos se tratan y finalidades\n• Derechos, seguridad y retención\n• Proveedores y transmisiones int.\n• Canal oficial de PQRS", f1_x + 55, f1_y + 520, size=12, color="#495057", frame_id=f1_id))
-    
-    elements.append(make_text("02. Términos y Condiciones", f1_x + 55, f1_y + 610, size=14, color="#1E1E1E", frame_id=f1_id))
-    elements.append(make_text("• Reglas de compra y contratación\n• Propiedad intelectual de contenidos\n• Retracto legal y reversión de pagos\n• Cláusula de no garantía de puntaje", f1_x + 55, f1_y + 635, size=12, color="#495057", frame_id=f1_id))
+    # Contenedor 3: Los 14 Documentos Maestros
+    sc3_w = 880.0
+    sc3_x = sc2_x + sc2_w + 35.0
+    scene.add_scope_container(sc3_x, sc1_y, sc3_w, sc_h, label="3. ECOSISTEMA DE LOS 14 DOCUMENTOS MAESTROS", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid1)
 
-    elements.append(make_text("11. Política Propiedad Intelectual", f1_x + 55, f1_y + 730, size=14, color="#1E1E1E", frame_id=f1_id))
-    elements.append(make_text("• Banco de preguntas y simulacros\n• Guías, metodologías y software", f1_x + 55, f1_y + 755, size=12, color="#495057", frame_id=f1_id))
+    # 3 Pilares en tarjetas
+    scene.add_bound_card(sc3_x + 25.0, sc1_y + 50.0, sc3_w - 50.0, 220.0,
+                         "PILAR I · NÚCLEO CONTRACTUAL & PROPIEDAD INTELECTUAL:\n\n"
+                         "• 01. Política de Tratamiento de Datos: Régimen general, finalidades, derechos y retención.\n"
+                         "• 02. Términos y Condiciones: Compra, acceso, reglas de clase, retracto y reversión.\n"
+                         "• 11. Política de Propiedad Intelectual: Banco de preguntas ICFES, simulacros, PDFs, videos.",
+                         bg=PALETTE["BLUE_BG"], stroke=PALETTE["BLUE_BORDER"], text_color=PALETTE["INK"],
+                         font_size=13, align="left", roundness_type=3, frame_id=fid1)
 
-    # Col 2: Autorizaciones Específicas
-    c_aut = make_card(f1_x + 430, f1_y + 450, 370, 500, stroke="#1971C2", bg="#F8F9FA", frame_id=f1_id)
-    elements.append(c_aut)
-    elements.append(make_text("PILAR II · 5 AUTORIZACIONES (CASILLAS SEPARADAS)", f1_x + 445, f1_y + 465, size=12, font=3, color="#1971C2", frame_id=f1_id))
-    
-    auths = [
-        ("03. Autorización Datos Personales", "Aceptación previa, expresa e informada."),
-        ("04. Autorización Datos de Menores (NNA)", "Firmada exclusivamente por el Representante."),
-        ("05. Autorización Imagen, Voz & Logros", "Opcional. Para testimonios y publicidad."),
-        ("06. Autorización Grabación de Clases", "Fines pedagógicos y consulta interna."),
-        ("07. Autorización Marketing / WhatsApp", "Opcional. Promociones y nuevos cursos.")
-    ]
-    for j, (a_tit, a_desc) in enumerate(auths):
-        ay = f1_y + 500 + j * 85
-        elements.append(make_text(a_tit, f1_x + 445, ay, size=14, color="#1E1E1E", frame_id=f1_id))
-        elements.append(make_text(f"• {a_desc}", f1_x + 445, ay + 22, size=12, color="#495057", frame_id=f1_id))
+    scene.add_bound_card(sc3_x + 25.0, sc1_y + 295.0, sc3_w - 50.0, 240.0,
+                         "PILAR II · 5 AUTORIZACIONES ESPECÍFICAS (CASILLAS INDEPENDIENTES):\n\n"
+                         "• 03. Autorización Tratamiento de Datos Personales (Consentimiento general).\n"
+                         "• 04. Autorización Datos de Menores (NNA) (Otorgada exclusivamente por representante legal).\n"
+                         "• 05. Autorización Imagen, Voz, Testimonios y Resultados (Opcional para fines de marketing).\n"
+                         "• 06. Autorización Grabación de Clases y Transcripciones (Fines académicos y de consulta).\n"
+                         "• 07. Autorización Comunicaciones Comerciales y WhatsApp (Opcional para promociones).",
+                         bg=PALETTE["CORAL_BG"], stroke=PALETTE["CORAL_BORDER"], text_color=PALETTE["INK"],
+                         font_size=13, align="left", roundness_type=3, frame_id=fid1)
 
-    # Col 3: Reglamentos & B2B
-    c_reg = make_card(f1_x + 830, f1_y + 450, 370, 500, stroke="#212529", bg="#FFFFFF", frame_id=f1_id)
-    elements.append(c_reg)
-    elements.append(make_text("PILAR III · REGLAMENTOS & B2B INSTITUCIONAL", f1_x + 845, f1_y + 465, size=12, font=3, color="#212529", frame_id=f1_id))
-    
-    regs = [
-        ("08. Política de Cookies", "Técnicas, analíticas y gestión."),
-        ("09. Reglamento de Plataforma", "Integridad académica y no compartir."),
-        ("10. Convivencia Digital", "Meet, chat interno y grupos WhatsApp."),
-        ("12. Política de PQRS", "Petición, queja, reclamo y datos."),
-        ("13. Cuenta de Padres", "Acceso exclusivo a notas y asistencia."),
-        ("14. Acuerdo Colegios B2B", "Tratamiento y roles responsable/encargado.")
-    ]
-    for k, (r_tit, r_desc) in enumerate(regs):
-        ry = f1_y + 500 + k * 70
-        elements.append(make_text(r_tit, f1_x + 845, ry, size=13, color="#1E1E1E", frame_id=f1_id))
-        elements.append(make_text(f"• {r_desc}", f1_x + 845, ry + 20, size=12, color="#495057", frame_id=f1_id))
+    scene.add_bound_card(sc3_x + 25.0, sc1_y + 560.0, sc3_w - 50.0, 195.0,
+                         "PILAR III · REGLAMENTOS OPERATIVOS & CONVENIOS B2B:\n\n"
+                         "• 08. Política de Cookies · 09. Reglamento de Uso de Plataforma LMS.\n"
+                         "• 10. Convivencia Digital (Meet, WhatsApp) · 12. Política Integral de PQRS.\n"
+                         "• 13. Reglamento de Cuenta de Padres · 14. Acuerdo de Tratamiento con Colegios B2B.",
+                         bg=PALETTE["GREEN_BG"], stroke=PALETTE["GREEN_BORDER"], text_color=PALETTE["INK"],
+                         font_size=13, align="left", roundness_type=3, frame_id=fid1)
+
+    scene.add_legend_footer(f1_x + 60.0, f1_y + 945.0, fw - 120.0, swatches=[
+        {"label": "Responsable & Autorizaciones NNA", "bg": PALETTE["CORAL_BG"], "stroke": PALETTE["CORAL_HERO"]},
+        {"label": "Núcleo Contractual", "bg": PALETTE["BLUE_BG"], "stroke": PALETTE["BLUE_HERO"]},
+        {"label": "Reglamentos & B2B", "bg": PALETTE["GREEN_BG"], "stroke": PALETTE["GREEN_HERO"]},
+        {"label": "Actores del Ecosistema", "bg": "#FFFFFF", "stroke": PALETTE["MUTED"]}
+    ], note="SEAMOSGENIOS Compliance: Estricta separación de consentimientos conforme a la Ley 1581 de 2012.", frame_id=fid1)
 
 
     # ═══════════════════════════════════════════════════════════════════════════
-    # MARCO 2: FLUJOS CRÍTICOS: MENORES, GRABACIONES & TECH STACK (Swimlanes & Pipeline)
+    # FRAME 2: OPERACIÓN — PROTECCIÓN DE MENORES (NNA), GRABACIONES & TECH STACK
     # ═══════════════════════════════════════════════════════════════════════════
-    f2_x = f1_x + frame_w + gap_frames
-    f2_y = 50.0
-    f2_id = gen_id("f2")
+    f2_x, f2_y = place(fw, fh)
+    fid2 = scene.add_frame("FRAME 2: OPERACIÓN — PROTECCIÓN NNA, GRABACIONES GEMINI AI & PROVEEDORES", f2_x, f2_y, fw, fh)
 
-    # Contenedor Marco 2
-    elements.append({
-        "id": f2_id,
-        "type": "frame",
-        "x": f2_x,
-        "y": f2_y,
-        "width": frame_w,
-        "height": frame_h,
-        "name": "02. FLUJOS CRÍTICOS: MENORES, GRABACIONES IA & PROVEEDORES",
-        "strokeColor": "#CED4DA",
-        "backgroundColor": "#F8F9FA"
-    })
+    scene.add_text(f2_x + 60.0, f2_y + 35.0, "OPERATIONAL FLOWS  ·  MINOR PROTECTION & CLOUD TECH STACK", font_size=13, font_family=2, color=PALETTE["MUTED"], frame_id=fid2)
+    scene.add_text(f2_x + 60.0, f2_y + 60.0, "Flujos Críticos: Menores de Edad, Procesamiento IA con Gemini y Transmisiones Internacionales", font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid2)
 
-    # Header Frame 2
-    elements.append(make_text("FLUJOS DE OPERACIÓN, PROTECCIÓN NNA & INTEGRACIÓN TECH", f2_x + 40, f2_y + 30, size=24, color="#1E1E1E", frame_id=f2_id))
-    elements.append(make_text("Tratamiento Reforzado de Menores (SIC) · Grabación Google Meet / Gemini · Proveedores Bold & Factus", f2_x + 40, f2_y + 65, size=13, font=3, color="#495057", frame_id=f2_id))
+    # Top Scope: Protocolo de Menores (5 Pasos en Pipeline)
+    nna_w = fw - 120.0
+    nna_h = 240.0
+    scene.add_scope_container(f2_x + 60.0, f2_y + 120.0, nna_w, nna_h, label="1. PROTOCOLO REFORZADO DE CAPTURA PARA MENORES DE EDAD (NNA)", stroke=PALETTE["CORAL_BORDER"], bg=PALETTE["CORAL_BG"], frame_id=fid2)
 
-    # Flujo 1: Protocolo de Protección de Menores (5 Pasos en Pipeline)
-    elements.append(make_text("PROTOCOLO REFORZADO DE CAPTURA PARA MENORES DE EDAD (NNA)", f2_x + 40, f2_y + 110, size=16, color="#1E1E1E", frame_id=f2_id))
-    
-    nna_steps = [
-        ("01 DETECTAR", "Detección Edad < 18", "Identificación en registro"),
-        ("02 REPRESENTANTE", "Capturar Padre/Tutor", "Nombre, doc y contacto"),
-        ("03 AUTORIZAR", "Consentimiento NNA", "Firma digital expresa"),
-        ("04 INFORMAR", "Lenguaje Adaptado", "Explicación al menor"),
-        ("05 AUDITAR", "Log Evidencia", "Registro consent_id")
+    step_cards = [
+        ("01. DETECTAR EDAD", "Filtro en Formulario", "Detección de edad < 18 años", "STEP 1", "alert"),
+        ("02. REPRESENTANTE", "Capturar Padre/Madre", "Nombre, cédula y parentesco", "STEP 2", "users"),
+        ("03. AUTORIZACIÓN", "Consentimiento NNA", "Firma expresa del acudiente", "STEP 3", "lock", True),
+        ("04. INFORMAR MENOR", "Lenguaje Adaptado", "Derecho a ser escuchado", "STEP 4", "laptop"),
+        ("05. LOG AUDITABLE", "Registro consent_id", "Evidencia forense ante SIC", "STEP 5", "database")
     ]
-    
-    step_w = 210.0
-    step_gap = 25.0
-    for s_idx, (s_badge, s_title, s_sub) in enumerate(nna_steps):
-        sx = f2_x + 40 + s_idx * (step_w + step_gap)
-        sy = f2_y + 145
-        is_h = (s_idx == 2)
-        c_step = make_card(sx, sy, step_w, 100, stroke=("#D93829" if is_h else "#212529"), bg=("#FFF5F5" if is_h else "#FFFFFF"), stroke_w=(2.0 if is_h else 1.0), frame_id=f2_id)
-        elements.append(c_step)
-        elements.append(make_text(s_badge, sx + 12, sy + 12, size=11, font=3, color=("#D93829" if is_h else "#1971C2"), frame_id=f2_id))
-        elements.append(make_text(s_title, sx + 12, sy + 32, size=13, color="#1E1E1E", frame_id=f2_id))
-        elements.append(make_text(s_sub, sx + 12, sy + 62, size=11, color="#495057", frame_id=f2_id))
 
-        if s_idx < len(nna_steps) - 1:
-            elements.append(make_arrow((sx + step_w, sy + 50), (sx + step_w + step_gap, sy + 50), frame_id=f2_id))
+    card_step_w = (nna_w - 60.0 - 4 * 35.0) / 5.0
+    for idx, (s_tit, s_sub, s_meta, s_badge, s_icon, *is_h) in enumerate(step_cards):
+        cx = f2_x + 90.0 + idx * (card_step_w + 35.0)
+        cy = f2_y + 175.0
+        h_flag = is_h[0] if is_h else False
+        scene.add_quad_card(cx, cy, card_step_w, 140.0, s_tit, sublabel=f"{s_sub}\n{s_meta}", badge=s_badge, icon=s_icon, is_hero=h_flag, font_size=16, frame_id=fid2)
 
-    # Flujo 2: Matriz de Grabaciones & Tratamiento con Inteligencia Artificial
-    elements.append(make_text("MATRIZ DE TRATAMIENTO: GRABACIONES DE CLASES & IA (GEMINI)", f2_x + 40, f2_y + 280, size=16, color="#1E1E1E", frame_id=f2_id))
+        if idx < len(step_cards) - 1:
+            scene.add_arrow(cx + card_step_w, cy + 70.0, cx + card_step_w + 35.0, cy + 70.0, stroke=PALETTE["CORAL_HERO"], stroke_w=2.0, frame_id=fid2)
 
-    # Tarjeta Google Meet & Captura
-    c_rec1 = make_card(f2_x + 40, f2_y + 315, 360, 180, stroke="#212529", bg="#FFFFFF", frame_id=f2_id)
-    elements.append(c_rec1)
-    elements.append(make_text("SESIÓN EN VIVO · GOOGLE MEET", f2_x + 55, f2_y + 330, size=11, font=3, color="#1971C2", frame_id=f2_id))
-    elements.append(make_text("Captura Multimedia de Clase", f2_x + 55, f2_y + 350, size=15, color="#1E1E1E", frame_id=f2_id))
-    elements.append(make_text("• Aviso previo en pantalla obligatorio\n• Video, audio, cámara y micrófono\n• Intervenciones en chat y preguntas\n• Registro automático de asistencia", f2_x + 55, f2_y + 380, size=12, color="#495057", frame_id=f2_id))
+    # Bottom-Left Scope: Grabaciones & Gemini AI
+    bot_y = f2_y + 380.0
+    bot_h = 530.0
+    rec_w = 1220.0
+    scene.add_scope_container(f2_x + 60.0, bot_y, rec_w, bot_h, label="2. MATRIZ DE TRATAMIENTO: GRABACIONES DE CLASE & IA (GEMINI)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
 
-    # Tarjeta Procesamiento Gemini & Storage Drive
-    c_rec2 = make_card(f2_x + 440, f2_y + 315, 360, 180, stroke="#212529", bg="#FFFFFF", frame_id=f2_id)
-    elements.append(c_rec2)
-    elements.append(make_text("PROCESAMIENTO IA · GEMINI & DRIVE", f2_x + 455, f2_y + 330, size=11, font=3, color="#1971C2", frame_id=f2_id))
-    elements.append(make_text("Transcripción & Almacenamiento", f2_x + 455, f2_y + 350, size=15, color="#1E1E1E", frame_id=f2_id))
-    elements.append(make_text("• Almacenamiento seguro Google Drive\n• Transcripción de texto pedagógica\n• Generación de notas y resúmenes\n• Subida a plataforma con acceso auth", f2_x + 455, f2_y + 380, size=12, color="#495057", frame_id=f2_id))
+    scene.add_quad_card(f2_x + 90.0, bot_y + 50.0, (rec_w - 90.0) * 0.5, 145.0,
+                        "Sesión en Vivo (Google Meet)",
+                        sublabel="Aviso previo obligatorio en pantalla.\nCaptura de video, audio, micrófono y chat.\nRegistro de asistencia y preguntas.",
+                        badge="CAPTURA EN VIVO", icon="laptop", font_size=16, frame_id=fid2)
 
-    # Tarjeta Regla de Difusión: Académica vs Pública
-    c_rec3 = make_card(f2_x + 840, f2_y + 315, 370, 180, stroke="#D93829", bg="#FFF5F5", stroke_w=2.0, frame_id=f2_id)
-    elements.append(c_rec3)
-    elements.append(make_text("REGLA DE ORO · SEGREGACIÓN NARRATIVA", f2_x + 855, f2_y + 330, size=11, font=3, color="#D93829", frame_id=f2_id))
-    elements.append(make_text("Académica vs Publicación Pública", f2_x + 855, f2_y + 350, size=15, color="#1E1E1E", frame_id=f2_id))
-    elements.append(make_text("• Uso Académico: Consulta de refuerzo\n• Publicación YouTube: REQUIERE autorización\n  independiente de imagen y voz\n• Prohibido publicar clases con menores sin aval", f2_x + 855, f2_y + 380, size=12, color="#495057", frame_id=f2_id))
+    scene.add_quad_card(f2_x + 90.0 + (rec_w - 90.0) * 0.5 + 30.0, bot_y + 50.0, (rec_w - 90.0) * 0.5, 145.0,
+                        "Procesamiento IA & Google Drive",
+                        sublabel="Almacenamiento seguro en Google Drive.\nTranscripción pedagógica con Gemini.\nGeneración de resúmenes de estudio.",
+                        badge="IA GEMINI & DRIVE", icon="server", font_size=16, frame_id=fid2)
 
-    elements.append(make_arrow((f2_x + 400, f2_y + 405), (f2_x + 440, f2_y + 405), frame_id=f2_id))
-    elements.append(make_arrow((f2_x + 800, f2_y + 405), (f2_x + 840, f2_y + 405), frame_id=f2_id))
+    scene.add_quad_card(f2_x + 90.0, bot_y + 220.0, rec_w - 60.0, 130.0,
+                        "Regla de Oro: Grabación Académica vs Publicación en YouTube",
+                        sublabel="• Grabación Académica: Uso exclusivo para consulta interna de estudiantes matriculados.\n• Publicación Pública (YouTube / Redes): REQUIERE autorización independiente y expresa de imagen y voz.\n• Prohibido publicar grabaciones donde aparezcan menores de edad sin consentimiento específico.",
+                        badge="SEGREGACIÓN NARRATIVA", icon="shield", is_hero=True, font_size=17, frame_id=fid2)
 
-    # Flujo 3: Matriz de Proveedores Tecnológicos & Transmisiones
-    elements.append(make_text("MATRIZ DE PROVEEDORES TECNOLÓGICOS, ENCARGADOS & SERVICIOS", f2_x + 40, f2_y + 530, size=16, color="#1E1E1E", frame_id=f2_id))
+    scene.add_bound_card(f2_x + 90.0, bot_y + 375.0, rec_w - 60.0, 120.0,
+                         "AVISO OBLIGATORIO ANTES DE INGRESAR A CADA CLASE (MEET):\n"
+                         "\"Esta sesión será grabada. Tu participación mediante cámara, micrófono o chat formará parte del registro académico.\n"
+                         "Las grabaciones se utilizan exclusivamente para fines pedagógicos y de refuerzo dentro de la plataforma.\"",
+                         bg=PALETTE["BLUE_BG"], stroke=PALETTE["BLUE_BORDER"], text_color=PALETTE["INK"],
+                         font_size=13, align="left", roundness_type=3, frame_id=fid2)
+
+    # Bottom-Right Scope: Proveedores Tecnológicos (Encargados)
+    prov_w = fw - 120.0 - rec_w - 40.0
+    prov_x = f2_x + 60.0 + rec_w + 40.0
+    scene.add_scope_container(prov_x, bot_y, prov_w, bot_h, label="3. MATRIZ DE PROVEEDORES TECNOLÓGICOS (ENCARGADOS)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid2)
 
     providers = [
-        ("GOOGLE LLC", "Meet / Drive / Gemini AI", "Audio, video, chat, transcripción y archivos", "EE.UU. (Verificar Cláusulas Estándar)"),
-        ("BOLD.CO", "Pasarela de Pagos Digitales", "Datos de tarjeta, transacción y estado de pago", "Colombia / Pasarela Certificada PCI-DSS"),
-        ("FACTUS / BOLD POS", "Facturación Electrónica DIAN", "Razón social, NIT/Cédula, correo y valor", "Colombia / Proveedor Autorizado DIAN"),
-        ("WHATSAPP (META)", "Canal Informativo & Grupos", "Número celular, nombre de usuario y mensajes", "EE.UU. / Canales Abiertos & Cerrados"),
-        ("PLATAFORMA LMS", "Core Académico & Simulacros", "Cuentas, notas, avance, alertas y reportes", "Infraestructura Cloud Segura")
+        ("GOOGLE LLC (Meet/Drive/Gemini)", "Audio, video, chat, archivos y transcripción IA", "EE.UU. (Cláusulas Estándar)", "CLOUD TECH", "server"),
+        ("BOLD.CO (Pasarela de Pagos)", "Datos de transacción, tarjeta y estado de pago", "Colombia (Certificado PCI-DSS)", "PAYMENTS", "lock"),
+        ("FACTUS / BOLD POS", "Facturación Electrónica DIAN", "Colombia (Proveedor DIAN)", "BILLING", "file"),
+        ("WHATSAPP (META)", "Grupos informativos y mensajería de soporte", "EE.UU. (Canal Moderado)", "MESSAGING", "users"),
+        ("PLATAFORMA LMS CORE", "Cuentas, simulacros, notas, alertas y reportes", "Infraestructura Cloud Segura", "CORE LMS", "database")
     ]
 
-    for p_idx, (p_name, p_serv, p_data, p_loc) in enumerate(providers):
-        py = f2_y + 570 + p_idx * 75
-        c_p = make_card(f2_x + 40, py, 1170, 65, stroke="#CED4DA", bg="#FFFFFF", frame_id=f2_id)
-        elements.append(c_p)
-        elements.append(make_text(p_name, f2_x + 60, py + 12, size=14, color="#1E1E1E", frame_id=f2_id))
-        elements.append(make_text(f"Servicio: {p_serv}", f2_x + 60, py + 34, size=12, font=3, color="#1971C2", frame_id=f2_id))
-        elements.append(make_text(f"Datos Tratados: {p_data}", f2_x + 380, py + 15, size=12, color="#495057", frame_id=f2_id))
-        elements.append(make_text(f"Tratamiento: {p_loc}", f2_x + 380, py + 36, size=12, font=3, color="#2F9E44", frame_id=f2_id))
+    for p_i, (p_tit, p_data, p_loc, p_badge, p_icon) in enumerate(providers):
+        py = bot_y + 50.0 + p_i * 90.0
+        scene.add_quad_card(prov_x + 30.0, py, prov_w - 60.0, 78.0, p_tit, sublabel=f"{p_data} · {p_loc}", badge=p_badge, icon=p_icon, font_size=14, frame_id=fid2)
+
+    scene.add_legend_footer(f2_x + 60.0, f2_y + 945.0, fw - 120.0, swatches=[
+        {"label": "Consentimiento NNA & Regla YouTube", "bg": PALETTE["CORAL_BG"], "stroke": PALETTE["CORAL_HERO"]},
+        {"label": "Procesamiento Gemini & Avisos", "bg": PALETTE["BLUE_BG"], "stroke": PALETTE["BLUE_HERO"]},
+        {"label": "Pasarelas & Facturación DIAN", "bg": PALETTE["GREEN_BG"], "stroke": PALETTE["GREEN_HERO"]}
+    ], note="SEAMOSGENIOS Tech Stack: Contratos de procesamiento con Google, Bold, Factus y WhatsApp.", frame_id=fid2)
 
 
     # ═══════════════════════════════════════════════════════════════════════════
-    # MARCO 3: CICLO DE VIDA, COMERCIO ELECTRÓNICO, PQRS & AUDITORÍA (Layer Stack)
+    # FRAME 3: COMERCIO ELECTRÓNICO, SEGURIDAD RBAC, PQRS & AUDITORÍA FORENSE
     # ═══════════════════════════════════════════════════════════════════════════
-    f3_x = f2_x + frame_w + gap_frames
-    f3_y = 50.0
-    f3_id = gen_id("f3")
+    f3_x, f3_y = place(fw, fh)
+    fid3 = scene.add_frame("FRAME 3: COMERCIO ELECTRÓNICO, SEGURIDAD RBAC, PQRS & AUDITORÍA FORENSE", f3_x, f3_y, fw, fh)
 
-    # Contenedor Marco 3
-    elements.append({
-        "id": f3_id,
-        "type": "frame",
-        "x": f3_x,
-        "y": f3_y,
-        "width": frame_w,
-        "height": frame_h,
-        "name": "03. COMERCIO ELECTRÓNICO, PQRS, SEGURIDAD & AUDITORÍA",
-        "strokeColor": "#CED4DA",
-        "backgroundColor": "#F8F9FA"
-    })
+    scene.add_text(f3_x + 60.0, f3_y + 35.0, "CONSUMER RIGHTS  ·  ROLE-BASED ACCESS CONTROL & FORENSIC AUDIT", font_size=13, font_family=2, color=PALETTE["MUTED"], frame_id=fid3)
+    scene.add_text(f3_x + 60.0, f3_y + 60.0, "Régimen de Comercio Electrónico (Ley 1480), Matriz de Seguridad RBAC y Registro de Evidencia", font_size=28, font_family=2, color=PALETTE["INK"], frame_id=fid3)
 
-    # Header Frame 3
-    elements.append(make_text("DERECHOS DEL CONSUMIDOR, SEGURIDAD RBAC & AUDITORÍA", f3_x + 40, f3_y + 30, size=24, color="#1E1E1E", frame_id=f3_id))
-    elements.append(make_text("Ley 1480/2011 (Estatuto del Consumidor) · Control de Acceso por Rol · Evidencia Digital RNBD", f3_x + 40, f3_y + 65, size=13, font=3, color="#495057", frame_id=f3_id))
+    # Scope 1: Comercio Electrónico (Ley 1480)
+    ecom_w = 780.0
+    scene.add_scope_container(f3_x + 60.0, sc1_y, ecom_w, sc_h, label="1. RÉGIMEN DE COMERCIO ELECTRÓNICO (LEY 1480/2011)", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
 
-    # Sección A: Flujo de Comercio Electrónico, Retracto y Reversión (Ley 1480)
-    elements.append(make_text("RÉGIMEN DE COMERCIO ELECTRÓNICO, RETRACTO & REVERSIÓN", f3_x + 40, f3_y + 110, size=16, color="#1E1E1E", frame_id=f3_id))
+    scene.add_quad_card(f3_x + 90.0, sc1_y + 50.0, ecom_w - 60.0, 130.0,
+                        "Compra Online & Perfeccionamiento",
+                        sublabel="Aceptación explícita de Términos y Condiciones en checkout Bold.\nEmisión obligatoria de Factura Electrónica vía Factus.\nActivación automática de credenciales y envío de comprobante.",
+                        badge="CHECKOUT BOLD", icon="lock", font_size=16, frame_id=fid3)
 
-    c_ecom1 = make_card(f3_x + 40, f3_y + 140, 360, 180, stroke="#212529", bg="#FFFFFF", frame_id=f3_id)
-    elements.append(c_ecom1)
-    elements.append(make_text("COMPRA & PERFECCIONAMIENTO", f3_x + 55, f3_y + 155, size=11, font=3, color="#1971C2", frame_id=f3_id))
-    elements.append(make_text("Checkout & Pasarela Bold", f3_x + 55, f3_y + 175, size=15, color="#1E1E1E", frame_id=f3_id))
-    elements.append(make_text("• Aceptación de Términos y Condiciones\n• Emisión de Factura Electrónica (Factus)\n• Activación de matrícula y credenciales\n• Envío de comprobante por correo", f3_x + 55, f3_y + 205, size=12, color="#495057", frame_id=f3_id))
+    scene.add_quad_card(f3_x + 90.0, sc1_y + 205.0, ecom_w - 60.0, 150.0,
+                        "Derecho de Retracto Legal (SIC)",
+                        sublabel="• Término legal: 5 días hábiles siguientes a la compra.\n• Prohibición absoluta de cláusulas abusivas de 'no hay devoluciones'.\n• Evaluación jurídica si el servicio ya inició o hubo consumo de simulacros.\n• Canal formal de radicación con respuesta en términos de ley.",
+                        badge="RETRACTO LEY 1480", icon="alert", is_hero=True, font_size=16, frame_id=fid3)
 
-    c_ecom2 = make_card(f3_x + 440, f3_y + 140, 360, 180, stroke="#D93829", bg="#FFF5F5", stroke_w=2.0, frame_id=f3_id)
-    elements.append(c_ecom2)
-    elements.append(make_text("DERECHO DE RETRACTO (SIC)", f3_x + 455, f3_y + 155, size=11, font=3, color="#D93829", frame_id=f3_id))
-    elements.append(make_text("Reglas Legales de Devolución", f3_x + 455, f3_y + 175, size=15, color="#1E1E1E", frame_id=f3_id))
-    elements.append(make_text("• Prohibido cláusula 'no hay devoluciones'\n• Término legal: 5 días hábiles (Ley 1480)\n• Validación de inicio anticipado y consumo\n• Procedimiento formal de solicitud", f3_x + 455, f3_y + 205, size=12, color="#495057", frame_id=f3_id))
+    scene.add_quad_card(f3_x + 90.0, sc1_y + 380.0, ecom_w - 60.0, 130.0,
+                        "Reversión de Pagos & Reembolsos",
+                        sublabel="Aplica ante: Fraude electrónico, operación no solicitada o servicio no prestado.\nProcedimiento coordinado entre SEAMOSGENIOS, pasarela Bold y banco emisor.\nTiempos de respuesta estrictos conforme a la reglamentación SIC.",
+                        badge="REVERSIÓN PAGO", icon="file", font_size=16, frame_id=fid3)
 
-    c_ecom3 = make_card(f3_x + 840, f3_y + 140, 370, 180, stroke="#212529", bg="#FFFFFF", frame_id=f3_id)
-    elements.append(c_ecom3)
-    elements.append(make_text("REVERSIÓN DE PAGOS", f3_x + 855, f3_y + 155, size=11, font=3, color="#1971C2", frame_id=f3_id))
-    elements.append(make_text("Fraude, Error o No Servicio", f3_x + 855, f3_y + 175, size=15, color="#1E1E1E", frame_id=f3_id))
-    elements.append(make_text("• Operación no solicitada o fraude\n• Producto no recibido o defectuoso\n• Notificación a Bold y emisor bancario\n• Términos legales de respuesta SIC", f3_x + 855, f3_y + 205, size=12, color="#495057", frame_id=f3_id))
+    scene.add_bound_card(f3_x + 90.0, sc1_y + 535.0, ecom_w - 60.0, 215.0,
+                         "CLÁUSULA DE RESULTADOS ICFES (SIN GARANTÍAS ILÍCITAS):\n\n"
+                         "• SEAMOSGENIOS ofrece preparación pedagógica de alto nivel.\n"
+                         "• El puntaje final depende del esfuerzo y estudio individual del alumno.\n"
+                         "• Los puntajes de simulacros son herramientas de entrenamiento, no resultados oficiales.\n"
+                         "• Queda expresamente prohibido garantizar puntajes específicos o cupos universitarios.",
+                         bg="#F8FAFC", stroke=PALETTE["CARD_BORDER"], text_color=PALETTE["INK"],
+                         font_size=13, align="left", roundness_type=3, frame_id=fid3)
 
-    # Sección B: Módulo Integral de PQRS (11 Categorías)
-    elements.append(make_text("SISTEMA CENTRALIZADO DE ATENCIÓN DE PQRS & DERECHOS HÁBEAS DATA", f3_x + 40, f3_y + 350, size=16, color="#1E1E1E", frame_id=f3_id))
+    # Scope 2: Módulo Integral de PQRS (6 Categorías)
+    pqrs_w = 800.0
+    pqrs_x = f3_x + 60.0 + ecom_w + 35.0
+    scene.add_scope_container(pqrs_x, sc1_y, pqrs_w, sc_h, label="2. MÓDULO CENTRALIZADO DE PQRS & HÁBEAS DATA", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
 
-    pqrs_cats = [
-        ("PROTECCIÓN DE DATOS", "Conocer, actualizar, rectificar y suprimir"),
-        ("ACADÉMICA", "Clases, simulacros y tutores"),
-        ("FACTURACIÓN Y PAGOS", "Cobros, retenciones y facturas DIAN"),
-        ("TÉCNICA Y ACCESO", "Problemas LMS, login y grabaciones"),
-        ("CONVIVENCIA", "Reportes de conducta y moderación chat"),
-        ("INSTITUCIONAL B2B", "Reportes de colegios y convenios")
+    pqrs_items = [
+        ("PROTECCIÓN DE DATOS", "Conocer, actualizar, rectificar y suprimir datos", "HABEAS DATA", "lock"),
+        ("ACADÉMICA", "Clases en vivo, simulacros, dudas y tutores", "ACADÉMICO", "laptop"),
+        ("FACTURACIÓN Y PAGOS", "Facturas DIAN, cobros, retenciones y Bold", "FINANZAS", "file"),
+        ("TÉCNICA Y ACCESO", "Problemas de login LMS, Meet y grabaciones", "SOPORTE TECH", "server"),
+        ("CONVIVENCIA DIGITAL", "Reportes de conducta en chat y WhatsApp", "MODERACIÓN", "alert"),
+        ("CONVENIOS COLEGIO", "Gestión de directivos y reportes de cohorte", "B2B INSTITUCIONAL", "database")
     ]
 
-    for q_idx, (q_tit, q_desc) in enumerate(pqrs_cats):
-        qx = f3_x + 40 + (q_idx % 3) * 395
-        qy = f3_y + 385 + (q_idx // 3) * 65
-        c_q = make_card(qx, qy, 380, 55, stroke="#CED4DA", bg="#FFFFFF", frame_id=f3_id)
-        elements.append(c_q)
-        elements.append(make_text(f"PQRS: {q_tit}", qx + 12, qy + 8, size=11, font=3, color="#1971C2", frame_id=f3_id))
-        elements.append(make_text(q_desc, qx + 12, qy + 26, size=12, color="#495057", frame_id=f3_id))
+    pw = (pqrs_w - 75.0) * 0.5
+    for idx, (p_tit, p_sub, p_badge, p_icon) in enumerate(pqrs_items):
+        px = pqrs_x + 25.0 + (idx % 2) * (pw + 25.0)
+        py = sc1_y + 50.0 + (idx // 2) * 165.0
+        scene.add_quad_card(px, py, pw, 140.0, p_tit, sublabel=p_sub, badge=p_badge, icon=p_icon, font_size=16, frame_id=fid3)
 
-    # Sección C: Principio de Mínimo Acceso (RBAC) & Trazabilidad de Evidencia
-    elements.append(make_text("SEGURIDAD, CONTROL DE ACCESO (RBAC) & REGISTRO DE EVIDENCIA DIGITAL", f3_x + 40, f3_y + 550, size=16, color="#1E1E1E", frame_id=f3_id))
+    scene.add_bound_card(pqrs_x + 25.0, sc1_y + 560.0, pqrs_w - 50.0, 190.0,
+                         "TRAZABILIDAD Y TIEMPOS LEGALES DE RESPUESTA:\n"
+                         "• Peticiones de información y consultas: 10 a 15 días hábiles.\n"
+                         "• Reclamos de protección de datos: 15 días hábiles prorrogables por 8 días (Ley 1581).\n"
+                         "• Quejas y reclamos de servicio: Respuesta formal con asignación de ticket único.\n"
+                         "• Registro de historial y evidencia de resolución archivado por 5 años.",
+                         bg=PALETTE["BLUE_BG"], stroke=PALETTE["BLUE_BORDER"], text_color=PALETTE["INK"],
+                         font_size=13, align="left", roundness_type=3, frame_id=fid3)
 
-    # Matriz RBAC
-    c_rbac = make_card(f3_x + 40, f3_y + 585, 570, 360, stroke="#212529", bg="#FFFFFF", frame_id=f3_id)
-    elements.append(c_rbac)
-    elements.append(make_text("MATRIZ DE PERMISOS POR ROL (LEAST PRIVILEGE)", f3_x + 55, f3_y + 600, size=12, font=3, color="#212529", frame_id=f3_id))
-    
-    rbac_rows = [
-        ("TUTOR:", "Solo ve estudiantes asignados y notas. CERO finanzas."),
-        ("PADRE/ACUDIENTE:", "Solo ve avance y asistencia de su hijo. No ve terceros."),
-        ("ESTUDIANTE:", "Acceso propio a clases, simulacros y notas."),
-        ("COORDINADOR:", "Acceso académico global y reportes de cohorte."),
-        ("ADMIN / FINANZAS:", "Acceso a facturación, Bold y datos contables."),
-        ("COLEGIO B2B:", "Acceso exclusivo al cohorte de su institución.")
-    ]
-    for r_i, (r_role, r_perm) in enumerate(rbac_rows):
-        ry = f3_y + 630 + r_i * 50
-        elements.append(make_text(r_role, f3_x + 55, ry, size=12, font=3, color="#1971C2", frame_id=f3_id))
-        elements.append(make_text(r_perm, f3_x + 55, ry + 18, size=12, color="#495057", frame_id=f3_id))
+    # Scope 3: Seguridad RBAC & Registro de Evidencia Digital
+    sec_w = 880.0
+    sec_x = pqrs_x + pqrs_w + 35.0
+    scene.add_scope_container(sec_x, sc1_y, sec_w, sc_h, label="3. SEGURIDAD RBAC & AUDITORÍA FORENSE DE EVIDENCIA", stroke=PALETTE["CARD_BORDER"], bg="#FFFFFF", frame_id=fid3)
 
-    # Registro de Evidencia Digital
-    c_evid = make_card(f3_x + 640, f3_y + 585, 570, 360, stroke="#212529", bg="#F8F9FA", frame_id=f3_id)
-    elements.append(c_evid)
-    elements.append(make_text("LOG INMUTABLE DE CONSENTIMIENTOS (AUDIT TRAIL)", f3_x + 655, f3_y + 600, size=12, font=3, color="#212529", frame_id=f3_id))
-    
-    log_fields = (
-        "Estructura obligatoria por cada consentimiento:\n"
-        "• consent_id: Identificador único UUID v4\n"
-        "• user_id / student_id / representative_id\n"
-        "• consent_type: TERMS | PRIVACY | MINOR | MARKETING | IMAGE\n"
-        "• document_version: Ej. POL-DAT-001 v1.0\n"
-        "• accepted: true | accepted_at: Timestamp ISO 8601\n"
-        "• ip_address, user_agent, channel (Web/Mobile)\n"
-        "• revoked_at, revocation_reason (cuando aplique)\n\n"
-        "Objetivo de Cumplimiento:\n"
-        "Poder responder con certeza forense ante la SIC:\n"
-        "¿Quién aceptó, qué versión exacta vio y cuándo?"
-    )
-    elements.append(make_text(log_fields, f3_x + 655, f3_y + 630, size=12, color="#495057", frame_id=f3_id))
+    scene.add_sticky_note(sec_x + 25.0, sc1_y + 50.0, sec_w - 50.0, 180.0,
+                          "MATRIZ DE PERMISOS POR ROL (LEAST PRIVILEGE):\n"
+                          "• Tutores: Solo acceden a estudiantes asignados y notas. CERO datos financieros.\n"
+                          "• Padres/Acudientes: Solo consultan avance y asistencia de sus hijos (CERO terceros).\n"
+                          "• Colegios B2B: Solo acceden al cohorte de su institución contratada.\n"
+                          "• Administradores: Acceso restringido por doble factor a finanzas y contratos.",
+                          font_size=14, angle_deg=1.0, frame_id=fid3)
 
-    scene_data = {
-        "type": "excalidraw",
-        "version": 2,
-        "source": "https://sketion.engine.v8",
-        "elements": elements,
-        "appState": {
-            "viewBackgroundColor": "#FFFFFF",
-            "gridSize": 20
-        }
-    }
+    scene.add_bound_card(sec_x + 25.0, sc1_y + 255.0, sec_w - 50.0, 260.0,
+                         "ESTRUCTURA DE EVIDENCIA DIGITAL (LOG INMUTABLE):\n\n"
+                         "Cada consentimiento genera un registro auditable con los campos:\n"
+                         "• consent_id: UUID v4 único e irrepetible\n"
+                         "• user_id / student_id / representative_id\n"
+                         "• consent_type: TERMS | PRIVACY | MINOR_DATA | IMAGE_VOICE | MARKETING\n"
+                         "• document_version: Ej. POL-DAT-001 v1.0 (versionamiento estricto)\n"
+                         "• accepted: true · accepted_at: Timestamp ISO 8601 con hora legal\n"
+                         "• ip_address, user_agent, channel (Web / Mobile)",
+                         bg=PALETTE["GREEN_BG"], stroke=PALETTE["GREEN_BORDER"], text_color=PALETTE["INK"],
+                         font_size=13, align="left", roundness_type=3, frame_id=fid3)
 
-    return scene_data
+    scene.add_bound_card(sec_x + 25.0, sc1_y + 535.0, sec_w - 50.0, 215.0,
+                         "CHECKLIST DE CUMPLIMIENTO REGULATORIO (RNBD / SIC):\n\n"
+                         "✔ Verificación de obligación de Registro Nacional de Bases de Datos (RNBD).\n"
+                         "✔ Contratos de Transmisión de Datos firmados con Google y Bold.\n"
+                         "✔ Protocolo de Gestión de Incidentes de Seguridad y fuga de información.\n"
+                         "✔ Matriz de Retención y Supresión Periódica de Datos Académicos.",
+                         bg="#F8FAFC", stroke=PALETTE["CARD_BORDER"], text_color=PALETTE["INK"],
+                         font_size=13, align="left", roundness_type=3, frame_id=fid3)
+
+    scene.add_legend_footer(f3_x + 60.0, f3_y + 945.0, fw - 120.0, swatches=[
+        {"label": "Derecho de Retracto Legal", "bg": PALETTE["CORAL_BG"], "stroke": PALETTE["CORAL_HERO"]},
+        {"label": "Canal de PQRS", "bg": PALETTE["BLUE_BG"], "stroke": PALETTE["BLUE_HERO"]},
+        {"label": "Log Inmutable de Evidencia", "bg": PALETTE["GREEN_BG"], "stroke": PALETTE["GREEN_HERO"]},
+        {"label": "Seguridad Least Privilege", "bg": "#FFFFFF", "stroke": PALETTE["DARK_SLATE"]}
+    ], note="SEAMOSGENIOS Governance: Cumplimiento de la Ley 1480 y preparación ante auditorías SIC.", frame_id=fid3)
+
+    return scene
 
 
 def main():
-    output_dir = os.path.join(workspace_dir, "PRUEBAS_V7")
-    os.makedirs(output_dir, exist_ok=True)
-    output_path = os.path.join(output_dir, "seamosgenios_marco_legal.excalidraw")
+    output_path = os.path.join(OUT_DIR, "seamosgenios_marco_legal.excalidraw")
+    scene = build_seamosgenios_legal_board()
+    scene.save(output_path)
 
-    scene_data = build_seamosgenios_scene()
+    print(f"Canvas generado exitosamente con ExcalidrawScene: {output_path}")
 
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(scene_data, f, indent=2, ensure_ascii=False)
-
-    print(f"Canvas generado exitosamente: {output_path}")
-
-    # Validar con validator
     validated_scene, report = validate_scene(output_path)
     print("\n" + "=" * 90)
     print("📊 REPORTE DE VALIDACIÓN SKETION 8.0 — SEAMOSGENIOS MARCO LEGAL")
@@ -438,7 +363,7 @@ def main():
     print(f" • Repair Dependency (RDS)     : {report.repair_dependency_score} [{report.repair_dependency_status}]")
     print(f" • Densidad Visual             : {report.visual_metrics.density:.1f} / 10 (Target: 4.0/10)")
     print(f" • Acentos Hero en Escena      : {report.visual_metrics.accent_count} (Regla del acento único respetada)")
-    print(f" • Elementos Totales           : {len(scene_data['elements'])}")
+    print(f" • Elementos Totales           : {len(scene.elements)}")
     print("=" * 90)
 
 

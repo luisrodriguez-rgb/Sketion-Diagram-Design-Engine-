@@ -1,124 +1,136 @@
-# 📋 DIAGNÓSTICO FORENSE, MEJORAS TÉCNICAS Y ROADMAP DE FUTURO — SKETION ENGINE
+# 📋 DIAGNÓSTICO FORENSE CORREGIDO, REESTRUCTURACIÓN DEL ROADMAP Y COMPOSITION INTELLIGENCE — SKETION 4.x / 5.0
 
-> **Documento:** Auditoría Crítica de Defectos, Optimizaciones del Motor y Visión de Producto  
-> **Ámbito:** Motor Editorial Sketion 4.0 & Suite de Pruebas `PRUEBAS_V6`  
+> **Documento:** Auditoría Crítica de Inteligencia de Composición, Métricas de Dependencia y Reestructuración de Prioridades  
+> **Ámbito:** Sketion Engine Core & Evaluación de Generalización Autónoma  
 > **Fecha:** 16 de Agosto, 2026  
-> **Autor:** Antigravity AI & Luis Felipe Rodríguez
+> **Estado:** Aprobado para Ejecución
 
 ---
 
-## 1. ⚠️ Auditoría Forense de Defectos y Fricciones en `PRUEBAS_V6`
+## 1. 🎯 El Cambio de Paradigma: De "Motor que Pasa sus Propias Pruebas" a "Inteligencia de Diseño"
 
-A pesar de que el 100% de los tableros obtuvieron calificación **`PASS` ($\ge 90/100$)**, una inspección técnica minuciosa revela las siguientes fricciones y oportunidades de refinamiento:
+### La Crítica Fundamental
+Tener un `Quality Score >= 90/100` en fixtures controlados no demuestra que el motor sea un buen diseñador; solo demuestra que los casos seleccionados satisfacen las reglas del validador. 
+
+Para evitar el sesgo de auto-validación (*crear feature $\rightarrow$ crear fixture $\rightarrow$ modificar validador $\rightarrow$ fixture pasa $\rightarrow$ declarar éxito*), el sistema debe desacoplar tres niveles de evaluación:
 
 ```text
-┌───────────────────────────────────────┬───────────────────────────────────────────┬────────────────────────────────────────────────────────┐
-│ DEFECTO / FRICCIÓN OBSERVADA          │ SÍNTOMA EN PRUEBAS_V6                     │ IMPACTO / RIESGO TÉCNICO                               │
-├───────────────────────────────────────┼───────────────────────────────────────────┼────────────────────────────────────────────────────────┤
-│ 1. Conteo Global de Acentos en Lienzo │ Alerta de "Sobrecarga de acentos" en      │ Penaliza falsamente tableros multi-frame donde cada    │
-│    (No aislado por marco)             │ tableros con 4 frames y >350 elementos    │ marco respeta individualmente la regla de 1-2 héroes.  │
-├───────────────────────────────────────┼───────────────────────────────────────────┼────────────────────────────────────────────────────────┤
-│ 2. Penalización de Densidad Baja en   │ Alerta "Densidad baja (<3.0/10)" en       │ Desincentiva diagramas ejecutivos minimalistas donde   │
-│    Diagramas de Síntesis Ejecutiva    │ Open Data Lake (1.9/10) y El Sabio (1.5)  │ el espacio en blanco es una decisión de diseño limpia. │
-├───────────────────────────────────────┼───────────────────────────────────────────┼────────────────────────────────────────────────────────┤
-│ 3. Párrafos Densos en Nodos Estándar  │ Alerta "Texto demasiado largo (>4 líneas)"│ El texto roza los bordes internos de la tarjeta si     │
-│    sin Bifurcación Automática         │ en Discovery Meeting (Frame 1 y 2)        │ el usuario ingresa explicaciones muy detalladas.       │
-├───────────────────────────────────────┼───────────────────────────────────────────┼────────────────────────────────────────────────────────┤
-│ 4. Anclajes Fijos de Conectores       │ En topologías radiales complejas,         │ Las flechas ortogonales pueden trazar codos muy cerca  │
-│    (Coordenadas de centro o borde)    │ algunas flechas rozan esquinas            │ de los vértices si no hay cálculo de colisión perimetral│
-├───────────────────────────────────────┼───────────────────────────────────────────┼────────────────────────────────────────────────────────┤
-│ 5. Falta de Exportación Headless      │ Dependencia manual de abrir el navegador  │ Dificulta la automatización en pipelines de CI/CD o    │
-│    a Formatos Gráficos (PNG / SVG)    │ para renderizar o previsualizar imágenes  │ generación de reportes en segundo plano sin UI.        │
-└───────────────────────────────────────┴───────────────────────────────────────────┴────────────────────────────────────────────────────────┘
+                     SKETION ENGINE
+                           │
+              ┌────────────┼────────────┐
+              ↓            ↓            ↓
+          Semántica     Geometría    Editorial
+              │            │            │
+              └────────────┼────────────┘
+                           ↓
+                      .excalidraw
+                           │
+                 ┌─────────┴─────────┐
+                 ↓                   ↓
+           Machine Audit        Human Review
+                 │                   │
+                 └─────────┬─────────┘
+                           ↓
+                    CALIDAD FINAL
 ```
 
 ---
 
-## 2. 🛠️ Plan de Mejoras Técnicas Inmediatas (Sketion v4.1 / v4.2)
+## 2. 🔬 Corrección Forense de los Defectos Detectados
 
-### A. Aislamiento Estricto de Métricas por `frame_id` en el Validador
-* **Implementación:** Modificar `validation/quality_score.py` para que el cálculo de `HierarchyScore`, `DensityScore` y `VisualNoise` se compute de forma independiente para cada `frame` del lienzo.
-* **Beneficio:** Un tablero con 5 frames podrá tener 10 acentos en total (2 por frame) con una puntuación perfecta de `Hierarchy: 100/100`.
+### A. Defecto #1: Hierarchical Accent Model (No solo aislamiento por frame)
+* **Error del enfoque simple:** Aislar acentos por `frame_id` permite que si hay 4 frames, cada uno tenga 2 héroes (8 héroes en total). La máquina da `100/100`, pero visualmente el lienzo es un árbol de navidad sin clímax narrativo.
+* **Solución (Hierarchical Accent Model):**
+  * **Intra-frame:** Máximo 1 Héroe Focal + 0–1 Secundario.
+  * **Cross-frame:** Jerarquía narrativa global (*Frame 1 Contexto $\rightarrow$ Frame 2 Núcleo / Clímax Heroico $\rightarrow$ Frame 3 Conclusión/Outcome*). No todos los frames compiten con la misma intensidad visual.
 
-### B. Modos de Densidad Semántica (`Density Profiles`)
-* **Implementación:** Añadir el parámetro opcional `density_mode`:
-  * `executive` / `minimalist`: Rango ideal de densidad `1.5 - 3.0 / 10` (máximo aire visual, síntesis para CEOs).
-  * `balanced` (por defecto): Rango ideal `3.5 - 5.0 / 10` (consultoría y workshops).
-  * `technical_deep_dive`: Rango ideal `5.0 - 7.0 / 10` (arquitectura detallada de microservicios).
+### B. Defecto #2: Target de Densidad Inferido Dinámicamente
+* **Error del enfoque simple:** Poner flags manuales como `density_mode="executive"`.
+* **Solución (Inferred Density Target):** La densidad óptima es una variable derivada autónomamente de:
+  $$\text{Target Density} = f(\text{Audiencia}, \text{Intención del Diagrama}, \text{Complejidad Semántica}, \text{Arquetipo}, \text{Nº de Marcos})$$
+  * *Ejemplo 1:* CEO + Estrategia + Hub Radial (6 nodos) $\rightarrow$ $\text{Target Density} \approx 2.0/10$.
+  * *Ejemplo 2:* Arquitecto Cloud + Infraestructura + 25 microservicios $\rightarrow$ $\text{Target Density} \approx 5.5/10$.
 
-### C. Puntos de Anclaje Magnéticos Inteligentes (*Ray-Box Intersection*)
-* **Implementación:** Reemplazar el anclaje estático de flechas por un algoritmo geométrico que calcule la intersección exacta entre el vector director del conector y el rectángulo perimetral del nodo origen y destino.
-* **Beneficio:** Cero flechas rozando esquinas o entrando en ángulos extraños en topologías radiales.
+### C. Defecto #3: Semantic Text Decomposer (Antes del Layout)
+* **Error del enfoque simple:** Forzar textos largos a más líneas o tarjetas gigantescas.
+* **Solución:** Clasificar la naturaleza del texto antes de pasarlo al motor geométrico:
+  ```text
+  Raw Input Text ──► [Classifier] ──► { Title, Subtitle, Metadata Pill, Bullet List, Metric, Callout/Warning } ──► Layout
+  ```
 
-### D. Motor de Tokens para Modo Oscuro Nativo (`dark_mode=True`)
-* **Implementación:** Configurar un switch en `ExcalidrawScene` que reasigne la paleta editorial a fondos Slate oscuros (`#0F172A`), tarjetas oscuras (`#1E293B`), bordes sutiles (`#334155`) y tinta clara (`#F8FAFC`), manteniendo los colores de acento vibrantes (Cobalto, Coral, Esmeralda).
-
-### E. Componente Nativo de Wireframes & Mockups UI (`add_ui_mockup`)
-* **Implementación:** Añadir a `render/excalidraw_builder.py` un método nativo para dibujar ventanas de aplicación esquemáticas (Browser Window con botones `● ● ●`, URL bar, sidebar de navegación y lienzo interactivo).
-
-### F. Exportador Headless a SVG / PNG 4K
-* **Implementación:** Crear una utilidad en `export/headless_exporter.py` que utilice `playwright` o `resvg` para compilar cualquier archivo `.excalidraw` directamente en imágenes vectoriales o PNG de alta fidelidad sin intervención del usuario.
+### D. Defecto #4: AnchorGeometry (Abstracción Polimórfica de Fronteras)
+* **Solución:** Abstraer el cálculo de intersección perimetral más allá de simples rectángulos:
+  ```python
+  class AnchorGeometry:
+      def get_boundary_intersection(self, shape_type: str, source_point: Tuple[float, float], target_point: Tuple[float, float]) -> Tuple[float, float]:
+          # Ray-shape clipping para Rectangles, RoundedRects, Diamonds, StickyNotes, Scopes y Circles
+          ...
+  ```
 
 ---
 
-## 3. 💡 Ideas de Producto & Expansión del Ecosistema Sketion
+## 3. 📊 Nuevas Métricas Obligatorias del Sistema
+
+### 1. Repair Dependency Score (RDS)
+Evalúa si el generador inicial produjo un buen diseño o si el `Auto-Repair` tuvo que parchar el diagrama para salvarlo:
+$$\text{RDS} = \sum (\text{Severidad de Reparación} \times \text{Nº de Correcciones}) \times \text{Iteraciones}$$
+
+| Rango RDS | Diagnóstico del Generador |
+| :---: | :--- |
+| **0 – 10** | **Excelente:** El generador colocó la geometría casi perfecta al primer intento. |
+| **11 – 25** | **Saludable:** Ajustes menores de espaciado o degradación de 1 acento. |
+| **26 – 50** | **Frágil:** Alta dependencia del bucle de auto-corrección. |
+| **> 50** | **Fallo de Generador:** El motor inicial colocó mal los elementos y el repair tuvo que rehacerlo. |
+
+### 2. Composition Fitness Score (CFS)
+Mide la idoneidad de la estructura geométrica elegida frente a la intención semántica del prompt:
+* ¿Un problema de causa-raíz eligió Ishikawa en vez de un Flow genérico?
+* ¿Una comparativa de mercado eligió El Duelo (VS) o Matriz Tabular en vez de un Grid?
+
+### 3. Human Editorial Benchmark (Rúbrica Humana 1 - 10)
+1. ¿Entiendo qué estoy viendo en los primeros 5 segundos?
+2. ¿Sé dónde mirar primero (foco visual inequívoco)?
+3. ¿La jerarquía narrativa tiene sentido de izquierda a derecha?
+4. ¿Las relaciones y flechas son fáciles de seguir sin esfuerzo cognitivo?
+5. ¿Parece diseñado por un consultor senior o generado por un bot rígido?
+
+---
+
+## 🧭 4. Roadmap Corregido y Repriorizado (Enfoque en Inteligencia)
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
-│                        ROADMAP DE PRODUCTO: EL ECOSISTEMA SKETION                      │
+│                        ROADMAP CORREGIDO: SKETION ENGINE CORE                          │
 └────────────────────────────────────────────────────────────────────────────────────────┘
 
- [1. SKETION CLI TOOL]
-   • Comando de terminal: `sketion render input.md --archetype layer_stack --out diag.excalidraw`
-   • Integración en pipelines de GitHub Actions para autogenerar diagramas de arquitectura
-     cada vez que se actualice la documentación del repositorio.
+ 🔴 P0 — COMPOSITION INTELLIGENCE (Prioridad Máxima Absoluta)
+   1. Archetype Fitness & Composition Decision Engine (Selección inteligente de arquetipo).
+   2. Semantic Text Decomposer (Clasificación de texto en título/subtítulo/lista/callout antes de layout).
+   3. Hierarchical Accent Model (Jerarquía intra-frame y narrativa cross-frame).
+   4. Automatic Inferred Density Targets (Densidad derivada de audiencia y complejidad).
 
- [2. LIBRERÍA OFICIAL EXCALIDRAW (.excalidrawlib)]
-   • Exportar una biblioteca oficial con los componentes pre-diseñados:
-     - Quad-Cards con esquinas de 4 cuadrantes.
-     - Cintas Chevron y Rieles de Etapas.
-     - Post-its de Discovery con rotación natural (-1.5° / +1.2°).
-     - Tarjetas de Duelo (Dolor vs Solución).
-     - Tablas y Matrices Forenses.
-   • Los usuarios podrán arrastrar y soltar estos componentes directamente en Excalidraw.
+ 🟡 P1 — GEOMETRY & EVALUATION
+   5. AnchorGeometry (Ray-Shape intersection para rectángulos, círculos, rombos, post-its).
+   6. Collision-Aware Orthogonal Routing (Evitación de obstáculos y carriles dedicados).
+   7. Repair Dependency Score (RDS) integrado en el reporte de validación.
+   8. Human Editorial Benchmark Suite.
+   9. Adaptive Canvas Reflow (Dividir o reajustar si el contenido satura el marco).
 
- [3. SKETION COPILOT / EXTENSIÓN PARA VS CODE & CURSOR]
-   • Plugin que lee la estructura de carpetas y el código fuente de un proyecto:
-     - Detecta automáticamente controladores, modelos de base de datos, servicios y APIs.
-     - Compila instantáneamente el diagrama de arquitectura en .excalidraw respetando los
-       arquetipos de Sketion.
+ 🔵 P2 — ADVANCED RENDERING
+   10. UI Skeletons & Wireframe Component System (Esquemas de interfaz semánticos).
+   11. Dark Mode Token Engine (Conmutación automática de paleta).
+   12. Rich Icon Resolver Expansion.
 
- [4. MODO BIDIRECCIONAL: REVERSE-ENGINEERING (DEL CANVAS AL CÓDIGO)]
-   • El usuario dibuja o modifica un diagrama en Excalidraw.
-   • Sketion analiza el archivo `.excalidraw` y genera automáticamente:
-     - Schemas SQL / Migraciones de Prisma / Supabase DDL.
-     - Contratos de API (OpenAPI / Swagger YAML).
-     - Estructura de carpetas y boilerplate del proyecto.
+ ⚪ P3 — INFRASTRUCTURE & ECOSYSTEM (Congelado hasta madurar P0 y P1)
+   13. Headless PNG / SVG Export.
+   14. Sketion CLI Tool.
+   15. .excalidrawlib Library.
+   16. VS Code / Cursor Extension.
+   17. Reverse Engineering (Canvas a Código).
 ```
 
 ---
 
-## 4. 📊 Matriz de Priorización (Impacto vs. Esfuerzo)
+## 🧪 5. El Benchmark de Generalización Autónoma ("The Zero-Hint Test")
 
-| Iniciativa / Función | Tipo | Impacto | Esfuerzo | Prioridad |
-| :--- | :---: | :---: | :---: | :---: |
-| **Aislar métricas de acentos por `frame_id`** | Corrección Validador | 🟢 Alto | 🔵 Bajo (1 día) | **P0 (Inmediato)** |
-| **Modos de densidad semántica (`executive` vs `technical`)** | Mejora Validador | 🟢 Alto | 🔵 Bajo (1 día) | **P0 (Inmediato)** |
-| **Puntos de anclaje magnéticos (Ray-Box Clipping)** | Mejora Geométrica | 🟢 Alto | 🟡 Medio (2 días) | **P1 (Corto plazo)** |
-| **Soporte de Modo Oscuro (`dark_mode=True`)** | Token Engine | 🟡 Medio | 🔵 Bajo (1 día) | **P1 (Corto plazo)** |
-| **Librería descargable `sketion.excalidrawlib`** | Producto / Assets | 🟢 Alto | 🟡 Medio (2 días) | **P1 (Corto plazo)** |
-| **Exportador Headless SVG/PNG** | Automatización | 🟡 Medio | 🟡 Medio (3 días) | **P2 (Medio plazo)** |
-| **Sketion CLI Tool (`sketion generate`)** | Developer Tool | 🟢 Alto | 🔴 Alto (1 semana) | **P2 (Medio plazo)** |
-| **Sketion Copilot para VS Code / Cursor** | Extensión IDE | 🚀 Máximo | 🔴 Alto (2-3 semanas) | **P3 (Largo plazo)** |
-
----
-
-## 5. 🎯 Conclusión Ejecutiva
-
-Sketion ha alcanzado una **madurez estructural sobresaliente (v4.0)**:
-1. Ha desterrado el monocultivo de plantillas idénticas.
-2. Ha establecido una tipografía proporcional legible (**18-20px Bold**).
-3. Posee un catálogo robusto de **20 arquetipos de negocio** y **27 tipos visuales**.
-4. Cuenta con un **bucle autónomo de auto-reparación** que garantiza calidad $\ge 90/100$.
-
-La siguiente frontera no es solo dibujar mejor, sino **convertir a Sketion en la herramienta estándar de desarrollo visual para ingenieros y fundadores**, cerrando la brecha entre el pensamiento estratégico, el lienzo visual y el código en producción.
+A partir de ahora, la prueba definitiva de Sketion consiste en alimentarlo con **prompts no estructurados del mundo real**, sin darle ninguna directiva de diseño (sin decirle qué arquetipo usar, cuántos frames crear ni qué fuentes o colores poner), y auditar qué decisiones toma el motor de forma 100% autónoma.

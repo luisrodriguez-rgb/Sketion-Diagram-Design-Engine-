@@ -26,6 +26,8 @@ class ValidationReport:
     sketion_overall_score: int = 0
     repairs_applied: List[str] = field(default_factory=list)
     repair_iterations: int = 0
+    repair_dependency_score: int = 0
+    repair_dependency_status: str = "EXCELLENT"
     elements_count: int = 0
     frames_count: int = 0
 
@@ -36,7 +38,8 @@ class ValidationReport:
             f"=== SKETION COMPREHENSIVE REPORT: {status} ===",
             f"==================================================",
             f"Elementos totales: {self.elements_count} | Frames: {self.frames_count}",
-            f"PUNTUACIÓN GLOBAL SKETION: {self.sketion_overall_score}/100\n"
+            f"PUNTUACIÓN GLOBAL SKETION: {self.sketion_overall_score}/100",
+            f"REPAIR DEPENDENCY SCORE: {self.repair_dependency_score} [{self.repair_dependency_status}]\n"
         ]
 
         if self.visual_metrics:
@@ -111,6 +114,17 @@ def validate_scene(scene_data: Any,
     else:
         sketion_score = visual_metrics.overall_score
 
+    # Cálculo de Repair Dependency Score (RDS)
+    rds = len(all_repairs) * iterations * 2
+    if rds <= 10:
+        rds_status = "EXCELLENT (Generador Autónomo Robusto)"
+    elif rds <= 25:
+        rds_status = "HEALTHY (Ajustes Menores)"
+    elif rds <= 50:
+        rds_status = "FRAGILE (Dependencia Moderada de Auto-Repair)"
+    else:
+        rds_status = "GENERATOR DEFECT (Alta Dependencia de Auto-Repair)"
+
     is_valid = (len(errors) == 0)
     report = ValidationReport(
         is_valid=is_valid,
@@ -121,6 +135,8 @@ def validate_scene(scene_data: Any,
         sketion_overall_score=sketion_score,
         repairs_applied=all_repairs,
         repair_iterations=iterations,
+        repair_dependency_score=rds,
+        repair_dependency_status=rds_status,
         elements_count=len(elements),
         frames_count=frames_count
     )

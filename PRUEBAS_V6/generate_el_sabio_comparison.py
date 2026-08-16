@@ -148,7 +148,7 @@ def build_el_sabio_comparison():
         bg_col = PALETTE["GREEN_HERO"] if is_sabio_col else PALETTE["DARK_SLATE"]
         scene.add_bound_card(cell["x"], cell["y"], cell["w"], cell["h"], headers[c].upper(),
                              bg=bg_col, stroke=bg_col, text_color="#FFFFFF",
-                             font_size=12, roundness_type=None, frame_id=fid2)
+                             font_size=14, roundness_type=None, frame_id=fid2)
 
     # Celdas
     for r, row_cells in enumerate(grid["rows"]):
@@ -172,7 +172,7 @@ def build_el_sabio_comparison():
 
             scene.add_bound_card(cell["x"], cell["y"], cell["w"], cell["h"], val,
                                  bg=bg, stroke=stroke, text_color=text_col,
-                                 font_size=11, roundness_type=3 if c > 0 else None, frame_id=fid2)
+                                 font_size=13 if len(val) > 22 else 14, roundness_type=3 if c > 0 else None, frame_id=fid2)
 
     scene.auto_fit_frame(fid2, padding=50.0)
 

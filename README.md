@@ -199,6 +199,17 @@ Sketion no limita los componentes a cajas estándar; utiliza una rica biblioteca
 
 ---
 
+## Guía Universal de Uso e Integración (SDK, CLI, IDEs y LLMs)
+
+Para aprender a utilizar Sketion paso a paso en cualquier entorno (incluyendo plataformas gratuitas y flujos de trabajo profesionales), consulta el manual maestro oficial:
+
+* [**Guía de Uso Universal (GUIA_DE_USO_UNIVERSAL.md)**](GUIA_DE_USO_UNIVERSAL.md): Manual detallado de integración paso a paso para **Python SDK, CLI Local, Antigravity IDE, Cursor, Windsurf, Claude (Anthropic), ChatGPT (OpenAI), VS Code y Visores Web SVG / Excalidraw**.
+  * Matriz de costos y modalidades (100% Gratis vs Planes de Pago).
+  * Comparativa de calidad y precisión matemática entre el motor Python y modelos web.
+  * Flujos de trabajo y recetas de prompts listos para copiar y pegar.
+
+---
+
 ## Instalación y Uso Rápido
 
 ### Instalación como Paquete de Python

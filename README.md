@@ -199,14 +199,18 @@ Sketion no limita los componentes a cajas estándar; utiliza una rica biblioteca
 
 ---
 
-## Guía Universal de Uso e Integración (SDK, CLI, IDEs y LLMs)
-
-Para aprender a utilizar Sketion paso a paso en cualquier entorno (incluyendo plataformas gratuitas y flujos de trabajo profesionales), consulta el manual maestro oficial:
-
-* [**Guía de Uso Universal (GUIA_DE_USO_UNIVERSAL.md)**](GUIA_DE_USO_UNIVERSAL.md): Manual detallado de integración paso a paso para **Python SDK, CLI Local, Antigravity IDE, Cursor, Windsurf, Claude (Anthropic), ChatGPT (OpenAI), VS Code y Visores Web SVG / Excalidraw**.
-  * Matriz de costos y modalidades (100% Gratis vs Planes de Pago).
-  * Comparativa de calidad y precisión matemática entre el motor Python y modelos web.
-  * Flujos de trabajo y recetas de prompts listos para copiar y pegar.
+> [!IMPORTANT]
+> ### GUIA MAESTRA DE INTEGRACION Y USO PASO A PASO
+> **¿Quieres aprender a integrar y ejecutar Sketion en tu entorno favorito?**  
+> Hemos preparado una guía completa paso a paso con recetas listas para usar en cualquier plataforma:
+> 
+> 👉 **[ABRIR GUIA DE USO UNIVERSAL (GUIA_DE_USO_UNIVERSAL.md)](GUIA_DE_USO_UNIVERSAL.md)**
+> 
+> * **100% Gratuito vs Planes Pro:** Descubre cómo ejecutar el motor en local con 0 costo de API o tokens frente a integraciones web.
+> * **Python SDK y CLI Local:** Renderizado determinista con cálculo de coordenadas a 90°, márgenes perimetrales y auto-reparación.
+> * **Integración en IDEs:** Configuración en **Antigravity IDE, Cursor, Windsurf y VS Code**.
+> * **Integración en Web LLMs:** Instrucciones para **Claude Projects (Anthropic)** y **Custom GPTs (OpenAI)** con Code Interpreter.
+> * **Recetas de Prompts Listas:** Plantillas preparadas para copiar, pegar y generar diagramas en segundos.
 
 ---
 

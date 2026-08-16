@@ -1,6 +1,7 @@
 """
 Sketion Orthogonal Routing 3.0
-Calculador de puntos de conexión ortogonal y carriles de retorno (Track Lanes).
+Calculador de puntos de conexión ortogonal, carriles de retorno (Track Lanes)
+y enrutamiento de flujo inter-zonas.
 """
 from typing import List, Tuple, Dict, Any, Optional
 
@@ -41,3 +42,22 @@ def compute_orthogonal_arrow(x1: float, y1: float, x2: float, y2: float,
         [float(dx), float(dy)]
     ]
     return points
+
+def compute_inter_zone_flow_points(from_rect: Dict[str, float], to_rect: Dict[str, float],
+                                   flow_type: str = "forward") -> Tuple[float, float, float, float]:
+    """
+    Calcula los puntos óptimos de origen (x1, y1) y destino (x2, y2) para conectar
+    dos zonas o tarjetas respetando la dirección física del flujo.
+    """
+    fx, fy, fw, fh = from_rect["x"], from_rect["y"], from_rect["w"], from_rect["h"]
+    tx, ty, tw, th = to_rect["x"], to_rect["y"], to_rect["w"], to_rect["h"]
+    
+    if tx >= fx + fw:
+        # Flujo hacia adelante (derecha)
+        return fx + fw, fy + fh * 0.5, tx, ty + th * 0.5
+    elif tx < fx:
+        # Flujo hacia atrás (izquierda)
+        return fx, fy + 20.0, tx + tw, ty + 20.0
+    else:
+        # Flujo vertical (abajo)
+        return fx + fw * 0.5, fy + fh, tx + tw * 0.5, ty

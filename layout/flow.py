@@ -1,5 +1,5 @@
 """
-Sketion Flow Layouts (Linear, Wave, Timeline)
+Sketion Flow Layouts (Linear, Wave, Timeline, Symmetric User Journey)
 """
 from typing import List, Dict, Any, Tuple
 
@@ -38,3 +38,41 @@ def compute_timeline_layout(milestones_count: int, start_x: float, axis_y: float
             "is_above": is_above
         })
     return coords
+
+def compute_symmetric_journey_layout(steps_count: int, start_x: float, steps_y: float,
+                                     slots_y: float, total_width: float,
+                                     step_h: float = 95, slot_h: float = 320,
+                                     gap_between: float = 40.0) -> Dict[str, Any]:
+    """
+    Calcula un layout de User Journey con simetría 1:1 estricta entre cada paso
+    superior y su correspondiente slot de captura inferior.
+    """
+    usable_width = total_width - (steps_count - 1) * gap_between
+    card_w = max(180.0, usable_width / max(1, steps_count))
+    
+    steps = []
+    slots = []
+    
+    for i in range(steps_count):
+        cx = start_x + i * (card_w + gap_between)
+        steps.append({
+            "idx": i,
+            "x": cx,
+            "y": steps_y,
+            "w": card_w,
+            "h": step_h
+        })
+        slots.append({
+            "idx": i,
+            "x": cx,
+            "y": slots_y,
+            "w": card_w,
+            "h": slot_h
+        })
+        
+    return {
+        "steps": steps,
+        "slots": slots,
+        "card_w": card_w,
+        "gap": gap_between
+    }

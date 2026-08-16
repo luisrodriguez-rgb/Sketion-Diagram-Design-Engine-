@@ -1,30 +1,30 @@
 ---
 name: sketion-diagram-design
-description: Generador editorial de diagramas y tableros nativos para Excalidraw (.excalidraw). Arquitectura desacoplada en 4 capas (Semantica -> Layout -> Render -> Calidad Visual) con soporte de Smart Defaults, niveles de detalle, Catalogo de 20 Arquetipos Visuales respaldados por 9 Motores Geometricos Base y evaluador de Semantic Hard Constraints sin colisiones.
+description: Generador editorial de diagramas y tableros nativos para Excalidraw (.excalidraw). Arquitectura desacoplada en 4 capas (Semantica -> Layout -> Render -> Calidad Visual) con motor de inferencia por audiencia (Audience-Aware Engine), Catalogo de 20 Arquetipos Visuales respaldados por 9 Motores Geometricos, simetria 1:1 en journeys, enrutamiento inter-zonas y evaluador de Semantic Hard Constraints sin colisiones.
 license: MIT
 metadata:
-  version: "3.3"
+  version: "3.4"
 ---
 
 # Sketion Diagram Design Skill (Motor Editorial para Excalidraw)
 
 Crea tableros y diagramas profesionales con calidad editorial, diseno limpio, cero amontonamientos y editabilidad nativa total en formato `.excalidraw`.
 
-Combina los principios de **Diagram Design** (densidad 4/10, regla del acento unico, eliminacion de ruido visual) con los **20 Arquetipos de Negocio** y la precision geometrica de sus **9 Motores de Layout Base**.
+Combina los principios de **Diagram Design** (densidad 4/10, regla del acento unico, eliminacion de ruido visual) con el **Motor de Inferencia de Audiencia**, los **20 Arquetipos de Negocio**, y los **9 Motores de Layout Geometrico Base**.
 
 ---
 
-## 0. Smart Defaults y Progressive Disclosure (Sin Friccion)
+## 0. Motor de Decision de Audiencia (Audience-Aware Engine)
 
-**No interrumpir al usuario con formularios de preguntas.** El motor resuelve automaticamente la intencion semantica y genera el tablero terminado en el primer turno:
+Sketion adapta autonomamente la seleccion de arquetipos, la densidad de informacion y el vocabulario segun el perfil del receptor:
 
-- **Si el usuario especifica:** Respetar sus elecciones (paleta, roughness, detalle, modo, arquetipo).
-- **Si no se especifica nada (Smart Defaults automaticos):**
-  - **Modo:** Claro (`viewBackgroundColor: "#F4F4F4"` lienzo editorial o `"#FFFFFF"`).
-  - **Trazo (`roughness`):** `0` (Limpio, tecnico, vectorial profesional).
-  - **Paleta:** `MIRO_EDITORIAL` (`#F4F4F4` base, `#0C0C0C` tinta, `#E03A2F` acento de dolor, `#FFE95C` sticky notes).
-  - **Nivel de Detalle:** `balanced` con descomposiciones multi-frame si el problema excede 9 nodos.
-  - **Metricas Faltantes:** Estimar cifras creibles de industria y documentarlas al pie en lugar de dejar huecos vacios.
+| Perfil de Audiencia | Arquetipos Principales | Foco Semantico Obligatorio | Elementos a Suprimir (Evitar Ruido) | Tono Editorial |
+| :--- | :--- | :--- | :--- | :--- |
+| **CEO / Directivo** | `D (Duelo)`, `B (Fases)`, `P (Cadena Valor)`, `H (Radar 2x2)` | ROI, Margen, Coste Fijo $0, Retencion, Fases de Aprobacion | APIs, Microservicios, Codigo, Cronometros de segundos | Estrategico / Financiero |
+| **Gerente Operaciones** | `E (Planta/Swimlanes)`, `M (Ishikawa)`, `S (Matriz Takt)`, `K (Kanban)` | Layout de Planta, Segregacion Fisica, Takt Time, Batching, Roles | Modelos Financieros Macro, Arquitectura Cloud, Nube | Industrial / Planta |
+| **Equipo Producto / Tech**| `A (Cerebro)`, `C (Journey 1:1)`, `T (Caja Explotada)`, `N (Galeria)` | Arquitectura Cloud, Microservicios, User Journey, Slots UI, KDS | Negociaciones Laborales, Nomina, Tramites Administrativos | Tecnico / Software |
+| **Documentacion Devs** | `S (Matriz CRUD)`, `O (Arbol Decision)`, `T (Caja Explotada)` | Endpoints HTTP, JSON Schema, Idempotency Keys, Codigos Error | Discursos Comerciales, Planos Fisicos de Edificio | Contrato API / gRPC |
+| **Inversionistas / Pitch**| `D (Duelo VS)`, `F (Embudo)`, `I (Flywheel)` | Tamano de Mercado, Metricas Heroicas, Traccion, Dolor vs Solucion | Tablas Complejas, Diagramas de Red Detallados | Impacto / Traccion |
 
 ---
 
@@ -32,6 +32,9 @@ Combina los principios de **Diagram Design** (densidad 4/10, regla del acento un
 
 ```text
 PROMPT / REQUISITOS DEL USUARIO
+        |
+        v
+[MOTOR DE AUDIENCIA]        -> Filtra informacion segun el perfil (CEO / Ops / Tech / Devs)
         |
         v
 [CAPA EDITORIAL / NEGOCIO] -> 20 Arquetipos Visuales (A - T)
@@ -53,6 +56,7 @@ PROMPT / REQUISITOS DEL USUARIO
 | Motor Base | Archivo / Modulo | Algoritmo Geometrico | Responsabilidad Matematica |
 | :--- | :--- | :--- | :--- |
 | **Flow** | `layout/flow.py` | Secuencia horizontal y sinusoidal | Calcula coordenadas continuas con espaciado elastico de 95px. |
+| **Journey 1:1** | `layout/flow.py` | Simetria vertical estricta | Empareja exactamente N pasos superiores con N slots de captura inferiores. |
 | **Timeline** | `layout/flow.py` | Eje cronologico alternado | Distribuye hitos temporales arriba y abajo del eje central. |
 | **Tree** | `layout/hierarchy.py`| Arbol jerarquico balanceado | Posiciona nodos padres e hijos calculando anchos de sub-arbol. |
 | **Radial** | `layout/hierarchy.py`| Distribucion angular perimetral | Calcula radios y angulos equidistantes alrededor de un hub. |
@@ -60,7 +64,7 @@ PROMPT / REQUISITOS DEL USUARIO
 | **Board / Lanes** | `layout/grid.py` | Carriles verticales paralelos | Gestiona columnas de ancho uniforme y apilamiento vertical. |
 | **Dashboard** | `layout/grid.py` | Matriz de chips numericos | Distribuye tarjetas de KPI en grillas de 2, 3 o 4 columnas. |
 | **Network / Red** | `engines/recipes.py` | Grafo distribuido con Scopes | Agrupa nodos en columnas de infraestructura con gutter de 65px. |
-| **Routing** | `layout/routing.py` | Enrutamiento ortogonal y Track Lanes | Genera codos a 90 grados, anclajes de salida y carriles de retorno. |
+| **Routing** | `layout/routing.py` | Enrutamiento ortogonal y Flujo Inter-Zonas | Genera codos a 90 grados, anclajes de salida y conectores de transito fisico. |
 
 ---
 
@@ -72,7 +76,7 @@ PROMPT / REQUISITOS DEL USUARIO
 | **B** | **Las Fases** | `Grid` + `Routing` + `Banners` | Roadmaps de 90 dias, progresiones con gates |
 | **C** | **La Serpiente** | `Flow` (Wave) + `Routing` | Procesos lineales de 8 a 16 pasos |
 | **D** | **El Duelo (VS)** | `Grid` + `Sticky` + `Routing` | Antes vs Despues / Legacy vs Moderno |
-| **E** | **La Cadena** | `Board` + `Grid` + `Routing` | Swimlanes paralelos por actor con handoffs |
+| **E** | **La Cadena / Planta**| `Board` + `Grid` + `Routing` | Swimlanes y Layout de planta con flujos direccionales |
 | **F** | **El Embudo (Funnel)** | `Flow` + `Banners` | Conversion de ventas, pipelines de seleccion |
 | **G** | **La Piramide** | `Hierarchy` + `Banners` | Modelos de madurez, capas de seguridad |
 | **H** | **El Radar 2x2** | `Grid` + `Routing` | Priorizacion Impacto vs Esfuerzo, riesgos |
@@ -86,55 +90,34 @@ PROMPT / REQUISITOS DEL USUARIO
 | **P** | **Cadena de Valor** | `Flow` + `Grid` | Mapeo estrategico de operaciones y margen |
 | **Q** | **Pilares Benchmark** | `Board` + `Dashboard` | Comparativa de latencia, throughput y costes |
 | **R** | **Roadmap con Gates** | `Timeline` + `Banners` | Lanzamientos v3.0, auditorias SOC2 / ISO |
-| **S** | **Matriz CRUD** | `Grid` (Proportional) | Mapeo de propiedad de datos (Data Ownership) |
+| **S** | **Matriz CRUD / Takt**| `Grid` (Proportional) | Mapeo de propiedad de datos o tiempos de ciclo industrial |
 | **T** | **Caja Explotada** | `Network` + `Routing` | Explicar el funcionamiento interno de un motor |
 
 ---
 
-## 4. Reglas de Micro-Diseno y Cero Colisiones (Core 3.3)
+## 4. Reglas de Micro-Diseno y Cero Colisiones (Core 3.4)
 
 1. **Centrado Geometrico del Texto:**
-   - La coordenada Y del elemento de texto se calcula exactamente segun la altura real de las lineas:
+   - La coordenada Y del texto se calcula segun la altura real de las lineas:
      text_h = line_count * font_size * 1.35
      text_y = y + (card_h - text_h) / 2
    - Se activa `autoResize: True` y `verticalAlign: "middle"` para centrado bidimensional exacto.
 
-2. **Separacion de Scopes (Gutter Seguro de 65px):**
+2. **Simetria 1:1 en User Journeys:**
+   - En flujos de experiencia de usuario con capturas, cada paso superior debe coincidir exactamente en posicion X y ancho con su slot de captura inferior correspondiente.
+
+3. **Flujo Fisico Direccional Inter-Zonas:**
+   - En diagramas de planta operativa o swimlanes, las zonas no deben quedar aisladas. Deben incluir flechas ortogonales que indiquen el transito de personas, productos y eventos.
+
+4. **Separacion de Scopes (Gutter Seguro de 65px):**
    - Las columnas de infraestructura/scopes se disponen consecutivamente garantizando un canal libre de 65px entre sus bordes. Cero solapamiento de lineas divisorias.
 
-3. **Anclaje de Salida en Saltos de Columna (Cross-Scope Bypass):**
-   - Cuando una flecha cruza multiples columnas (dx > 350px), su pastilla protectora se ancla en el origen (x1 + 55px, y1 - 14px), dejando los scopes intermedios 100% limpios y sin colisiones de etiquetas.
-
-4. **Conectores de Flujo con Separacion de 95px:**
-   - En flujos secuenciales, las tarjetas se separan exactamente 95px para que las pastillas de transicion queden suspendidas en el centro exacto de la flecha sin pisar las cajas.
-
-5. **Grillas Tabulares Proporcionales y Dinamicas:**
-   - El ancho de cada columna de la matriz se calcula segun la longitud maxima de su texto (hasta 560px para explicaciones) y la altura de fila se adapta a las lineas reales.
+5. **Anclaje de Salida en Saltos de Columna (Cross-Scope Bypass):**
+   - Cuando una flecha cruza multiples columnas (dx > 350px), su pastilla protectora se ancla en el origen (x1 + 55px, y1 - 14px), dejando los scopes intermedios 100% limpios y sin colisiones.
 
 ---
 
-## 5. Paleta Editorial Miro Nico en Excalidraw
-
-```python
-MIRO_PALETTE = {
-    "CANVAS": "#F4F4F4",          # Fondo suave de pizarra
-    "CARD": "#FFFFFF",            # Tarjetas blancas nitidas
-    "CARD_BORDER": "#BDBDBD",     # Borde suave 1.5px
-    "INK": "#0C0C0C",             # Tinta negra solida para titulares y chips
-    "MUTED": "#8B8B8B",           # Texto secundario y conectores de contexto
-    "STICKY": "#FFE95C",          # Post-it amarillo con micro-rotacion (-1.5 a +1.5 grados)
-    "PAIN_RED": "#E03A2F",        # Alertas, cuellos de botella y numeros criticos
-    "PAIN_BG": "#FDEFEF",         # Fondo de tarjetas de dolor o antes/legacy
-    "PAIN_BORDER": "#F05A5A",     # Borde discontinuo de slots de captura
-    "BANNER_PINK": "#F5BEC0",     # Frase de remate / punchline inferior
-    "PASTEL_BLUE": "#9BC7E4",     # Cabeceras de fases y zonas
-    "PASTEL_GREEN": "#C2E5D3"     # Confirmaciones y estados exitosos
-}
-```
-
----
-
-## 6. Principio de Semantic Hard Constraints
+## 5. Principio de Semantic Hard Constraints
 
 ```text
                  +--------------------------------+
@@ -152,26 +135,15 @@ MIRO_PALETTE = {
 - Violacion de Inmutabilidad                     - Enrutamiento por Track Lanes
 ```
 
-> **Regla de Oro:** Un diagrama visualmente impecable (100/100) pero que omite un componente critico es un **HARD FAILURE INMEDIATO**. La fidelidad semantica manda sobre la estetica; ante exceso de informacion, la unica respuesta valida es la **descomposicion elastica en multiples marcos coordinados**.
-
 ---
 
-## 7. Checklist de Calidad antes de Entregar
+## 6. Checklist de Calidad antes de Entregar
 
 - [ ] El archivo tiene extension `.excalidraw` y es JSON valido minificado.
+- [ ] La estructura del diagrama responde a la audiencia objetivo (CEO, Ops, Tech, Devs).
+- [ ] Si es un User Journey, existe correspondencia 1:1 entre pasos y slots de captura.
+- [ ] Si es una planta operativa, existen flechas de transito fisico entre zonas.
 - [ ] El texto dentro de todas las tarjetas esta centrado vertical y horizontalmente.
 - [ ] Los scopes tienen separacion limpia (minimo 65px de gutter) sin solapamiento.
-- [ ] Las flechas largas no amontonan pastillas de texto en columnas intermedias.
-- [ ] Las tablas/matrices muestran todo el texto completo sin truncamientos.
-- [ ] Se utilizo la paleta editorial con maximo 1-2 acentos focales.
+- [ ] Se utilizo la paleta editorial con maximo 1 acento focal principal.
 - [ ] El validador `validate_scene()` devuelve `PASS` con puntuacion global >= 95/100.
-
----
-
-## 8. Referencias y Archivos de Prueba
-
-- Catalogo Completo de Arquetipos: `docs/catalogo-20-arquetipos-visuales.md`
-- Propuesta de Mejoras Estrategicas: `docs/propuesta-mejoras-miro-sketion.md`
-- Walkthrough Completo de Pruebas: `docs/walkthrough-pruebas-v3.md`
-- Suite de Pruebas Adversariales: `tests/adversarial/`
-- Demos Excalidraw Nativo: `PRUEBAS_V3/` y `PRUEBAS_V4/`

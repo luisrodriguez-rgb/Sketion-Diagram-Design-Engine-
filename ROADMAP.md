@@ -31,6 +31,7 @@ Este documento define la secuencia técnica y estratégica para consolidar a **S
 ---
 
 ### Fase 1: Automatización del Banco de Pruebas Adversariales (Tests 01 a 09)
+
 **Objetivo:** Crear un ejecutor automatizado (`tests/adversarial_runner.py`) que procese los 9 casos de prueba adversariales y emita un reporte cuantitativo de decisión y fidelidad.
 
 * **Entregables:**
@@ -41,6 +42,7 @@ Este documento define la secuencia técnica y estratégica para consolidar a **S
 ---
 
 ### Fase 2: Integración Nativa del Motor de Audiencia en el Pipeline End-to-End
+
 **Objetivo:** Permitir que el pipeline reconozca automáticamente la audiencia implícita o explícita en el prompt y aplique el perfil correspondiente.
 
 * **Entregables:**
@@ -51,6 +53,7 @@ Este documento define la secuencia técnica y estratégica para consolidar a **S
 ---
 
 ### Fase 3: Auto-Split Elástico y Detección Automática de Sobresaturación
+
 **Objetivo:** Evitar que prompts complejos y masivos colapsen en un solo frame saturado mediante particionado automático.
 
 * **Entregables:**
@@ -65,13 +68,16 @@ Este documento define la secuencia técnica y estratégica para consolidar a **S
 ---
 
 ### Fase 4: Empaquetado, CLI y Distribución como Skill Global
+
 **Objetivo:** Hacer de Sketion una herramienta de línea de comandos y un plugin portable para cualquier entorno de desarrollo y agente de IA.
 
 * **Entregables:**
   1. **CLI Unificado:**
+
      ```bash
      sketion generate "prompt.txt" --audience ceo --output decision_board.excalidraw
      ```
+
   2. **Integración con Antigravity IDE:** Slash command `/sketion` para generar y visualizar tableros directamente en el workspace.
   3. **Visualizador Rápido:** Script de exportación automática a SVG/PNG de alta fidelidad para vista previa instantánea.
 

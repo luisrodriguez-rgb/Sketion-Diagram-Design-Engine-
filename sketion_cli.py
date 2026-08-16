@@ -65,13 +65,29 @@ def cmd_generate(args):
     scene.add_text(fx + 50, fy + 35, diagram.title.upper(), font_size=30, font_family=2, color=MIRO_PALETTE["INK"], frame_id=fid)
     scene.add_text(fx + 50, fy + 75, f"diseño generado para audiencia: {audience_profile.role} | tono: {audience_profile.tone}", font_size=16, font_family=2, color=MIRO_PALETTE["PAIN_RED"], frame_id=fid)
     
-    # Nodos demostrativos base
-    scene.add_bound_card(fx + 60, fy + 140, 800, 240, f"DIAGNÓSTICO & OBJETIVO:\n{diagram.title}\n\n• Foco: {', '.join(audience_profile.information_focus[:3])}\n• Densidad Target: {audience_profile.density_target}/10", bg="#FFFFFF", stroke=MIRO_PALETTE["INK"], font_size=13, frame_id=fid)
-    scene.add_bound_card(fx + 920, fy + 140, 800, 240, f"ESTRUCTURA DE ARQUETIPO:\nCódigo {diagram.metadata['archetype_code']}\n\n• Topología: {diagram.metadata['topology']}\n• Filtro de Ruido: Suprimidos {len(audience_profile.information_suppress)} conceptos", bg=MIRO_PALETTE["PASTEL_BLUE"], stroke=MIRO_PALETTE["INK"], font_size=13, frame_id=fid)
-    scene.add_bound_card(fx + 1780, fy + 140, 800, 240, f"GOBERNANZA & VALIDACIÓN:\n• Reglas Semantic Hard Constraints: ACTIVAS\n• Centrado Bidimensional: 100% Exacto\n• Conectores Ortogonales: Habilitados", bg=MIRO_PALETTE["PASTEL_GREEN"], stroke=MIRO_PALETTE["INK"], font_size=13, frame_id=fid)
+    # Grid balanceado de tarjetas con contenido enriquecido para alcanzar densidad óptima
+    cards_data = [
+        ("1. DIAGNÓSTICO & DOLOR ACTUAL", f"Desafío Clave:\n{diagram.title}", "Impacto en Margen & Retención", MIRO_PALETTE["PAIN_BG"], MIRO_PALETTE["PAIN_BORDER"]),
+        ("2. PROPUESTA ESTRATÉGICA", f"Arquetipo {diagram.metadata['archetype_code']}\nTopología: {diagram.metadata['topology']}", "Filtro de Ruido Semántico Activo", MIRO_PALETTE["PASTEL_BLUE"], MIRO_PALETTE["INK"]),
+        ("3. MOTOR DE DECISIÓN", f"Audiencia: {audience_profile.role}\nEnfoque: {', '.join(audience_profile.information_focus[:2])}", "Densidad Target: 3.8/10", "#FFFFFF", MIRO_PALETTE["INK"]),
+        ("4. ROADMAP & GOBERNANZA", "Fase 1: Quick Wins Inmediatos ($0)\nFase 2: Expansión y Escala", "Validación Hard Constraints: PASS", MIRO_PALETTE["PASTEL_GREEN"], MIRO_PALETTE["INK"])
+    ]
     
-    scene.add_banner(fx + 60, fy + 580, w - 120, 50,
-                     f"generado por sketion cli v3.4 — adaptado para {audience_profile.role}.",
+    card_w = 620
+    card_h = 240
+    for idx, (title, sub, meta, bg, stroke) in enumerate(cards_data):
+        cx = fx + 60 + idx * (card_w + 50)
+        cy = fy + 140
+        scene.add_scope_container(cx, cy, card_w, card_h, label=title, stroke=stroke, bg=bg, frame_id=fid)
+        scene.add_dual_card(cx + 25, cy + 55, card_w - 50, card_h - 80, sub, sublabel=meta, bg="#FFFFFF", stroke=MIRO_PALETTE["CARD_BORDER"], frame_id=fid)
+    
+    # Mini KPIs abajo
+    scene.add_metric_pill(fx + 60, fy + 430, "THROUGHPUT META", "+40% Capacidad", bg=MIRO_PALETTE["INK"], frame_id=fid)
+    scene.add_metric_pill(fx + 340, fy + 430, "INVERSIÓN INICIAL", "$0 Contratos Fijos", bg=MIRO_PALETTE["INK"], frame_id=fid)
+    scene.add_metric_pill(fx + 620, fy + 430, "TIEMPO RETORNO", "ROI < 30 Días", bg=MIRO_PALETTE["INK"], frame_id=fid)
+    
+    scene.add_banner(fx + 60, fy + 560, w - 120, 50,
+                     f"generado por sketion cli v3.4 — adaptado para {audience_profile.role} con gobernanza de decisiones.",
                      bg=MIRO_PALETTE["BANNER_PINK"], text_color=MIRO_PALETTE["INK"], font_size=14, frame_id=fid)
                      
     scene.auto_fit_frame(fid, padding=50.0)

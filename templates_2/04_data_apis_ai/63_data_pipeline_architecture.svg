@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1361.6 555.0" width="1361.6" height="555.0">
+  <defs>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
+      text { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB" />
+    </marker>
+    <marker id="arrowhead-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D93829" />
+    </marker>
+    <marker id="arrowhead-danger" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
+    </marker>
+  </defs>
+  <rect x="-30.0" y="-30.0" width="1361.6" height="555.0" fill="#F8FAFC" />
+  <rect x="10.0" y="10.0" width="1281.6" height="475.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">SKETION EXPANSION LIBRARY V2 · DATA &amp; AI · INTER VECTORIAL</text>
+  <rect x="60.0" y="90.0" width="200.0" height="75.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="72.0" y="100.0" width="59.2" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="76.0" y="112.0" fill="#475569" font-size="10px" font-weight="400">SOURCE</text>
+  <text x="74.0" y="142.0" fill="#0F172A" font-size="14px" font-weight="600">CRM &amp; ERP Feeds</text>
+  <text x="74.0" y="162.9" fill="#475569" font-size="12px" font-weight="400">Daily Batch Sync</text>
+  <rect x="60.0" y="190.0" width="200.0" height="75.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="72.0" y="200.0" width="59.2" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="76.0" y="212.0" fill="#475569" font-size="10px" font-weight="400">SOURCE</text>
+  <text x="74.0" y="242.0" fill="#0F172A" font-size="14px" font-weight="600">POS Transactions</text>
+  <text x="74.0" y="262.9" fill="#475569" font-size="12px" font-weight="400">Real-time MQTT</text>
+  <rect x="60.0" y="290.0" width="200.0" height="75.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="72.0" y="300.0" width="59.2" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="76.0" y="312.0" fill="#475569" font-size="10px" font-weight="400">SOURCE</text>
+  <text x="74.0" y="342.0" fill="#0F172A" font-size="14px" font-weight="600">Event Stream</text>
+  <text x="74.0" y="362.9" fill="#475569" font-size="12px" font-weight="400">Kafka Backbone</text>
+  <rect x="340.0" y="50.0" width="520.0" height="400.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
+  <text x="360.0" y="80.0" fill="#D93829" font-size="12px" font-weight="400">CENTRAL DATA PLATFORM CORE</text>
+  <rect x="370.0" y="115.0" width="200.0" height="95.0" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <ellipse cx="470.0" cy="115.0" rx="100.0" ry="10.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <rect x="384.0" y="125.0" width="60.0" height="20.0" rx="6.0" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.0" />
+  <text x="388.0" y="137.0" fill="#1D4ED8" font-size="10px" font-weight="400">LAKE</text>
+  <text x="384.0" y="165.0" fill="#0F172A" font-size="14px" font-weight="600">Object Lakehouse</text>
+  <text x="384.0" y="184.0" fill="#475569" font-size="11px" font-weight="400">Parquet Store</text>
+  <rect x="610.0" y="105.0" width="220.0" height="110.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
+  <rect x="622.0" y="115.0" width="88.0" height="20.0" rx="6.0" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.0" />
+  <text x="626.0" y="127.0" fill="#D93829" font-size="10px" font-weight="400">QUERY CORE</text>
+  <text x="624.0" y="157.0" fill="#0F172A" font-size="14px" font-weight="600">Query Engine</text>
+  <text x="624.0" y="177.9" fill="#475569" font-size="12px" font-weight="400">Trino / Presto SQL</text>
+  <rect x="950.0" y="90.0" width="220.0" height="75.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="962.0" y="100.0" width="73.6" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="966.0" y="112.0" fill="#475569" font-size="10px" font-weight="400">CONSUMER</text>
+  <text x="964.0" y="142.0" fill="#0F172A" font-size="14px" font-weight="600">BI Executive Dashboards</text>
+  <text x="964.0" y="162.9" fill="#475569" font-size="12px" font-weight="400">Superset &amp; Tableau</text>
+  <rect x="950.0" y="190.0" width="220.0" height="75.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="962.0" y="200.0" width="73.6" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="966.0" y="212.0" fill="#475569" font-size="10px" font-weight="400">CONSUMER</text>
+  <text x="964.0" y="242.0" fill="#0F172A" font-size="14px" font-weight="600">Realtime Fraud AI</text>
+  <text x="964.0" y="262.9" fill="#475569" font-size="12px" font-weight="400">Inference Microservice</text>
+  <rect x="950.0" y="290.0" width="220.0" height="75.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="962.0" y="300.0" width="73.6" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="966.0" y="312.0" fill="#475569" font-size="10px" font-weight="400">CONSUMER</text>
+  <text x="964.0" y="342.0" fill="#0F172A" font-size="14px" font-weight="600">Partner APIs</text>
+  <text x="964.0" y="362.9" fill="#475569" font-size="12px" font-weight="400">REST / GraphQL Gateway</text>
+  <line x1="260.0" y1="127.0" x2="370.0" y2="155.0" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <line x1="260.0" y1="227.0" x2="370.0" y2="155.0" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <line x1="830.0" y1="160.0" x2="950.0" y2="127.0" stroke="#D93829" stroke-width="1.8" marker-end="url(#arrowhead-hero)" />
+  <line x1="830.0" y1="160.0" x2="950.0" y2="227.0" stroke="#D93829" stroke-width="1.8" marker-end="url(#arrowhead-hero)" />
+</svg>

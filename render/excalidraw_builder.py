@@ -916,7 +916,7 @@ class ExcalidrawScene:
         self.add_rect(x, y, col_w, 36.0, bg="#F1F5F9", stroke="#CBD5E1", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
         self.add_text(x + 16.0, y + 10.0, f"[LEGACY] {left_label.upper()} — {left_title}", font_size=13, font_family=2, color="#991B1B", frame_id=frame_id)
         for i, item in enumerate(left_items):
-            self.add_text(x + 16.0, y + 52.0 + i * 26.0, f"✗  {item}", font_size=12, font_family=2, color="#475569", frame_id=frame_id)
+            self.add_text(x + 16.0, y + 52.0 + i * 26.0, f"[-] {item}", font_size=12, font_family=2, color="#475569", frame_id=frame_id)
 
         # Columna Derecha (Target / Solución Hero)
         rx = x + col_w + 40.0
@@ -924,7 +924,7 @@ class ExcalidrawScene:
         self.add_rect(rx, y, col_w, 36.0, bg="#DCFCE7", stroke="#86EFAC", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
         self.add_text(rx + 16.0, y + 10.0, f"[TARGET] {right_label.upper()} — {right_title}", font_size=13, font_family=2, color="#166534", frame_id=frame_id)
         for j, ritem in enumerate(right_items):
-            self.add_text(rx + 16.0, y + 52.0 + j * 26.0, f"✓  {ritem}", font_size=12, font_family=2, color="#15803D", frame_id=frame_id)
+            self.add_text(rx + 16.0, y + 52.0 + j * 26.0, f"[+] {ritem}", font_size=12, font_family=2, color="#15803D", frame_id=frame_id)
 
         # Conector central VS
         self.add_ellipse(x + col_w + 5.0, y + (h * 0.5) - 15.0, 30.0, 30.0, bg="#0F172A", stroke="#0F172A", stroke_w=1.0, frame_id=frame_id)

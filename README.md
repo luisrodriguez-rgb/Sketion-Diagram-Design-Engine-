@@ -210,7 +210,8 @@ Sketion no limita los componentes a cajas estándar; utiliza una rica biblioteca
 > * **Python SDK y CLI Local:** Renderizado determinista con cálculo de coordenadas a 90°, márgenes perimetrales y auto-reparación.
 > * **Integración en IDEs:** Configuración en **Antigravity IDE, Cursor, Windsurf y VS Code**.
 > * **Integración en Web LLMs:** Instrucciones para **Claude Projects (Anthropic)** y **Custom GPTs (OpenAI)** con Code Interpreter.
-> * **Biblioteca Curada de Plantillas:** Explora las **62 plantillas curadas en SVG y Excalidraw** en [**templates/README.md**](templates/README.md) (Estudio, Ingeniería, Software & IA, Negocios, Diseño & UX, Productividad).
+> * **Biblioteca Central de Plantillas (62):** Explora las 62 plantillas curadas en SVG y Excalidraw en [**templates/README.md**](templates/README.md) (Estudio, Ingeniería, Software & IA, Negocios, Diseño & UX, Productividad).
+> * **Biblioteca de Expansión v2 (150):** Accede a las 150 plantillas especializadas y benchmark estructural en [**templates_2/README.md**](templates_2/README.md) (C4 Nivel 1-3, Zero-Trust, Multi-Agente, SAFe, OEE, SPC). ¡Ecosistema total de **212 plantillas vectoriales puras**!
 > * **Recetas de Prompts Listas:** Plantillas preparadas para copiar, pegar y generar diagramas en segundos.
 
 ---

@@ -1,19 +1,30 @@
-# Python
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Virtual Environments
 env/
 venv/
 ENV/
 .venv/
 
-# Temporary files
-*.tmp
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
 tests/snapshots/*.tmp
+*.tmp
 
-# OS files
+# Operating System Files
 .DS_Store
 .DS_Store?
 ._*
@@ -22,8 +33,19 @@ tests/snapshots/*.tmp
 ehthumbs.db
 Thumbs.db
 
-# IDE
+# IDE & Editor Metadata
 .idea/
 .vscode/
+.cursor/
 *.swp
 *.swo
+
+# Codebase Memory & Agent Cache
+.codebase-memory/
+.agents/
+.gemini/
+scratch/
+*.log
+
+# Historical test folders
+PRUEBAS_*/

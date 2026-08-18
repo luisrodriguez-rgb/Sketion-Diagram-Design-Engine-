@@ -11,7 +11,7 @@ import json
 import random
 import string
 import math
-from typing import List, Dict, Any, Optional, Tuple
+from typing import List, Dict, Any, Optional, Tuple, Union
 from layout.routing import compute_orthogonal_arrow
 
 def rid(length: int = 16) -> str:
@@ -747,42 +747,38 @@ class ExcalidrawScene:
                           font_size=12, font_family=2, color=text_color, frame_id=frame_id)
 
     def add_database_cylinder(self, x: float, y: float, w: float, h: float,
-                               title: str, sublabel: Optional[str] = None,
-                               badge: str = "DATABASE", is_hero: bool = False,
-                               bg: str = "#EFF6FF", stroke: str = "#2563EB",
-                               frame_id: Optional[str] = None) -> Dict[str, Any]:
+                              title: str, sublabel: Optional[str] = None,
+                              badge: str = "DATABASE", is_hero: bool = False,
+                              bg: str = "#EFF6FF", stroke: str = "#2563EB",
+                              frame_id: Optional[str] = None) -> Dict[str, Any]:
         """
-        Crea una primitiva morfológica de Cilindro / Base de Datos con tapas elípticas y discos inferiores limpios.
-        Rompe el monopolio de tarjetas rectangulares planas sin colisiones de texto.
+        Crea una primitiva morfológica de Cilindro / Base de Datos con tapa elíptica proporcionada y disco inferior.
         """
         final_stroke = "#D93829" if is_hero else stroke
         final_bg = "#FFF5F2" if is_hero else bg
         stroke_w = 2.0 if is_hero else 1.5
-        effective_h = max(h, 115.0)
+        effective_h = max(h, 105.0)
+        cap_h = min(20.0, max(12.0, effective_h * 0.14))
 
         # 1. Cuerpo del cilindro
-        container = self.add_rect(x, y + 10.0, w, effective_h - 20.0, bg=final_bg, stroke=final_stroke, stroke_w=stroke_w, roundness_type=3, frame_id=frame_id)
+        container = self.add_rect(x, y + cap_h * 0.5, w, effective_h - cap_h * 0.5, bg=final_bg, stroke=final_stroke, stroke_w=stroke_w, roundness_type=3, frame_id=frame_id)
 
         # 2. Tapa elíptica superior
-        self.add_ellipse(x, y, w, 20.0, bg=final_bg, stroke=final_stroke, stroke_w=stroke_w, frame_id=frame_id)
+        self.add_ellipse(x, y, w, cap_h, bg=final_bg, stroke=final_stroke, stroke_w=stroke_w, frame_id=frame_id)
 
-        # 3. Líneas de ranura de disco en la base inferior (solo si hay suficiente altura)
-        if effective_h >= 125.0:
-            self.add_line(x + 10.0, y + effective_h - 16.0, x + w - 10.0, y + effective_h - 16.0, stroke=final_stroke, stroke_w=1.0, dashed=True, frame_id=frame_id)
-
-        # 4. Badge & Icono en cabecera
-        bw = max(60.0, len(badge) * 7.2 + 16.0)
+        # 3. Badge & Icono en cabecera
+        bw = max(55.0, len(badge) * 7.0 + 14.0)
         b_bg = "#FEE2E2" if is_hero else "#DBEAFE"
         b_str = "#FCA5A5" if is_hero else "#93C5FD"
         b_col = "#D93829" if is_hero else "#1D4ED8"
-        self.add_rect(x + 14.0, y + 20.0, bw, 20.0, bg=b_bg, stroke=b_str, stroke_w=1.0, roundness_type=3, frame_id=frame_id)
-        self.add_text(x + 18.0, y + 22.0, badge, font_size=10, font_family=2, color=b_col, frame_id=frame_id)
-        self.add_icon("database", x + w - 36.0, y + 20.0, size=20.0, color=final_stroke, frame_id=frame_id)
+        self.add_rect(x + 14.0, y + cap_h + 8.0, bw, 18.0, bg=b_bg, stroke=b_str, stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 18.0, y + cap_h + 10.0, badge, font_size=9, font_family=2, color=b_col, frame_id=frame_id)
+        self.add_icon("database", x + w - 30.0, y + cap_h + 8.0, size=18.0, color=final_stroke, frame_id=frame_id)
 
-        # 5. Título y Subtítulo en zona central despejada
-        self.add_text(x + 14.0, y + 46.0, title, font_size=14, font_family=2, color="#0F172A", frame_id=frame_id)
+        # 4. Título y Subtítulo en zona central despejada
+        self.add_text(x + 14.0, y + cap_h + 32.0, title, font_size=13, font_family=2, color="#0F172A", frame_id=frame_id)
         if sublabel:
-            self.add_text(x + 14.0, y + 68.0, sublabel, font_size=11, font_family=2, color="#475569", frame_id=frame_id)
+            self.add_text(x + 14.0, y + cap_h + 52.0, sublabel, font_size=10, font_family=1, color="#475569", frame_id=frame_id)
 
         return container
 
@@ -930,6 +926,201 @@ class ExcalidrawScene:
         self.add_ellipse(x + col_w + 5.0, y + (h * 0.5) - 15.0, 30.0, 30.0, bg="#0F172A", stroke="#0F172A", stroke_w=1.0, frame_id=frame_id)
         self.add_text(x + col_w + 12.0, y + (h * 0.5) - 7.0, "VS", font_size=10, font_family=3, color="#FFFFFF", frame_id=frame_id)
 
+    def add_code_block(self, x: float, y: float, w: float, h: float,
+                       title: str, code_lines: Union[List[str], str],
+                       lang: str = "PYTHON", is_dark: bool = True,
+                       frame_id: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Crea un bloque de código / terminal interactivo con barra de título, controles de ventana y sintaxis legible.
+        """
+        bg_color = "#0F172A" if is_dark else "#F8FAFC"
+        stroke_color = "#334155" if is_dark else "#CBD5E1"
+        header_bg = "#1E293B" if is_dark else "#F1F5F9"
+        text_color = "#38BDF8" if is_dark else "#0F172A"
+        code_color = "#E2E8F0" if is_dark else "#1E293B"
+
+        container = self.add_rect(x, y, w, h, bg=bg_color, stroke=stroke_color, stroke_w=1.2, roundness_type=3, frame_id=frame_id)
+        
+        # Barra superior de terminal
+        head_h = 28.0
+        self.add_rect(x, y, w, head_h, bg=header_bg, stroke=stroke_color, stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        
+        # 3 botones de ventana (macOS dots)
+        dots = [("#EF4444", 12.0), ("#F59E0B", 24.0), ("#10B981", 36.0)]
+        for dot_col, dot_x in dots:
+            self.add_ellipse(x + dot_x, y + 9.0, 8.0, 8.0, bg=dot_col, stroke=dot_col, stroke_w=1.0, frame_id=frame_id)
+            
+        # Título y Lenguaje
+        self.add_text(x + 54.0, y + 7.0, title, font_size=10, font_family=3, color=text_color, frame_id=frame_id)
+        self.add_text(x + w - len(lang) * 7.0 - 16.0, y + 7.0, lang.upper(), font_size=9, font_family=3, color="#64748B", frame_id=frame_id)
+        
+        # Código interno con formato
+        code_text = "\n".join(code_lines) if isinstance(code_lines, list) else str(code_lines)
+        self.add_text(x + 14.0, y + 36.0, code_text, font_size=9, font_family=3, color=code_color, frame_id=frame_id)
+        return container
+
+    def add_uml_class(self, x: float, y: float, w: float, h: float,
+                      class_name: str, stereotype: str = "",
+                      attributes: Optional[List[str]] = None,
+                      methods: Optional[List[str]] = None,
+                      is_hero: bool = False,
+                      frame_id: Optional[str] = None):
+        """Crea una clase UML completa con 3 compartimentos (Nombre, Atributos, Métodos)."""
+        final_bg = "#FFF5F2" if is_hero else "#FFFFFF"
+        final_stroke = "#D93829" if is_hero else "#0F172A"
+        
+        # Contenedor principal
+        self.add_rect(x, y, w, h, bg=final_bg, stroke=final_stroke, stroke_w=1.8 if is_hero else 1.5, roundness_type=3, frame_id=frame_id)
+        
+        # Cabecera
+        header_h = 38.0 if stereotype else 28.0
+        self.add_rect(x, y, w, header_h, bg="#F1F5F9" if not is_hero else "#FFE4E1", stroke=final_stroke, stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        if stereotype:
+            self.add_text(x + 10.0, y + 4.0, f"<<{stereotype}>>", font_size=9, font_family=3, color="#64748B", frame_id=frame_id)
+            self.add_text(x + 10.0, y + 18.0, class_name, font_size=12, font_family=3, color="#0F172A", frame_id=frame_id)
+        else:
+            self.add_text(x + 10.0, y + 6.0, class_name, font_size=12, font_family=3, color="#0F172A", frame_id=frame_id)
+            
+        cur_y = y + header_h + 8.0
+        # Atributos
+        if attributes:
+            for attr in attributes:
+                self.add_text(x + 12.0, cur_y, f"+ {attr}", font_size=10, font_family=3, color="#334155", frame_id=frame_id)
+                cur_y += 18.0
+        
+        # Separador
+        self.add_line(x, cur_y + 4.0, x + w, cur_y + 4.0, stroke="#CBD5E1", stroke_w=1.0, frame_id=frame_id)
+        cur_y += 12.0
+        
+        # Métodos
+        if methods:
+            for meth in methods:
+                self.add_text(x + 12.0, cur_y, f"+ {meth}()", font_size=10, font_family=3, color="#0F172A", frame_id=frame_id)
+                cur_y += 18.0
+
+    def add_k8s_node(self, x: float, y: float, w: float, h: float,
+                     node_name: str, role: str = "Worker Node",
+                     pods: Optional[List[Dict[str, str]]] = None,
+                     is_hero: bool = False, frame_id: Optional[str] = None):
+        """Crea un nodo de Kubernetes con Kubelet, Kube-Proxy y cápsulas Pod encapsuladas."""
+        final_bg = "#F8FAFC" if not is_hero else "#FFF5F2"
+        final_stroke = "#0284C7" if not is_hero else "#D93829"
+        
+        self.add_rect(x, y, w, h, bg=final_bg, stroke=final_stroke, stroke_w=1.8, stroke_style="dashed", roundness_type=3, frame_id=frame_id)
+        self.add_rect(x, y, w, 32.0, bg="#E0F2FE" if not is_hero else "#FFE4E1", stroke=final_stroke, stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 12.0, y + 8.0, f"NODE: {node_name.upper()} ({role.upper()})", font_size=11, font_family=3, color="#0369A1" if not is_hero else "#D93829", frame_id=frame_id)
+        
+        # Kubelet & Proxy
+        self.add_rect(x + 12.0, y + 42.0, (w - 32.0) * 0.48, 26.0, bg="#FFFFFF", stroke="#94A3B8", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 18.0, y + 48.0, "kubelet (Agent)", font_size=9, font_family=3, color="#475569", frame_id=frame_id)
+        
+        self.add_rect(x + 16.0 + (w - 32.0) * 0.48, y + 42.0, (w - 32.0) * 0.48, 26.0, bg="#FFFFFF", stroke="#94A3B8", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 22.0 + (w - 32.0) * 0.48, y + 48.0, "kube-proxy (IPVS)", font_size=9, font_family=3, color="#475569", frame_id=frame_id)
+        
+        # Pods
+        if pods:
+            pod_w = (w - 32.0) / len(pods) - 8.0
+            for p_idx, pod in enumerate(pods):
+                px = x + 12.0 + p_idx * (pod_w + 8.0)
+                py = y + 78.0
+                ph = h - 90.0
+                p_name = pod if isinstance(pod, str) else pod.get('name', 'app')
+                p_img = "v1.28" if isinstance(pod, str) else pod.get('image', 'v1')
+                p_status = "Running" if isinstance(pod, str) else pod.get('status', 'Running')
+                self.add_rect(px, py, pod_w, ph, bg="#FFFFFF", stroke="#0284C7", stroke_w=1.2, roundness_type=3, frame_id=frame_id)
+                self.add_text(px + 8.0, py + 8.0, f"POD: {p_name}", font_size=10, font_family=3, color="#0284C7", frame_id=frame_id)
+                self.add_text(px + 8.0, py + 26.0, f"Image: {p_img}\nStatus: {p_status}", font_size=9, font_family=3, color="#64748B", frame_id=frame_id)
+
+    def add_cornell_notes(self, x: float, y: float, w: float, h: float,
+                          topic: str, cues: List[str], notes: List[str], summary: str,
+                          frame_id: Optional[str] = None):
+        """Crea una estructura de apuntes Cornell profesional (Cues 30%, Notes 70%, Summary inferior)."""
+        self.add_rect(x, y, w, h, bg="#FFFFFF", stroke="#CBD5E1", stroke_w=1.8, roundness_type=3, frame_id=frame_id)
+        
+        # Header
+        self.add_rect(x, y, w, 40.0, bg="#FFF5F2", stroke="#D93829", stroke_w=1.2, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 16.0, y + 12.0, f"APUNTES CORNELL: {topic.upper()}", font_size=12, font_family=3, color="#D93829", frame_id=frame_id)
+        
+        body_h = h - 130.0
+        cue_w = w * 0.28
+        note_w = w - cue_w - 20.0
+        
+        # Cue Column (Preguntas / Ideas Clave)
+        self.add_rect(x + 10.0, y + 50.0, cue_w, body_h, bg="#F8FAFC", stroke="#E2E8F0", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 18.0, y + 58.0, "IDEAS CLAVE & CUES", font_size=10, font_family=3, color="#64748B", frame_id=frame_id)
+        for i, cue in enumerate(cues):
+            self.add_text(x + 18.0, y + 84.0 + i * 26.0, f"* {cue}", font_size=10, font_family=3, color="#0F172A", frame_id=frame_id)
+            
+        # Notes Column (Notas de Clase)
+        self.add_rect(x + cue_w + 16.0, y + 50.0, note_w, body_h, bg="#FFFFFF", stroke="#E2E8F0", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + cue_w + 24.0, y + 58.0, "NOTAS DETALLADAS & EJEMPLOS", font_size=10, font_family=3, color="#64748B", frame_id=frame_id)
+        for j, note in enumerate(notes):
+            self.add_text(x + cue_w + 24.0, y + 84.0 + j * 24.0, f"- {note}", font_size=10, font_family=3, color="#334155", frame_id=frame_id)
+            
+    def add_a3_report(self, x: float, y: float, w: float, h: float,
+                      title: str, sections: Optional[List[Dict[str, Any]]] = None, frame_id: Optional[str] = None):
+        """Crea una estructura de reporte ejecutivo Toyota A3 de 7 bloques asimétricos."""
+        self.add_rect(x, y, w, h, bg="#FFFFFF", stroke="#0F172A", stroke_w=2.0, roundness_type=3, frame_id=frame_id)
+        
+        # Título
+        self.add_rect(x, y, w, 36.0, bg="#FFF5F2", stroke="#D93829", stroke_w=1.2, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 16.0, y + 10.0, f"TOYOTA A3 PROBLEM SOLVING REPORT: {title.upper()}", font_size=12, font_family=3, color="#D93829", frame_id=frame_id)
+        
+        col_w = (w - 30.0) * 0.5
+        top_h = (h - 60.0) * 0.48
+        bot_h = (h - 60.0) * 0.48
+        
+        # Columna Izquierda: 1. Background / 2. Current State / 3. Target State
+        self.add_rect(x + 10.0, y + 46.0, col_w, top_h, bg="#F8FAFC", stroke="#CBD5E1", stroke_w=1.2, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 18.0, y + 54.0, "1. CONTEXTO & ESTADO ACTUAL", font_size=11, font_family=3, color="#0F172A", frame_id=frame_id)
+        self.add_text(x + 18.0, y + 78.0, "• Identificación de pérdidas de tiempo y fricción.\n• Diagrama de flujo actual del proceso.\n• Cuantificación del problema en horas/semana.", font_size=10, font_family=3, color="#475569", frame_id=frame_id)
+        
+        self.add_rect(x + 10.0, y + 56.0 + top_h, col_w, bot_h, bg="#FFF5F2", stroke="#D93829", stroke_w=1.5, roundness_type=3, frame_id=frame_id)
+        self.add_text(x + 18.0, y + 64.0 + top_h, "2. ANÁLISIS DE CAUSA RAÍZ (5 PORQUÉS)", font_size=11, font_family=3, color="#D93829", frame_id=frame_id)
+        self.add_text(x + 18.0, y + 88.0 + top_h, "1. ¿Por qué se retrasa? -> Alineación manual lenta.\n2. ¿Por qué manual? -> Sin arquetipos automáticos.\n3. ¿Por qué? -> Causa raíz: Falta de generadores modulares.", font_size=10, font_family=3, color="#334155", frame_id=frame_id)
+        
+        # Columna Derecha: 4. Contramedidas / 5. Plan de Acción / 6. Seguimiento
+        rx = x + 20.0 + col_w
+        self.add_rect(rx, y + 46.0, col_w, top_h, bg="#F0FDF4", stroke="#86EFAC", stroke_w=1.5, roundness_type=3, frame_id=frame_id)
+        self.add_text(rx + 18.0, y + 54.0, "3. CONTRAMEDIDAS PROPUESTAS", font_size=11, font_family=3, color="#166534", frame_id=frame_id)
+        self.add_text(rx + 18.0, y + 78.0, "[+] Constructor de 150 plantillas ricas especializadas.\n[+] Eliminación del 100% de placeholders genéricos.\n[+] Auditoría continua de consistencia visual VCS >= 99.", font_size=10, font_family=3, color="#15803D", frame_id=frame_id)
+        
+        self.add_rect(rx, y + 56.0 + top_h, col_w, bot_h, bg="#FFFFFF", stroke="#CBD5E1", stroke_w=1.2, roundness_type=3, frame_id=frame_id)
+        self.add_text(rx + 18.0, y + 64.0 + top_h, "4. PLAN DE EJECUCIÓN & SEGUIMIENTO (PDCA)", font_size=11, font_family=3, color="#0F172A", frame_id=frame_id)
+        self.add_text(rx + 18.0, y + 88.0 + top_h, "• Semana 1: Regenerar las 150 plantillas con datos reales.\n• Semana 2: Validación cruzada de SVG y Excalidraw.\n• Métricas: VCS > 99.0 | 0 Emojis | 100% Diversidad.", font_size=10, font_family=3, color="#475569", frame_id=frame_id)
+
+    def add_kanban_board(self, x: float, y: float, w: float, h: float,
+                         board_title: str, columns: List[Dict[str, Any]], frame_id: Optional[str] = None):
+        """Crea un tablero Kanban ágil multicolumna con tarjetas estructuradas."""
+        col_count = max(1, len(columns))
+        col_w = (w - (col_count - 1) * 15.0) / col_count
+        
+        for i, col in enumerate(columns):
+            cx = x + i * (col_w + 15.0)
+            is_hero_col = col.get("is_hero", False)
+            col_bg = "#FFF5F2" if is_hero_col else "#F8FAFC"
+            col_stroke = "#D93829" if is_hero_col else "#CBD5E1"
+            
+            # Contenedor columna
+            self.add_rect(cx, y, col_w, h, bg=col_bg, stroke=col_stroke, stroke_w=1.5, roundness_type=3, frame_id=frame_id)
+            
+            # Cabecera columna
+            self.add_rect(cx, y, col_w, 36.0, bg="#FFFFFF", stroke=col_stroke, stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+            self.add_text(cx + 12.0, y + 10.0, f"{col.get('title', 'Column').upper()} ({len(col.get('cards', []))})", font_size=11, font_family=3, color="#D93829" if is_hero_col else "#0F172A", frame_id=frame_id)
+            
+            # Tarjetas
+            card_y = y + 46.0
+            for card in col.get("cards", []):
+                self.add_rect(cx + 8.0, card_y, col_w - 16.0, 75.0, bg="#FFFFFF", stroke="#CBD5E1", stroke_w=1.2, roundness_type=3, frame_id=frame_id)
+                self.add_text(cx + 16.0, card_y + 8.0, card.get("title", "Task"), font_size=11, font_family=3, color="#0F172A", frame_id=frame_id)
+                self.add_text(cx + 16.0, card_y + 26.0, card.get("desc", ""), font_size=9, font_family=3, color="#64748B", frame_id=frame_id)
+                
+                tag = card.get("tag", "P1")
+                self.add_rect(cx + col_w - 65.0, card_y + 48.0, 48.0, 18.0, bg="#FFF5F2" if tag in ["P0", "P1", "BUG"] else "#F1F5F9", stroke="#D93829" if tag in ["P0", "P1", "BUG"] else "#CBD5E1", stroke_w=1.0, roundness_type=3, frame_id=frame_id)
+                self.add_text(cx + col_w - 55.0, card_y + 52.0, tag, font_size=8, font_family=3, color="#D93829" if tag in ["P0", "P1", "BUG"] else "#475569", frame_id=frame_id)
+                
+                card_y += 85.0
+
     def add_legend_footer(self, x: float, y: float, w: float,
                           swatches: Optional[List[Dict[str, Any]]] = None,
                           note: Optional[str] = None,
@@ -965,6 +1156,49 @@ class ExcalidrawScene:
             else:
                 self.add_text(x + w - note_w, y + 1.0, note, font_size=11, font_family=2, color="#64748B", frame_id=frame_id)
 
+    def add_radar_chart(self, cx: float, cy: float, rad: float,
+                        axes: List[str], scores: List[float],
+                        title: str = "RADAR EVALUATION",
+                        frame_id: Optional[str] = None):
+        """Crea un gráfico de radar polar profesional con círculos concéntricos y polígono de datos."""
+        import math
+        n = len(axes)
+        if n < 3:
+            return
+            
+        # Concéntricos
+        for r_fac in [0.33, 0.66, 1.0]:
+            p_rad = rad * r_fac
+            for i in range(n):
+                a1 = (i * 2 * math.pi / n) - (math.pi / 2)
+                a2 = ((i + 1) * 2 * math.pi / n) - (math.pi / 2)
+                x1, y1 = cx + p_rad * math.cos(a1), cy + p_rad * math.sin(a1)
+                x2, y2 = cx + p_rad * math.cos(a2), cy + p_rad * math.sin(a2)
+                self.add_line(x1, y1, x2, y2, stroke="#CBD5E1", stroke_w=1.0, dashed=True, frame_id=frame_id)
+                
+        # Ejes radiales
+        for i, ax_name in enumerate(axes):
+            angle = (i * 2 * math.pi / n) - (math.pi / 2)
+            sx = cx + rad * math.cos(angle)
+            sy = cy + rad * math.sin(angle)
+            self.add_line(cx, cy, sx, sy, stroke="#94A3B8", stroke_w=1.2, frame_id=frame_id)
+            lx = cx + (rad + 30.0) * math.cos(angle) - 30.0
+            ly = cy + (rad + 18.0) * math.sin(angle) - 8.0
+            self.add_text(lx, ly, ax_name, font_size=10, font_family=3, color="#0F172A", frame_id=frame_id)
+            
+        # Polígono de datos
+        pts = []
+        for i, sc in enumerate(scores):
+            sc_val = min(1.0, max(0.0, sc))
+            angle = (i * 2 * math.pi / n) - (math.pi / 2)
+            pts.append((cx + (rad * sc_val) * math.cos(angle), cy + (rad * sc_val) * math.sin(angle)))
+            
+        for i in range(len(pts)):
+            p1 = pts[i]
+            p2 = pts[(i + 1) % len(pts)]
+            self.add_line(p1[0], p1[1], p2[0], p2[1], stroke="#D93829", stroke_w=2.2, frame_id=frame_id)
+            self.add_ellipse(p1[0] - 4.0, p1[1] - 4.0, 8.0, 8.0, bg="#D93829", stroke="#FFFFFF", stroke_w=1.5, frame_id=frame_id)
+
     def to_dict(self) -> Dict[str, Any]:
         """Genera el diccionario del archivo .excalidraw completo."""
         return {
@@ -984,3 +1218,13 @@ class ExcalidrawScene:
         data = self.to_dict()
         with open(filepath, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
+
+    def export_svg(self, filepath: str) -> str:
+        """Exporta la escena directamente a formato SVG."""
+        from export import export_scene
+        return export_scene(self, filepath, format="svg")
+
+    def export_excalidraw(self, filepath: str) -> str:
+        """Exporta la escena directamente a formato Excalidraw JSON."""
+        from export import export_scene
+        return export_scene(self, filepath, format="excalidraw")

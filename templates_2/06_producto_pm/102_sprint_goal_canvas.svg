@@ -19,7 +19,7 @@
   <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">SKETION EXPANSION LIBRARY V2 · PRODUCTO · INTER VECTORIAL</text>
   <rect x="40.0" y="80.0" width="1360.0" height="90.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.8" />
   <text x="60.0" y="118.0" fill="#D93829" font-size="13px" font-weight="400">OBJETIVO DEL SPRINT (SP-24): Habilitar exportacion vectorial SVG nativa en produccion</text>
-  <text x="60.0" y="151.0" fill="#334155" font-size="11px" font-weight="400">¿Por que es valioso? Permite a los usuarios descargar diagramas listos para web sin dependencias.</text>
+  <text x="60.0" y="151.0" fill="#334155" font-size="11px" font-weight="400">Por que es valioso? Permite a los usuarios descargar diagramas listos para web sin dependencias.</text>
   <rect x="40.0" y="190.0" width="440.0" height="230.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="60.0" y="232.0" fill="#0F172A" font-size="12px" font-weight="400">1. CRITERIO DE EXITO</text>
   <text x="60.0" y="271.0" fill="#475569" font-size="11px" font-weight="400">100% de los 27 tipos exportan SVG valido.</text>

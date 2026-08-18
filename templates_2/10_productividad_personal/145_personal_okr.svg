@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1588.8 550.0" width="1588.8" height="550.0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1515.0 500.0" width="1515.0" height="500.0">
   <defs>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
@@ -14,32 +14,16 @@
       <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
     </marker>
   </defs>
-  <rect x="-30.0" y="-30.0" width="1588.8" height="550.0" fill="#F8FAFC" />
-  <rect x="10.0" y="10.0" width="1508.8" height="470.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="-30.0" y="-30.0" width="1515.0" height="500.0" fill="#F8FAFC" />
+  <rect x="10.0" y="10.0" width="1435.0" height="420.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">SKETION EXPANSION LIBRARY V2 · PRODUCTIVIDAD · INTER VECTORIAL</text>
-  <rect x="70.0" y="45.0" width="1330.0" height="72.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
-  <rect x="85.0" y="53.0" width="40.0" height="24.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="95.0" y="69.0" fill="#475569" font-size="11px" font-weight="400">L5</text>
-  <text x="140.0" y="70.0" fill="#0F172A" font-size="13px" font-weight="400">UI SURFACE &amp; VISUAL SHELL</text>
-  <text x="1000.0" y="70.0" fill="#64748B" font-size="11px" font-weight="400">React 19 · WebGL Canvas · DOM Shaders</text>
-  <rect x="70.0" y="127.0" width="1330.0" height="72.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
-  <rect x="85.0" y="135.0" width="40.0" height="24.0" rx="6.0" fill="#FEE2E2" stroke="#D93829" stroke-width="1.0" />
-  <text x="95.0" y="151.0" fill="#D93829" font-size="11px" font-weight="400">L4</text>
-  <text x="140.0" y="152.0" fill="#0F172A" font-size="13px" font-weight="400">AGENT HARNESS &amp; REASONING CORE</text>
-  <text x="1000.0" y="152.0" fill="#64748B" font-size="11px" font-weight="400">Intent Parser · Constraint Solver · Tree-of-Thought</text>
-  <rect x="70.0" y="209.0" width="1330.0" height="72.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
-  <rect x="85.0" y="217.0" width="40.0" height="24.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="95.0" y="233.0" fill="#475569" font-size="11px" font-weight="400">L3</text>
-  <text x="140.0" y="234.0" fill="#0F172A" font-size="13px" font-weight="400">PROMPT LAYER &amp; CONTEXT WINDOW</text>
-  <text x="1000.0" y="234.0" fill="#64748B" font-size="11px" font-weight="400">Token Budgeter · Prompt Cache · Embedding Index</text>
-  <rect x="70.0" y="291.0" width="1330.0" height="72.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
-  <rect x="85.0" y="299.0" width="40.0" height="24.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="95.0" y="315.0" fill="#475569" font-size="11px" font-weight="400">L2</text>
-  <text x="140.0" y="316.0" fill="#0F172A" font-size="13px" font-weight="400">SDK &amp; CLIENT DRIVER</text>
-  <text x="1000.0" y="316.0" fill="#64748B" font-size="11px" font-weight="400">Python 3.12 SDK · TypeScript Bridge · REST Proxy</text>
-  <rect x="70.0" y="373.0" width="1330.0" height="72.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
-  <rect x="85.0" y="381.0" width="40.0" height="24.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="95.0" y="397.0" fill="#475569" font-size="11px" font-weight="400">L1</text>
-  <text x="140.0" y="398.0" fill="#0F172A" font-size="13px" font-weight="400">MODEL WEIGHTS &amp; GPU BACKEND</text>
-  <text x="1000.0" y="398.0" fill="#64748B" font-size="11px" font-weight="400">vLLM Cluster · FP8 Quantization · TensorRT-LLM</text>
+  <rect x="40.0" y="80.0" width="1370.0" height="95.0" rx="6.0" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" />
+  <text x="60.0" y="106.0" fill="#059669" font-size="11px" font-weight="400">OBJETIVO 1: CALIDAD DE INGENIERIA (100% COMPLETADO)</text>
+  <text x="60.0" y="139.0" fill="#334155" font-size="11px" font-weight="400">KR 1: Cero errores de sintaxis en 212 SVGs · KR 2: VCS &gt;= 99.0 · KR 3: Cero emojis</text>
+  <rect x="40.0" y="190.0" width="1370.0" height="95.0" rx="6.0" fill="#FFFFFF" stroke="#D93829" stroke-width="1.5" />
+  <text x="60.0" y="216.0" fill="#D93829" font-size="11px" font-weight="400">OBJETIVO 2: VELOCIDAD DE DESARROLLO (EN CURSO)</text>
+  <text x="60.0" y="249.0" fill="#334155" font-size="11px" font-weight="400">KR 1: Compilar 150 plantillas en &lt; 3s · KR 2: Scripts modulares por categoria</text>
+  <rect x="40.0" y="300.0" width="1370.0" height="95.0" rx="6.0" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
+  <text x="60.0" y="326.0" fill="#0284C7" font-size="11px" font-weight="400">OBJETIVO 3: IMPACTO PROFESIONAL</text>
+  <text x="60.0" y="359.0" fill="#334155" font-size="11px" font-weight="400">KR 1: Documentacion clara en README · KR 2: Informe diagnostico completo</text>
 </svg>

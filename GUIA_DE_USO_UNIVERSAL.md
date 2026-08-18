@@ -1,5 +1,10 @@
-# Guía Universal de Uso de Sketion Engine (v10.0 GA)
+# Guía Universal de Uso de Sketion Engine (v11.0 GA)
 ## Manual Maestro Paso a Paso para Integrar y Usar Sketion en Python SDK, CLI, Antigravity, Claude, ChatGPT, Cursor, Windsurf, Terminal y Editores Excalidraw / SVG
+
+> [!TIP]
+> **Blueprints Visuales de Arquitectura Disponibles:**
+> * 💻 **[Diagrama de Arquitectura Técnica Integral (`docs/sketion_engine_architecture.svg`)](docs/sketion_engine_architecture.svg)** (Pipeline, ContentModel, Manhattan A*, 20 Patrones, SDK).
+> * 👥 **[Guía Visual Intuitiva para Todo Público (`docs/sketion_guia_no_tecnica.svg`)](docs/sketion_guia_no_tecnica.svg)** (El Viaje en 4 Pasos, Comparativa Antes/Después, 4 Superpoderes).
 
 ---
 

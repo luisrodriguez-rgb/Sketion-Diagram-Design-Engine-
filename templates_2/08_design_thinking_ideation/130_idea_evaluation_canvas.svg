@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1112.2 645.0" width="1112.2" height="645.0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1183.6 565.0" width="1183.6" height="565.0">
   <defs>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
@@ -14,18 +14,16 @@
       <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
     </marker>
   </defs>
-  <rect x="-30.0" y="-30.0" width="1112.2" height="645.0" fill="#F8FAFC" />
-  <rect x="10.0" y="10.0" width="1032.2" height="565.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="-30.0" y="-30.0" width="1183.6" height="565.0" fill="#F8FAFC" />
+  <rect x="10.0" y="10.0" width="1103.6" height="485.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">SKETION EXPANSION LIBRARY V2 · DESIGN THINKING · INTER VECTORIAL</text>
-  <ellipse cx="735.0" cy="270.0" rx="160.0" ry="160.0" fill="transparent" stroke="#0F172A" stroke-width="1.8" />
-  <text x="685.0" y="151.0" fill="#0F172A" font-size="11px" font-weight="400">DESIRABLE
-(People Want It)</text>
-  <ellipse cx="655.0" cy="380.0" rx="160.0" ry="160.0" fill="transparent" stroke="#0F172A" stroke-width="1.8" />
-  <text x="515.0" y="331.0" fill="#0F172A" font-size="11px" font-weight="400">FEASIBLE
-(We Can Build It)</text>
-  <ellipse cx="815.0" cy="380.0" rx="160.0" ry="160.0" fill="transparent" stroke="#0F172A" stroke-width="1.8" />
-  <text x="805.0" y="331.0" fill="#0F172A" font-size="11px" font-weight="400">VIABLE
-(Business Succeeds)</text>
-  <rect x="670.0" y="235.0" width="130.0" height="45.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
-  <text x="685.0" y="258.0" fill="#D93829" font-size="10px" font-weight="400">SHIPPABLE PRODUCT</text>
+  <ellipse cx="520.0" cy="270.0" rx="170.0" ry="170.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.8" />
+  <text x="370.0" y="171.0" fill="#D93829" font-size="11px" font-weight="400">DESEABILIDAD
+(Usuario lo necesita)</text>
+  <ellipse cx="820.0" cy="270.0" rx="170.0" ry="170.0" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.8" />
+  <text x="850.0" y="171.0" fill="#2563EB" font-size="11px" font-weight="400">FACTIBILIDAD
+(Tecnicamente posible)</text>
+  <ellipse cx="670.0" cy="340.0" rx="170.0" ry="120.0" fill="#F8FAFC" stroke="#0F172A" stroke-width="1.8" />
+  <text x="600.0" y="381.0" fill="#0F172A" font-size="11px" font-weight="400">VIABILIDAD (Negocio rentable)</text>
+  <text x="620.0" y="260.0" fill="#D93829" font-size="10px" font-weight="400">ZONA DE INNOVACION</text>
 </svg>

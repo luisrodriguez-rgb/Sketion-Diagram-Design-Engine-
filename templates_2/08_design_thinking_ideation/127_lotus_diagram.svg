@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1515.0 560.0" width="1515.0" height="560.0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1182.2 515.0" width="1182.2" height="515.0">
   <defs>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
@@ -14,27 +14,33 @@
       <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
     </marker>
   </defs>
-  <rect x="-30.0" y="-30.0" width="1515.0" height="560.0" fill="#F8FAFC" />
-  <rect x="10.0" y="10.0" width="1435.0" height="480.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="-30.0" y="-30.0" width="1182.2" height="515.0" fill="#F8FAFC" />
+  <rect x="10.0" y="10.0" width="1102.2" height="435.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">SKETION EXPANSION LIBRARY V2 · DESIGN THINKING · INTER VECTORIAL</text>
-  <rect x="60.0" y="50.0" width="665.0" height="195.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
-  <text x="80.0" y="81.0" fill="#0F172A" font-size="13px" font-weight="400">DISTRIBUTED HUMANS</text>
-  <text x="80.0" y="111.0" fill="#475569" font-size="11px" font-weight="400">Async-first, global hiring.
-SaaS-heavy, human-centric workflows.
-Low automation leverage.</text>
-  <rect x="745.0" y="50.0" width="665.0" height="195.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
-  <text x="765.0" y="81.0" fill="#D93829" font-size="13px" font-weight="400">AGENT TEAMS (HERO TARGET)</text>
-  <text x="765.0" y="111.0" fill="#475569" font-size="11px" font-weight="400">Autonomous AI agents execute.
-Humans steer and audit outcomes.
-Ultra-high leverage per seat.</text>
-  <rect x="60.0" y="260.0" width="665.0" height="195.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
-  <text x="80.0" y="291.0" fill="#0F172A" font-size="13px" font-weight="400">OFFICE CLASSIC</text>
-  <text x="80.0" y="321.0" fill="#475569" font-size="11px" font-weight="400">Co-located physical desks.
-Manual paper and sync meetings.
-Legacy operations baseline.</text>
-  <rect x="745.0" y="260.0" width="665.0" height="195.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
-  <text x="765.0" y="291.0" fill="#0F172A" font-size="13px" font-weight="400">IN-PERSON + AI ASSISTANTS</text>
-  <text x="765.0" y="321.0" fill="#475569" font-size="11px" font-weight="400">Smart offices with edge compute.
-Hybrid workforce model.
-High tooling cost.</text>
+  <rect x="380.0" y="80.0" width="215.0" height="100.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" />
+  <text x="395.0" y="115.0" fill="#0F172A" font-size="10px" font-weight="400">PETALO A</text>
+  <text x="395.0" y="139.0" fill="#64748B" font-size="9px" font-weight="400">Idea derivada de expansion</text>
+  <rect x="610.0" y="80.0" width="215.0" height="100.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" />
+  <text x="625.0" y="115.0" fill="#0F172A" font-size="10px" font-weight="400">PETALO B</text>
+  <text x="625.0" y="139.0" fill="#64748B" font-size="9px" font-weight="400">Idea derivada de expansion</text>
+  <rect x="840.0" y="80.0" width="215.0" height="100.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" />
+  <text x="855.0" y="115.0" fill="#0F172A" font-size="10px" font-weight="400">PETALO C</text>
+  <text x="855.0" y="139.0" fill="#64748B" font-size="9px" font-weight="400">Idea derivada de expansion</text>
+  <rect x="380.0" y="195.0" width="215.0" height="100.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" />
+  <text x="395.0" y="230.0" fill="#0F172A" font-size="10px" font-weight="400">PETALO D</text>
+  <text x="395.0" y="254.0" fill="#64748B" font-size="9px" font-weight="400">Idea derivada de expansion</text>
+  <rect x="610.0" y="195.0" width="215.0" height="100.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
+  <text x="630.0" y="241.0" fill="#D93829" font-size="11px" font-weight="400">TEMA CENTRAL: SKETION</text>
+  <rect x="840.0" y="195.0" width="215.0" height="100.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" />
+  <text x="855.0" y="230.0" fill="#0F172A" font-size="10px" font-weight="400">PETALO F</text>
+  <text x="855.0" y="254.0" fill="#64748B" font-size="9px" font-weight="400">Idea derivada de expansion</text>
+  <rect x="380.0" y="310.0" width="215.0" height="100.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" />
+  <text x="395.0" y="345.0" fill="#0F172A" font-size="10px" font-weight="400">PETALO G</text>
+  <text x="395.0" y="369.0" fill="#64748B" font-size="9px" font-weight="400">Idea derivada de expansion</text>
+  <rect x="610.0" y="310.0" width="215.0" height="100.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" />
+  <text x="625.0" y="345.0" fill="#0F172A" font-size="10px" font-weight="400">PETALO H</text>
+  <text x="625.0" y="369.0" fill="#64748B" font-size="9px" font-weight="400">Idea derivada de expansion</text>
+  <rect x="840.0" y="310.0" width="215.0" height="100.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" />
+  <text x="855.0" y="345.0" fill="#0F172A" font-size="10px" font-weight="400">PETALO I</text>
+  <text x="855.0" y="369.0" fill="#64748B" font-size="9px" font-weight="400">Idea derivada de expansion</text>
 </svg>

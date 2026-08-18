@@ -44,7 +44,18 @@ from validation.validator import validate_scene
 from export import export_scene
 from .explainability import DesignDecisionTrace
 
-__version__ = "10.0.0"
+from layout.ports import PortManager, PortPosition, PortDirection, NodeBoundary, PortSpec
+from layout.manhattan_router import ManhattanRouter, RoutingContext, RoutedPath
+from layout.layout_solver import LayoutSolver, LayoutAlgorithm, LayoutNode, LayoutEdge
+from semantic.content_model import ContentModel, SystemNodeType, RelationshipType, ActorSpec, SystemNodeSpec, RelationshipSpec, MetricSpec
+from semantic.reference_compositions import REFERENCE_COMPOSITIONS, ReferenceComposition
+from semantic.retrieval import SemanticRetrievalEngine, RetrievalResult
+from composition.composition_patterns import CompositionPattern, CompositionPatternRegistry
+from composition.diversity_judge import DiversityJudge, DiversityScoreReport
+from composition.narrative_composer import NarrativeComposer, NarrativeBoard, NarrativeSection
+from design.theme_engine import ThemeEngine, VisualStyleType, StyleIntent, SemanticColorRole
+
+__version__ = "11.0.0"
 __all__ = [
     "render",
     "validate",
@@ -60,7 +71,33 @@ __all__ = [
     "VisualCompositionEngine",
     "VisualMatrixEngine",
     "VisualTypes27Engine",
-    "DesignDecisionTrace"
+    "DesignDecisionTrace",
+    # ── Sketion 11.0 Exports ──
+    "compose",
+    "SketionCompositionResult",
+    "ContentModel",
+    "SystemNodeType",
+    "RelationshipType",
+    "LayoutSolver",
+    "LayoutAlgorithm",
+    "ManhattanRouter",
+    "PortManager",
+    "PortPosition",
+    "CompositionPattern",
+    "CompositionPatternRegistry",
+    "DiversityJudge",
+    "DiversityScoreReport",
+    "SemanticCompositionEvaluator",
+    "SemanticCompositionReport",
+    "PatternAuthenticityEvaluator",
+    "AuthenticityReport",
+    "ThemeEngine",
+    "VisualStyleType",
+    "StyleIntent",
+    "SemanticRetrievalEngine",
+    "REFERENCE_COMPOSITIONS",
+    "NarrativeComposer",
+    "NarrativeBoard"
 ]
 
 
@@ -259,3 +296,120 @@ def export(scene_input: Union[Dict[str, Any], Any], output_path: str, format: st
     else:
         fmt = format
     return export_scene(scene_input, output_path, format=fmt)
+
+
+from composition.pattern_authenticity import PatternAuthenticityEvaluator, AuthenticityReport
+from composition.semantic_composition_score import SemanticCompositionEvaluator, SemanticCompositionReport
+from repair.closed_loop import ClosedLoopRepairEngine, ClosedLoopReport
+
+
+@dataclass
+class SketionCompositionResult:
+    """Resultado de la composición autónoma end-to-end de Sketion 11.0."""
+    scene: ExcalidrawScene
+    title: str
+    pattern: CompositionPattern
+    style: VisualStyleType
+    content_model: ContentModel
+    vcs_score: float
+    scs_score: float
+    vds_score: float
+    pas_score: float
+    scs_report: SemanticCompositionReport
+    pas_report: AuthenticityReport
+    loop_report: ClosedLoopReport
+
+    def explain(self) -> str:
+        """Reporte unificado de explicabilidad técnica y métricas de calidad."""
+        lines = [
+            f"# EXPLICABILIDAD DE COMPOSICIÓN: {self.title}",
+            f"* **Patrón Seleccionado:** `{self.pattern.value}`",
+            f"* **Estilo Visual:** `{self.style.value}`",
+            f"* **VCS (Consistencia Visual):** {self.vcs_score:.1f} / 100",
+            f"* **SCS (Ajuste Semántico):** {self.scs_score:.1f} / 100",
+            f"* **VDS (Diversidad Visual):** {self.vds_score:.1f} / 100",
+            f"* **PAS (Autenticidad Estructural):** {self.pas_score:.1f} / 100",
+            "\n---\n",
+            self.scs_report.to_markdown(),
+            "\n---\n",
+            self.pas_report.to_markdown(),
+            "\n---\n",
+            self.loop_report.to_markdown()
+        ]
+        return "\n".join(lines)
+
+    def export(self, filepath: str, format: str = "auto") -> str:
+        if format == "auto":
+            ext = os.path.splitext(filepath)[1].lower()
+            fmt = "svg" if ext == ".svg" else "excalidraw"
+        else:
+            fmt = format
+        return export_scene(self.scene, filepath, format=fmt)
+
+
+def compose(prompt: str,
+            domain_hint: Optional[str] = None,
+            style: Union[str, VisualStyleType] = VisualStyleType.EDITORIAL,
+            frame_width: float = 1440.0,
+            frame_height: float = 900.0) -> SketionCompositionResult:
+    """
+    Pipeline autónomo de composición visual de Sketion 11.0 GA:
+    1. Retrieval Semántico Estructural (Bajo consumo de tokens)
+    2. Construcción del ContentModel desacoplado
+    3. Selección del Patrón Estructural Óptimo
+    4. Evaluación de Adecuación Conceptual (SCS)
+    5. Renderizado mediante la Firma Geométrica Auténtica del Patrón
+    6. Closed-Loop Validation & Autonomous Repair (VCS >= 95.0)
+    7. Verificación de Autenticidad de Patrón (PAS)
+    """
+    # 1. Recuperador Semántico
+    retrieval = SemanticRetrievalEngine.match(prompt, domain_hint=domain_hint)
+    pat = retrieval.recommended_pattern
+
+    # 2. Resolver Estilo
+    if isinstance(style, str):
+        try:
+            st_enum = VisualStyleType(style.lower())
+        except ValueError:
+            st_enum = VisualStyleType.EDITORIAL
+    else:
+        st_enum = style
+
+    # 3. Construir ContentModel
+    dom = domain_hint or (retrieval.matched_references[0].domain if retrieval.matched_references else "software")
+    cm = ContentModel(title=prompt[:45], goal=prompt, domain=dom, composition_pattern_hint=pat.value)
+    
+    # Extraer entidades sugeridas
+    sample_nodes = retrieval.suggested_primitives or ["Cliente / Usuario", "API Gateway", "Core Orchestrator", "Storage Database"]
+    for i, s_label in enumerate(sample_nodes):
+        cm.systems.append(SystemNodeSpec(id=f"node_{i}", label=s_label, layer_index=i, is_hero=(i==1 or i==2)))
+
+    # 4. Evaluar SCS
+    scs_rep = SemanticCompositionEvaluator.evaluate(pat, cm)
+
+    # 5. Renderizar Escena
+    scene = ExcalidrawScene()
+    fid = scene.add_frame(cm.title, 0.0, 0.0, frame_width, frame_height)
+    CompositionPatternRegistry.render_pattern(pat, cm, scene, frame_id=fid, style=st_enum)
+
+    # 6. Closed Loop Repair & Certification
+    cert_scene, loop_rep = ClosedLoopRepairEngine.execute_closed_loop(scene)
+
+    # 7. Evaluar PAS y VDS
+    pas_rep = PatternAuthenticityEvaluator.evaluate(pat, cert_scene.to_dict())
+    vds_rep = DiversityJudge.evaluate(pat, cm, cert_scene, len(cm.systems)-1, len(cm.systems), len(cm.systems)-1, 4)
+
+    return SketionCompositionResult(
+        scene=cert_scene,
+        title=cm.title,
+        pattern=pat,
+        style=st_enum,
+        content_model=cm,
+        vcs_score=loop_rep.final_vcs,
+        scs_score=scs_rep.scs_score,
+        vds_score=vds_rep.vds_overall,
+        pas_score=pas_rep.authenticity_score,
+        scs_report=scs_rep,
+        pas_report=pas_rep,
+        loop_report=loop_rep
+    )

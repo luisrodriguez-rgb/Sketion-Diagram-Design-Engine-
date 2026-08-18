@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0.0 -20.0 2070.0 1260.0" width="2070.0" height="1260.0">
+  <defs>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
+      text { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB" />
+    </marker>
+    <marker id="arrowhead-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D93829" />
+    </marker>
+    <marker id="arrowhead-danger" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
+    </marker>
+  </defs>
+  <rect x="0.0" y="-20.0" width="2070.0" height="1260.0" fill="#ffffff" />
+  <rect x="40.0" y="20.0" width="1840.0" height="1180.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="60.0" y="35.0" width="1800.0" height="60.0" rx="6.0" fill="#0F172A" stroke="#0F172A" stroke-width="1.5" />
+  <text x="85.0" y="60.0" fill="#38BDF8" font-size="14px" font-weight="600">SKETION: TU ARQUITECTO Y DISEÑADOR VISUAL INTELIGENTE</text>
+  <text x="85.0" y="80.0" fill="#CBD5E1" font-size="10px" font-weight="400">¿Cómo convierte tus ideas, explicaciones y problemas en diagramas visuales profesionales y fáciles de entender?</text>
+  <rect x="60.0" y="110.0" width="1800.0" height="260.0" rx="6.0" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+  <text x="85.0" y="137.0" fill="#0F172A" font-size="11px" font-weight="400">EL VIAJE DE TU IDEA: DE UN TEXTO COMÚN A UN DIAGRAMA PROFESIONAL EN 4 PASOS</text>
+  <rect x="85.0" y="150.0" width="390.0" height="195.0" rx="6.0" fill="#EFF6FF" stroke="#0284C7" stroke-width="1.5" />
+  <rect x="99.0" y="162.0" width="200.0" height="22.0" rx="6.0" fill="#0284C7" stroke="#0284C7" stroke-width="1.5" />
+  <text x="105.0" y="175.0" fill="#FFFFFF" font-size="8px" font-weight="400">PASO 1: TE ESCUCHA Y ENTIENDE</text>
+  <text x="99.0" y="207.0" fill="#0F172A" font-size="12px" font-weight="400">El Lector Inteligente</text>
+  <line x1="99.0" y1="212.0" x2="460.0" y2="212.0" stroke="#0284C7" stroke-width="1.0" />
+  <text x="99.0" y="233.0" fill="#334155" font-size="9px" font-weight="400">Le cuentas tu idea con palabras normales.
+
+Sketion identifica quiénes participan, qué pasos hay y qué es lo más importante a comunicar.</text>
+  <rect x="525.0" y="150.0" width="390.0" height="195.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.5" />
+  <rect x="539.0" y="162.0" width="200.0" height="22.0" rx="6.0" fill="#D93829" stroke="#D93829" stroke-width="1.5" />
+  <text x="545.0" y="175.0" fill="#FFFFFF" font-size="8px" font-weight="400">PASO 2: ELIGE EL MEJOR DIBUJO</text>
+  <text x="539.0" y="207.0" fill="#0F172A" font-size="12px" font-weight="400">El Arquitecto de Ideas</text>
+  <line x1="539.0" y1="212.0" x2="900.0" y2="212.0" stroke="#D93829" stroke-width="1.0" />
+  <text x="539.0" y="233.0" fill="#334155" font-size="9px" font-weight="400">No hace siempre el mismo dibujo aburrido.
+
+Sabe si necesitas un mapa paso a paso, un círculo de relaciones o un tablero de control.</text>
+  <rect x="965.0" y="150.0" width="390.0" height="195.0" rx="6.0" fill="#F0FDF4" stroke="#059669" stroke-width="1.5" />
+  <rect x="979.0" y="162.0" width="200.0" height="22.0" rx="6.0" fill="#059669" stroke="#059669" stroke-width="1.5" />
+  <text x="985.0" y="175.0" fill="#FFFFFF" font-size="8px" font-weight="400">PASO 3: ORDENA SIN ENREDOS</text>
+  <text x="979.0" y="207.0" fill="#0F172A" font-size="12px" font-weight="400">El Urbanista del Lienzo</text>
+  <line x1="979.0" y1="212.0" x2="1340.0" y2="212.0" stroke="#059669" stroke-width="1.0" />
+  <text x="979.0" y="233.0" fill="#334155" font-size="9px" font-weight="400">Acomoda cada tarjeta en su lugar exacto.
+
+Dibuja flechas por caminos limpios para que ninguna línea cruce encima de las letras.</text>
+  <rect x="1405.0" y="150.0" width="390.0" height="195.0" rx="6.0" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5" />
+  <rect x="1419.0" y="162.0" width="200.0" height="22.0" rx="6.0" fill="#7C3AED" stroke="#7C3AED" stroke-width="1.5" />
+  <text x="1425.0" y="175.0" fill="#FFFFFF" font-size="8px" font-weight="400">PASO 4: PULE Y TE ENTREGA</text>
+  <text x="1419.0" y="207.0" fill="#0F172A" font-size="12px" font-weight="400">El Diseñador Ejecutivo</text>
+  <line x1="1419.0" y1="212.0" x2="1780.0" y2="212.0" stroke="#7C3AED" stroke-width="1.0" />
+  <text x="1419.0" y="233.0" fill="#334155" font-size="9px" font-weight="400">Aplica colores profesionales y tipografías.
+
+Te entrega un archivo que puedes abrir, mover, editar o proyectar en tu reunión.</text>
+  <line x1="475.0" y1="245.0" x2="525.0" y2="245.0" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrowhead)" />
+  <line x1="915.0" y1="245.0" x2="965.0" y2="245.0" stroke="#D93829" stroke-width="2.2" marker-end="url(#arrowhead-hero)" />
+  <line x1="1355.0" y1="245.0" x2="1405.0" y2="245.0" stroke="#059669" stroke-width="2.2" marker-end="url(#arrowhead)" />
+  <rect x="60.0" y="390.0" width="875.0" height="760.0" rx="6.0" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
+  <text x="85.0" y="421.0" fill="#0284C7" font-size="11px" font-weight="400">¿POR QUÉ SKETION CAMBIA LAS REGLAS DEL JUEGO? (COMPARATIVA)</text>
+  <rect x="80.0" y="435.0" width="835.0" height="240.0" rx="6.0" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2" />
+  <rect x="80.0" y="435.0" width="835.0" height="36.0" rx="6.0" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.0" />
+  <text x="100.0" y="456.0" fill="#991B1B" font-size="10px" font-weight="400">[-] EL PROBLEMA HABITUAL (DIAGRAMAS MANUALES Y HERRAMIENTAS COMUNES)</text>
+  <text x="100.0" y="494.0" fill="#7F1D1D" font-size="9px" font-weight="400">• Monotonía Aburrida: Siempre dibujan los mismos rectángulos apilados en fila sin importar el tema.</text>
+  <text x="100.0" y="538.0" fill="#7F1D1D" font-size="9px" font-weight="400">• Flechas Cruzadas: Líneas desordenadas que pasan por encima de las letras y tapan los títulos.</text>
+  <text x="100.0" y="582.0" fill="#7F1D1D" font-size="9px" font-weight="400">• Horas Perdidas: Mover cajitas una por una intentando que no se descuadren los márgenes.</text>
+  <text x="100.0" y="626.0" fill="#7F1D1D" font-size="9px" font-weight="400">• Imágenes Muertas: Te entregan una foto fija (.png) que no puedes editar cuando algo cambia.</text>
+  <ellipse cx="487.5" cy="707.5" rx="22.5" ry="22.5" fill="#0F172A" stroke="#0F172A" stroke-width="1.5" />
+  <text x="475.0" y="710.0" fill="#FFFFFF" font-size="12px" font-weight="400">VS</text>
+  <rect x="80.0" y="740.0" width="835.0" height="385.0" rx="6.0" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5" />
+  <rect x="80.0" y="740.0" width="835.0" height="36.0" rx="6.0" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.0" />
+  <text x="100.0" y="761.0" fill="#166534" font-size="10px" font-weight="400">[+] LA EXPERIENCIA SKETION (DISEÑO PROFESIONAL AUTÓNOMO)</text>
+  <text x="100.0" y="800.0" fill="#15803D" font-size="10px" font-weight="400">✦ Más de 20 Formas Inteligentes:</text>
+  <text x="100.0" y="821.0" fill="#14532D" font-size="9px" font-weight="400">Escoge el formato perfecto: mapas de valor, círculos de relaciones, árboles o tableros A3.</text>
+  <text x="100.0" y="875.0" fill="#15803D" font-size="10px" font-weight="400">✦ Flechas sin Enredos:</text>
+  <text x="100.0" y="896.0" fill="#14532D" font-size="9px" font-weight="400">Ruteo limpio por canales despejados; nunca tapa letras ni deja líneas torpes.</text>
+  <text x="100.0" y="950.0" fill="#15803D" font-size="10px" font-weight="400">✦ Calidad Ejecutiva:</text>
+  <text x="100.0" y="971.0" fill="#14532D" font-size="9px" font-weight="400">Tipografía moderna y paletas armónicas listas para proyectar en la junta directiva.</text>
+  <text x="100.0" y="1025.0" fill="#15803D" font-size="10px" font-weight="400">✦ 100% Editable en Excalidraw:</text>
+  <text x="100.0" y="1046.0" fill="#14532D" font-size="9px" font-weight="400">Puedes mover cualquier elemento, cambiar textos y ajustar colores cuando lo necesites.</text>
+  <rect x="955.0" y="390.0" width="905.0" height="760.0" rx="6.0" fill="#FFFFFF" stroke="#D93829" stroke-width="1.5" />
+  <text x="980.0" y="421.0" fill="#D93829" font-size="11px" font-weight="400">SKETION EN ACCIÓN: EJEMPLOS REALES DE LO QUE PUEDES CREAR</text>
+  <rect x="975.0" y="435.0" width="865.0" height="145.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="987.0" y="445.0" width="59.2" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="991.0" y="457.0" fill="#475569" font-size="10px" font-weight="400">VENTAS</text>
+  <text x="989.0" y="486.0" fill="#0F172A" font-size="13px" font-weight="400">1. Ventas &amp; Comercio Online</text>
+  <text x="989.0" y="506.6" fill="#475569" font-size="12px" font-weight="400">Tu Pedido: &#x27;Explica cómo un cliente compra y recibe su pedido.&#x27;
+Resultado Sketion: Mapa de experiencia cliente ➔ pago ➔ despacho.</text>
+  <rect x="975.0" y="610.0" width="865.0" height="145.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="987.0" y="620.0" width="95.2" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="991.0" y="632.0" fill="#475569" font-size="10px" font-weight="400">OPERACIONES</text>
+  <text x="989.0" y="661.0" fill="#0F172A" font-size="13px" font-weight="400">2. Fábricas &amp; Operaciones</text>
+  <text x="989.0" y="681.5" fill="#475569" font-size="12px" font-weight="400">Tu Pedido: &#x27;Tengo 5 máquinas y se acumula inventario en la 3.&#x27;
+Resultado Sketion: Tablero A3 con cuello de botella y 4 soluciones.</text>
+  <rect x="975.0" y="785.0" width="865.0" height="145.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="987.0" y="795.0" width="88.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="991.0" y="807.0" fill="#475569" font-size="10px" font-weight="400">ESTRATEGIA</text>
+  <text x="989.0" y="836.0" fill="#0F172A" font-size="13px" font-weight="400">3. Equipos &amp; Estrategia</text>
+  <text x="989.0" y="856.5" fill="#475569" font-size="12px" font-weight="400">Tu Pedido: &#x27;Aclara qué le toca hacer a Ventas, Soporte y Finanzas.&#x27;
+Resultado Sketion: Carriles de responsabilidad con roles claros.</text>
+  <rect x="975.0" y="960.0" width="865.0" height="145.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="987.0" y="970.0" width="88.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="991.0" y="982.0" fill="#475569" font-size="10px" font-weight="400">INNOVACIÓN</text>
+  <text x="989.0" y="1011.0" fill="#0F172A" font-size="13px" font-weight="400">4. Tecnología &amp; Asistentes IA</text>
+  <text x="989.0" y="1031.5" fill="#475569" font-size="12px" font-weight="400">Tu Pedido: &#x27;Presenta el nuevo asistente virtual a los directivos.&#x27;
+Resultado Sketion: Ecosistema con seguridad, datos y trazabilidad.</text>
+</svg>

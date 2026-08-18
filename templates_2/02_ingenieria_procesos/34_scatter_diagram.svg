@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1485.0 580.0" width="1485.0" height="580.0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1584.0 535.0" width="1584.0" height="535.0">
   <defs>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
@@ -14,24 +14,22 @@
       <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
     </marker>
   </defs>
-  <rect x="-30.0" y="-30.0" width="1485.0" height="580.0" fill="#F8FAFC" />
-  <rect x="10.0" y="10.0" width="1405.0" height="500.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="-30.0" y="-30.0" width="1584.0" height="535.0" fill="#F8FAFC" />
+  <rect x="10.0" y="10.0" width="1504.0" height="455.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">SKETION EXPANSION LIBRARY V2 · INGENIERÍA · INTER VECTORIAL</text>
-  <line x1="90.0" y1="430.0" x2="1380.0" y2="430.0" stroke="#0F172A" stroke-width="1.8" />
-  <line x1="90.0" y1="430.0" x2="90.0" y2="70.0" stroke="#0F172A" stroke-width="1.8" />
-  <text x="675.0" y="461.0" fill="#475569" font-size="11px" font-weight="400">THROUGHPUT (REQS / SEC)</text>
-  <text x="30.0" y="261.0" fill="#475569" font-size="11px" font-weight="400">P99 LATENCY</text>
-  <line x1="130.0" y1="100.0" x2="1340.0" y2="390.0" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="6,6" />
-  <ellipse cx="150.0" cy="120.0" rx="6.0" ry="6.0" fill="#2563EB" stroke="#FFFFFF" stroke-width="1.5" />
-  <text x="160.0" y="122.0" fill="#0F172A" font-size="10px" font-weight="400">Node 1</text>
-  <ellipse cx="250.0" cy="190.0" rx="6.0" ry="6.0" fill="#2563EB" stroke="#FFFFFF" stroke-width="1.5" />
-  <text x="260.0" y="192.0" fill="#0F172A" font-size="10px" font-weight="400">Node 2</text>
-  <ellipse cx="390.0" cy="250.0" rx="6.0" ry="6.0" fill="#2563EB" stroke="#FFFFFF" stroke-width="1.5" />
-  <text x="400.0" y="252.0" fill="#0F172A" font-size="10px" font-weight="400">Node 3</text>
-  <ellipse cx="550.0" cy="300.0" rx="6.0" ry="6.0" fill="#D93829" stroke="#FFFFFF" stroke-width="1.5" />
-  <text x="560.0" y="302.0" fill="#0F172A" font-size="10px" font-weight="400">Optimized Core (Hero)</text>
-  <ellipse cx="710.0" cy="360.0" rx="6.0" ry="6.0" fill="#2563EB" stroke="#FFFFFF" stroke-width="1.5" />
-  <text x="720.0" y="362.0" fill="#0F172A" font-size="10px" font-weight="400">Node 5</text>
-  <ellipse cx="870.0" cy="400.0" rx="6.0" ry="6.0" fill="#D93829" stroke="#FFFFFF" stroke-width="1.5" />
-  <text x="880.0" y="402.0" fill="#0F172A" font-size="10px" font-weight="400">Edge Target</text>
+  <rect x="40.0" y="80.0" width="1360.0" height="350.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
+  <line x1="120.0" y1="380.0" x2="1300.0" y2="380.0" stroke="#0F172A" stroke-width="1.5" />
+  <text x="650.0" y="411.0" fill="#64748B" font-size="11px" font-weight="400">Temperatura de Proceso (°C)</text>
+  <line x1="120.0" y1="120.0" x2="120.0" y2="380.0" stroke="#0F172A" stroke-width="1.5" />
+  <line x1="180.0" y1="340.0" x2="1240.0" y2="140.0" stroke="#D93829" stroke-width="2.0" stroke-dasharray="6,6" />
+  <text x="1180.0" y="136.0" fill="#D93829" font-size="11px" font-weight="400">R = -0.92 (Fuerte Correlacion)</text>
+  <ellipse cx="220.0" cy="320.0" rx="5.0" ry="5.0" fill="#2563EB" stroke="#1D4ED8" stroke-width="1.5" />
+  <ellipse cx="340.0" cy="305.0" rx="5.0" ry="5.0" fill="#2563EB" stroke="#1D4ED8" stroke-width="1.5" />
+  <ellipse cx="460.0" cy="270.0" rx="5.0" ry="5.0" fill="#2563EB" stroke="#1D4ED8" stroke-width="1.5" />
+  <ellipse cx="580.0" cy="250.0" rx="5.0" ry="5.0" fill="#2563EB" stroke="#1D4ED8" stroke-width="1.5" />
+  <ellipse cx="700.0" cy="220.0" rx="5.0" ry="5.0" fill="#2563EB" stroke="#1D4ED8" stroke-width="1.5" />
+  <ellipse cx="820.0" cy="205.0" rx="5.0" ry="5.0" fill="#2563EB" stroke="#1D4ED8" stroke-width="1.5" />
+  <ellipse cx="940.0" cy="180.0" rx="5.0" ry="5.0" fill="#2563EB" stroke="#1D4ED8" stroke-width="1.5" />
+  <ellipse cx="1060.0" cy="160.0" rx="5.0" ry="5.0" fill="#2563EB" stroke="#1D4ED8" stroke-width="1.5" />
+  <ellipse cx="1180.0" cy="145.0" rx="5.0" ry="5.0" fill="#2563EB" stroke="#1D4ED8" stroke-width="1.5" />
 </svg>

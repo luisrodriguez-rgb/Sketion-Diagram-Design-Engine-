@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1576.4 370.0" width="1576.4" height="370.0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1505.0 535.0" width="1505.0" height="535.0">
   <defs>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
@@ -14,46 +14,40 @@
       <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
     </marker>
   </defs>
-  <rect x="-30.0" y="-30.0" width="1576.4" height="370.0" fill="#F8FAFC" />
-  <rect x="10.0" y="10.0" width="1496.4" height="290.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="-30.0" y="-30.0" width="1505.0" height="535.0" fill="#F8FAFC" />
+  <rect x="10.0" y="10.0" width="1425.0" height="455.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">SKETION EXPANSION LIBRARY V2 · DATA &amp; AI · INTER VECTORIAL</text>
-  <rect x="60.0" y="160.0" width="240.0" height="105.0" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
-  <ellipse cx="180.0" cy="160.0" rx="120.0" ry="10.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
-  <line x1="70.0" y1="259.0" x2="290.0" y2="259.0" stroke="#2563EB" stroke-width="1.0" stroke-dasharray="6,6" />
-  <rect x="74.0" y="170.0" width="95.2" height="20.0" rx="6.0" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.0" />
-  <text x="78.0" y="182.0" fill="#1D4ED8" font-size="10px" font-weight="400">MEDALLION 1</text>
-  <text x="74.0" y="210.0" fill="#0F172A" font-size="14px" font-weight="600">Bronze S3 Bucket</text>
-  <text x="74.0" y="229.0" fill="#475569" font-size="11px" font-weight="400">Raw Unstructured Logs</text>
-  <line x1="300.0" y1="190.0" x2="350.0" y2="190.0" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#arrowhead)" />
-  <rect x="350.0" y="160.0" width="240.0" height="105.0" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
-  <ellipse cx="470.0" cy="160.0" rx="120.0" ry="10.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
-  <line x1="360.0" y1="259.0" x2="580.0" y2="259.0" stroke="#2563EB" stroke-width="1.0" stroke-dasharray="6,6" />
-  <rect x="364.0" y="170.0" width="95.2" height="20.0" rx="6.0" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.0" />
-  <text x="368.0" y="182.0" fill="#1D4ED8" font-size="10px" font-weight="400">MEDALLION 2</text>
-  <text x="364.0" y="210.0" fill="#0F172A" font-size="14px" font-weight="600">Silver Delta Table</text>
-  <text x="364.0" y="229.0" fill="#475569" font-size="11px" font-weight="400">De-Identified Records</text>
-  <line x1="590.0" y1="190.0" x2="640.0" y2="190.0" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#arrowhead)" />
-  <rect x="640.0" y="160.0" width="240.0" height="105.0" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
-  <ellipse cx="760.0" cy="160.0" rx="120.0" ry="10.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
-  <line x1="650.0" y1="259.0" x2="870.0" y2="259.0" stroke="#2563EB" stroke-width="1.0" stroke-dasharray="6,6" />
-  <rect x="654.0" y="170.0" width="95.2" height="20.0" rx="6.0" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.0" />
-  <text x="658.0" y="182.0" fill="#1D4ED8" font-size="10px" font-weight="400">MEDALLION 3</text>
-  <text x="654.0" y="210.0" fill="#0F172A" font-size="14px" font-weight="600">Silver Parquet</text>
-  <text x="654.0" y="229.0" fill="#475569" font-size="11px" font-weight="400">Aggregated Dimensions</text>
-  <line x1="880.0" y1="190.0" x2="930.0" y2="190.0" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#arrowhead)" />
-  <rect x="930.0" y="160.0" width="240.0" height="105.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
-  <ellipse cx="1050.0" cy="160.0" rx="120.0" ry="10.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
-  <line x1="940.0" y1="259.0" x2="1160.0" y2="259.0" stroke="#D93829" stroke-width="1.0" stroke-dasharray="6,6" />
-  <rect x="944.0" y="170.0" width="95.2" height="20.0" rx="6.0" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.0" />
-  <text x="948.0" y="182.0" fill="#D93829" font-size="10px" font-weight="400">MEDALLION 4</text>
-  <text x="944.0" y="210.0" fill="#0F172A" font-size="14px" font-weight="600">Gold ClickHouse OLAP</text>
-  <text x="944.0" y="229.0" fill="#475569" font-size="11px" font-weight="400">Business Marts &amp; KPIs</text>
-  <line x1="1170.0" y1="190.0" x2="1220.0" y2="190.0" stroke="#D93829" stroke-width="1.8" marker-end="url(#arrowhead-hero)" />
-  <rect x="1220.0" y="160.0" width="240.0" height="105.0" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
-  <ellipse cx="1340.0" cy="160.0" rx="120.0" ry="10.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
-  <line x1="1230.0" y1="259.0" x2="1450.0" y2="259.0" stroke="#2563EB" stroke-width="1.0" stroke-dasharray="6,6" />
-  <rect x="1234.0" y="170.0" width="95.2" height="20.0" rx="6.0" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.0" />
-  <text x="1238.0" y="182.0" fill="#1D4ED8" font-size="10px" font-weight="400">MEDALLION 5</text>
-  <text x="1234.0" y="210.0" fill="#0F172A" font-size="14px" font-weight="600">Cold WORM Store</text>
-  <text x="1234.0" y="229.0" fill="#475569" font-size="11px" font-weight="400">7-Year Retention Policy</text>
+  <rect x="40.0" y="80.0" width="340.0" height="350.0" rx="6.0" fill="#F8FAFC" stroke="#0F172A" stroke-width="1.5" />
+  <text x="60.0" y="116.0" fill="#0F172A" font-size="11px" font-weight="400">CAPA 1: STAGING AREA</text>
+  <rect x="60.0" y="150.0" width="300.0" height="90.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="72.0" y="160.0" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="76.0" y="172.0" fill="#475569" font-size="10px" font-weight="400">EXT</text>
+  <text x="74.0" y="202.0" fill="#0F172A" font-size="14px" font-weight="600">Raw Staging Tables</text>
+  <text x="74.0" y="222.9" fill="#475569" font-size="12px" font-weight="400">Ingesta directa sin transformar</text>
+  <line x1="380.0" y1="220.0" x2="460.0" y2="220.0" stroke="#D93829" stroke-width="1.8" marker-end="url(#arrowhead-hero)" />
+  <rect x="460.0" y="80.0" width="480.0" height="350.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.8" />
+  <text x="480.0" y="116.0" fill="#D93829" font-size="11px" font-weight="400">CAPA 2: STAR SCHEMA (CORE DWH)</text>
+  <rect x="480.0" y="140.0" width="200.0" height="80.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="492.0" y="150.0" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="496.0" y="162.0" fill="#475569" font-size="10px" font-weight="400">EXT</text>
+  <text x="494.0" y="192.0" fill="#0F172A" font-size="14px" font-weight="600">Dim_Customer</text>
+  <text x="494.0" y="212.9" fill="#475569" font-size="12px" font-weight="400">Dimension SCD Tipo 2</text>
+  <rect x="720.0" y="140.0" width="200.0" height="80.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="732.0" y="150.0" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="736.0" y="162.0" fill="#475569" font-size="10px" font-weight="400">EXT</text>
+  <text x="734.0" y="192.0" fill="#0F172A" font-size="14px" font-weight="600">Dim_Product</text>
+  <text x="734.0" y="212.9" fill="#475569" font-size="12px" font-weight="400">Catalogo y Categorias</text>
+  <rect x="600.0" y="260.0" width="220.0" height="100.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
+  <rect x="612.0" y="270.0" width="45.0" height="20.0" rx="6.0" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.0" />
+  <text x="616.0" y="282.0" fill="#D93829" font-size="10px" font-weight="400">EXT</text>
+  <text x="614.0" y="312.0" fill="#0F172A" font-size="14px" font-weight="600">Fact_Sales</text>
+  <text x="614.0" y="332.9" fill="#475569" font-size="12px" font-weight="400">Metricas de Venta</text>
+  <line x1="940.0" y1="220.0" x2="1020.0" y2="220.0" stroke="#D93829" stroke-width="1.8" marker-end="url(#arrowhead-hero)" />
+  <rect x="1020.0" y="80.0" width="380.0" height="350.0" rx="6.0" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5" />
+  <text x="1040.0" y="116.0" fill="#1D4ED8" font-size="11px" font-weight="400">CAPA 3: DATA MARTS BI</text>
+  <rect x="1040.0" y="150.0" width="340.0" height="90.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="1052.0" y="160.0" width="66.4" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="1056.0" y="172.0" fill="#475569" font-size="10px" font-weight="400">FINANCE</text>
+  <text x="1054.0" y="203.0" fill="#0F172A" font-size="15px" font-weight="600">Data Mart Finanzas</text>
+  <text x="1054.0" y="224.2" fill="#475569" font-size="12px" font-weight="400">PowerBI / Tableau Dashboards</text>
 </svg>

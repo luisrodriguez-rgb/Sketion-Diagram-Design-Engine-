@@ -81,12 +81,13 @@
       "title": "Book Analysis",
       "category": "01_estudio_educacion",
       "complexity": "medium",
-      "layout_type": "nested",
+      "layout_type": "panels_4",
       "primary_structures": [
-        "containers",
-        "hierarchy"
+        "literary_metadata",
+        "character_map",
+        "themes"
       ],
-      "node_count": 11,
+      "node_count": 14,
       "connector_count": 0,
       "svg_file": "01_estudio_educacion/05_book_analysis.svg",
       "excalidraw_file": "01_estudio_educacion/05_book_analysis.excalidraw"
@@ -97,12 +98,13 @@
       "title": "Article Analysis",
       "category": "01_estudio_educacion",
       "complexity": "medium",
-      "layout_type": "layer_stack",
+      "layout_type": "columns_4",
       "primary_structures": [
-        "layers",
-        "text"
+        "abstract",
+        "methodology",
+        "findings"
       ],
-      "node_count": 27,
+      "node_count": 14,
       "connector_count": 0,
       "svg_file": "01_estudio_educacion/06_article_analysis.svg",
       "excalidraw_file": "01_estudio_educacion/06_article_analysis.excalidraw"
@@ -145,12 +147,12 @@
       "title": "Debate Map",
       "category": "01_estudio_educacion",
       "complexity": "medium",
-      "layout_type": "matrix_2x2",
+      "layout_type": "split_debate",
       "primary_structures": [
-        "matrix",
-        "quadrants"
+        "pros",
+        "cons"
       ],
-      "node_count": 14,
+      "node_count": 8,
       "connector_count": 0,
       "svg_file": "01_estudio_educacion/09_debate_map.svg",
       "excalidraw_file": "01_estudio_educacion/09_debate_map.excalidraw"
@@ -161,12 +163,12 @@
       "title": "Comparison Study",
       "category": "01_estudio_educacion",
       "complexity": "high",
-      "layout_type": "venn",
+      "layout_type": "venn_triple",
       "primary_structures": [
         "circles",
         "intersections"
       ],
-      "node_count": 10,
+      "node_count": 9,
       "connector_count": 0,
       "svg_file": "01_estudio_educacion/10_comparison_study.svg",
       "excalidraw_file": "01_estudio_educacion/10_comparison_study.excalidraw"
@@ -177,12 +179,12 @@
       "title": "Timeline Study",
       "category": "01_estudio_educacion",
       "complexity": "medium",
-      "layout_type": "timeline",
+      "layout_type": "timeline_axis",
       "primary_structures": [
         "axis",
         "milestones"
       ],
-      "node_count": 33,
+      "node_count": 23,
       "connector_count": 0,
       "svg_file": "01_estudio_educacion/11_timeline_study.svg",
       "excalidraw_file": "01_estudio_educacion/11_timeline_study.excalidraw"
@@ -225,12 +227,12 @@
       "title": "Question Bank",
       "category": "01_estudio_educacion",
       "complexity": "medium",
-      "layout_type": "layer_stack",
+      "layout_type": "columns_3",
       "primary_structures": [
-        "layers",
-        "cards"
+        "shelves",
+        "questions"
       ],
-      "node_count": 27,
+      "node_count": 20,
       "connector_count": 0,
       "svg_file": "01_estudio_educacion/14_question_bank.svg",
       "excalidraw_file": "01_estudio_educacion/14_question_bank.excalidraw"
@@ -244,9 +246,9 @@
       "layout_type": "matrix_table",
       "primary_structures": [
         "table",
-        "badges"
+        "taxonomy"
       ],
-      "node_count": 99,
+      "node_count": 25,
       "connector_count": 0,
       "svg_file": "01_estudio_educacion/15_exam_question_matrix.svg",
       "excalidraw_file": "01_estudio_educacion/15_exam_question_matrix.excalidraw"
@@ -278,7 +280,7 @@
         "polar_polygon",
         "axes"
       ],
-      "node_count": 37,
+      "node_count": 44,
       "connector_count": 0,
       "svg_file": "01_estudio_educacion/17_learning_progress_tracker.svg",
       "excalidraw_file": "01_estudio_educacion/17_learning_progress_tracker.excalidraw"
@@ -289,13 +291,13 @@
       "title": "Concept Dependency Map",
       "category": "01_estudio_educacion",
       "complexity": "high",
-      "layout_type": "tree",
+      "layout_type": "dag_graph",
       "primary_structures": [
-        "tree_nodes",
-        "connectors"
+        "nodes",
+        "dependencies"
       ],
-      "node_count": 41,
-      "connector_count": 9,
+      "node_count": 32,
+      "connector_count": 5,
       "svg_file": "01_estudio_educacion/18_concept_dependency_map.svg",
       "excalidraw_file": "01_estudio_educacion/18_concept_dependency_map.excalidraw"
     },
@@ -321,12 +323,12 @@
       "title": "Academic Project Canvas",
       "category": "01_estudio_educacion",
       "complexity": "medium",
-      "layout_type": "nested",
+      "layout_type": "capstone_grid",
       "primary_structures": [
-        "containers",
-        "milestones"
+        "research_question",
+        "deliverables"
       ],
-      "node_count": 11,
+      "node_count": 17,
       "connector_count": 0,
       "svg_file": "01_estudio_educacion/20_academic_project_canvas.svg",
       "excalidraw_file": "01_estudio_educacion/20_academic_project_canvas.excalidraw"
@@ -353,13 +355,13 @@
       "title": "Swimlane Process Map",
       "category": "02_ingenieria_procesos",
       "complexity": "high",
-      "layout_type": "swimlane",
+      "layout_type": "swimlane_4",
       "primary_structures": [
         "lanes",
         "flow_nodes"
       ],
-      "node_count": 48,
-      "connector_count": 4,
+      "node_count": 33,
+      "connector_count": 3,
       "svg_file": "02_ingenieria_procesos/22_swimlane_process_map.svg",
       "excalidraw_file": "02_ingenieria_procesos/22_swimlane_process_map.excalidraw"
     },
@@ -390,7 +392,7 @@
         "table",
         "cells"
       ],
-      "node_count": 99,
+      "node_count": 31,
       "connector_count": 0,
       "svg_file": "02_ingenieria_procesos/24_process_analysis_matrix.svg",
       "excalidraw_file": "02_ingenieria_procesos/24_process_analysis_matrix.excalidraw"
@@ -406,8 +408,8 @@
         "zones",
         "trajectories"
       ],
-      "node_count": 32,
-      "connector_count": 3,
+      "node_count": 25,
+      "connector_count": 7,
       "svg_file": "02_ingenieria_procesos/25_spaghetti_diagram.svg",
       "excalidraw_file": "02_ingenieria_procesos/25_spaghetti_diagram.excalidraw"
     },
@@ -433,12 +435,12 @@
       "title": "Cycle Time Analysis",
       "category": "02_ingenieria_procesos",
       "complexity": "high",
-      "layout_type": "scatter_plot",
+      "layout_type": "barchart_ct",
       "primary_structures": [
-        "axes",
-        "points"
+        "bars",
+        "limits"
       ],
-      "node_count": 19,
+      "node_count": 25,
       "connector_count": 0,
       "svg_file": "02_ingenieria_procesos/27_cycle_time_analysis.svg",
       "excalidraw_file": "02_ingenieria_procesos/27_cycle_time_analysis.excalidraw"
@@ -449,13 +451,13 @@
       "title": "Line Balancing",
       "category": "02_ingenieria_procesos",
       "complexity": "high",
-      "layout_type": "swimlane",
+      "layout_type": "split_balance",
       "primary_structures": [
-        "workstations",
-        "loads"
+        "efficiency",
+        "workstations"
       ],
-      "node_count": 48,
-      "connector_count": 4,
+      "node_count": 8,
+      "connector_count": 0,
       "svg_file": "02_ingenieria_procesos/28_line_balancing.svg",
       "excalidraw_file": "02_ingenieria_procesos/28_line_balancing.excalidraw"
     },
@@ -465,13 +467,13 @@
       "title": "Bottleneck Analysis",
       "category": "02_ingenieria_procesos",
       "complexity": "medium",
-      "layout_type": "process_flow",
+      "layout_type": "horizontal_flow",
       "primary_structures": [
-        "nodes",
-        "bottleneck"
+        "toc_nodes",
+        "constraint"
       ],
-      "node_count": 36,
-      "connector_count": 4,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "02_ingenieria_procesos/29_bottleneck_analysis.svg",
       "excalidraw_file": "02_ingenieria_procesos/29_bottleneck_analysis.excalidraw"
     },
@@ -502,7 +504,7 @@
         "table",
         "controls"
       ],
-      "node_count": 99,
+      "node_count": 25,
       "connector_count": 0,
       "svg_file": "02_ingenieria_procesos/31_quality_control_plan.svg",
       "excalidraw_file": "02_ingenieria_procesos/31_quality_control_plan.excalidraw"
@@ -535,7 +537,7 @@
         "bars",
         "distribution"
       ],
-      "node_count": 19,
+      "node_count": 25,
       "connector_count": 0,
       "svg_file": "02_ingenieria_procesos/33_histogram_analysis.svg",
       "excalidraw_file": "02_ingenieria_procesos/33_histogram_analysis.excalidraw"
@@ -551,7 +553,7 @@
         "points",
         "correlation"
       ],
-      "node_count": 19,
+      "node_count": 17,
       "connector_count": 0,
       "svg_file": "02_ingenieria_procesos/34_scatter_diagram.svg",
       "excalidraw_file": "02_ingenieria_procesos/34_scatter_diagram.excalidraw"
@@ -562,13 +564,13 @@
       "title": "Process Capability",
       "category": "02_ingenieria_procesos",
       "complexity": "medium",
-      "layout_type": "kpi_cards",
+      "layout_type": "split_capability",
       "primary_structures": [
-        "gaussian_curve",
-        "indices"
+        "indices",
+        "six_sigma"
       ],
-      "node_count": 32,
-      "connector_count": 3,
+      "node_count": 8,
+      "connector_count": 0,
       "svg_file": "02_ingenieria_procesos/35_process_capability.svg",
       "excalidraw_file": "02_ingenieria_procesos/35_process_capability.excalidraw"
     },
@@ -610,12 +612,12 @@
       "title": "A3 Problem Solving",
       "category": "02_ingenieria_procesos",
       "complexity": "medium",
-      "layout_type": "nested_a3",
+      "layout_type": "a3_report",
       "primary_structures": [
         "a3_sections",
         "pdca"
       ],
-      "node_count": 11,
+      "node_count": 17,
       "connector_count": 0,
       "svg_file": "02_ingenieria_procesos/38_a3_problem_solving.svg",
       "excalidraw_file": "02_ingenieria_procesos/38_a3_problem_solving.excalidraw"
@@ -626,13 +628,13 @@
       "title": "Kaizen Board",
       "category": "02_ingenieria_procesos",
       "complexity": "medium",
-      "layout_type": "swimlane",
+      "layout_type": "kanban",
       "primary_structures": [
         "suggestions",
         "impact"
       ],
-      "node_count": 48,
-      "connector_count": 4,
+      "node_count": 34,
+      "connector_count": 0,
       "svg_file": "02_ingenieria_procesos/39_kaizen_board.svg",
       "excalidraw_file": "02_ingenieria_procesos/39_kaizen_board.excalidraw"
     },
@@ -647,7 +649,7 @@
         "manual_time",
         "auto_time"
       ],
-      "node_count": 23,
+      "node_count": 16,
       "connector_count": 0,
       "svg_file": "02_ingenieria_procesos/40_standard_work_combination.svg",
       "excalidraw_file": "02_ingenieria_procesos/40_standard_work_combination.excalidraw"
@@ -664,8 +666,8 @@
         "actors",
         "boundaries"
       ],
-      "node_count": 56,
-      "connector_count": 6,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "03_software_architecture/41_c4_system_context.svg",
       "excalidraw_file": "03_software_architecture/41_c4_system_context.excalidraw"
     },
@@ -681,8 +683,8 @@
         "dbs",
         "protocols"
       ],
-      "node_count": 27,
-      "connector_count": 0,
+      "node_count": 28,
+      "connector_count": 3,
       "svg_file": "03_software_architecture/42_c4_container_diagram.svg",
       "excalidraw_file": "03_software_architecture/42_c4_container_diagram.excalidraw"
     },
@@ -698,7 +700,7 @@
         "services",
         "repos"
       ],
-      "node_count": 32,
+      "node_count": 27,
       "connector_count": 3,
       "svg_file": "03_software_architecture/43_c4_component_diagram.svg",
       "excalidraw_file": "03_software_architecture/43_c4_component_diagram.excalidraw"
@@ -709,14 +711,14 @@
       "title": "Deployment Diagram",
       "category": "03_software_architecture",
       "complexity": "high",
-      "layout_type": "nested_nodes",
+      "layout_type": "deployment_nodes",
       "primary_structures": [
-        "nodes",
-        "artifacts",
-        "networks"
+        "client_node",
+        "server_node",
+        "db_node"
       ],
-      "node_count": 11,
-      "connector_count": 0,
+      "node_count": 21,
+      "connector_count": 2,
       "svg_file": "03_software_architecture/44_deployment_diagram.svg",
       "excalidraw_file": "03_software_architecture/44_deployment_diagram.excalidraw"
     },
@@ -726,14 +728,14 @@
       "title": "Component Architecture",
       "category": "03_software_architecture",
       "complexity": "high",
-      "layout_type": "components",
+      "layout_type": "hexagonal",
       "primary_structures": [
-        "interfaces",
         "ports",
-        "adapters"
+        "adapters",
+        "domain_core"
       ],
-      "node_count": 56,
-      "connector_count": 6,
+      "node_count": 27,
+      "connector_count": 3,
       "svg_file": "03_software_architecture/45_component_architecture.svg",
       "excalidraw_file": "03_software_architecture/45_component_architecture.excalidraw"
     },
@@ -743,14 +745,14 @@
       "title": "Class Diagram",
       "category": "03_software_architecture",
       "complexity": "high",
-      "layout_type": "class_model",
+      "layout_type": "uml_classes",
       "primary_structures": [
         "classes",
         "attributes",
         "associations"
       ],
-      "node_count": 55,
-      "connector_count": 3,
+      "node_count": 40,
+      "connector_count": 2,
       "svg_file": "03_software_architecture/46_class_diagram.svg",
       "excalidraw_file": "03_software_architecture/46_class_diagram.excalidraw"
     },
@@ -765,8 +767,8 @@
         "fork_join",
         "swimlanes"
       ],
-      "node_count": 40,
-      "connector_count": 5,
+      "node_count": 32,
+      "connector_count": 7,
       "svg_file": "03_software_architecture/47_activity_diagram.svg",
       "excalidraw_file": "03_software_architecture/47_activity_diagram.excalidraw"
     },
@@ -782,7 +784,7 @@
         "transitions",
         "events"
       ],
-      "node_count": 25,
+      "node_count": 16,
       "connector_count": 4,
       "svg_file": "03_software_architecture/48_state_machine_diagram.svg",
       "excalidraw_file": "03_software_architecture/48_state_machine_diagram.excalidraw"
@@ -833,7 +835,7 @@
         "firewall"
       ],
       "node_count": 27,
-      "connector_count": 0,
+      "connector_count": 1,
       "svg_file": "03_software_architecture/51_network_architecture.svg",
       "excalidraw_file": "03_software_architecture/51_network_architecture.excalidraw"
     },
@@ -848,8 +850,8 @@
         "packages",
         "imports"
       ],
-      "node_count": 41,
-      "connector_count": 9,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "03_software_architecture/52_package_diagram.svg",
       "excalidraw_file": "03_software_architecture/52_package_diagram.excalidraw"
     },
@@ -865,8 +867,8 @@
         "storage",
         "dc"
       ],
-      "node_count": 32,
-      "connector_count": 3,
+      "node_count": 31,
+      "connector_count": 1,
       "svg_file": "03_software_architecture/53_infrastructure_architecture.svg",
       "excalidraw_file": "03_software_architecture/53_infrastructure_architecture.excalidraw"
     },
@@ -882,8 +884,8 @@
         "az",
         "services"
       ],
-      "node_count": 56,
-      "connector_count": 6,
+      "node_count": 33,
+      "connector_count": 3,
       "svg_file": "03_software_architecture/54_cloud_architecture.svg",
       "excalidraw_file": "03_software_architecture/54_cloud_architecture.excalidraw"
     },
@@ -899,8 +901,8 @@
         "vpc",
         "iam"
       ],
-      "node_count": 56,
-      "connector_count": 6,
+      "node_count": 28,
+      "connector_count": 3,
       "svg_file": "03_software_architecture/55_aws_architecture.svg",
       "excalidraw_file": "03_software_architecture/55_aws_architecture.excalidraw"
     },
@@ -916,8 +918,8 @@
         "aks",
         "cosmos"
       ],
-      "node_count": 56,
-      "connector_count": 6,
+      "node_count": 28,
+      "connector_count": 3,
       "svg_file": "03_software_architecture/56_azure_architecture.svg",
       "excalidraw_file": "03_software_architecture/56_azure_architecture.excalidraw"
     },
@@ -933,8 +935,8 @@
         "spanner",
         "pubsub"
       ],
-      "node_count": 56,
-      "connector_count": 6,
+      "node_count": 28,
+      "connector_count": 3,
       "svg_file": "03_software_architecture/57_gcp_architecture.svg",
       "excalidraw_file": "03_software_architecture/57_gcp_architecture.excalidraw"
     },
@@ -950,8 +952,8 @@
         "artifacts",
         "gates"
       ],
-      "node_count": 36,
-      "connector_count": 4,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "03_software_architecture/58_cicd_pipeline.svg",
       "excalidraw_file": "03_software_architecture/58_cicd_pipeline.excalidraw"
     },
@@ -967,8 +969,8 @@
         "deployments",
         "ingress"
       ],
-      "node_count": 11,
-      "connector_count": 0,
+      "node_count": 48,
+      "connector_count": 1,
       "svg_file": "03_software_architecture/59_kubernetes_architecture.svg",
       "excalidraw_file": "03_software_architecture/59_kubernetes_architecture.excalidraw"
     },
@@ -984,8 +986,8 @@
         "daemon",
         "volumes"
       ],
-      "node_count": 27,
-      "connector_count": 0,
+      "node_count": 26,
+      "connector_count": 2,
       "svg_file": "03_software_architecture/60_docker_architecture.svg",
       "excalidraw_file": "03_software_architecture/60_docker_architecture.excalidraw"
     },
@@ -1001,8 +1003,8 @@
         "process",
         "flows"
       ],
-      "node_count": 30,
-      "connector_count": 0,
+      "node_count": 16,
+      "connector_count": 2,
       "svg_file": "04_data_apis_ai/61_dfd_level_0.svg",
       "excalidraw_file": "04_data_apis_ai/61_dfd_level_0.excalidraw"
     },
@@ -1017,8 +1019,8 @@
         "subprocesses",
         "datastores"
       ],
-      "node_count": 30,
-      "connector_count": 0,
+      "node_count": 13,
+      "connector_count": 3,
       "svg_file": "04_data_apis_ai/62_dfd_level_1.svg",
       "excalidraw_file": "04_data_apis_ai/62_dfd_level_1.excalidraw"
     },
@@ -1034,8 +1036,8 @@
         "lakehouse",
         "analytics"
       ],
-      "node_count": 57,
-      "connector_count": 4,
+      "node_count": 32,
+      "connector_count": 3,
       "svg_file": "04_data_apis_ai/63_data_pipeline_architecture.svg",
       "excalidraw_file": "04_data_apis_ai/63_data_pipeline_architecture.excalidraw"
     },
@@ -1051,8 +1053,8 @@
         "star_schema",
         "datamarts"
       ],
-      "node_count": 46,
-      "connector_count": 4,
+      "node_count": 35,
+      "connector_count": 2,
       "svg_file": "04_data_apis_ai/64_data_warehouse_architecture.svg",
       "excalidraw_file": "04_data_apis_ai/64_data_warehouse_architecture.excalidraw"
     },
@@ -1069,8 +1071,8 @@
         "silver",
         "gold"
       ],
-      "node_count": 46,
-      "connector_count": 4,
+      "node_count": 11,
+      "connector_count": 0,
       "svg_file": "04_data_apis_ai/65_data_lake_architecture.svg",
       "excalidraw_file": "04_data_apis_ai/65_data_lake_architecture.excalidraw"
     },
@@ -1087,8 +1089,8 @@
         "load",
         "dq"
       ],
-      "node_count": 36,
-      "connector_count": 4,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "04_data_apis_ai/66_etl_pipeline.svg",
       "excalidraw_file": "04_data_apis_ai/66_etl_pipeline.excalidraw"
     },
@@ -1105,8 +1107,8 @@
         "controller",
         "db"
       ],
-      "node_count": 29,
-      "connector_count": 6,
+      "node_count": 31,
+      "connector_count": 4,
       "svg_file": "04_data_apis_ai/67_api_request_flow.svg",
       "excalidraw_file": "04_data_apis_ai/67_api_request_flow.excalidraw"
     },
@@ -1121,8 +1123,8 @@
         "internal_services",
         "external_apis"
       ],
-      "node_count": 32,
-      "connector_count": 3,
+      "node_count": 31,
+      "connector_count": 4,
       "svg_file": "04_data_apis_ai/68_api_integration_map.svg",
       "excalidraw_file": "04_data_apis_ai/68_api_integration_map.excalidraw"
     },
@@ -1157,8 +1159,8 @@
         "auth_server",
         "api"
       ],
-      "node_count": 29,
-      "connector_count": 6,
+      "node_count": 31,
+      "connector_count": 4,
       "svg_file": "04_data_apis_ai/70_oauth_authentication_flow.svg",
       "excalidraw_file": "04_data_apis_ai/70_oauth_authentication_flow.excalidraw"
     },
@@ -1174,8 +1176,8 @@
         "verify",
         "refresh"
       ],
-      "node_count": 40,
-      "connector_count": 5,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "04_data_apis_ai/71_jwt_authentication_flow.svg",
       "excalidraw_file": "04_data_apis_ai/71_jwt_authentication_flow.excalidraw"
     },
@@ -1208,8 +1210,8 @@
         "guardrails",
         "routing"
       ],
-      "node_count": 27,
-      "connector_count": 0,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "04_data_apis_ai/73_llm_app_architecture.svg",
       "excalidraw_file": "04_data_apis_ai/73_llm_app_architecture.excalidraw"
     },
@@ -1224,8 +1226,8 @@
         "hnsw_layers",
         "scalar_quantization"
       ],
-      "node_count": 11,
-      "connector_count": 0,
+      "node_count": 30,
+      "connector_count": 3,
       "svg_file": "04_data_apis_ai/74_vector_db_architecture.svg",
       "excalidraw_file": "04_data_apis_ai/74_vector_db_architecture.excalidraw"
     },
@@ -1241,8 +1243,8 @@
         "ragas_metrics",
         "eval_report"
       ],
-      "node_count": 36,
-      "connector_count": 4,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "04_data_apis_ai/75_ai_evaluation_pipeline.svg",
       "excalidraw_file": "04_data_apis_ai/75_ai_evaluation_pipeline.excalidraw"
     },
@@ -1343,7 +1345,7 @@
         "internal",
         "learning"
       ],
-      "node_count": 27,
+      "node_count": 14,
       "connector_count": 0,
       "svg_file": "05_negocios_estrategia/81_business_strategy_map.svg",
       "excalidraw_file": "05_negocios_estrategia/81_business_strategy_map.excalidraw"
@@ -1359,8 +1361,8 @@
         "strategic_goals",
         "initiatives"
       ],
-      "node_count": 41,
-      "connector_count": 9,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "05_negocios_estrategia/82_strategic_objectives_map.svg",
       "excalidraw_file": "05_negocios_estrategia/82_strategic_objectives_map.excalidraw"
     },
@@ -1392,7 +1394,7 @@
         "profitability",
         "bubble_size"
       ],
-      "node_count": 19,
+      "node_count": 13,
       "connector_count": 0,
       "svg_file": "05_negocios_estrategia/84_product_portfolio_map.svg",
       "excalidraw_file": "05_negocios_estrategia/84_product_portfolio_map.excalidraw"
@@ -1408,7 +1410,7 @@
         "high_value",
         "growth_potential"
       ],
-      "node_count": 24,
+      "node_count": 14,
       "connector_count": 0,
       "svg_file": "05_negocios_estrategia/85_customer_segmentation_map.svg",
       "excalidraw_file": "05_negocios_estrategia/85_customer_segmentation_map.excalidraw"
@@ -1426,8 +1428,8 @@
         "regulators",
         "tech"
       ],
-      "node_count": 32,
-      "connector_count": 3,
+      "node_count": 31,
+      "connector_count": 4,
       "svg_file": "05_negocios_estrategia/86_business_ecosystem_map.svg",
       "excalidraw_file": "05_negocios_estrategia/86_business_ecosystem_map.excalidraw"
     },
@@ -1442,7 +1444,7 @@
         "high_benefit",
         "low_cost"
       ],
-      "node_count": 24,
+      "node_count": 14,
       "connector_count": 0,
       "svg_file": "05_negocios_estrategia/87_cost_vs_benefit_matrix.svg",
       "excalidraw_file": "05_negocios_estrategia/87_cost_vs_benefit_matrix.excalidraw"
@@ -1474,7 +1476,7 @@
         "competitors",
         "features"
       ],
-      "node_count": 99,
+      "node_count": 25,
       "connector_count": 0,
       "svg_file": "05_negocios_estrategia/89_competitive_analysis.svg",
       "excalidraw_file": "05_negocios_estrategia/89_competitive_analysis.excalidraw"
@@ -1490,7 +1492,7 @@
         "core_capabilities",
         "supporting"
       ],
-      "node_count": 11,
+      "node_count": 26,
       "connector_count": 0,
       "svg_file": "05_negocios_estrategia/90_business_architecture.svg",
       "excalidraw_file": "05_negocios_estrategia/90_business_architecture.excalidraw"
@@ -1507,7 +1509,7 @@
         "assumptions",
         "experiments"
       ],
-      "node_count": 11,
+      "node_count": 17,
       "connector_count": 0,
       "svg_file": "06_producto_pm/91_product_discovery_canvas.svg",
       "excalidraw_file": "06_producto_pm/91_product_discovery_canvas.excalidraw"
@@ -1524,7 +1526,7 @@
         "requirements",
         "out_of_scope"
       ],
-      "node_count": 27,
+      "node_count": 14,
       "connector_count": 0,
       "svg_file": "06_producto_pm/92_prd_canvas.svg",
       "excalidraw_file": "06_producto_pm/92_prd_canvas.excalidraw"
@@ -1541,8 +1543,8 @@
         "user_stories",
         "tasks"
       ],
-      "node_count": 41,
-      "connector_count": 9,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "06_producto_pm/93_product_backlog.svg",
       "excalidraw_file": "06_producto_pm/93_product_backlog.excalidraw"
     },
@@ -1557,8 +1559,8 @@
         "backbone_activities",
         "releases"
       ],
-      "node_count": 48,
-      "connector_count": 4,
+      "node_count": 8,
+      "connector_count": 0,
       "svg_file": "06_producto_pm/94_user_story_map.svg",
       "excalidraw_file": "06_producto_pm/94_user_story_map.excalidraw"
     },
@@ -1573,7 +1575,7 @@
         "quick_wins",
         "strategic"
       ],
-      "node_count": 24,
+      "node_count": 14,
       "connector_count": 0,
       "svg_file": "06_producto_pm/95_feature_prioritization_matrix.svg",
       "excalidraw_file": "06_producto_pm/95_feature_prioritization_matrix.excalidraw"
@@ -1589,7 +1591,7 @@
         "feature_list",
         "competitors"
       ],
-      "node_count": 99,
+      "node_count": 31,
       "connector_count": 0,
       "svg_file": "06_producto_pm/96_feature_comparison_matrix.svg",
       "excalidraw_file": "06_producto_pm/96_feature_comparison_matrix.excalidraw"
@@ -1606,7 +1608,7 @@
         "timing",
         "risks"
       ],
-      "node_count": 11,
+      "node_count": 17,
       "connector_count": 0,
       "svg_file": "06_producto_pm/97_product_opportunity_canvas.svg",
       "excalidraw_file": "06_producto_pm/97_product_opportunity_canvas.excalidraw"
@@ -1622,7 +1624,7 @@
         "market_pull",
         "retention"
       ],
-      "node_count": 14,
+      "node_count": 8,
       "connector_count": 0,
       "svg_file": "06_producto_pm/98_pmf_canvas.svg",
       "excalidraw_file": "06_producto_pm/98_pmf_canvas.excalidraw"
@@ -1638,7 +1640,7 @@
         "stages",
         "strategies"
       ],
-      "node_count": 33,
+      "node_count": 19,
       "connector_count": 0,
       "svg_file": "06_producto_pm/99_product_lifecycle_map.svg",
       "excalidraw_file": "06_producto_pm/99_product_lifecycle_map.excalidraw"
@@ -1655,7 +1657,7 @@
         "deadlines",
         "features"
       ],
-      "node_count": 23,
+      "node_count": 16,
       "connector_count": 0,
       "svg_file": "06_producto_pm/100_release_plan.svg",
       "excalidraw_file": "06_producto_pm/100_release_plan.excalidraw"
@@ -1671,8 +1673,8 @@
         "capacity",
         "story_points"
       ],
-      "node_count": 48,
-      "connector_count": 4,
+      "node_count": 34,
+      "connector_count": 0,
       "svg_file": "06_producto_pm/101_sprint_planning_board.svg",
       "excalidraw_file": "06_producto_pm/101_sprint_planning_board.excalidraw"
     },
@@ -1704,8 +1706,8 @@
         "stories",
         "subtasks"
       ],
-      "node_count": 41,
-      "connector_count": 9,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "06_producto_pm/103_epic_breakdown.svg",
       "excalidraw_file": "06_producto_pm/103_epic_breakdown.excalidraw"
     },
@@ -1720,8 +1722,8 @@
         "north_star",
         "input_metrics"
       ],
-      "node_count": 41,
-      "connector_count": 9,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "06_producto_pm/104_product_metrics_tree.svg",
       "excalidraw_file": "06_producto_pm/104_product_metrics_tree.excalidraw"
     },
@@ -1754,7 +1756,7 @@
         "clusters",
         "insights"
       ],
-      "node_count": 14,
+      "node_count": 26,
       "connector_count": 0,
       "svg_file": "07_ux_research/106_research_affinity_cluster.svg",
       "excalidraw_file": "07_ux_research/106_research_affinity_cluster.excalidraw"
@@ -1772,8 +1774,8 @@
         "backstage",
         "support"
       ],
-      "node_count": 48,
-      "connector_count": 4,
+      "node_count": 14,
+      "connector_count": 0,
       "svg_file": "07_ux_research/107_service_blueprint.svg",
       "excalidraw_file": "07_ux_research/107_service_blueprint.excalidraw"
     },
@@ -1789,8 +1791,8 @@
         "touchpoints",
         "emotional_curve"
       ],
-      "node_count": 33,
-      "connector_count": 0,
+      "node_count": 17,
+      "connector_count": 3,
       "svg_file": "07_ux_research/108_experience_map.svg",
       "excalidraw_file": "07_ux_research/108_experience_map.excalidraw"
     },
@@ -1805,7 +1807,7 @@
         "channels",
         "stages"
       ],
-      "node_count": 99,
+      "node_count": 25,
       "connector_count": 0,
       "svg_file": "07_ux_research/109_touchpoint_map.svg",
       "excalidraw_file": "07_ux_research/109_touchpoint_map.excalidraw"
@@ -1822,7 +1824,7 @@
         "key_findings",
         "recommendations"
       ],
-      "node_count": 27,
+      "node_count": 11,
       "connector_count": 0,
       "svg_file": "07_ux_research/110_ux_research_synthesis.svg",
       "excalidraw_file": "07_ux_research/110_ux_research_synthesis.excalidraw"
@@ -1839,7 +1841,7 @@
         "metrics",
         "heuristics"
       ],
-      "node_count": 11,
+      "node_count": 17,
       "connector_count": 0,
       "svg_file": "07_ux_research/111_research_findings_board.svg",
       "excalidraw_file": "07_ux_research/111_research_findings_board.excalidraw"
@@ -1872,7 +1874,7 @@
         "quotes",
         "body_language"
       ],
-      "node_count": 11,
+      "node_count": 17,
       "connector_count": 0,
       "svg_file": "07_ux_research/113_user_interview_canvas.svg",
       "excalidraw_file": "07_ux_research/113_user_interview_canvas.excalidraw"
@@ -1889,7 +1891,7 @@
         "methodology",
         "recruiting"
       ],
-      "node_count": 27,
+      "node_count": 14,
       "connector_count": 0,
       "svg_file": "07_ux_research/114_research_plan.svg",
       "excalidraw_file": "07_ux_research/114_research_plan.excalidraw"
@@ -1905,8 +1907,8 @@
         "core_question",
         "subquestions"
       ],
-      "node_count": 41,
-      "connector_count": 9,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "07_ux_research/115_research_question_map.svg",
       "excalidraw_file": "07_ux_research/115_research_question_map.excalidraw"
     },
@@ -1955,7 +1957,7 @@
         "high_impact",
         "high_feasibility"
       ],
-      "node_count": 24,
+      "node_count": 14,
       "connector_count": 0,
       "svg_file": "07_ux_research/118_design_opportunity_map.svg",
       "excalidraw_file": "07_ux_research/118_design_opportunity_map.excalidraw"
@@ -1971,7 +1973,7 @@
         "heuristics",
         "scores"
       ],
-      "node_count": 99,
+      "node_count": 31,
       "connector_count": 0,
       "svg_file": "07_ux_research/119_ux_benchmark_matrix.svg",
       "excalidraw_file": "07_ux_research/119_ux_benchmark_matrix.excalidraw"
@@ -1987,7 +1989,7 @@
         "user_mental_model",
         "system_model"
       ],
-      "node_count": 10,
+      "node_count": 7,
       "connector_count": 0,
       "svg_file": "07_ux_research/120_user_mental_model.svg",
       "excalidraw_file": "07_ux_research/120_user_mental_model.excalidraw"
@@ -2003,7 +2005,7 @@
         "idea_cards",
         "color_clusters"
       ],
-      "node_count": 14,
+      "node_count": 34,
       "connector_count": 0,
       "svg_file": "08_design_thinking_ideation/121_brainstorming_board.svg",
       "excalidraw_file": "08_design_thinking_ideation/121_brainstorming_board.excalidraw"
@@ -2019,7 +2021,7 @@
         "scamper_prompts",
         "cards"
       ],
-      "node_count": 16,
+      "node_count": 23,
       "connector_count": 0,
       "svg_file": "08_design_thinking_ideation/122_scamper.svg",
       "excalidraw_file": "08_design_thinking_ideation/122_scamper.excalidraw"
@@ -2035,7 +2037,7 @@
         "hats",
         "reflections"
       ],
-      "node_count": 14,
+      "node_count": 20,
       "connector_count": 0,
       "svg_file": "08_design_thinking_ideation/123_six_thinking_hats.svg",
       "excalidraw_file": "08_design_thinking_ideation/123_six_thinking_hats.excalidraw"
@@ -2051,7 +2053,7 @@
         "8_cells",
         "sketch_zones"
       ],
-      "node_count": 18,
+      "node_count": 26,
       "connector_count": 0,
       "svg_file": "08_design_thinking_ideation/124_crazy_8s.svg",
       "excalidraw_file": "08_design_thinking_ideation/124_crazy_8s.excalidraw"
@@ -2067,7 +2069,7 @@
         "hmw_prompts",
         "vote_chips"
       ],
-      "node_count": 14,
+      "node_count": 17,
       "connector_count": 0,
       "svg_file": "08_design_thinking_ideation/125_how_might_we_board.svg",
       "excalidraw_file": "08_design_thinking_ideation/125_how_might_we_board.excalidraw"
@@ -2099,7 +2101,7 @@
         "central_theme",
         "subthemes"
       ],
-      "node_count": 14,
+      "node_count": 28,
       "connector_count": 0,
       "svg_file": "08_design_thinking_ideation/127_lotus_diagram.svg",
       "excalidraw_file": "08_design_thinking_ideation/127_lotus_diagram.excalidraw"
@@ -2116,7 +2118,7 @@
         "how_future",
         "wow_breakthrough"
       ],
-      "node_count": 24,
+      "node_count": 14,
       "connector_count": 0,
       "svg_file": "08_design_thinking_ideation/128_how_now_wow_matrix.svg",
       "excalidraw_file": "08_design_thinking_ideation/128_how_now_wow_matrix.excalidraw"
@@ -2133,7 +2135,7 @@
         "effort",
         "votes"
       ],
-      "node_count": 24,
+      "node_count": 14,
       "connector_count": 0,
       "svg_file": "08_design_thinking_ideation/129_idea_prioritization_matrix.svg",
       "excalidraw_file": "08_design_thinking_ideation/129_idea_prioritization_matrix.excalidraw"
@@ -2150,7 +2152,7 @@
         "feasibility",
         "desirability"
       ],
-      "node_count": 10,
+      "node_count": 9,
       "connector_count": 0,
       "svg_file": "08_design_thinking_ideation/130_idea_evaluation_canvas.svg",
       "excalidraw_file": "08_design_thinking_ideation/130_idea_evaluation_canvas.excalidraw"
@@ -2182,8 +2184,8 @@
         "demo_features",
         "feedback"
       ],
-      "node_count": 48,
-      "connector_count": 4,
+      "node_count": 34,
+      "connector_count": 0,
       "svg_file": "09_agile_proyectos/132_sprint_review.svg",
       "excalidraw_file": "09_agile_proyectos/132_sprint_review.excalidraw"
     },
@@ -2199,7 +2201,7 @@
         "today",
         "blockers"
       ],
-      "node_count": 8,
+      "node_count": 16,
       "connector_count": 0,
       "svg_file": "09_agile_proyectos/133_daily_standup_board.svg",
       "excalidraw_file": "09_agile_proyectos/133_daily_standup_board.excalidraw"
@@ -2215,7 +2217,7 @@
         "quarterly_timeline",
         "releases"
       ],
-      "node_count": 23,
+      "node_count": 16,
       "connector_count": 0,
       "svg_file": "09_agile_proyectos/134_release_planning.svg",
       "excalidraw_file": "09_agile_proyectos/134_release_planning.excalidraw"
@@ -2231,7 +2233,7 @@
         "milestones",
         "dates"
       ],
-      "node_count": 33,
+      "node_count": 23,
       "connector_count": 0,
       "svg_file": "09_agile_proyectos/135_project_timeline.svg",
       "excalidraw_file": "09_agile_proyectos/135_project_timeline.excalidraw"
@@ -2248,7 +2250,7 @@
         "bars",
         "dependencies"
       ],
-      "node_count": 23,
+      "node_count": 16,
       "connector_count": 0,
       "svg_file": "09_agile_proyectos/136_gantt_chart.svg",
       "excalidraw_file": "09_agile_proyectos/136_gantt_chart.excalidraw"
@@ -2264,8 +2266,8 @@
         "task_nodes",
         "dependencies"
       ],
-      "node_count": 41,
-      "connector_count": 9,
+      "node_count": 32,
+      "connector_count": 5,
       "svg_file": "09_agile_proyectos/137_project_dependency_map.svg",
       "excalidraw_file": "09_agile_proyectos/137_project_dependency_map.excalidraw"
     },
@@ -2282,7 +2284,7 @@
         "quality",
         "risks"
       ],
-      "node_count": 11,
+      "node_count": 18,
       "connector_count": 0,
       "svg_file": "09_agile_proyectos/138_project_status_dashboard.svg",
       "excalidraw_file": "09_agile_proyectos/138_project_status_dashboard.excalidraw"
@@ -2300,7 +2302,7 @@
         "issues",
         "dependencies"
       ],
-      "node_count": 10,
+      "node_count": 26,
       "connector_count": 0,
       "svg_file": "09_agile_proyectos/139_raid_log.svg",
       "excalidraw_file": "09_agile_proyectos/139_raid_log.excalidraw"
@@ -2316,7 +2318,7 @@
         "roles",
         "raci_codes"
       ],
-      "node_count": 99,
+      "node_count": 25,
       "connector_count": 0,
       "svg_file": "09_agile_proyectos/140_raci_matrix.svg",
       "excalidraw_file": "09_agile_proyectos/140_raci_matrix.excalidraw"
@@ -2348,7 +2350,7 @@
         "quarters",
         "annual_goals"
       ],
-      "node_count": 10,
+      "node_count": 14,
       "connector_count": 0,
       "svg_file": "10_productividad_personal/142_yearly_planner.svg",
       "excalidraw_file": "10_productividad_personal/142_yearly_planner.excalidraw"
@@ -2367,7 +2369,7 @@
         "relevant",
         "time_bound"
       ],
-      "node_count": 11,
+      "node_count": 17,
       "connector_count": 0,
       "svg_file": "10_productividad_personal/143_goal_planner.svg",
       "excalidraw_file": "10_productividad_personal/143_goal_planner.excalidraw"
@@ -2384,8 +2386,8 @@
         "monthly_milestones",
         "daily_habits"
       ],
-      "node_count": 41,
-      "connector_count": 9,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "10_productividad_personal/144_goal_breakdown.svg",
       "excalidraw_file": "10_productividad_personal/144_goal_breakdown.excalidraw"
     },
@@ -2400,7 +2402,7 @@
         "objective",
         "key_results"
       ],
-      "node_count": 27,
+      "node_count": 11,
       "connector_count": 0,
       "svg_file": "10_productividad_personal/145_personal_okr.svg",
       "excalidraw_file": "10_productividad_personal/145_personal_okr.excalidraw"
@@ -2416,8 +2418,8 @@
         "tasks",
         "dependencies"
       ],
-      "node_count": 41,
-      "connector_count": 9,
+      "node_count": 25,
+      "connector_count": 3,
       "svg_file": "10_productividad_personal/146_task_dependency_map.svg",
       "excalidraw_file": "10_productividad_personal/146_task_dependency_map.excalidraw"
     },
@@ -2448,8 +2450,8 @@
         "effectiveness",
         "actions"
       ],
-      "node_count": 48,
-      "connector_count": 4,
+      "node_count": 26,
+      "connector_count": 0,
       "svg_file": "10_productividad_personal/148_meeting_retrospective.svg",
       "excalidraw_file": "10_productividad_personal/148_meeting_retrospective.excalidraw"
     },
@@ -2465,7 +2467,7 @@
         "context",
         "consequences"
       ],
-      "node_count": 33,
+      "node_count": 13,
       "connector_count": 0,
       "svg_file": "10_productividad_personal/149_decision_log.svg",
       "excalidraw_file": "10_productividad_personal/149_decision_log.excalidraw"
@@ -2483,7 +2485,7 @@
         "habits",
         "projects"
       ],
-      "node_count": 11,
+      "node_count": 14,
       "connector_count": 0,
       "svg_file": "10_productividad_personal/150_personal_dashboard.svg",
       "excalidraw_file": "10_productividad_personal/150_personal_dashboard.excalidraw"

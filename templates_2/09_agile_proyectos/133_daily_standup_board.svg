@@ -19,8 +19,16 @@
   <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">SKETION EXPANSION LIBRARY V2 · AGILE &amp; PROYECTOS · INTER VECTORIAL</text>
   <rect x="40.0" y="80.0" width="440.0" height="350.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="60.0" y="117.0" fill="#0F172A" font-size="12px" font-weight="400">AYER (COMPLETADO)</text>
-  <rect x="500.0" y="80.0" width="440.0" height="350.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.5" />
+  <text x="60.0" y="161.0" fill="#334155" font-size="11px" font-weight="400">• Generadas categorias 1 a 5</text>
+  <text x="60.0" y="193.0" fill="#334155" font-size="11px" font-weight="400">• Creado informe de diagnostico</text>
+  <text x="60.0" y="225.0" fill="#334155" font-size="11px" font-weight="400">• Actualizado README.md</text>
+  <rect x="500.0" y="80.0" width="440.0" height="350.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.8" />
   <text x="520.0" y="117.0" fill="#D93829" font-size="12px" font-weight="400">HOY (PLANIFICADO)</text>
+  <text x="520.0" y="161.0" fill="#334155" font-size="11px" font-weight="400">• Generar categorias 6 a 10</text>
+  <text x="520.0" y="193.0" fill="#334155" font-size="11px" font-weight="400">• Auditar 150 plantillas con 0 emojis</text>
+  <text x="520.0" y="225.0" fill="#334155" font-size="11px" font-weight="400">• Ejecutar suite CI de 27 tests</text>
   <rect x="960.0" y="80.0" width="440.0" height="350.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="980.0" y="117.0" fill="#0F172A" font-size="12px" font-weight="400">BLOQUEOS / IMPEDIMENTOS</text>
+  <text x="980.0" y="161.0" fill="#334155" font-size="11px" font-weight="400">• Ninguno activo actualmente</text>
+  <text x="980.0" y="193.0" fill="#334155" font-size="11px" font-weight="400">• Todos los tests en PASS</text>
 </svg>

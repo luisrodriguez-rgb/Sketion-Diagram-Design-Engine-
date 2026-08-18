@@ -20,12 +20,12 @@
   <rect x="40.0" y="100.0" width="320.0" height="130.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
   <rect x="52.0" y="110.0" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
   <text x="56.0" y="122.0" fill="#475569" font-size="10px" font-weight="400">EXT</text>
-  <text x="54.0" y="153.0" fill="#0F172A" font-size="15px" font-weight="600">D1: Equipo</text>
+  <text x="54.0" y="153.0" fill="#0F172A" font-size="15px" font-weight="600">D1: Formar Equipo</text>
   <text x="54.0" y="174.2" fill="#475569" font-size="12px" font-weight="400">Acciones documentadas y estado</text>
   <rect x="390.0" y="100.0" width="320.0" height="130.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
   <rect x="402.0" y="110.0" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
   <text x="406.0" y="122.0" fill="#475569" font-size="10px" font-weight="400">EXT</text>
-  <text x="404.0" y="153.0" fill="#0F172A" font-size="15px" font-weight="600">D2: Problema</text>
+  <text x="404.0" y="153.0" fill="#0F172A" font-size="15px" font-weight="600">D2: Describir Problema</text>
   <text x="404.0" y="174.2" fill="#475569" font-size="12px" font-weight="400">Acciones documentadas y estado</text>
   <rect x="740.0" y="100.0" width="320.0" height="130.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
   <rect x="752.0" y="110.0" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
@@ -40,17 +40,17 @@
   <rect x="40.0" y="260.0" width="320.0" height="130.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
   <rect x="52.0" y="270.0" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
   <text x="56.0" y="282.0" fill="#475569" font-size="10px" font-weight="400">EXT</text>
-  <text x="54.0" y="313.0" fill="#0F172A" font-size="15px" font-weight="600">D5: Correccion</text>
+  <text x="54.0" y="313.0" fill="#0F172A" font-size="15px" font-weight="600">D5: Accion Correctiva</text>
   <text x="54.0" y="334.2" fill="#475569" font-size="12px" font-weight="400">Acciones documentadas y estado</text>
   <rect x="390.0" y="260.0" width="320.0" height="130.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
   <rect x="402.0" y="270.0" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
   <text x="406.0" y="282.0" fill="#475569" font-size="10px" font-weight="400">EXT</text>
-  <text x="404.0" y="313.0" fill="#0F172A" font-size="15px" font-weight="600">D6: Validacion</text>
+  <text x="404.0" y="313.0" fill="#0F172A" font-size="15px" font-weight="600">D6: Validar Solucion</text>
   <text x="404.0" y="334.2" fill="#475569" font-size="12px" font-weight="400">Acciones documentadas y estado</text>
   <rect x="740.0" y="260.0" width="320.0" height="130.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
   <rect x="752.0" y="270.0" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
   <text x="756.0" y="282.0" fill="#475569" font-size="10px" font-weight="400">EXT</text>
-  <text x="754.0" y="313.0" fill="#0F172A" font-size="15px" font-weight="600">D7: Prevencion</text>
+  <text x="754.0" y="313.0" fill="#0F172A" font-size="15px" font-weight="600">D7: Prevenir Recurrencia</text>
   <text x="754.0" y="334.2" fill="#475569" font-size="12px" font-weight="400">Acciones documentadas y estado</text>
   <rect x="1090.0" y="260.0" width="320.0" height="130.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
   <rect x="1102.0" y="270.0" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />

@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0.0 -20.0 2000.0 1420.0" width="2000.0" height="1420.0">
+  <defs>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
+      text { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB" />
+    </marker>
+    <marker id="arrowhead-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D93829" />
+    </marker>
+    <marker id="arrowhead-danger" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
+    </marker>
+  </defs>
+  <rect x="0.0" y="-20.0" width="2000.0" height="1420.0" fill="#ffffff" />
+  <rect x="40.0" y="20.0" width="1920.0" height="1340.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="60.0" y="35.0" width="1880.0" height="50.0" rx="6.0" fill="#0F172A" stroke="#0F172A" stroke-width="1.5" />
+  <text x="85.0" y="61.0" fill="#38BDF8" font-size="13px" font-weight="400">SKETION VISUAL COMPOSITION ENGINE (v11.0 GA) — ARQUITECTURA TÉCNICA &amp; FUNCIONAMIENTO INTEGRAL</text>
+  <text x="85.0" y="75.0" fill="#94A3B8" font-size="9px" font-weight="400">Motor autónomo de composición visual, inferencia semántica, ruteo ortogonal Manhattan A*, 20 patrones, 27 tipos visuales y exportación dual (.excalidraw / .svg)</text>
+  <rect x="60.0" y="95.0" width="1880.0" height="310.0" rx="6.0" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+  <text x="85.0" y="123.0" fill="#0F172A" font-size="11px" font-weight="400">1. PIPELINE DE TRANSFORMACIÓN END-TO-END (DEL PROMPT EN LENGUAJE NATURAL A FORMATOS VECTORIALES)</text>
+  <rect x="80.0" y="135.0" width="290.0" height="180.0" rx="6.0" fill="#EFF6FF" stroke="#0284C7" stroke-width="1.5" />
+  <rect x="92.0" y="147.0" width="120.0" height="20.0" rx="6.0" fill="#0284C7" stroke="#0284C7" stroke-width="1.5" />
+  <text x="98.0" y="160.0" fill="#FFFFFF" font-size="8px" font-weight="400">SEMANTIC</text>
+  <text x="92.0" y="184.0" fill="#0F172A" font-size="10px" font-weight="400">P1: SEMANTIC INTAKE &amp; IR</text>
+  <line x1="92.0" y1="188.0" x2="358.0" y2="188.0" stroke="#0284C7" stroke-width="1.0" />
+  <text x="92.0" y="204.0" fill="#334155" font-size="8px" font-weight="400">Módulo: semantic/content_model.py
+• Parsing de Prompt / Payload JSON
+• Extracción de Entidades &amp; Roles
+• Inferencia de Relaciones y SLA
+• Construye ContentModel tipado</text>
+  <rect x="390.0" y="135.0" width="290.0" height="180.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.5" />
+  <rect x="402.0" y="147.0" width="120.0" height="20.0" rx="6.0" fill="#D93829" stroke="#D93829" stroke-width="1.5" />
+  <text x="408.0" y="160.0" fill="#FFFFFF" font-size="8px" font-weight="400">INTELLIGENCE</text>
+  <text x="402.0" y="184.0" fill="#0F172A" font-size="10px" font-weight="400">P2: VISUAL INTELLIGENCE</text>
+  <line x1="402.0" y1="188.0" x2="668.0" y2="188.0" stroke="#D93829" stroke-width="1.0" />
+  <text x="402.0" y="204.0" fill="#334155" font-size="8px" font-weight="400">Módulo: visual_intelligence/ &amp; composition/
+• Selección de Patrón (20 patrones)
+• Matriz de 27 Tipos Visuales
+• DiversityJudge: Score VDS
+• Previene monocultura de capas</text>
+  <rect x="700.0" y="135.0" width="290.0" height="180.0" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <rect x="712.0" y="147.0" width="120.0" height="20.0" rx="6.0" fill="#2563EB" stroke="#2563EB" stroke-width="1.5" />
+  <text x="718.0" y="160.0" fill="#FFFFFF" font-size="8px" font-weight="400">LAYOUT</text>
+  <text x="712.0" y="184.0" fill="#0F172A" font-size="10px" font-weight="400">P3: MULTI-ALGO LAYOUT</text>
+  <line x1="712.0" y1="188.0" x2="978.0" y2="188.0" stroke="#2563EB" stroke-width="1.0" />
+  <text x="712.0" y="204.0" fill="#334155" font-size="8px" font-weight="400">Módulo: layout/layout_solver.py
+• Algoritmos: Sugiyama (LR/TB),
+  Radial, Swimlane, Tree, Matrix
+• Asignación de Capas jerárquicas
+• Calcula posiciones (x, y, w, h)</text>
+  <rect x="1010.0" y="135.0" width="290.0" height="180.0" rx="6.0" fill="#F0FDF4" stroke="#059669" stroke-width="1.5" />
+  <rect x="1022.0" y="147.0" width="120.0" height="20.0" rx="6.0" fill="#059669" stroke="#059669" stroke-width="1.5" />
+  <text x="1028.0" y="160.0" fill="#FFFFFF" font-size="8px" font-weight="400">ROUTER</text>
+  <text x="1022.0" y="184.0" fill="#0F172A" font-size="10px" font-weight="400">P4: PORTS &amp; MANHATTAN A*</text>
+  <line x1="1022.0" y1="188.0" x2="1288.0" y2="188.0" stroke="#059669" stroke-width="1.0" />
+  <text x="1022.0" y="204.0" fill="#334155" font-size="8px" font-weight="400">Módulo: layout/ports.py &amp; router.py
+• Puertos Magnéticos (Top, Bot, L, R)
+• Ruteo Ortogonal Manhattan A*
+• Minimización de cruces de líneas
+• 0 colisiones en cajas o texto</text>
+  <rect x="1320.0" y="135.0" width="290.0" height="180.0" rx="6.0" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5" />
+  <rect x="1332.0" y="147.0" width="120.0" height="20.0" rx="6.0" fill="#D97706" stroke="#D97706" stroke-width="1.5" />
+  <text x="1338.0" y="160.0" fill="#FFFFFF" font-size="8px" font-weight="400">DESIGN</text>
+  <text x="1332.0" y="184.0" fill="#0F172A" font-size="10px" font-weight="400">P5: THEME &amp; STYLE LOCK</text>
+  <line x1="1332.0" y1="188.0" x2="1598.0" y2="188.0" stroke="#D97706" stroke-width="1.0" />
+  <text x="1332.0" y="204.0" fill="#334155" font-size="8px" font-weight="400">Módulo: design/theme_engine.py
+• 8 Temas: Editorial, Technical, etc.
+• Paletas HSL de alto contraste
+• Iconografía técnica (0 emojis)
+• Tipografía Inter con jerarquía</text>
+  <rect x="1630.0" y="135.0" width="290.0" height="180.0" rx="6.0" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5" />
+  <rect x="1642.0" y="147.0" width="120.0" height="20.0" rx="6.0" fill="#7C3AED" stroke="#7C3AED" stroke-width="1.5" />
+  <text x="1648.0" y="160.0" fill="#FFFFFF" font-size="8px" font-weight="400">EXPORT</text>
+  <text x="1642.0" y="184.0" fill="#0F172A" font-size="10px" font-weight="400">P6: VALIDATION &amp; EXPORT</text>
+  <line x1="1642.0" y1="188.0" x2="1908.0" y2="188.0" stroke="#7C3AED" stroke-width="1.0" />
+  <text x="1642.0" y="204.0" fill="#334155" font-size="8px" font-weight="400">Módulo: validation/, repair/ &amp; export/
+• Closed-Loop Repair (VCS &gt;= 99)
+• Serializador Excalidraw JSON
+• Generador SVG 1.1 Vectorial Puro
+• Salida dual para edición y preview</text>
+  <line x1="370.0" y1="225.0" x2="390.0" y2="225.0" stroke="#0284C7" stroke-width="2.0" marker-end="url(#arrowhead)" />
+  <line x1="680.0" y1="225.0" x2="700.0" y2="225.0" stroke="#D93829" stroke-width="2.0" marker-end="url(#arrowhead-hero)" />
+  <line x1="990.0" y1="225.0" x2="1010.0" y2="225.0" stroke="#2563EB" stroke-width="2.0" marker-end="url(#arrowhead)" />
+  <line x1="1300.0" y1="225.0" x2="1320.0" y2="225.0" stroke="#059669" stroke-width="2.0" marker-end="url(#arrowhead)" />
+  <line x1="1610.0" y1="225.0" x2="1630.0" y2="225.0" stroke="#D97706" stroke-width="2.0" marker-end="url(#arrowhead)" />
+  <rect x="80.0" y="330.0" width="1840.0" height="60.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
+  <text x="95.0" y="351.0" fill="#0F172A" font-size="9px" font-weight="400">GARANTÍAS INMUTABLES DEL PIPELINE:</text>
+  <text x="95.0" y="370.0" fill="#475569" font-size="8px" font-weight="400">✓ 0 Emojis (Iconografía nativa)   ·   ✓ 0 Colisiones Texto/Cajas   ·   ✓ Ruteo ortogonal borde a borde   ·   ✓ Cilindros proporcionados (14% cap)   ·   ✓ Score VCS &gt;= 99/100</text>
+  <rect x="60.0" y="420.0" width="925.0" height="900.0" rx="6.0" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
+  <text x="85.0" y="449.0" fill="#0284C7" font-size="11px" font-weight="400">2. SUBSISTEMAS Y MODELOS INTERNOS DEL MOTOR</text>
+  <rect x="80.0" y="460.0" width="885.0" height="200.0" rx="6.0" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.2" />
+  <text x="95.0" y="484.0" fill="#1E40AF" font-size="10px" font-weight="400">A. MODELO DE CONTENIDO INTERMEDIO (ContentModel / semantic/)</text>
+  <text x="95.0" y="506.0" fill="#1E3A8A" font-size="8px" font-weight="400">• SystemNodeSpec: Nodos de sistema con { id, label, role, is_hero, shape, layer_index, metadata }.
+• ActorSpec: Usuarios, clientes o sistemas externos con iconografía asociada.
+• RelationshipSpec: Conexiones con { source, target, label, relation_type (sync, async, critical, veto) }.
+• MetricSpec: Indicadores cuantitativos y KPIs integrados (e.g. latencias &lt; 50ms, throughput, SLA ≤ 5d).
+• Desacopla completamente la lógica del dominio de la representación gráfica final.</text>
+  <rect x="100.0" y="580.0" width="260.0" height="60.0" rx="6.0" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5" />
+  <ellipse cx="130.0" cy="608.0" rx="18.0" ry="18.0" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.2" />
+  <text x="158.0" y="606.0" fill="#0F172A" font-size="14px" font-weight="600">Cliente Móvil (mTLS)</text>
+  <text x="158.0" y="620.0" fill="#64748B" font-size="10px" font-weight="400">ACTOR EXTERNO</text>
+  <rect x="400.0" y="580.0" width="260.0" height="60.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
+  <rect x="412.0" y="590.0" width="80.8" height="20.0" rx="6.0" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.0" />
+  <text x="416.0" y="602.0" fill="#D93829" font-size="10px" font-weight="400">HERO CORE</text>
+  <text x="414.0" y="632.0" fill="#0F172A" font-size="14px" font-weight="600">Payment Saga Core</text>
+  <text x="414.0" y="652.9" fill="#475569" font-size="12px" font-weight="400">Servicio Transaccional</text>
+  <line x1="360.0" y1="610.0" x2="400.0" y2="610.0" stroke="#0284C7" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <text x="680.0" y="608.0" fill="#1E40AF" font-size="8px" font-weight="400">◄ Entidades tipadas en memoria
+  antes de calcular geometría</text>
+  <rect x="80.0" y="675.0" width="885.0" height="200.0" rx="6.0" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" />
+  <text x="95.0" y="698.0" fill="#166534" font-size="10px" font-weight="400">B. RUTEO MANHATTAN A* &amp; PUERTOS MAGNÉTICOS (layout/)</text>
+  <text x="95.0" y="718.0" fill="#14532D" font-size="8px" font-weight="400">• PortManager: Calcula 4 puertos magnéticos por nodo (TOP, BOTTOM, LEFT, RIGHT) con offsets perimetrales.
+• ManhattanRouter: Búsqueda de caminos ortogonales en cuadrícula discreta (Grid de 10px).
+• Función de Costo A*: Penaliza giros (+15), cruce con cajas (+500) y solapamiento de líneas (+80).
+• Garantía: Los conectores siempre nacen y mueren en el borde del contenedor sin invadir texto.</text>
+  <rect x="100.0" y="790.0" width="220.0" height="65.0" rx="6.0" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" />
+  <text x="115.0" y="824.0" fill="#065F46" font-size="9px" font-weight="400">Nodo Origen (Port R)</text>
+  <ellipse cx="320.0" cy="822.0" rx="4.0" ry="4.0" fill="#059669" stroke="#059669" stroke-width="1.5" />
+  <ellipse cx="210.0" cy="790.0" rx="4.0" ry="4.0" fill="#059669" stroke="#059669" stroke-width="1.5" />
+  <ellipse cx="210.0" cy="855.0" rx="4.0" ry="4.0" fill="#059669" stroke="#059669" stroke-width="1.5" />
+  <ellipse cx="100.0" cy="822.0" rx="4.0" ry="4.0" fill="#059669" stroke="#059669" stroke-width="1.5" />
+  <rect x="480.0" y="790.0" width="220.0" height="65.0" rx="6.0" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" />
+  <text x="495.0" y="824.0" fill="#065F46" font-size="9px" font-weight="400">Nodo Destino (Port L)</text>
+  <ellipse cx="480.0" cy="822.0" rx="4.0" ry="4.0" fill="#059669" stroke="#059669" stroke-width="1.5" />
+  <line x1="320.0" y1="822.0" x2="476.0" y2="822.0" stroke="#059669" stroke-width="2.0" marker-end="url(#arrowhead)" />
+  <text x="340.0" y="813.0" fill="#059669" font-size="8px" font-weight="400">Manhattan A*</text>
+  <text x="720.0" y="823.0" fill="#166534" font-size="8px" font-weight="400">◄ Puertos de anclaje magnético
+  y ruteo ortogonal libre de cruces</text>
+  <rect x="80.0" y="890.0" width="885.0" height="215.0" rx="6.0" fill="#FFFBEB" stroke="#FCD34D" stroke-width="1.2" />
+  <text x="95.0" y="914.0" fill="#92400E" font-size="10px" font-weight="400">C. DIVERSIDAD TOPOLÓGICA &amp; CATÁLOGO VISUAL (visual_intelligence/)</text>
+  <text x="95.0" y="934.0" fill="#78350F" font-size="8px" font-weight="400">• 20 Patrones: Layered, Radial Hub, Swimlane, Tree, Matrix 2x2, A3 Lean Report, Cornell Notes, Roadmap,
+  Service Blueprint, Decoupled Fabric, Agentic Flywheel, Data Lakehouse, Security Barrier, etc.
+• 27 Tipos Nativos: Tarjetas Quad, Cilindros 3D BD, Pipes Streaming, Barreras WAF, Actores, Tablas y Matrices.
+• DiversityJudge: Evalúa la distribución espacial para impedir la monocultura de capas horizontales.</text>
+  <rect x="100.0" y="1002.4" width="230.0" height="97.7" rx="6.0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <ellipse cx="215.0" cy="1002.4" rx="115.0" ry="7.4" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+  <rect x="114.0" y="1017.7" width="70.0" height="18.0" rx="6.0" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.0" />
+  <text x="118.0" y="1028.7" fill="#1D4ED8" font-size="9px" font-weight="400">DATABASE</text>
+  <text x="114.0" y="1054.7" fill="#0F172A" font-size="13px" font-weight="400">PostgreSQL Aurora</text>
+  <text x="114.0" y="1071.7" fill="#475569" font-size="10px" font-weight="400">Sync Multi-AZ ACID</text>
+  <rect x="360.0" y="995.0" width="260.0" height="90.0" rx="6.0" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5" stroke-dasharray="6,6" />
+  <rect x="360.0" y="995.0" width="260.0" height="32.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="398.0" y="1015.0" fill="#0F172A" font-size="12px" font-weight="400">CLOUDFLARE EDGE WAF (WAF / FIREWALL)</text>
+  <text x="376.0" y="1048.0" fill="#334155" font-size="11px" font-weight="400">• DDoS Shield L7</text>
+  <text x="376.0" y="1070.0" fill="#334155" font-size="11px" font-weight="400">• TLS 1.3</text>
+  <text x="376.0" y="1092.0" fill="#334155" font-size="11px" font-weight="400">• Rate Limit</text>
+  <text x="640.0" y="1038.0" fill="#92400E" font-size="8px" font-weight="400">◄ Morfologías nativas especializadas
+  (cilindros proporcionales y barreras de seguridad)</text>
+  <rect x="80.0" y="1120.0" width="885.0" height="185.0" rx="6.0" fill="#FFF5F2" stroke="#FCA5A5" stroke-width="1.2" />
+  <text x="95.0" y="1144.0" fill="#991B1B" font-size="10px" font-weight="400">D. VALIDACIÓN Y REPARACIÓN EN BUCLE CERRADO (validation/ &amp; repair/)</text>
+  <text x="95.0" y="1164.0" fill="#7F1D1D" font-size="8px" font-weight="400">• Visual Consistency Score (VCS): Métrica continua de calidad que audita:
+  1. Cero colisiones geométricas (cajas sobre cajas o flechas sobre texto).
+  2. Proporciones visuales armónicas (tapas dinámicas de cilindros, paddings seguros).
+  3. Jerarquía tipográfica e identificación clara del nodo Hero.
+• ClosedLoopRepairEngine: Si VCS &lt; 95, reajusta automáticamente coordenadas antes de exportar.</text>
+  <rect x="1015.0" y="420.0" width="925.0" height="900.0" rx="6.0" fill="#FFFFFF" stroke="#D93829" stroke-width="1.5" />
+  <text x="1040.0" y="449.0" fill="#D93829" font-size="11px" font-weight="400">3. GUÍA PARA DESARROLLADORES: APIS, SDK Y EJEMPLOS DE CÓDIGO</text>
+  <rect x="1035.0" y="460.0" width="885.0" height="195.0" rx="6.0" fill="#0F172A" stroke="#334155" stroke-width="1.2" />
+  <rect x="1035.0" y="460.0" width="885.0" height="28.0" rx="6.0" fill="#1E293B" stroke="#334155" stroke-width="1.0" />
+  <ellipse cx="1051.0" cy="473.0" rx="4.0" ry="4.0" fill="#EF4444" stroke="#EF4444" stroke-width="1.0" />
+  <ellipse cx="1063.0" cy="473.0" rx="4.0" ry="4.0" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.0" />
+  <ellipse cx="1075.0" cy="473.0" rx="4.0" ry="4.0" fill="#10B981" stroke="#10B981" stroke-width="1.0" />
+  <text x="1089.0" y="477.0" fill="#38BDF8" font-size="10px" font-weight="400">MODO 1: API UNIFICADA DE ALTO NIVEL (sketion.render)</text>
+  <text x="1862.0" y="476.0" fill="#64748B" font-size="9px" font-weight="400">PYTHON</text>
+  <text x="1049.0" y="505.0" fill="#E2E8F0" font-size="9px" font-weight="400">import sketion
+result = sketion.render(
+    payload={&quot;title&quot;: &quot;Fintech Core&quot;, &quot;layers&quot;: [
+        {&quot;name&quot;: &quot;Ingress&quot;, &quot;entities&quot;: [{&quot;label&quot;: &quot;Kong WAF&quot;, &quot;role&quot;: &quot;security&quot;}]},
+        {&quot;name&quot;: &quot;Core&quot;, &quot;entities&quot;: [{&quot;label&quot;: &quot;Payment Saga&quot;, &quot;role&quot;: &quot;service&quot;, &quot;is_hero&quot;: True}]}
+    ]},
+    audience=&quot;engineer&quot;, archetype=&quot;layered&quot;, aspect_ratio=&quot;16:9&quot;
+)
+result.export(&quot;architecture.excalidraw&quot;)
+result.export(&quot;architecture.svg&quot;, format=&quot;svg&quot;)</text>
+  <rect x="1035.0" y="670.0" width="885.0" height="205.0" rx="6.0" fill="#0F172A" stroke="#334155" stroke-width="1.2" />
+  <rect x="1035.0" y="670.0" width="885.0" height="28.0" rx="6.0" fill="#1E293B" stroke="#334155" stroke-width="1.0" />
+  <ellipse cx="1051.0" cy="683.0" rx="4.0" ry="4.0" fill="#EF4444" stroke="#EF4444" stroke-width="1.0" />
+  <ellipse cx="1063.0" cy="683.0" rx="4.0" ry="4.0" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.0" />
+  <ellipse cx="1075.0" cy="683.0" rx="4.0" ry="4.0" fill="#10B981" stroke="#10B981" stroke-width="1.0" />
+  <text x="1089.0" y="687.0" fill="#38BDF8" font-size="10px" font-weight="400">MODO 2: LAYOUT SOLVER DECLARATIVO (layout/layout_solver.py)</text>
+  <text x="1862.0" y="686.0" fill="#64748B" font-size="9px" font-weight="400">PYTHON</text>
+  <text x="1049.0" y="715.0" fill="#E2E8F0" font-size="9px" font-weight="400">from sketion import LayoutSolver, LayoutAlgorithm, ExcalidrawScene
+solver = LayoutSolver(algorithm=LayoutAlgorithm.HIERARCHICAL, direction=&quot;LR&quot;)
+solver.add_node(&quot;client&quot;, &quot;Web Client&quot;, role=&quot;actor&quot;, shape=&quot;actor&quot;, layer_index=0)
+solver.add_node(&quot;core&quot;, &quot;Payment Saga&quot;, role=&quot;service&quot;, shape=&quot;card&quot;, layer_index=1, is_hero=True)
+solver.add_node(&quot;db&quot;, &quot;PostgreSQL Aurora&quot;, role=&quot;database&quot;, shape=&quot;database&quot;, layer_index=2)
+solver.connect(&quot;client&quot;, &quot;core&quot;, label=&quot;HTTPS / mTLS&quot;)
+solver.connect(&quot;core&quot;, &quot;db&quot;, label=&quot;SQL ACID&quot;, relation_type=&quot;critical&quot;)
+scene = ExcalidrawScene()
+fid = scene.add_frame(&quot;Core Architecture&quot;, 0, 0, 1440, 900)
+solver.render_to_scene(scene, frame_id=fid)</text>
+  <rect x="1035.0" y="890.0" width="885.0" height="185.0" rx="6.0" fill="#0F172A" stroke="#334155" stroke-width="1.2" />
+  <rect x="1035.0" y="890.0" width="885.0" height="28.0" rx="6.0" fill="#1E293B" stroke="#334155" stroke-width="1.0" />
+  <ellipse cx="1051.0" cy="903.0" rx="4.0" ry="4.0" fill="#EF4444" stroke="#EF4444" stroke-width="1.0" />
+  <ellipse cx="1063.0" cy="903.0" rx="4.0" ry="4.0" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.0" />
+  <ellipse cx="1075.0" cy="903.0" rx="4.0" ry="4.0" fill="#10B981" stroke="#10B981" stroke-width="1.0" />
+  <text x="1089.0" y="907.0" fill="#38BDF8" font-size="10px" font-weight="400">MODO 3: BUILDER DE ESCENAS DE BAJO NIVEL (render/excalidraw_builder.py)</text>
+  <text x="1862.0" y="906.0" fill="#64748B" font-size="9px" font-weight="400">PYTHON</text>
+  <text x="1049.0" y="935.0" fill="#E2E8F0" font-size="9px" font-weight="400">from sketion import ExcalidrawScene
+scene = ExcalidrawScene()
+fid = scene.add_frame(&quot;Ecosistema Custom&quot;, 40, 30, 1440, 850)
+scene.add_quad_card(80, 120, 280, 110, &quot;Payment Service&quot;, &quot;Saga ACID&quot;, badge=&quot;CORE&quot;, is_hero=True, frame_id=fid)
+scene.add_database_cylinder(80, 270, 240, 110, &quot;PostgreSQL Aurora&quot;, &quot;Sync Multi-AZ&quot;, badge=&quot;DB&quot;, frame_id=fid)
+scene.add_arrow(220, 230, 220, 270, stroke=&quot;#2563EB&quot;, stroke_w=2.0, frame_id=fid)
+scene.save(&quot;custom.excalidraw&quot;)
+sketion.export(scene, &quot;custom.svg&quot;, format=&quot;svg&quot;)</text>
+  <rect x="1035.0" y="1090.0" width="885.0" height="215.0" rx="6.0" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2" />
+  <rect x="1035.0" y="1090.0" width="885.0" height="28.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <ellipse cx="1051.0" cy="1103.0" rx="4.0" ry="4.0" fill="#EF4444" stroke="#EF4444" stroke-width="1.0" />
+  <ellipse cx="1063.0" cy="1103.0" rx="4.0" ry="4.0" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.0" />
+  <ellipse cx="1075.0" cy="1103.0" rx="4.0" ry="4.0" fill="#10B981" stroke="#10B981" stroke-width="1.0" />
+  <text x="1089.0" y="1107.0" fill="#0F172A" font-size="10px" font-weight="400">ESTRUCTURA DEL ARCHIVO .EXCALIDRAW (JSON NATIVO)</text>
+  <text x="1876.0" y="1106.0" fill="#64748B" font-size="9px" font-weight="400">JSON</text>
+  <text x="1049.0" y="1135.0" fill="#1E293B" font-size="9px" font-weight="400">{
+  &quot;type&quot;: &quot;excalidraw&quot;, &quot;version&quot;: 2, &quot;source&quot;: &quot;sketion-v11.0-ga&quot;,
+  &quot;elements&quot;: [
+    { &quot;type&quot;: &quot;rectangle&quot;, &quot;id&quot;: &quot;elem_1&quot;, &quot;x&quot;: 80, &quot;y&quot;: 120, &quot;width&quot;: 280, &quot;height&quot;: 110,
+      &quot;strokeColor&quot;: &quot;#0284C7&quot;, &quot;backgroundColor&quot;: &quot;#FFFFFF&quot;, &quot;roundness&quot;: { &quot;type&quot;: 3 }, &quot;frameId&quot;: &quot;f_1&quot; },
+    { &quot;type&quot;: &quot;arrow&quot;, &quot;id&quot;: &quot;arr_1&quot;, &quot;points&quot;: [[0, 0], [0, 40]], &quot;strokeColor&quot;: &quot;#2563EB&quot;, &quot;strokeWidth&quot;: 2 }
+  ],
+  &quot;appState&quot;: { &quot;viewBackgroundColor&quot;: &quot;#FFFFFF&quot;, &quot;gridSize&quot;: null }
+}</text>
+</svg>

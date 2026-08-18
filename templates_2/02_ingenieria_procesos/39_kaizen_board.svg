@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1563.2 565.0" width="1563.2" height="565.0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1510.6 535.0" width="1510.6" height="535.0">
   <defs>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
@@ -14,48 +14,39 @@
       <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
     </marker>
   </defs>
-  <rect x="-30.0" y="-30.0" width="1563.2" height="565.0" fill="#F8FAFC" />
-  <rect x="10.0" y="10.0" width="1483.2" height="485.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="-30.0" y="-30.0" width="1510.6" height="535.0" fill="#F8FAFC" />
+  <rect x="10.0" y="10.0" width="1430.6" height="455.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">SKETION EXPANSION LIBRARY V2 · INGENIERÍA · INTER VECTORIAL</text>
-  <rect x="50.0" y="40.0" width="1370.0" height="105.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.0" />
-  <rect x="50.0" y="40.0" width="180.0" height="105.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="65.0" y="95.5" fill="#475569" font-size="11px" font-weight="400">CLIENT / USER</text>
-  <rect x="50.0" y="145.0" width="1370.0" height="105.0" rx="6.0" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.0" />
-  <rect x="50.0" y="145.0" width="180.0" height="105.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="65.0" y="200.5" fill="#475569" font-size="11px" font-weight="400">SALES &amp; OPS</text>
-  <rect x="50.0" y="250.0" width="1370.0" height="105.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.0" />
-  <rect x="50.0" y="250.0" width="180.0" height="105.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="65.0" y="305.5" fill="#475569" font-size="11px" font-weight="400">ENGINEERING</text>
-  <rect x="50.0" y="355.0" width="1370.0" height="105.0" rx="6.0" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.0" />
-  <rect x="50.0" y="355.0" width="180.0" height="105.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="65.0" y="410.5" fill="#475569" font-size="11px" font-weight="400">FINANCE &amp; BILLING</text>
-  <rect x="270.0" y="55.0" width="180.0" height="55.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
-  <rect x="282.0" y="65.0" width="59.2" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="286.0" y="77.0" fill="#475569" font-size="10px" font-weight="400">STEP 1</text>
-  <text x="284.0" y="107.0" fill="#0F172A" font-size="14px" font-weight="600">Solicita Cotización</text>
-  <text x="284.0" y="127.9" fill="#475569" font-size="12px" font-weight="400">Formulario Web</text>
-  <rect x="490.0" y="140.0" width="200.0" height="55.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
-  <rect x="502.0" y="150.0" width="59.2" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="506.0" y="162.0" fill="#475569" font-size="10px" font-weight="400">STEP 2</text>
-  <text x="504.0" y="192.0" fill="#0F172A" font-size="14px" font-weight="600">Revisión Comercial</text>
-  <text x="504.0" y="212.9" fill="#475569" font-size="12px" font-weight="400">Scoring de Crédito</text>
-  <rect x="730.0" y="225.0" width="220.0" height="60.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
-  <rect x="742.0" y="235.0" width="80.8" height="20.0" rx="6.0" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.0" />
-  <text x="746.0" y="247.0" fill="#D93829" font-size="10px" font-weight="400">HERO CORE</text>
-  <text x="744.0" y="277.0" fill="#0F172A" font-size="14px" font-weight="600">Aprovisiona Tenant</text>
-  <text x="744.0" y="297.9" fill="#475569" font-size="12px" font-weight="400">K8s Namespace</text>
-  <rect x="990.0" y="310.0" width="200.0" height="55.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
-  <rect x="1002.0" y="320.0" width="59.2" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="1006.0" y="332.0" fill="#475569" font-size="10px" font-weight="400">STEP 4</text>
-  <text x="1004.0" y="362.0" fill="#0F172A" font-size="14px" font-weight="600">Factura Emitida</text>
-  <text x="1004.0" y="382.9" fill="#475569" font-size="12px" font-weight="400">Stripe Invoice</text>
-  <rect x="1230.0" y="55.0" width="180.0" height="55.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
-  <rect x="1242.0" y="65.0" width="45.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="1246.0" y="77.0" fill="#475569" font-size="10px" font-weight="400">DONE</text>
-  <text x="1244.0" y="107.0" fill="#0F172A" font-size="14px" font-weight="600">Acceso Concedido</text>
-  <text x="1244.0" y="127.9" fill="#475569" font-size="12px" font-weight="400">Notificación Email</text>
-  <line x1="450.0" y1="82.0" x2="490.0" y2="165.0" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrowhead)" />
-  <line x1="690.0" y1="165.0" x2="730.0" y2="255.0" stroke="#D93829" stroke-width="1.8" marker-end="url(#arrowhead-hero)" />
-  <line x1="950.0" y1="255.0" x2="990.0" y2="335.0" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrowhead)" />
-  <line x1="1190.0" y1="335.0" x2="1230.0" y2="82.0" stroke="#16A34A" stroke-width="1.8" marker-end="url(#arrowhead)" />
+  <rect x="40.0" y="80.0" width="328.8" height="350.0" rx="6.0" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="40.0" y="80.0" width="328.8" height="36.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="52.0" y="101.0" fill="#0F172A" font-size="11px" font-weight="400">1. SUGERENCIAS (1)</text>
+  <rect x="48.0" y="126.0" width="312.8" height="75.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
+  <text x="56.0" y="145.0" fill="#0F172A" font-size="11px" font-weight="400">Guia de corte rapido</text>
+  <text x="56.0" y="161.0" fill="#64748B" font-size="9px" font-weight="400">Operario: J. Perez</text>
+  <rect x="303.8" y="174.0" width="48.0" height="18.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="313.8" y="186.0" fill="#475569" font-size="8px" font-weight="400">PROPUESTA</text>
+  <rect x="383.8" y="80.0" width="328.8" height="350.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.5" />
+  <rect x="383.8" y="80.0" width="328.8" height="36.0" rx="6.0" fill="#FFFFFF" stroke="#D93829" stroke-width="1.0" />
+  <text x="395.8" y="101.0" fill="#D93829" font-size="11px" font-weight="400">2. EN EVALUACION (1)</text>
+  <rect x="391.8" y="126.0" width="312.8" height="75.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
+  <text x="399.8" y="145.0" fill="#0F172A" font-size="11px" font-weight="400">Sensor optico parada</text>
+  <text x="399.8" y="161.0" fill="#64748B" font-size="9px" font-weight="400">Ingeniero: M. Gomez</text>
+  <rect x="647.5" y="174.0" width="48.0" height="18.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="657.5" y="186.0" fill="#475569" font-size="8px" font-weight="400">STUDY</text>
+  <rect x="727.5" y="80.0" width="328.8" height="350.0" rx="6.0" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="727.5" y="80.0" width="328.8" height="36.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="739.5" y="101.0" fill="#0F172A" font-size="11px" font-weight="400">3. EN IMPLEMENTACION (1)</text>
+  <rect x="735.5" y="126.0" width="312.8" height="75.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
+  <text x="743.5" y="145.0" fill="#0F172A" font-size="11px" font-weight="400">Carro ergonomico</text>
+  <text x="743.5" y="161.0" fill="#64748B" font-size="9px" font-weight="400">Mantenimiento</text>
+  <rect x="991.2" y="174.0" width="48.0" height="18.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="1001.2" y="186.0" fill="#475569" font-size="8px" font-weight="400">WIP</text>
+  <rect x="1071.2" y="80.0" width="328.8" height="350.0" rx="6.0" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="1071.2" y="80.0" width="328.8" height="36.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="1083.2" y="101.0" fill="#0F172A" font-size="11px" font-weight="400">4. ESTANDARIZADO (1)</text>
+  <rect x="1079.2" y="126.0" width="312.8" height="75.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
+  <text x="1087.2" y="145.0" fill="#0F172A" font-size="11px" font-weight="400">Poka-Yoke de conector</text>
+  <text x="1087.2" y="161.0" fill="#64748B" font-size="9px" font-weight="400">Impacto: 0 defectos</text>
+  <rect x="1335.0" y="174.0" width="48.0" height="18.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="1345.0" y="186.0" fill="#475569" font-size="8px" font-weight="400">DONE</text>
 </svg>

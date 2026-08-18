@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1525.0 395.0" width="1525.0" height="395.0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1385.0 425.0" width="1385.0" height="425.0">
   <defs>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
@@ -14,31 +14,20 @@
       <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
     </marker>
   </defs>
-  <rect x="-30.0" y="-30.0" width="1525.0" height="395.0" fill="#F8FAFC" />
-  <rect x="10.0" y="10.0" width="1445.0" height="315.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="-30.0" y="-30.0" width="1385.0" height="425.0" fill="#F8FAFC" />
+  <rect x="10.0" y="10.0" width="1305.0" height="345.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">SKETION EXPANSION LIBRARY V2 · DATA &amp; AI · INTER VECTORIAL</text>
-  <rect x="50.0" y="50.0" width="1370.0" height="110.0" rx="6.0" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="65.0" y="76.0" fill="#475569" font-size="11px" font-weight="400">ROLE: DATA ENGINEER</text>
-  <rect x="230.0" y="60.0" width="220.0" height="80.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
-  <rect x="242.0" y="70.0" width="59.2" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="246.0" y="82.0" fill="#475569" font-size="10px" font-weight="400">INGEST</text>
-  <text x="244.0" y="112.0" fill="#0F172A" font-size="14px" font-weight="600">Capture Events</text>
-  <text x="244.0" y="132.9" fill="#475569" font-size="12px" font-weight="400">Kafka Ingest</text>
-  <rect x="510.0" y="60.0" width="220.0" height="80.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
-  <rect x="522.0" y="70.0" width="80.8" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="526.0" y="82.0" fill="#475569" font-size="10px" font-weight="400">RAW STORE</text>
-  <text x="524.0" y="112.0" fill="#0F172A" font-size="14px" font-weight="600">Land Records</text>
-  <text x="524.0" y="132.9" fill="#475569" font-size="12px" font-weight="400">S3 Storage</text>
-  <rect x="50.0" y="180.0" width="1370.0" height="110.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.8" />
-  <text x="65.0" y="206.0" fill="#D93829" font-size="11px" font-weight="400">ROLE: DATA SCIENTIST</text>
-  <rect x="510.0" y="190.0" width="260.0" height="85.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
-  <rect x="522.0" y="200.0" width="80.8" height="20.0" rx="6.0" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.0" />
-  <text x="526.0" y="212.0" fill="#D93829" font-size="10px" font-weight="400">HERO CORE</text>
-  <text x="524.0" y="242.0" fill="#0F172A" font-size="14px" font-weight="600">Clean &amp; Feature Engineering</text>
-  <text x="524.0" y="262.9" fill="#475569" font-size="12px" font-weight="400">Feature Store &amp; PySpark</text>
-  <rect x="830.0" y="190.0" width="220.0" height="85.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
-  <rect x="842.0" y="200.0" width="52.0" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
-  <text x="846.0" y="212.0" fill="#475569" font-size="10px" font-weight="400">MODEL</text>
-  <text x="844.0" y="242.0" fill="#0F172A" font-size="14px" font-weight="600">Train Model</text>
-  <text x="844.0" y="262.9" fill="#475569" font-size="12px" font-weight="400">vLLM Checkpoint</text>
+  <rect x="40.0" y="180.0" width="200.0" height="75.0" rx="6.0" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5" />
+  <ellipse cx="70.0" cy="208.0" rx="18.0" ry="18.0" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.2" />
+  <text x="98.0" y="206.0" fill="#0F172A" font-size="14px" font-weight="600">Usuario Cliente</text>
+  <text x="98.0" y="220.0" fill="#64748B" font-size="10px" font-weight="400">ENTIDAD EXTERNA</text>
+  <line x1="240.0" y1="215.0" x2="450.0" y2="215.0" stroke="#D93829" stroke-width="2.0" marker-end="url(#arrowhead-hero)" />
+  <ellipse cx="630.0" cy="220.0" rx="180.0" ry="100.0" fill="#FFF5F2" stroke="#D93829" stroke-width="2.0" />
+  <text x="520.0" y="222.0" fill="#D93829" font-size="12px" font-weight="400">0.0 SISTEMA DE COMERCIO</text>
+  <line x1="810.0" y1="215.0" x2="1020.0" y2="215.0" stroke="#D93829" stroke-width="2.0" marker-end="url(#arrowhead-hero)" />
+  <rect x="1020.0" y="160.0" width="260.0" height="110.0" rx="6.0" fill="#FFFFFF" stroke="#0C0C0C" stroke-width="1.5" />
+  <rect x="1032.0" y="170.0" width="73.6" height="20.0" rx="6.0" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.0" />
+  <text x="1036.0" y="182.0" fill="#475569" font-size="10px" font-weight="400">EXTERNAL</text>
+  <text x="1034.0" y="212.0" fill="#0F172A" font-size="14px" font-weight="600">Pasarela Bancaria</text>
+  <text x="1034.0" y="232.9" fill="#475569" font-size="12px" font-weight="400">Entidad Externa 3DS</text>
 </svg>

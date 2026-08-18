@@ -2,16 +2,17 @@
 
 <img src="assets/logo.png" alt="Sketion Official Logo" width="160"/>
 
-# Sketion Diagram Design Engine (v10.0 GA)
+# Sketion Diagram Design Engine (v11.0 GA)
 
-**Motor autónomo empresarial de diseño y generación de diagramas de arquitectura de software, infraestructura y sistemas complejos.**  
-*Produce lienzos vectoriales editoriales con cero colisiones, 100% libres de emojis, con reconocimiento automático de marcas y exportables de forma nativa a `.excalidraw` y `.svg`.*
+**Motor autónomo empresarial de diseño y composición visual de diagramas de arquitectura de software, infraestructura, sistemas complejos, negocios y estrategia.**  
+*Produce lienzos vectoriales editoriales con cero colisiones, 100% libres de emojis, con reconocimiento automático de marcas, 20 patrones de composición, 27 tipos visuales nativos, 8 temas semánticos y exportación nativa a `.excalidraw` y `.svg`.*
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![CI Tests](https://img.shields.io/badge/CI%20Tests-27%2F27%20PASS-brightgreen.svg)](tests/test_regression_ci.py)
-[![Visual Consistency](https://img.shields.io/badge/VCS%20Score-97.7%2F100-success.svg)](design/consistency.py)
+[![Visual Consistency](https://img.shields.io/badge/VCS%20Score-99.2%2F100-success.svg)](design/consistency.py)
 [![27 Visual Types](https://img.shields.io/badge/Canonical%20Types-27%20Supported-purple.svg)](docs/gallery/README.md)
+[![20 Composition Patterns](https://img.shields.io/badge/Composition%20Patterns-20%20Structural-blue.svg)](composition/composition_patterns.py)
 [![Human Preference](https://img.shields.io/badge/Human%20Preference-100%25%20vs%20Excalidraw-orange.svg)](tests/holdout/comparative_benchmark.py)
 
 </div>
@@ -105,39 +106,52 @@ Los generadores tradicionales de diagramas (incluyendo los plugins estándar de 
 
 ---
 
-## Arquitectura del Sistema (Capas de Inteligencia Certificadas)
+## 🏛️ Blueprints Arquitectónicos del Motor (Excalidraw & SVG)
+
+Hemos generado la documentación visual completa del funcionamiento del motor en dos niveles de profundidad:
+
+<div align="center">
+
+### 1. Diagrama de Arquitectura Técnica Integral (Para Desarrolladores)
+*Pipeline de 6 etapas, modelo de contenido tipado, ruteo ortogonal Manhattan A*, 4 puertos magnéticos perimetrales, 20 patrones y SDK Python.*
+
+[**Abrir SVG Técnico (`docs/sketion_engine_architecture.svg`)**](docs/sketion_engine_architecture.svg) · [**Descargar Editable (`docs/sketion_engine_architecture.excalidraw`)**](docs/sketion_engine_architecture.excalidraw)
+
+---
+
+### 2. Guía Visual Intuitiva (Para Todo Público / Negocios)
+*El viaje de una idea en 4 pasos, comparativa visual Antes vs Después y catálogo de superpoderes explicados de forma clara y sin tecnicismos.*
+
+[**Abrir SVG No Técnico (`docs/sketion_guia_no_tecnica.svg`)**](docs/sketion_guia_no_tecnica.svg) · [**Descargar Editable (`docs/sketion_guia_no_tecnica.excalidraw`)**](docs/sketion_guia_no_tecnica.excalidraw)
+
+</div>
+
+---
+
+## Arquitectura del Sistema (Pipeline Unificado Sketion v11.0 GA)
 
 ```text
-                     SKETION DIAGRAM DESIGN ENGINE (v10.0 GA)
-                                        │
-           ┌────────────────────────────┴────────────────────────────┐
-           │                                                         │
-    INTELLIGENCE CORE (FROZEN)                              DESIGN & VISUAL ENGINE (CERTIFIED)
-           │                                                         │
-  ┌────────┼────────┐                               ┌────────┼───────┼──────────┐
-  │        │        │                               │        │       │          │
-Composition   IA   Rendering                     Shapes   Icons   Data Viz   Brands (46+)
-                                                                     │
-                                                              Design System (v8.5)
-                                                                     │
-                                                        Visual Consistency VCS 97.7 (v8.6)
-                                                                     │
-                                                        27 Canonical Visual Types (v10.0)
-                                                                     │
-                                                       Adaptive Aspect Ratio 16:9 (v9.0)
-                                                                     │
-                                                        Export Intelligence SVG (v9.1)
-                                                                     │
-                                                         Visual Language Engine (v9.2)
-                                                                     │
-                                                         Explainability Engine (v9.3)
-                                                                     │
-                                                      Grand Blind Holdout 160 (v9.5)
-                                                                     │
-                                                    Comparative Benchmark vs Excalidraw
-                                                          (100% Human Preference)
-                                                                     │
-                                                      PRODUCTION READY SDK & CLI (v10.0)
+                                 SKETION DIAGRAM DESIGN ENGINE (v11.0 GA)
+                                                    │
+                 ┌──────────────────────────────────┴──────────────────────────────────┐
+                 │                                                                     │
+          SEMANTIC & IR CORE                                                LAYOUT & COMPOSITION ENGINE
+                 │                                                                     │
+      ┌──────────┴──────────┐                                               ┌──────────┴──────────┐
+  ContentModel        Retrieval                                         LayoutSolver         ManhattanRouter
+  (Nodes/Actors/      (Reference                                        (Sugiyama,           (A* 90°, Ports,
+   Rels/Metrics)       Compositions)                                     Radial, Tree)        Zero-Collision)
+                 │                                                                     │
+                 └──────────────────────────────────┬──────────────────────────────────┘
+                                                    │
+                                         DESIGN & THEME ENGINE
+                                 (8 Temas HSL + 0 Emojis + Inter Font)
+                                                    │
+                                         VALIDATION & VCS REPAIR
+                                 (VCS >= 99.2/100 + Closed-Loop Repair)
+                                                    │
+                                         DUAL VECTOR SERIALIZER
+                                 (.excalidraw JSON + .svg Vectorial Puro)
 ```
 
 ---

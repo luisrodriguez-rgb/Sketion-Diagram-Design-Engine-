@@ -18,19 +18,27 @@
   <rect x="10.0" y="10.0" width="1440.0" height="435.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">SKETION EXPANSION LIBRARY V2 · DESIGN THINKING · INTER VECTORIAL</text>
   <rect x="40.0" y="90.0" width="325.0" height="150.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5" />
-  <text x="55.0" y="116.0" fill="#D93829" font-size="11px" font-weight="400">IDEA #1</text>
+  <text x="55.0" y="116.0" fill="#0F172A" font-size="11px" font-weight="400">IDEA #1</text>
+  <text x="55.0" y="145.0" fill="#64748B" font-size="10px" font-weight="400">Boceto rapido y descripcion #1</text>
   <rect x="390.0" y="90.0" width="325.0" height="150.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5" />
-  <text x="405.0" y="116.0" fill="#D93829" font-size="11px" font-weight="400">IDEA #2</text>
-  <rect x="740.0" y="90.0" width="325.0" height="150.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5" />
+  <text x="405.0" y="116.0" fill="#0F172A" font-size="11px" font-weight="400">IDEA #2</text>
+  <text x="405.0" y="145.0" fill="#64748B" font-size="10px" font-weight="400">Boceto rapido y descripcion #2</text>
+  <rect x="740.0" y="90.0" width="325.0" height="150.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.8" />
   <text x="755.0" y="116.0" fill="#D93829" font-size="11px" font-weight="400">IDEA #3</text>
+  <text x="755.0" y="145.0" fill="#64748B" font-size="10px" font-weight="400">Boceto rapido y descripcion #3</text>
   <rect x="1090.0" y="90.0" width="325.0" height="150.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5" />
-  <text x="1105.0" y="116.0" fill="#D93829" font-size="11px" font-weight="400">IDEA #4</text>
+  <text x="1105.0" y="116.0" fill="#0F172A" font-size="11px" font-weight="400">IDEA #4</text>
+  <text x="1105.0" y="145.0" fill="#64748B" font-size="10px" font-weight="400">Boceto rapido y descripcion #4</text>
   <rect x="40.0" y="260.0" width="325.0" height="150.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5" />
-  <text x="55.0" y="286.0" fill="#D93829" font-size="11px" font-weight="400">IDEA #5</text>
+  <text x="55.0" y="286.0" fill="#0F172A" font-size="11px" font-weight="400">IDEA #5</text>
+  <text x="55.0" y="315.0" fill="#64748B" font-size="10px" font-weight="400">Boceto rapido y descripcion #5</text>
   <rect x="390.0" y="260.0" width="325.0" height="150.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5" />
-  <text x="405.0" y="286.0" fill="#D93829" font-size="11px" font-weight="400">IDEA #6</text>
+  <text x="405.0" y="286.0" fill="#0F172A" font-size="11px" font-weight="400">IDEA #6</text>
+  <text x="405.0" y="315.0" fill="#64748B" font-size="10px" font-weight="400">Boceto rapido y descripcion #6</text>
   <rect x="740.0" y="260.0" width="325.0" height="150.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5" />
-  <text x="755.0" y="286.0" fill="#D93829" font-size="11px" font-weight="400">IDEA #7</text>
+  <text x="755.0" y="286.0" fill="#0F172A" font-size="11px" font-weight="400">IDEA #7</text>
+  <text x="755.0" y="315.0" fill="#64748B" font-size="10px" font-weight="400">Boceto rapido y descripcion #7</text>
   <rect x="1090.0" y="260.0" width="325.0" height="150.0" rx="6.0" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5" />
-  <text x="1105.0" y="286.0" fill="#D93829" font-size="11px" font-weight="400">IDEA #8</text>
+  <text x="1105.0" y="286.0" fill="#0F172A" font-size="11px" font-weight="400">IDEA #8</text>
+  <text x="1105.0" y="315.0" fill="#64748B" font-size="10px" font-weight="400">Boceto rapido y descripcion #8</text>
 </svg>

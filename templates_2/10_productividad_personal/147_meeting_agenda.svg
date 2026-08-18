@@ -18,17 +18,17 @@
   <rect x="10.0" y="10.0" width="1425.0" height="445.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">SKETION EXPANSION LIBRARY V2 · PRODUCTIVIDAD · INTER VECTORIAL</text>
   <rect x="40.0" y="80.0" width="1360.0" height="80.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.8" />
-  <text x="60.0" y="118.0" fill="#D93829" font-size="13px" font-weight="400">REUNION EJECUTIVA: Lanzamiento Sketion Expansion Library v2</text>
+  <text x="60.0" y="118.0" fill="#D93829" font-size="13px" font-weight="400">REUNION EJECUTIVA: Lanzamiento Sketion Expansion Library v2 (212 Templates)</text>
   <rect x="40.0" y="180.0" width="430.0" height="240.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="60.0" y="221.0" fill="#D93829" font-size="11px" font-weight="400">10:00 - 10:15</text>
   <text x="60.0" y="258.0" fill="#0F172A" font-size="13px" font-weight="400">Alineacion de Alcance</text>
-  <text x="60.0" y="296.0" fill="#475569" font-size="11px" font-weight="400">Validar las 150 plantillas.</text>
+  <text x="60.0" y="296.0" fill="#475569" font-size="11px" font-weight="400">Validar las 150 plantillas y diversidad visual.</text>
   <rect x="500.0" y="180.0" width="430.0" height="240.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="520.0" y="221.0" fill="#D93829" font-size="11px" font-weight="400">10:15 - 10:45</text>
   <text x="520.0" y="258.0" fill="#0F172A" font-size="13px" font-weight="400">Auditoria de Calidad</text>
-  <text x="520.0" y="296.0" fill="#475569" font-size="11px" font-weight="400">Revisar VCS &gt;= 99 y cero emojis.</text>
+  <text x="520.0" y="296.0" fill="#475569" font-size="11px" font-weight="400">Revisar VCS &gt;= 99.5 y cero emojis.</text>
   <rect x="960.0" y="180.0" width="430.0" height="240.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="980.0" y="221.0" fill="#D93829" font-size="11px" font-weight="400">10:45 - 11:00</text>
   <text x="980.0" y="258.0" fill="#0F172A" font-size="13px" font-weight="400">Acuerdos &amp; Despliegue</text>
-  <text x="980.0" y="296.0" fill="#475569" font-size="11px" font-weight="400">Sincronizacion en GitHub.</text>
+  <text x="980.0" y="296.0" fill="#475569" font-size="11px" font-weight="400">Sincronizacion en GitHub y documentacion.</text>
 </svg>

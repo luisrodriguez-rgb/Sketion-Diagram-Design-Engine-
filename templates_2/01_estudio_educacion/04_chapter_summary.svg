@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1566.4 535.0" width="1566.4" height="535.0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 1557.6 535.0" width="1557.6" height="535.0">
   <defs>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap");
@@ -14,8 +14,8 @@
       <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626" />
     </marker>
   </defs>
-  <rect x="-30.0" y="-30.0" width="1566.4" height="535.0" fill="#F8FAFC" />
-  <rect x="10.0" y="10.0" width="1486.4" height="455.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
+  <rect x="-30.0" y="-30.0" width="1557.6" height="535.0" fill="#F8FAFC" />
+  <rect x="10.0" y="10.0" width="1477.6" height="455.0" rx="0.0" fill="transparent" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="30.0" y="46.0" fill="#64748B" font-size="11px" font-weight="400">SKETION EXPANSION LIBRARY V2 · ESTUDIO · INTER VECTORIAL</text>
   <rect x="40.0" y="80.0" width="420.0" height="350.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="60.0" y="117.0" fill="#D93829" font-size="12px" font-weight="400">CONCEPTOS CLAVE DEL CAPITULO</text>
@@ -33,7 +33,7 @@ Donde:
  r = nodos necesarios para confirmar lectura</text>
   <rect x="940.0" y="80.0" width="460.0" height="350.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.5" />
   <text x="960.0" y="117.0" fill="#D93829" font-size="12px" font-weight="400">PREGUNTAS DE AUTOEVALUACION</text>
-  <text x="960.0" y="156.0" fill="#334155" font-size="11px" font-weight="400">1. ¿Que ocurre si el lider falla durante un failover?
-2. ¿Como se previene el problema de Split-Brain?
-3. ¿Cual es el trade-off entre w=1 y w=all?</text>
+  <text x="960.0" y="156.0" fill="#334155" font-size="11px" font-weight="400">1. Que ocurre si el lider falla durante un failover?
+2. Como se previene el problema de Split-Brain?
+3. Cual es el trade-off entre w=1 y w=all?</text>
 </svg>

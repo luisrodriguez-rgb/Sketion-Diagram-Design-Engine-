@@ -22,22 +22,22 @@
   <text x="560.0" y="96.0" fill="#64748B" font-size="11px" font-weight="400">TIEMPO PROMEDIO</text>
   <text x="780.0" y="96.0" fill="#64748B" font-size="11px" font-weight="400">SEVERIDAD DE FRICCION</text>
   <text x="1020.0" y="96.0" fill="#64748B" font-size="11px" font-weight="400">OBSERVACION</text>
-  <rect x="30.0" y="130.0" width="1390.0" height="70.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
-  <text x="40.0" y="166.0" fill="#0F172A" font-size="11px" font-weight="400">1. Seleccionar plantilla de catálogo</text>
+  <rect x="30.0" y="130.0" width="1390.0" height="70.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.5" />
+  <text x="40.0" y="166.0" fill="#0F172A" font-size="11px" font-weight="400">1. Seleccionar plantilla de catalogo</text>
   <text x="360.0" y="166.0" fill="#D93829" font-size="11px" font-weight="400">100%</text>
   <text x="560.0" y="166.0" fill="#0F172A" font-size="11px" font-weight="400">4.2 s</text>
-  <text x="780.0" y="166.0" fill="#0F172A" font-size="11px" font-weight="400">LEVE</text>
+  <text x="780.0" y="166.0" fill="#D93829" font-size="11px" font-weight="400">NULA</text>
   <text x="1020.0" y="166.0" fill="#0F172A" font-size="11px" font-weight="400">Descubrimiento fluido</text>
-  <rect x="30.0" y="215.0" width="1390.0" height="70.0" rx="6.0" fill="#FFF5F2" stroke="#D93829" stroke-width="1.5" />
+  <rect x="30.0" y="215.0" width="1390.0" height="70.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="40.0" y="251.0" fill="#0F172A" font-size="11px" font-weight="400">2. Exportar a SVG vectorial</text>
-  <text x="360.0" y="251.0" fill="#0F172A" font-size="11px" font-weight="400">95%</text>
+  <text x="360.0" y="251.0" fill="#0F172A" font-size="11px" font-weight="400">98%</text>
   <text x="560.0" y="251.0" fill="#0F172A" font-size="11px" font-weight="400">2.1 s</text>
   <text x="780.0" y="251.0" fill="#D93829" font-size="11px" font-weight="400">NULA</text>
   <text x="1020.0" y="251.0" fill="#0F172A" font-size="11px" font-weight="400">Excelente rendimiento</text>
   <rect x="30.0" y="300.0" width="1390.0" height="70.0" rx="6.0" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
   <text x="40.0" y="336.0" fill="#0F172A" font-size="11px" font-weight="400">3. Personalizar colores de capa</text>
-  <text x="360.0" y="336.0" fill="#0F172A" font-size="11px" font-weight="400">82%</text>
-  <text x="560.0" y="336.0" fill="#0F172A" font-size="11px" font-weight="400">18.5 s</text>
-  <text x="780.0" y="336.0" fill="#0F172A" font-size="11px" font-weight="400">MEDIA</text>
-  <text x="1020.0" y="336.0" fill="#0F172A" font-size="11px" font-weight="400">Requiere mejor feedback visual</text>
+  <text x="360.0" y="336.0" fill="#0F172A" font-size="11px" font-weight="400">92%</text>
+  <text x="560.0" y="336.0" fill="#0F172A" font-size="11px" font-weight="400">12.5 s</text>
+  <text x="780.0" y="336.0" fill="#0F172A" font-size="11px" font-weight="400">LEVE</text>
+  <text x="1020.0" y="336.0" fill="#0F172A" font-size="11px" font-weight="400">Facil adaptacion visual</text>
 </svg>
